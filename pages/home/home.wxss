@@ -1,0 +1,173 @@
+
+
+
+.slide-image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.ip_tab_comtainer {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20rpx 0 0;
+  white-space: nowrap;
+}
+
+.ip_tab_comtainer_padd {
+  display: inline-block;
+  width: 24rpx;
+}
+
+.ip_tab_item_s {
+  display: inline-block;
+  line-height: 40rpx;
+  padding: 12rpx 32rpx;
+  color: #ed373d;
+  margin-right: 8rpx;
+  margin-left: 8rpx;
+  font-size: 30rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #fff;
+  border-radius: 4rpx;
+  border-bottom: 2px solid #ed373d;
+}
+
+.ip_tab_item_n {
+  display: inline-block;
+  padding: 12rpx 32rpx;
+  line-height: 40rpx;
+  color: #353535;
+  margin-right: 8rpx;
+  background-color: #fff;
+  margin-left: 8rpx;
+  font-size: 28rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 4rpx;
+  border-bottom: 2px solid #ccc;
+}
+
+/**
+去除横向滚动条
+*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.ip_tab_comtainer_top {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 20rpx 0 0;
+  white-space: nowrap;
+  /*悬停关键样式*/
+  top: 0;
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  height: 90rpx;
+}
+
+/*商品的展示*/
+
+.producation_display {
+  width: 100%;
+  height: fit-content;
+}
+
+.fixed {
+  height: 110rpx;
+  width: 100%;
+}
+
+.producation_pic {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 30rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.item_column {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 30rpx;
+  /* background-color: #f5f5f5; */
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+}
+
+.item_column_1 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+.item_column_2 {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.item_column_3 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+
+.item_column_4 {
+  position: relative;
+  display: flex;
+  margin-top: 25rpx;
+  margin-left: 145rpx;
+}
+
+.add_pic {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+.text_3{
+  font-size: 22rpx;
+  font-family: "SF UI Text"
+
+}
+
+.text_4 {
+  color: #005264;
+  font-size: 25rpx;
+  display: flex;
+  flex-direction: row;
+  width:300rpx;
+}
+
+.text_5 {
+  color: #f89681;
+  font-size: 35rpx;
+}
+
+
+
+.sameschool_pic {
+  height: 40rpx;
+  width: 200rpx;
+  margin-left: -30rpx;
+  color: #e9dab1;
+  font-size: 25rpx;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNi43ODgiIGhlaWdodD0iMTEuMDAxIiB2aWV3Qm94PSIwIDAgMzYuNzg4IDExLjAwMSI+DQogIDxwYXRoIGlkPSLot6/lvoRfMTY3NCIgZGF0YS1uYW1lPSLot6/lvoQgMTY3NCIgZD0iTTI2ODguMTg0LDg3NzEuOTQyLDI2ODYsODc2OS42NmwzNC43NDEtLjA0NGExLjc2MywxLjc2MywwLDAsMSwxLjk4MywxLjc3NmMuMTQ0LDIsMCw3LjkwOSwwLDcuOTA5cy0uMjg4LDEuMzA4LTMuNDExLDEuMzA4aC0yOS4zNTFzLTEuNzc4LS4yMzUtMS43NzgtMS44WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI2ODUuOTk4IC04NzY5LjYwOCkiIGZpbGw9IiM0YjJmMTkiLz4NCjwvc3ZnPg0K");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

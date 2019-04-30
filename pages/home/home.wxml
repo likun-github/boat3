@@ -1,0 +1,51 @@
+
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" circular="true">
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 这个view是为了在产品种类选择栏置顶后做的样式fix -->
+  <view class='fixed' wx:if="{{scroll_top>=150}}"></view>
+
+  <!-- <scroll-view scroll-x="true" class="{{scroll_top>=150?ip_tab_comtainer_top:ip_tab_comtainer}}"> -->
+  <scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}">
+    <view class="ip_tab_comtainer_padd"></view>
+    <block wx:for="{{ips}}" wx:for-item="ip" wx:key="{{ip.id}}">
+      <view class="{{ip.isSelect?'ip_tab_item_s':'ip_tab_item_n'}}" bindtap="onIpItemClick" wx:key="{{ip.id}}" data-item="{{ip}}">
+        {{ip.title}}
+      </view>
+    </block>
+    <view class="ip_tab_comtainer_padd"></view>
+  </scroll-view>
+
+
+
+
+  <view class="producation_display" wx:for="{{showData}}" wx:key="unique" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
+      <image class='producation_pic' src='{{item.producation_pic_url}}' mode='scaleToFill'></image>
+      <view class='item_column_1'>
+        <view style='font-size:40rpx;'>
+          {{item.producation_name}}
+        </view>
+        <view class='text_3'>
+          {{item.producation_des}}
+        </view>
+        <view class='item_column_2'>
+          <view class='item_column_3'>
+            <view class='text_4'>
+              ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
+              <view class='sameschool_pic'>本校同舟</view>
+            </view>
+            <view class='text_5'>
+              ￥{{ item.producation_originalPrice}}
+            </view>
+          </view>
+          <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
+        </view>
+      </view>
+    </view>
+  </view>
