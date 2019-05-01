@@ -75,16 +75,48 @@
     <view class='line'></view>
     <view class='middle2'>
       <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
-      <view class='hline' ></view>
-      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论</view>
+      <view class='hline'></view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
     </view>
 
 
 
-     <view  wx:if="{{chooseinformation==0}}" >
-       <image src='/static/t14.png' style='position:relative;width"750rpx;height:500rpx;'></image>
-     </view>
-    
+    <view wx:if="{{chooseinformation==0}}">
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+    </view>
+    <view wx:if="{{chooseinformation==1}}">
+      <image src='/static/toboat/heart.svg' class='heart'></image>
+      <view class='love'>
+        <text>-</text>
+        <text style='color:#59B4FE;'>125</text>
+        <text>人觉得心仪-</text>
+      </view>
+      <view class='judge1'>
+        <image src='/static/toboat/boat.svg' style='position:relative;width:60rpx;height:60rpx;'></image>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input"></input>
+
+      </view>
+      
+      <block wx:for="{{judge}}">
+      <view class='list'>
+       <image src='{{item.url}}' style='position:relative;width:90rpx;height:90rpx;'></image>
+       <view class='infor'>
+       <text>{{item.title}}</text>
+       <text style=' color: rgba(60, 60, 60,0.4);'>{{item.time}}</text>
+       <text style='width:570rpx;'>{{item.text}}</text>
+       </view>
+      </view>
+       
+      </block>
+
+
+
+
+
+    </view>
+
 
 
 
@@ -110,7 +142,7 @@
       <text>船票</text>
     </view>
     <view class='boat'>
-    <text >我要发船</text>
+      <text>我要发船</text>
     </view>
 
   </view>

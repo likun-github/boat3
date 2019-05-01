@@ -9,7 +9,7 @@ Page({
    */
 
   data: {
-    chooseinformation:0,//默认详情
+    chooseinformation:1,//默认详情
     chooseBoat: false,//我要上船点击
     chooseStatus: 0,//默认大船
     animationData: {},//动画实例
@@ -18,7 +18,33 @@ Page({
       'https://xiaoyibang.top:8002/uploads/photo/4_2WZVla0.jpg',
       'https://xiaoyibang.top:8002/uploads/photo/9_9eMbYEf.jpg',
       'https://xiaoyibang.top:8002/uploads/photo/6_57uxCYM.jpg'
-    ]
+    ],
+    judge:[
+      {
+        "url":"/static/toboat/boat.svg",
+        "title":'2016-艺术-李艮基',
+        'time':'刚刚',
+        'text':'太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      },
+    ],
 
 
 
