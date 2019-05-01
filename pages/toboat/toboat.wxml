@@ -22,7 +22,7 @@
     <view class='top'>
       <image src='/static/boat/2.png' class='logo'></image>
       <view class='worth'>
-        <text style='color:#58B4FE;font-size:1.3em;font-weight:800;'>￥2980</text>
+        <text style='color:#58B4FE;font-size:1.3em;font-weight:800;'>￥{{chooseStatus==0?2800:2100}}</text>
         <text style='color:rgba(100,100,100,0.4);;font-size:0.7em;'>原价￥3280</text>
       </view>
       <view class='title'>
