@@ -9,7 +9,7 @@ Page({
    */
 
   data: {
-    chooseBoat: true,//我要上船点击
+    chooseBoat: false,//我要上船点击
     chooseStatus: 0,//默认大船
     animationData: {},//动画实例
     datalist: {},
