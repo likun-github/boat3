@@ -134,8 +134,8 @@
 
 
   </scroll-view>
-  <view class='bottom' bindtap='showModal'>
-    <view class='icon1'>
+  <view class='bottom' >
+    <view class='icon1' bindtap='home'> 
       <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>首页</text>
     </view>
@@ -147,7 +147,7 @@
       <image src='/static/toboat/ticket.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>船票</text>
     </view>
-    <view class='boat'>
+    <view class='boat' bindtap='showModal'>
       <text>我要发船</text>
     </view>
 

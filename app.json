@@ -1,7 +1,8 @@
 {
   "pages": [
-"pages/toboat/toboat",
     "pages/home/home",
+"pages/toboat/toboat",
+   
         "pages/test/test",
     "pages/setting/setting",
     "pages/boat/boat"

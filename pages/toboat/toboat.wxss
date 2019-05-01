@@ -154,7 +154,8 @@ progress{
   font-size: 0.8em;
   background-color: white;
   color:#686868;
-  z-index: 999;
+  z-index: 2;
+ 
 }
 .middletop .block1{
   position: relative;
@@ -349,6 +350,7 @@ input{
   width: 100%;
   height: 100%;
   background-color: rgba(100, 100, 100, 0.5);
+  z-index: 3;
 }
 
 .choose {
@@ -357,6 +359,7 @@ input{
   height: 80%;
   bottom: 0rpx;
   background-color: white;
+   z-index: 4;
 }
 
 .top {

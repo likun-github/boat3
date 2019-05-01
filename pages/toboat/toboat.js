@@ -161,6 +161,11 @@ Page({
       })
 
     }
+  },
+  home:function(){
+    wx.navigateBack({
+      delta:1,
+    })
   }
 
 
