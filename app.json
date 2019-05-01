@@ -1,8 +1,10 @@
 {
   "pages": [
-
+    "pages/test/test",
     "pages/home/home",
-        "pages/test/test",
+    
+    
+  
     "pages/setting/setting",
     "pages/boat/boat",
     "pages/toboat/toboat"
