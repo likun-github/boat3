@@ -1,0 +1,12 @@
+<view class='ticket'>
+  <image src='/static/boat/火车票.svg' mode='scaleToFill' style='width:100%;heigt:120rpx'></image>
+</view>
+
+<view class='text_1'>
+  船票空空如也，赶紧去开动友谊小船吧~
+</view>
+
+
+<view class='toboat_btn' bindtap='turnTobuy'>
+  <image src='/static/boat/去登船.svg' style='width:100%;heigt:120rpx' mode='scaleToFill'></image>
+</view>
