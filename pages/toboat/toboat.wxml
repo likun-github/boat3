@@ -74,10 +74,17 @@
     </view>
     <view class='line'></view>
     <view class='middle2'>
-      <view class='block1'>详情</view>
-      <view class='hline'></view>
-      <view class='block2' style='color:#8B8B8B;'>评论</view>
+      <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
+      <view class='hline' ></view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论</view>
     </view>
+
+
+
+     <view  wx:if="{{chooseinformation==0}}" >
+       <image src='/static/t14.png' style='position:relative;width"750rpx;height:500rpx;'></image>
+     </view>
+    
 
 
 
@@ -91,15 +98,15 @@
   </scroll-view>
   <view class='bottom' bindtap='showModal'>
     <view class='icon1'>
-      <image src='/static/toboat/home.svg' style='position:relative;width:50%;height:50%;margin-left:37rpx;margin-top:20rpx;'> </image>
+      <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>首页</text>
     </view>
     <view class='icon1'>
-      <image src='/static/toboat/contact.svg' style='position:relative;width:50%;height:50%;margin-left:37rpx;margin-top:20rpx;'> </image>
+      <image src='/static/toboat/contact.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>咨询</text>
     </view>
     <view class='icon1'>
-      <image src='/static/toboat/ticket.svg' style='position:relative;width:50%;height:50%;margin-left:37rpx;margin-top:20rpx;'> </image>
+      <image src='/static/toboat/ticket.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>船票</text>
     </view>
     <view class='boat'>

@@ -9,6 +9,7 @@ Page({
    */
 
   data: {
+    chooseinformation:0,//默认详情
     chooseBoat: false,//我要上船点击
     chooseStatus: 0,//默认大船
     animationData: {},//动画实例
@@ -90,6 +91,12 @@ Page({
         chooseBoat: false
       })
     }.bind(this), 200)
+  },
+  chooseinformation:function(e){
+    this.setData({
+      chooseinformation: e.currentTarget.dataset.index,
+    })
+
   }
 
 
