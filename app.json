@@ -1,15 +1,11 @@
 {
   "pages": [
-    "pages/toboat/toboat",
+
     "pages/home/home",
-    "pages/test/test",
-    
-    
-    
-  
+        "pages/test/test",
     "pages/setting/setting",
-    "pages/boat/boat"
-    
+    "pages/boat/boat",
+    "pages/toboat/toboat"
   ],
   "window": {
     "backgroundTextStyle": "light",
