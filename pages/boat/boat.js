@@ -67,7 +67,10 @@ Page({
 
 
   turnTobuy: function() {
-    console.log("跳转购物页")
+    console.log("zh")
+    wx.switchTab({
+      url:'/pages/home/home',
+    })
  
   }
 })

@@ -105,7 +105,7 @@
 
       </view>
       
-      <block wx:for="{{judge}}">
+      <block wx:for="{{judge}}" wx:key="{{judge.id}}">
       <view class='list'>
        <image src='{{item.url}}' style='position:relative;width:90rpx;height:90rpx;'></image>
        <view class='infor'>
