@@ -78,9 +78,7 @@ Page({
 
   },
 
-  barrage: function() {
-    
-  }
+
 
 
 

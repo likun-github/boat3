@@ -10,6 +10,8 @@
 </swiper>
 
 
-<view class='producation_name'>{{datalist.producation_name}}</view>
 
-<view bindtap='barrage'>弹幕</view>
+
+
+<!-- <view class='producation_name'>{{datalist.producation_name}}</view> -->
+
