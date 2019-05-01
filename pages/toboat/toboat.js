@@ -9,6 +9,7 @@ Page({
    */
 
   data: {
+    top:false,//是否置顶
     chooseinformation:1,//默认详情
     chooseBoat: false,//我要上船点击
     chooseStatus: 0,//默认大船
@@ -43,6 +44,29 @@ Page({
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '好啊',
+      }, {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/toboat/boat.svg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
       },
     ],
 
@@ -123,6 +147,20 @@ Page({
       chooseinformation: e.currentTarget.dataset.index,
     })
 
+  },
+
+  scrollnew:function(e){
+    console.log(e.detail.scrollTop)
+    if (e.detail.scrollTop>470){
+      this.setData({
+        top:true,
+      })
+    }else{
+      this.setData({
+        top:false,
+      })
+
+    }
   }
 
 
