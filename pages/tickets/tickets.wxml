@@ -1,0 +1,45 @@
+<view class='mask'>
+    <view class='content'>
+        <image src='/static/pic/T2.png'  style='width:100%;height:100%;'></image>
+        <image src='/static/pic/T1.png' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx;'></image>
+        <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;'>百人同舟</view>
+        <text style='position:absolute;left:50rpx;top:43%;color:white;font-size:40rpx;font-weight:300;'>武汉育才驾校C1普通班</text>
+        <view class='con1'>
+               <view style='position:absolute;left:0rpx;height:100%;width:250rpx;direction:column;'>
+               <image src='/static/lang.png' style='border-radius:100%;width:100rpx;height:100rpx;margin-left:50rpx;margin-top:20%;'></image>
+               <text style='font-size:30rpx;margin-left:30rpx;'>XianKanGD</text>
+               </view>
+            
+
+              <view style='position:absolute;left:250rpx;height:100%;width:250rpx;direction:column;'>
+               <text>\n</text>
+               <text style='font-size:30rpx;margin-left:30rpx;'>最终价格\n</text>
+               <text style='font-size:30rpx;margin-left:30rpx;'>2980/元\n</text>
+               <text style='font-size:20rpx;margin-left:30rpx;'>初始价格300元</text>
+              </view>
+
+              <view style='position:absolute;left:500rpx;height:100%;width:200rpx;'>
+                 <text>\n</text>
+               <text style='font-size:30rpx;margin-left:30rpx;'>激励贝壳\n</text>
+               <text style='font-size:30rpx;margin-left:30rpx;'>30</text>
+              </view>
+            </view>
+            
+        <view wx:if='{{index==1}}' class='con2'>
+            <view style='height:40rpx;'></view>
+            <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
+            <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证:   PP8856PSIESDSA41\n</text>
+            <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：13237120971</text>
+            <view class='pay'>立即支付</view>
+        </view>   
+
+        <view wx:if='{{index==2}}' class='con2'>
+        <view style='height:40rpx;'></view>
+            <text style='margin-left:60rpx;font-size:20rpx;'>支付成功\n</text>
+            <view style='position:absolute;left:160rpx;top:60rpx;font-size:16rpx;width:120rpx;height:24rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center'>  激励贝壳已到帐\n</view>
+            <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: PP8856PSIESDSA41\n</text>
+            <text style='margin-left:60rpx;font-size:20rpx;'>请尽快与商家取得联系完成最终对接</text>
+            <image src='/static/t14.png' style='width:150rpx;height:150rpx;position:absolute;right:50rpx;top:50rpx;'></image>
+        </view>
+    </view>
+</view>
