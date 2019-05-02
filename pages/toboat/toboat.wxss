@@ -2,14 +2,12 @@
   position: absolute;
   width: 100%;
   height: 100%;
- 
 }
 
 .scroll {
   position: relative;
   width: 100%;
   height: 90%;
- 
 }
 
 .swiper {
@@ -23,29 +21,29 @@
   width: 100%;
 }
 
-.lang{
+.lang {
   position: relative;
   width: 100%;
   height: 20%;
   margin-top: -20%;
 }
-.content{
+
+.content {
   position: relative;
   display: flex;
   flex-direction: row;
-  color:rgba(255, 255, 255, 0.9);
-  font-weight:500;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
-progress{
+
+progress {
   position: absolute;
   width: 45%;
   margin-left: 55%;
   margin-top: 14%;
-
-  
-
 }
-.smallboat{
+
+.smallboat {
   position: absolute;
   width: 80rpx;
   height: 60rpx;
@@ -53,8 +51,7 @@ progress{
   margin-top: 60rpx;
 }
 
-
-.middle1{
+.middle1 {
   position: relative;
   width: 100%;
   height: 10%;
@@ -62,7 +59,8 @@ progress{
   display: flex;
   flex-direction: row;
 }
-.middle1 .rank{
+
+.middle1 .rank {
   position: relative;
   width: 100rpx;
   height: 80rpx;
@@ -72,37 +70,41 @@ progress{
   font-weight: 700;
 }
 
-.prodution_introduction{
+.prodution_introduction {
   position: relative;
 }
 
-.share{
+.share {
   position: relative;
-  width: 50rpx;
-  height: 80rpx;
- margin-left: 120rpx;
+  width: 102rpx;
+  height: 113rpx;
+  margin-left: 53rpx;
   display: flex;
   flex-direction: column;
   font-size: 0.5em;
   color:#B1B1B1;
   text-align: center;
+  border: none;
+  border-radius: 0;
+  background-color: white;
+
 }
-.share_image{
+
+.share_image {
   position: relative;
   width: 50rpx;
-  height: 50rpx;
+  height: 75rpx;
   margin-bottom: 10rpx;
 }
-.line{
+
+.line {
   position: relative;
   width: 100%;
   height: 1%;
-  background-color: #EBEFF2;
-
+  background-color: #ebeff2;
 }
 
-
-.middle2{
+.middle2 {
   position: relative;
   width: 100%;
   height: 100rpx;
@@ -110,40 +112,40 @@ progress{
   flex-direction: row;
   line-height: 100rpx;
   font-size: 0.8em;
-  color:#686868;
+  color: #686868;
 }
-.middle2 .block1{
+
+.middle2 .block1 {
   position: relative;
   width: 50%;
   height: 100rpx;
   text-align: center;
-  
-
 }
-.middle2 .hline{
+
+.middle2 .hline {
   position: relative;
   width: 3rpx;
   height: 50rpx;
   margin-top: 25rpx;
-  background-color: #EBEFF2;
+  background-color: #ebeff2;
 }
-.middle2 .block2{
+
+.middle2 .block2 {
   position: relative;
   width: 50%;
   height: 80rpx;
   text-align: center;
   line-height: 100rpx;
 }
-.middle2 .right{
+
+.middle2 .right {
   position: relative;
   width: 50rpx;
   height: 50rpx;
   margin-top: 30rpx;
 }
 
-
-
-.middletop{
+.middletop {
   position: fixed;
   top: 0rpx;
   width: 100%;
@@ -153,93 +155,96 @@ progress{
   line-height: 100rpx;
   font-size: 0.8em;
   background-color: white;
-  color:#686868;
+  color: #686868;
   z-index: 2;
- 
 }
-.middletop .block1{
+
+.middletop .block1 {
   position: relative;
   width: 50%;
   height: 100rpx;
   text-align: center;
-  
-
 }
-.middletop .hline{
+
+.middletop .hline {
   position: relative;
   width: 3rpx;
   height: 50rpx;
   margin-top: 25rpx;
-  background-color: #EBEFF2;
+  background-color: #ebeff2;
 }
-.middletop .block2{
+
+.middletop .block2 {
   position: relative;
   width: 50%;
   height: 80rpx;
   text-align: center;
   line-height: 100rpx;
 }
-.middletop .right{
+
+.middletop .right {
   position: relative;
   width: 50rpx;
   height: 50rpx;
   margin-top: 30rpx;
 }
 
-
 /*评论页*/
-.heart{
+
+.heart {
   position: relative;
   width: 150rpx;
   height: 100rpx;
   margin-left: 300rpx;
 }
-.love{
+
+.love {
   position: relative;
   width: 100%;
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;
   font-size: 0.8em;
-
 }
-.judge1{
+
+.judge1 {
   position: relative;
   width: 100%;
   height: 80rpx;
-  
   display: flex;
   flex-direction: row;
   margin-top: 20rpx;
   padding-left: 50rpx;
-  border-bottom: 4px solid #EBEFF2;
+  border-bottom: 4px solid #ebeff2;
 }
-input{
+
+input {
   position: relative;
   width: 500rpx;
   height: 60rpx;
   margin-left: 20rpx;
   border-radius: 30rpx;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
 }
-.input{
+
+.input {
   font-size: 0.8em;
   color: rgba(60, 60, 60, 0.5);
   padding-left: 20rpx;
 }
 
-.list{
+.list {
   position: relative;
   width: 100%;
   height: 120rpx;
- 
   padding-left: 35rpx;
   padding-top: 30rpx;
-  border-bottom: 1px solid #EBEFF2;
+  border-bottom: 1px solid #ebeff2;
   display: flex;
   flex-direction: row;
 }
-.infor{
+
+.infor {
   margin-top: -10rpx;
   position: relative;
   display: flex;
@@ -249,50 +254,6 @@ input{
   font-weight: 500;
   color: rgb(60, 60, 60);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .bottom {
   position: fixed;
@@ -305,7 +266,8 @@ input{
   text-align: center;
   bottom: 0rpx;
 }
-.icon1{
+
+.icon1 {
   position: relative;
   width: 150rpx;
   height: 100%;
@@ -314,36 +276,19 @@ input{
   font-size: 0.6em;
   color: #707070;
   font-weight: 500;
-  border-right: 1px solid rgba(100, 100, 100,0.1);
-
-
+  border-right: 1px solid rgba(100, 100, 100, 0.1);
 }
-.boat{
+
+.boat {
   position: relative;
   width: 300rpx;
   height: 100%;
-  background-color: #59B4FE;
+  background-color: #59b4fe;
   color: white;
   line-height: 120rpx;
   font-weight: 600;
   font-size: 1.2em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .maskLayer {
   position: absolute;
@@ -359,7 +304,7 @@ input{
   height: 80%;
   bottom: 0rpx;
   background-color: white;
-   z-index: 4;
+  z-index: 4;
 }
 
 .top {
@@ -408,32 +353,31 @@ input{
   height: 77.5%;
   margin-top: 2.5%;
   /* display: flex;
-  flex-direction: column; */
-  /* align-items: center; */
+  flex-direction: column; *//* align-items: center; */
 }
 
 .box {
   position: relative;
   padding-left: 50rpx;
   width: 80%;
-  height:45%;
+  height: 45%;
   border-radius: 50rpx;
   margin: auto;
   background: linear-gradient(30deg, #5ee4fe, #57abfe);
   color: white;
   display: flex;
   flex-direction: column;
- 
 }
-.box1{
+
+.box1 {
   position: relative;
   padding-left: 50rpx;
   width: 80%;
-  height:45%;
+  height: 45%;
   margin-top: 2.5%;
   border-radius: 50rpx;
   margin: auto;
-  background: #F2F2F2;
+  background: #f2f2f2;
   color: rgba(100, 100, 100, 0.5);
   display: flex;
   flex-direction: column;
