@@ -1,4 +1,5 @@
-<view class='search_view'>
+
++<view class='search_view'>
   <view class='search_img_view'>
     <image src='/static/boat/search.svg' class='search_img' mode="aspectFit"></image>
   </view>

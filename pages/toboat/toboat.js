@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+var app=getApp();
 
 Page({
 
@@ -88,6 +89,7 @@ Page({
   },
 
   onShow: function() {
+ 
 
   },
   choose: function(e) {
@@ -151,8 +153,9 @@ Page({
   },
 
   scrollnew: function(e) {
+    var height = app.globalData.height*0.65+100;
     console.log(e.detail.scrollTop)
-    if (e.detail.scrollTop > 500) {
+    if (e.detail.scrollTop > height) {
       if(!this.data.top){
         this.setData({
           top: true,
