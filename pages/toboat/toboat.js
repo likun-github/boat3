@@ -152,14 +152,22 @@ Page({
 
   scrollnew: function(e) {
     console.log(e.detail.scrollTop)
-    if (e.detail.scrollTop > 470) {
-      this.setData({
-        top: true,
-      })
+    if (e.detail.scrollTop > 500) {
+      if(!this.data.top){
+        this.setData({
+          top: true,
+        })
+
+      }
+     
     } else {
-      this.setData({
-        top: false,
-      })
+      if(this.data.top){
+        this.setData({
+          top: false,
+        })
+
+      }
+     
 
     }
   },

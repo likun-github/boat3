@@ -204,7 +204,7 @@ progress {
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;
-  font-size: 0.8em;
+  font-size:30rpx;
 }
 
 .judge1 {
@@ -228,7 +228,7 @@ input {
 }
 
 .input {
-  font-size: 0.8em;
+  font-size: 24rpx;
   color: rgba(60, 60, 60, 0.5);
   padding-left: 20rpx;
 }
@@ -250,7 +250,7 @@ input {
   display: flex;
   flex-direction: column;
   margin-left: 20rpx;
-  font-size: 0.6em;
+  font-size: 22rpx;
   font-weight: 500;
   color: rgb(60, 60, 60);
 }
@@ -273,7 +273,7 @@ input {
   height: 100%;
   display: flex;
   flex-direction: column;
-  font-size: 0.6em;
+  font-size: 24rpx;
   color: #707070;
   font-weight: 500;
   border-right: 1px solid rgba(100, 100, 100, 0.1);
@@ -287,7 +287,7 @@ input {
   color: white;
   line-height: 120rpx;
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 40rpx;
 }
 
 .maskLayer {
@@ -343,7 +343,7 @@ input {
   color: white;
   text-align: center;
   line-height: 40rpx;
-  font-size: 0.6em;
+  font-size: 24rpx;
   font-weight: 800;
 }
 
