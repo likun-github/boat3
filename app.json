@@ -1,10 +1,13 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/map/map",
+    
     "pages/toboat/toboat",
     "pages/test/test",
     "pages/setting/setting",
     "pages/boat/boat"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

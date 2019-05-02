@@ -59,7 +59,7 @@
 
 
 
-    <view class='middle2'>
+    <view class='middle2' bindtap='gomap'>
       <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
       <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> 武昌区二七长江大桥 距离武汉大学3.3km</text>
       <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'>地图</text>

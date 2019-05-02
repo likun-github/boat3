@@ -181,6 +181,11 @@ Page({
       delta: 1,
     })
   },
+  gomap:function(){
+    wx.navigateTo({
+      url: '/pages/map/map',
+    })
+  },
 
 
   onShareAppMessage: function (res) {
