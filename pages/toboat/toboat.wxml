@@ -46,10 +46,10 @@
         </view>
 
       </view>
-      <view class='share'>
+      <button class='share' id='btn' open-type="share" >
         <image src='/static/toboat/share.svg' class='share_image'></image>
         <text>分享</text>
-      </view>
+      </button>
 
 
 
