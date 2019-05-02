@@ -10,7 +10,7 @@ Page({
 
   data: {
     top:false,//是否置顶
-    chooseinformation:1,//默认详情
+    chooseinformation:0,//默认详情
     chooseBoat: false,//我要上船点击
     chooseStatus: 0,//默认大船
     animationData: {},//动画实例
