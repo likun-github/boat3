@@ -1,0 +1,60 @@
+<view style='background:#F5F5F5;width:100%;height:100vh;position:fixed;top:0rpx;'>
+<view style='position:reative;background:linear-gradient(to top, #5EE4FE ,#57CCFE );width:100%;height:400rpx;'>
+<image src='{{pic}}' class='cicle'></image>
+<view class='name'>
+  <text style='font-size:40rpx;font-weight: 400;color: white;'>{{name}}</text>
+  <text>认证信息：{{teamname}}{{time}}级</text>
+</view>
+<view class='beike' bindtap='b'>
+  <text class='w'>校园认证，校友帮你大件劲赏！</text>
+  <view class='w1'>立即认证>></view>
+  <image src='/static/w.png' style='width:50%;height:40rpx;margin-top:80rpx;margin-left:25%;'></image>
+</view>
+</view>
+<scroll-view scroll-y style='position:absolute;width:100%;height:100vh;top:220rpx;' bindscroll="scroll"
+scroll-top="{{top}}rpx" bindscroll="scroll" >
+
+<image src='/static/h.png' mode='scaleToFill' style='width:800rpx;height:120vh;margin-left:-25rpx'></image>
+<view style='position:absolute;width:100%;height:auto;top:100rpx;'>
+
+  <view class='middle' style='margin-top:50rpx'>
+
+    <view class='l0' bindtap='changelist2'>
+      <image src='/static/icon/setting/1.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+      <text> 提交需求</text>
+      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+    </view>
+    <view class='l1' bindtap='changelist6'>
+      <image src='/static/icon/setting/2.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+      <text>校园合伙人</text>
+      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+    </view>
+    <view class='l1' bindtap='changelist4'>
+      <image src='/static/icon/setting/3.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+      <text>我的船票</text>
+      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+    </view>
+    <view class='l1' bindtap='changelist5'>
+      <image src='/static/icon/setting/4.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+      <text> 联系我们</text>
+      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+    </view>
+    <view class='l1' bindtap='changelist6'>
+      <image src='/static/icon/setting/5.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+      <text> 加入我们&意见反馈</text>
+      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx; width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+    </view>
+    <view style='position:relative;width:100%;height:70%;margin-top:40rpx;background:white;border-radius:25rpx;overflow:hidden;margin-top:{{h2}}px;z-index:500;'>
+      <image src='/static/1.svg' style='position:absolute;width:200rpx;height:200rpx;left:50rpx;top:50rpx;' bindtap='show'></image>
+      <text style='position:absolute;left:200rpx;top:90rpx;color:#077ACC;font-size:32rpx;'>向商家出示二维码参团</text>
+      <text style='position:absolute;left:200rpx;top:160rpx;font-size:24rpx;'>也作为个人邀请好友凭证</text>
+    </view>
+  </view>
+</view>
+</scroll-view>
+</view>
+<!-- 放大显示 -->
+<!-- <view wx:if="{{show}}" class='show' bindtap='fals'>
+<text style='width:100%;text-align:center;position:absolute;top:20vh'>我的二维码</text>
+<image src='/static/1.svg' style='position:absolute;width:500rpx;height:500rpx;top:40vh;left:125rpx'></image>
+</view> -->

@@ -10,5 +10,10 @@ App({
     // 获取用户信息
   },
   globalData: {
+    name: '',
+    teamname: '',
+    time: '',
+    nickname: '',
+    avatarUrl: '',
   }
 })

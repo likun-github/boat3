@@ -1,4 +1,5 @@
 /* tickets/tickets.wxss */
+@import "../style/stylesheet.wxss"; 
 .mask{
   position: fixed;
   width: 100%;
@@ -11,8 +12,8 @@
   height: 74.68vh;
   width:720rpx;
   left:15rpx;
-  
 }
+
 .con1{
   position: absolute;
   top: 53.34%;

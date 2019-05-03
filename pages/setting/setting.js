@@ -1,11 +1,15 @@
 // pages/setting/setting.js
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    name: '',
+    pic: '',
+    teamname: '',
+    time: '',
+    top:'150',
   },
 
   /**
@@ -19,6 +23,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.setData({
+      name: app.globalData.name,
+      pic: app.globalData.avatarUrl,
+      teamname: app.globalData.teamname,
+      time: app.globalData.time
+    })
 
   },
 
@@ -48,6 +58,10 @@ Page({
    */
   onPullDownRefresh: function () {
 
+  },
+  scroll:function(e){
+
+ 
   },
 
   /**
