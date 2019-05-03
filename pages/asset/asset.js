@@ -1,15 +1,13 @@
-// pages/setting/setting.js
+// pages/asset/asset.js
 var app = getApp();
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    name: '',
-    pic: '',
-    teamname: '',
-    time: '',
-    top:'150',
+    list:1,
+
   },
 
   /**
@@ -24,10 +22,7 @@ Page({
    */
   onReady: function () {
     this.setData({
-      name: app.globalData.name,
-      pic: app.globalData.avatarUrl,
-      teamname: app.globalData.teamname,
-      time: app.globalData.time
+      list:app.list
     })
 
   },
@@ -38,33 +33,7 @@ Page({
   onShow: function () {
 
   },
-  changelist1:function(){
-    wx.navigateTo({
-      url: '../asset/asset',
-    })
-    app.list=1;
-  },
-  changelist2: function () {
-    wx.navigateTo({
-      url: '../asset/asset',
-    })
-    app.list = 2;
-  },
-  changelist3: function () {
-  
-  },
-  changelist4: function () {
-    wx.navigateTo({
-      url: '../asset/asset',
-    })
-    app.list = 4;
-  },
-  changelist5: function () {
-    wx.navigateTo({
-      url: '../asset/asset',
-    })
-    app.list = 5;
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -84,10 +53,6 @@ Page({
    */
   onPullDownRefresh: function () {
 
-  },
-  scroll:function(e){
-
- 
   },
 
   /**

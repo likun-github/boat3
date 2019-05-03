@@ -1,5 +1,5 @@
 <view class='ticket'>
-  <image src='/static/boat/火车票.svg' mode='scaleToFill' style='width:100%;heigt:120rpx'></image>
+  <image src='/static/boat/train.svg' mode='scaleToFill' style='width:100%;heigt:120rpx'></image>
 </view>
 
 <view class='text_1'>
@@ -8,5 +8,5 @@
 
 
 <view class='toboat_btn' bindtap='turnTobuy'>
-  <image src='/static/boat/去登船.svg' style='width:100%;heigt:120rpx' mode='scaleToFill'></image>
+  <image src='/static/boat/toboat.svg' style='width:100%;heigt:120rpx' mode='scaleToFill'></image>
 </view>

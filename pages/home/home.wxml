@@ -1,19 +1,26 @@
 
-+<view class='search_view'>
+
+<view class='search_view'>
   <view class='search_img_view'>
     <image src='/static/boat/search.svg' class='search_img' mode="aspectFit"></image>
   </view>
   <input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:12px;color:#636363' placeholder='搜索'></input>
 </view>
 
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
+    <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" bindtap='rec' />
+      </swiper-item>
+    </block>
+  </swiper>
 
-<swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" circular="true" class='swiper'>
-  <block wx:for="{{imgUrls}}" wx:key="unique">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" width="355" height="150" />
-    </swiper-item>
-  </block>
-</swiper>
+  <view class="dots">
+    <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+      <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+    </block>
+  </view>
+
 
 <!-- 这个view是为了在产品种类选择栏置顶后做的样式fix -->
 <view class='fixed' wx:if="{{scroll_top>=150}}"></view>

@@ -1,5 +1,6 @@
 //app.js
 App({
+  list:1,
   onLaunch: function () {
     var that=this;
     //屏幕信息
@@ -21,5 +22,9 @@ App({
   
   globalData: {
     height:'',
+    name:'',
+    avatarUrl:'',
+    teamname:'',
+    time:''
   }
 })

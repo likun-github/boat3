@@ -1,5 +1,5 @@
 // pages/home/home.js
-
+var app = getApp();
 var listData = require('../../testdata.js');
 
 
@@ -9,12 +9,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show_flag: 'false',
+    animationData: {},
     imgUrls: [
       'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
       'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
     ],
-
+    currentSwiper: 0,
+    indicatorDots: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
     ips: [{
         id: "1",
         title: "驾校",
@@ -57,7 +63,14 @@ Page({
     listData: [], //产品的详情
     showData: [], //需要展示的产品信息
   },
+  onslidechangeend: function (e) {
+    var that = this;
 
+    that.setData({
+      currentSwiper: e.detail.current
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
