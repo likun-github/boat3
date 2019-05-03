@@ -2,12 +2,14 @@
   width: 100%;
   height: 300rpx;
 }
+
 .guide_view {
   position: relative;
   width: 100%;
   height: 100%;
   z-index: 2;
 }
+
 .btn_view {
   position: absolute;
   font-family: 'Microsoft YaHei';
@@ -24,6 +26,7 @@
   font-size: 44rpx;
   z-index: 3;
 }
+
 .z {
   position: absolute;
   width: 100%;
@@ -31,6 +34,7 @@
   bottom: 18vh;
   z-index: 5;
 }
+
 .ip_tab_comtainer {
   width: 100%;
   background-color: #fff;
@@ -47,10 +51,11 @@
 .tab-item {
   margin: 0 36rpx;
   display: inline-block;
+  font-size: 30rpx;
 }
 
 .tab-item.active {
-  color: #4675f9;
+  color: #59b4fe;
   position: relative;
 }
 
@@ -59,10 +64,10 @@
   display: block;
   height: 8rpx;
   width: 52rpx;
-  background: #4675f9;
+  background: linear-gradient(to bottom right, #5ee4fe, #59b4fe);
   position: absolute;
-  bottom: 10;
-  left: 12rpx;
+  bottom: 15;
+  left: 3rpx;
   border-radius: 16rpx;
 }
 
@@ -118,8 +123,8 @@
   text-align: center;
   font-size: 14px;
   border-radius: 60rpx;
-  border: 1px solid #4675f9;
-  color: #4675f9;
+  border: 1px solid linear-gradient(to bottom right, #5ee4fe, #59b4fe);
+  color: #59b4fe;
 }
 
 .tab-content {
@@ -172,7 +177,6 @@
 .producation_pic {
   width: 160rpx;
   height: 160rpx;
-  border-radius: 30rpx;
   margin-left: 20rpx;
   margin-top: 20rpx;
 }
@@ -185,6 +189,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 10rpx;
+  margin-left: 20rpx;
 }
 
 .item_column_1 {
@@ -211,13 +216,15 @@
 .item_column_4 {
   position: relative;
   display: flex;
-  margin-top: 25rpx;
-  margin-left: 145rpx;
+
+margin-left:25rpx;
+
 }
 
 .add_pic {
-  width: 60rpx;
-  height: 60rpx;
+ width:180rpx;
+height:50rpx;
+
 }
 
 .text_3 {
@@ -287,37 +294,59 @@
   align-items: center;
 }
 
-.swiper{
-position: relative;
-width: 100%;
-height: 360rpx;
+.swiper {
+  position: relative;
+  width: 100%;
+  height: 360rpx;
 }
 
-.dots{
+.dots {
   position: relative;
   width: 156rpx;
-  height: 36rpx; 
+  height: 36rpx;
   margin-top: -50rpx;
   display: flex;
   flex-direction: row;
   left: 325rpx;
-}  
+}
+
 /*未选中时的小圆点样式 */
-.dot{  
-  width: 10rpx;  
-  height: 10rpx;   
+
+.dot {
+  width: 10rpx;
+  height: 10rpx;
   border-radius: 100%;
   margin-right: 10rpx;
   background-color: white;
-}  
-/*选中以后的小圆点样式  */  
-.active1{  
-  width: 50rpx;   
+}
+
+/*选中以后的小圆点样式  */
+
+.active1 {
+  width: 50rpx;
   height: 10rpx;
   border-radius: 20%;
-background: linear-gradient(to bottom right,#5EE4FE,#57ABFE);
-}  
-.slide-image{
+  background: linear-gradient(to bottom right, #5ee4fe, #59b4fe);
+}
+
+.slide-image {
   width: 100%;
   height: 400rpx;
+}
+
+.order {
+  width: 100%;
+  height: 30rpx;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+.ordertext {
+  position:relative;
+font-size:24rpx;
+color:#202020;
+text-overflow:ellipsis;
+white-space:nowrap;
+
 }

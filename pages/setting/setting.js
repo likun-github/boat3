@@ -10,6 +10,8 @@ Page({
     teamname: '',
     time: '',
     top:'150',
+    popup: true,
+    show_model: true,
   },
 
   /**
@@ -51,7 +53,8 @@ Page({
     app.list = 2;
   },
   changelist3: function () {
-  
+    
+    this.hidePopup(false);
   },
   changelist4: function () {
     wx.navigateTo({
@@ -102,5 +105,17 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+  hidePopup(flag = true) {
+    this.setData({
+      "popup": flag
+    });
+  },
+
+  backtopages: function (options) {
+    console.log("用户提交评价后触碰页面", options)
+    
+  },
 })
