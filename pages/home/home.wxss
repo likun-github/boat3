@@ -315,7 +315,7 @@ height: 360rpx;
   width: 50rpx;   
   height: 10rpx;
   border-radius: 20%;
-  background :linear-gradient(to bottom right,#5EE4FE,#57ABFE);
+ 
 }  
 .slide-image{
   width: 100%;
