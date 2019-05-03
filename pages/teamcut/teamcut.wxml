@@ -1,0 +1,97 @@
+
+<view class='container'>
+  <view class='top'>
+    <image src='/static/teamcut/myteam.jpg' style='position:absolute;width:100%;height:100%;' mode='top'></image>
+    <view class='content'>
+      <image src='{{avatarUrl}}' class='userpic'></image>
+      <view class='username'>{{nickname}}</view>
+      <view class='sentence'>快和我一起组团报名，享受同等价格吧</view>
+      <view class='middle'>
+        <image src='{{period.production__logo}}'></image>
+        <view class='information'>
+          <view class='productionname'> {{period.production__name}}</view>
+          <view class='introduction'>目前砍价已领先94%用户</view>
+          <view class='introduction'>初始价格为{{period.period__startprice}}元</view>
+          <view class='price'  module="filters" src="../utils/filters.wxs" >
+            <text style='font-size:25rpx;margin-top:20%;'>¥</text>
+            <text>{{endprice}}</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <view class='tab'>
+      <button class='fenxiang' wx:if="{{btn_index==0}}" open-type='share'>分享好友砍价</button>
+      <button class='fenxiang' wx:if="{{btn_index==1}}" bindtap='cutprice'>砍这好友一刀</button>
+      <button class='fenxiang' wx:if="{{btn_index==2}}" open-type='share'>帮Ta召唤好友</button>
+
+      <button class='chakan' bindtap='rightbindtap'>{{btn_text_right[btn_index]}}</button>
+    </view>
+
+
+
+  </view>
+  <view class='bottom'>
+    <progress percent="{{process}}" activeColor='#FEEE58' backgroundColor='#FF6342' stroke-width='10' border-radius='5'></progress>
+    <view class='time'>
+      <view style='font-size:32rpx;margin-left:120rpx;'>距本轮结束</view>
+      <view class='box' style='background-color: white;margin-right:20rpx;'>
+        <text>{{day}}</text>
+        <text style='font-size:20rpx;'>天</text>
+      </view>
+      <view class='box' style='background-color: #2690DF;color:white;'>{{hour}}</view>
+      <view class='box1'>:</view>
+      <view class='box' style='background-color: #2690DF;color:white;'>{{minute}}</view>
+      <view class='box1'>:</view>
+      <view class='box' style='background-color: #2690DF;color:white;'>{{second}}</view>
+    </view>
+    <view class='sumcutprice'>-已有{{number}}位朋友帮忙砍价{{cutprice}}元-</view>
+    <scroll-view scroll-y class="scroll">
+
+      <view wx:for="{{onecut}}" wx:key="onecut.name">
+        <view class='list'>
+          <image src='{{item.pic}}' class='img'></image>
+          <view class='name'>{{item.name}}</view>
+          <view class='rank'>{{item.title}}</view>
+          <view class='cutprice'>
+            <text style='color:#2690DF;'>{{item.cutprice}}</text>
+            <text>元</text>
+          </view>
+        </view>
+      </view>
+      <view wx:for="{{twocut}}" wx:key="twocut.name">
+        <view class='list'>
+          <image src='{{item.pic}}' class='img'></image>
+          <view class='name'>{{item.name}}</view>
+          <view class='rank'>水手</view>
+          <view class='cutprice'>
+            <text style='color:#2690DF;'>{{item.cutprice}}</text>
+            <text>元</text>
+          </view>
+        </view>
+      </view>
+
+
+    </scroll-view>
+  </view>
+
+
+
+</view>
+<view wx:if="{{showModel}}" class='container1'>
+  <view class="model">
+    <view class="modelTitle">
+      获取微信授权信息
+    </view>
+    <view class="modelBody">微信登录需要获取您的用户信息，请前往设置</view>
+    <view class="btns">
+      <button open-type="getUserInfo" class="agree" bindgetuserinfo="onGotUserInfo" lang="zh_CN">授权</button>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+

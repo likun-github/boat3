@@ -1,0 +1,294 @@
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.top {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 48%;
+}
+
+.content {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  height: 70%;
+  margin-top: 15%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.userpic {
+  position: relative;
+  margin-top: -50rpx;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 100%;
+  margin-left: 290rpx;
+  border: solid 3rpx white;
+}
+
+.username {
+  position: relative;
+  font-size: 24rpx;
+  text-align: center;
+  height: 50rpx;
+}
+
+.sentence {
+  position: relative;
+  font-size: 24rpx;
+  text-align: center;
+  height: 50rpx;
+}
+
+.middle {
+  position: relative;
+  width: 90%;
+  height: 50%;
+  left: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.middle image {
+  position: relative;
+  width: 40%;
+  height: 100%;
+  margin-left: 5%;
+}
+
+.middle .information {
+  position: relative;
+  width: 45%;
+  margin-left: 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.information .productionname {
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.information .introduction {
+  font-size: 20rpx;
+  font-weight: 300;
+  margin-top: 20rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.information .price {
+  font-size: 80rpx;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  color: #2690df;
+}
+
+.tab {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  height: 15%;
+  margin-top: -5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.fenxiang {
+  position: relative;
+  height: 75rpx;
+  width: 38%;
+  background: #feee58;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 30rpx -3rpx grey;
+  font-size: 26rpx;
+  color: red;
+  text-align: center;
+  line-height: 70rpx;
+  font-weight: 600;
+}
+
+.chakan {
+  position: relative;
+  height: 75rpx;
+  width: 38%;
+  background: #ff6342;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 30rpx -3rpx grey;
+  font-size: 26rpx;
+  color: white;
+  text-align: center;
+  line-height: 70rpx;
+  font-weight: 600;
+}
+
+.bottom {
+  position: absolute;
+  width: 100%;
+  height: 52%;
+  top: 48%;
+}
+
+progress {
+  position: relative;
+  margin-top: 20rpx;
+  width: 90%;
+  left: 5%;
+  background-color: yellow;
+}
+
+.time {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  line-height: 100rpx;
+}
+
+.time .box {
+  position: relative;
+  margin-top: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  box-shadow: 5rpx 5rpx 10rpx 5rpx rgba(85, 85, 85, 0.10);
+  font-size: 32rpx;
+}
+
+.time .box1 {
+  position: relative;
+  margin-top: 10rpx;
+  width: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.scroll {
+  position: relative;
+  width: 100%;
+  height: 60%;
+}
+
+.sumcutprice {
+  position: relative;
+  font-size: 30rpx;
+  color: grey;
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.list {
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20rpx;
+  line-height: 80rpx;
+}
+
+.list .img {
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 100rpx;
+  border-radius: 100%;
+}
+
+.list .name {
+  position: relative;
+  margin-left: 50rpx;
+  font-size: 28rpx;
+  overflow:hidden;
+  
+
+}
+
+.list .rank {
+  position: relative;
+  width:100rpx;
+  height: 30rpx;
+  margin-top: 25rpx;
+  margin-left: auto;
+  line-height: 30rpx;
+  text-align: center;
+  border: 1px solid #2690df;
+  font-size: 28rpx;
+  color: #2690df;
+  margin-right: 150rpx;
+}
+
+.list .cutprice {
+  position: relative;
+  color: red;
+  font-size: 28rpx;
+  margin-left: auto;
+  margin-right: 60rpx;
+}
+
+/*******************************************/
+
+/* pages/component/showModel/showModel.wxss */
+
+.container1 {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(100, 100, 100, 0.5);
+  z-index: 999;
+}
+
+.model {
+  position: absolute;
+  top: 30%;
+  width: 80%;
+  left: 10%;
+  height: 30%;
+  border-radius: 20rpx;
+  justify-content: center;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  border: solid 1px gray;
+  background: white;
+}
+
+.modelTitle {
+  position: relative;
+  text-align: center;
+  margin-top: 10rpx;
+  border-bottom: solid 1px silver;
+}
+
+.modelBody {
+  width: 560rpx;
+  font-size: 36rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  padding: 30rpx;
+  margin-left: 5rpx;
+  opacity: 0.3;
+}
+
+.agree {
+  border-top: solid 1px silver;
+  color: green;
+  font-size: 42rpx;
+  border-radius: 0rpx 0rpx 20rpx 20rpx;
+}
