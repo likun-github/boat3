@@ -310,12 +310,7 @@ height: 360rpx;
   margin-right: 10rpx;
   background-color: white;
 }  
-/*选中以后的小圆点样式  */
-.active{  
-  width: 50rpx;   
-  height: 10rpx;
-  border-radius: 20%;
-}  
+/*选中以后的小圆点样式  */  
 .active1{  
   width: 50rpx;   
   height: 10rpx;
