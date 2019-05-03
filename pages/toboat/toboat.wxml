@@ -1,17 +1,207 @@
-<!--pages/toboat/toboat.wxml-->
+<view class="container">
+  <scroll-view scroll-y class='scroll' upper-threshold="1 " bindscroll="scrollnew">
+    <swiper class="swiper" autoplay="true" interval="5000" duration="1000">
+      <block wx:for="{{picture_production}}" wx:for-item="item" wx:key="picture_production">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='lang'>
+      <image style='position:absolute;width:100%;height:100%;' src='/static/toboat/lang.svg'></image>
+      <view class='content'>
+        <text style='font-size:32rpx;margin-top:15%;font-weight:500; '>￥</text>
+        <text style='font-size:70rpx;margin-top:10%;font-weight:500; '>2750</text>
+        <view style=' display: flex;flex-direction: column;font-size:20rpx;font-weight:600;margin-top:13%;margin-left:20rpx; color:white;'>
+          <text style='text-decoration:line-through;'>￥2800</text>
+          <text>本校同舟99人正在拼</text>
 
-<!-- 商家轮播图 -->
-<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-  <block wx:for="{{picture_production}}" wx:for-item="item" wx:key="picture_production">
-    <swiper-item>
-      <image src="{{item}}" class="slide-image" mode="aspectFill" />
-    </swiper-item>
-  </block>
-</swiper>
+        </view>
+        <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
+        <text style='font-size:20rpx;margin-top:17%;font-weight:600; color:white;margin-left:9%;'>距本轮校园大船发船仅剩1人</text>
+        <image src='/static/toboat/smallboat.svg' class='smallboat'></image>
+
+
+      </view>
+    </view>
 
 
 
 
 
-<!-- <view class='producation_name'>{{datalist.producation_name}}</view> -->
+    <view class='middle1'>
+      <view class='rank'>
+        <image src='/static/toboat/rank.svg' style='position:absolute;width:100%;height:100%;'></image>
+        <text style='position:absolute;font-size:12rpx;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
+        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 50rpx;'>1</text>
 
+      </view>
+
+      <view class='production_introduction'>
+        <text style='font-size: 35rpx;font-weight:600;'>武汉育才驾校  (普通全包班)</text>
+        <view style='display:flex;flex-direction:row;font-size:18rpx;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
+          <text>累计参团997次</text>
+          <text>好评率91.5%</text>
+          <text>综合排名第1</text>
+        </view>
+
+      </view>
+      <button class='share' id='btn' open-type="share" >
+        <image src='/static/toboat/share.svg' class='share_image'></image>
+        <text>分享</text>
+      </button>
+
+
+
+    </view>
+
+    <view class='line'></view>
+
+
+
+    <view class='middle2' bindtap='gomap'>
+      <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> 武昌区二七长江大桥 距离武汉大学3.3km</text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'>地图</text>
+      <image src='/static/toboat/right.svg' class='right'></image>
+    </view>
+    <view class='line'></view>
+
+
+    <view class='middle2'>
+      <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>标签  </text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> 距离武大最近  2次补考机会  40次车接车送</text>
+    </view>
+    <view class='line'></view>
+    <view class='middle2'>
+      <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
+      <view class='hline'></view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
+    </view>
+    <view wx:if="{{top}}" class='middletop'>
+      <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
+      <view class='hline'></view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
+    </view>
+
+
+
+    <view wx:if="{{chooseinformation==0}}">
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+    </view>
+    <view wx:if="{{chooseinformation==1}}">
+      <image src='/static/toboat/heart.svg' class='heart'></image>
+      <view class='love'>
+        <text>-</text>
+        <text style='color:#59B4FE;'>125</text>
+        <text>人觉得心仪-</text>
+      </view>
+      <view class='judge1'>
+        <image src='/static/toboat/boat.svg' style='position:relative;width:60rpx;height:60rpx;'></image>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input"></input>
+
+      </view>
+      
+      <block wx:for="{{judge}}" wx:key="{{judge.id}}">
+      <view class='list'>
+       <image src='{{item.url}}' style='position:relative;width:90rpx;height:90rpx;'></image>
+       <view class='infor'>
+       <text>{{item.title}}</text>
+       <text style=' color: rgba(60, 60, 60,0.4);'>{{item.time}}</text>
+       <text style='width:570rpx;'>{{item.text}}</text>
+       </view>
+      </view>
+       
+      </block>
+
+
+
+
+
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+  </scroll-view>
+  <view class='bottom' >
+    <view class='icon1' bindtap='home'> 
+      <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
+      <text>首页</text>
+    </view>
+    <view class='icon1'>
+      <image src='/static/toboat/contact.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
+      <text>咨询</text>
+    </view>
+    <view class='icon1'>
+      <image src='/static/toboat/ticket.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
+      <text>船票</text>
+    </view>
+    <view class='boat' bindtap='showModal'>
+      <text>我要发船</text>
+    </view>
+
+  </view>
+
+
+
+
+
+  <!--隐藏区域  -->
+  <view class='maskLayer' wx:if="{{chooseBoat}}" bindtap='hideModal'></view>
+  <view class='choose' wx:if="{{chooseBoat}}" animation='{{animationData}}'>
+    <view class='top'>
+      <image src='/static/toboat/new.svg' class='logo'></image>
+      <view class='worth'>
+        <view style='color:#58B4FE;font-weight:800;'>
+          <text style='font-size:15rpx;'>￥</text>
+          <text style='font-size:30rpx;'>{{chooseStatus==0?2980:2100}}</text>
+        </view>
+
+        <text style='color:rgba(100,100,100,0.4);;font-size:0.5em;'>原价￥3280</text>
+      </view>
+      <view class='title'>
+        {{chooseStatus==0?'百人同舟 仅剩一人':'3280返700'}}
+
+      </view>
+    </view>
+    <view class='middle'>
+      <view class="{{chooseStatus == 0?'box':'box1'}}" bindtap='choose' data-index='0'>
+        <text style='font-size:45rpx;margin-top:5%;font-weight:800;'>大船 </text>
+        <text style='font-size:30rpx;font-weight:500;'>(99/100)仅差一人成船</text>
+
+        <text style='font-size:24rpx; margin-top:6%;'>懒人专享，本校同舟，全校师生为你砍价</text>
+        <text style='font-size:24rpx;'>百人大船，完成校园认证后，即可享受无预付快速成团</text>
+        <text style='font-size:24rpx;'>每满100人即可生产最终价格，用户可即时获取价格凭证</text>
+        <text style='font-size:24rpx;'>并根据个人要求完成体验并最终支付</text>
+      </view>
+      <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
+        <text style='font-size:45rpx;margin-top:5%;font-weight:800;'>小船 </text>
+        <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>
+
+        <text style='font-size:24rpx; margin-top:6%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
+        <text style='font-size:24rpx;'>当拼单人数≥2时即可享受比大船更多的实惠！</text>
+        <text style='font-size:24rpx;'>小船体验将更为有趣，同时开启分享砍价和等价参团</text>
+        <text style='font-size:24rpx;'>小船最大人数为5人，快拉最亲密的人一起登船吧！</text>
+      </view>
+
+
+    </view>
+    <view class='toboat'>免费登船</view>
+
+
+  </view>
+
+
+
+</view>

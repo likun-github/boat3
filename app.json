@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/setting/setting",
-    "pages/tickets/tickets",
     "pages/home/home",
-    "pages/test/test",
+    "pages/map/map",
     
-    "pages/boat/boat",
-    "pages/toboat/toboat"
+    "pages/toboat/toboat",
+    "pages/test/test",
+    "pages/setting/setting",
+    "pages/boat/boat"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,24 +17,24 @@
   },
   "tabBar": {
     "color": "#a9b7b7",
-    "selectedColor": "#11cd6e",
+    "selectedColor": "#59B4FE",
     "borderStyle": "black",
     "list": [
       {
-        "selectedIconPath": "static/tab/w.png",
-        "iconPath": "static/tab/w1.png",
+        "selectedIconPath": "static/tab/home1.png",
+        "iconPath": "static/tab/home.png",
         "pagePath": "pages/home/home",
         "text": "首页"
       },
       {
-        "selectedIconPath": "static/tab/z.png",
-        "iconPath": "static/tab/z1.png",
+        "selectedIconPath": "static/tab/boat1.png",
+        "iconPath": "static/tab/boat.png",
         "pagePath": "pages/boat/boat",
         "text": "商品"
       },
       {
-        "selectedIconPath": "static/tab/g.png",
-        "iconPath": "static/tab/g1.png",
+        "selectedIconPath": "static/tab/setting1.png",
+        "iconPath": "static/tab/setting.png",
         "pagePath": "pages/setting/setting",
         "text": "我的"
       }
