@@ -36,6 +36,7 @@
   background-color: #fff;
   padding: 20rpx 0 0;
   white-space: nowrap;
+  height: 75rpx;
 }
 
 .ip_tab_comtainer_padd {
@@ -43,35 +44,94 @@
   width: 24rpx;
 }
 
-.ip_tab_item_s {
+.tab-item {
+  margin: 0 36rpx;
   display: inline-block;
-  line-height: 40rpx;
-  padding: 12rpx 32rpx;
-  color: #ed373d;
-  margin-right: 8rpx;
-  margin-left: 8rpx;
-  font-size: 30rpx;
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background-color: #fff;
-  border-radius: 4rpx;
-  border-bottom: 2px solid #ed373d;
 }
 
-.ip_tab_item_n {
-  display: inline-block;
-  padding: 12rpx 32rpx;
-  line-height: 40rpx;
-  color: #353535;
-  margin-right: 8rpx;
-  background-color: #fff;
-  margin-left: 8rpx;
-  font-size: 28rpx;
+.tab-item.active {
+  color: #4675f9;
+  position: relative;
+}
+
+.tab-item.active:after {
+  content: "";
+  display: block;
+  height: 8rpx;
+  width: 52rpx;
+  background: #4675f9;
+  position: absolute;
+  bottom: 10;
+  left: 12rpx;
+  border-radius: 16rpx;
+}
+
+.item-ans {
+  width: 100%;
+  display: flex;
+  flex-grow: row no-wrap;
+  justify-content: space-between;
+  padding: 30rpx;
+  box-sizing: border-box;
+  height: 180rpx;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+  padding-right: 30rpx;
+}
+
+.avatar .img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar .doyen {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: -2px;
+  right: 20rpx;
+}
+
+.expertInfo {
+  font-size: 12px;
+  flex-grow: 2;
+  color: #b0b0b0;
+  line-height: 1.5em;
+}
+
+.expertInfo .name {
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.askBtn {
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 4rpx;
+  font-size: 14px;
+  border-radius: 60rpx;
+  border: 1px solid #4675f9;
+  color: #4675f9;
+}
+
+.tab-content {
+  margin-top: 50rpx;
+}
+
+.tab-content_fixed {
+  margin-top: -20rpx;
+}
+
+.scoll-h {
+  height: 100%;
 }
 
 /**
@@ -94,7 +154,7 @@
   z-index: 999;
   position: fixed;
   left: 0;
-  height: 90rpx;
+  height: 75rpx;
 }
 
 /*商品的展示*/
@@ -124,7 +184,7 @@
   /* background-color: #f5f5f5; */
   display: flex;
   flex-direction: row;
-  margin-top: 40rpx;
+  margin-bottom: 10rpx;
 }
 
 .item_column_1 {
@@ -132,9 +192,8 @@
   flex-direction: column;
   margin-left: 20rpx;
   font-size: 30rpx;
-  margin-top:16rpx;
+  margin-top: 16rpx;
 }
-
 
 .item_column_2 {
   display: flex;
@@ -224,7 +283,7 @@
   display: flex;
   width: 8%;
   height: 100%;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
 

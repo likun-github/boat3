@@ -70,6 +70,10 @@ progress {
   font-weight: 700;
 }
 
+.production_introduction{
+  width:440rpx
+}
+
 .prodution_introduction {
   position: relative;
 }
@@ -78,7 +82,7 @@ progress {
   position: relative;
   width: 102rpx;
   height: 113rpx;
-  margin-left: 53rpx;
+  margin-left: 80rpx;
   display: flex;
   flex-direction: column;
   font-size: 0.5em;
@@ -90,10 +94,13 @@ progress {
 
 }
 
+.share::after{ border: none; } 
+
 .share_image {
   position: relative;
-  width: 50rpx;
-  height: 75rpx;
+ width:38rpx;
+height:55rpx;
+
   margin-bottom: 10rpx;
 }
 
