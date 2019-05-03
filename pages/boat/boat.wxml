@@ -1,16 +1,20 @@
-
 <view class='ticket' wx:if="{{noticket}}">
-  <image src='/static/boat/火车票.svg' mode='scaleToFill' style='width:100%;heigt:120rpx'></image>
+  <image src='/static/boat/train.svg' mode='scaleToFill' style='width:100%;heigt:120rpx'></image>
 </view>
 
-<view class='text_1'  wx:if="{{noticket}}">
+<view class='text_1' wx:if="{{noticket}}">
   船票空空如也，赶紧去开动友谊小船吧~
 </view>
 
 
-<view class='toboat_btn' bindtap='turnTobuy'  wx:if="{{noticket}}">
-  <image src='/static/boat/去登船.svg' style='width:100%;heigt:120rpx' mode='scaleToFill'></image>
+<view class='toboat_btn' bindtap='turnTobuy' wx:if="{{noticket}}">
+  <image src='/static/boat/toboat.svg' style='width:100%;heigt:120rpx' mode='scaleToFill'></image>
 </view>
+
+
+<!-- 正文-->
+
+
 
 <view>
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
@@ -23,12 +27,20 @@
       <scroll-view scroll-y="true" class="scoll-h">
         <block wx:for="{{[1,2]}}" wx:key="*this">
           <view class="item-ans">
+
             <view class="avatar">
-              <image class="img" src="https://xiaoyibang.top:8002/uploads/prologo/14_bYHzHka.jpg"></image>
+              <image class="img" src="{{index==1?'/static/boat/smallboat.svg':'/static/boat/bigboat.svg'}}"></image>
             </view>
+
+            <view class='avatar1'>
+              <image class="img1" src='/static/boat/addtobuylist.svg'></image>
+            </view>
+
+
             <view class="expertInfo">
               <view class="name">武汉育才驾校C1保过班</view>
-              <view class="price">最终票价<text class='price_number'>{{3122}}</text>元</view>
+              <view class="price">最终票价
+                <text class='price_number'>{{3122}}</text>元</view>
               <button class='btn_checkticket'>查看船票</button>
             </view>
 

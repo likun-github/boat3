@@ -58,3 +58,15 @@ scroll-top="{{top}}rpx" bindscroll="scroll" >
 <text style='width:100%;text-align:center;position:absolute;top:20vh'>我的二维码</text>
 <image src='/static/1.svg' style='position:absolute;width:500rpx;height:500rpx;top:40vh;left:125rpx'></image>
 </view> -->
+
+
+
+
+
+
+<!-- 弹出邀请码的框 -->
+
+<view class='shade' hidden='{{popup}}' bindtap='backtopages'>
+  <image src='/static/boat/bought.png' wx:if="{{show_model}}" bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
+</view>
+<!-- 弹出邀请码的框 end -->
