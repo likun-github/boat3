@@ -164,8 +164,8 @@
   font-size: 14px;
   border-radius: 57rpx;
   color: white;
-  left: 95rpx;
-  top: 20rpx;
+  left:-6rpx;
+top:23rpx;
   /* background-color:linear-gradient(to right, rgba(0, 204, 255, 0.507) , rgba(0, 68, 255, 0.74)); */
   background-color: #59b4fe;
 }
@@ -177,4 +177,24 @@
 .scoll-h {
   height: 100%;
   margin-top: 40rpx;
+}
+
+
+.cut_img{
+  position: relative;
+  display: flex;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.cut_view{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.cut_img_view{
+  position: relative;
+  display: flex;
+  margin-top: 10rpx;
+  
 }

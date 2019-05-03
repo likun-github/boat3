@@ -41,7 +41,14 @@
               <view class="name">武汉育才驾校C1保过班</view>
               <view class="price">最终票价
                 <text class='price_number'>{{3122}}</text>元</view>
-              <button class='btn_checkticket'>查看船票</button>
+              <view class='cut_view'>
+                <view class='cut_img_view'>
+                  <image class='cut_img' src='/static/boat/cut.svg'></image>
+                </view>
+
+                <button class='btn_checkticket'>查看船票</button>
+              </view>
+
             </view>
 
           </view>
