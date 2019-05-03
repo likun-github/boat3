@@ -311,12 +311,8 @@ height: 360rpx;
   background-color: white;
 }  
 /*选中以后的小圆点样式  */
-.active{  
-  width: 50rpx;   
-  height: 10rpx;
-  border-radius: 20%;
 
-}  
+ 
 .active1{  
   width: 50rpx;   
   height: 10rpx;
