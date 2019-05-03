@@ -967,7 +967,75 @@ var producationData = [
   ],
 ]
 
+
+var ticketData=[
+  {
+    "producation_name":'武汉育才驾校C1普通班',
+    "finalprice":'2980',
+    "order_pingzheng":'321fo12Doi23df',   //预约凭证
+    "orde_telephone":"13203221323",       //预约电话
+    "state":0,      //0:进行中，，1：已结束
+  },
+  
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 1,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 1,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '2980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+  },
+]
 // 定义数据出口
 module.exports = {
-  producationData: producationData
+  producationData: producationData,
+  ticketData:ticketData
 }

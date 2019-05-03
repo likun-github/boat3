@@ -48,7 +48,7 @@
       </view>
       <button class='share' id='btn' open-type="share" >
         <image src='/static/toboat/share.svg' class='share_image'></image>
-        <text>分享</text>
+        <text style='margin-top:-26rpx'>分享</text>
       </button>
 
 
@@ -197,7 +197,7 @@
 
 
     </view>
-    <view class='toboat'>免费登船</view>
+    <view class='toboat' bindtap='freebuy'>免费登船</view>
 
 
   </view>

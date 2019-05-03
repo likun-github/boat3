@@ -221,6 +221,25 @@ Page({
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
+  },
+
+
+
+  freebuy:function(){
+    //增加一张船票
+
+    //假装增加了
+
+    //跳转查看船票
+    wx.switchTab({
+      url: '/pages/boat/boat',
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
+    }) 
+
   }
 
 
