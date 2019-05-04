@@ -216,42 +216,58 @@
 .item_column_4 {
   position: relative;
   display: flex;
+  margin-left: 10rpx;
+}
 
-margin-left:25rpx;
-
+.item_column_5 {
+  position: relative;
+  display: flex;
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 18rpx;
+  margin-top: 10rpx;
+  font-size: 15rpx;
+ 
 }
 
 .add_pic {
- width:180rpx;
-height:50rpx;
-
+  width: 180rpx;
+  height: 50rpx;
+  margin-top: 30rpx;
 }
 
 .text_3 {
   font-size: 22rpx;
   font-family: "SF UI Text";
-  color: #707070;
+  color: #727272d2;
 }
 
 .text_4 {
-  color: #005264;
+  color: #7272725b;
   font-size: 28rpx;
   display: flex;
   flex-direction: row;
   width: 300rpx;
+  text-decoration: line-through;
+  margin-top: 10rpx;
+  font-weight:500;
+
 }
 
 .text_5 {
   color: #f89681;
-  font-size: 35rpx;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rpx;
 }
 
 .sameschool_pic {
-  height: 36rpx;
-  width: 200rpx;
-  margin-left: -30rpx;
+  height: 20rpx;
+  width: 110rpx;
+  margin-left: -18rpx;
   color: #e9dab1;
-  font-size: 25rpx;
+  font-size: 13rpx;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNi43ODgiIGhlaWdodD0iMTEuMDAxIiB2aWV3Qm94PSIwIDAgMzYuNzg4IDExLjAwMSI+DQogIDxwYXRoIGlkPSLot6/lvoRfMTY3NCIgZGF0YS1uYW1lPSLot6/lvoQgMTY3NCIgZD0iTTI2ODguMTg0LDg3NzEuOTQyLDI2ODYsODc2OS42NmwzNC43NDEtLjA0NGExLjc2MywxLjc2MywwLDAsMSwxLjk4MywxLjc3NmMuMTQ0LDIsMCw3LjkwOSwwLDcuOTA5cy0uMjg4LDEuMzA4LTMuNDExLDEuMzA4aC0yOS4zNTFzLTEuNzc4LS4yMzUtMS43NzgtMS44WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI2ODUuOTk4IC04NzY5LjYwOCkiIGZpbGw9IiM0YjJmMTkiLz4NCjwvc3ZnPg0K");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -259,6 +275,7 @@ height:50rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 15rpx;
 }
 
 .search_view {
@@ -343,10 +360,25 @@ height:50rpx;
 }
 
 .ordertext {
-  position:relative;
-font-size:24rpx;
-color:#202020;
-text-overflow:ellipsis;
-white-space:nowrap;
+  position: relative;
+  font-size: 24rpx;
+  color: #202020;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
+
+.tongji{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+.item_column_5_text{
+    font-size: 15rpx;
+    white-space:nowrap; 
+    margin-top:10rpx;
+    margin-left:5rpx;
 }

@@ -20,14 +20,13 @@
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
     <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">进行中</view>
     <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已结束</view>
-
   </scroll-view>
   <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96vh">
     <swiper-item wx:for="{{[0,1]}}" wx:key="*this">
       <scroll-view scroll-y="true" class="scoll-h">
         <block wx:for="{{[1,2]}}" wx:key="*this">
           <view class="item-ans">
-
+     
             <view class="avatar">
               <image class="img" src="{{index==1?'/static/boat/smallboat.svg':'/static/boat/bigboat.svg'}}"></image>
             </view>
@@ -41,7 +40,14 @@
               <view class="name">武汉育才驾校C1保过班</view>
               <view class="price">最终票价
                 <text class='price_number'>{{3122}}</text>元</view>
-              <button class='btn_checkticket'>查看船票</button>
+              <view class='cut_view'>
+                <view class='cut_img_view'>
+                  <image class='cut_img' src='/static/boat/cut.svg'></image>
+                </view>
+
+                <button class='btn_checkticket'>查看船票</button>
+              </view>
+
             </view>
 
           </view>

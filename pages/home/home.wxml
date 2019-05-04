@@ -6,19 +6,19 @@
 </view>
 
 
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
-    <block wx:for="{{imgUrls}}" wx:key="imgUrls">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image" bindtap='rec' />
-      </swiper-item>
-    </block>
-  </swiper>
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
+  <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" bindtap='rec' />
+    </swiper-item>
+  </block>
+</swiper>
 
-  <view class="dots">
-    <block wx:for="{{imgUrls}}" wx:key="imgUrls">
-      <view class="dot{{index == currentSwiper ? ' active1' : ''}}"></view>
-    </block>
-  </view>
+<view class="dots">
+  <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+    <view class="dot{{index == currentSwiper ? ' active1' : ''}}"></view>
+  </block>
+</view>
 
 <!-- 这个view是为了在产品种类选择栏置顶后做的样式fix -->
 <view class='fixed' wx:if="{{scroll_top>=150}}"></view>
@@ -69,58 +69,65 @@
 </view> -->
 
 
-  <scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}" scroll-left="{{scrollLeft}}">
-    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">驾校</view>
-    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">健身</view>
-    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">外语</view>
-    <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">托福</view>
-    <view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="swichNav">雅思</view>
-    <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">电车</view>
-    <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">考研</view>
-  </scroll-view>
+<scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}" scroll-left="{{scrollLeft}}">
+  <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">驾校</view>
+  <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">健身</view>
+  <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">外语</view>
+  <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">托福</view>
+  <view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="swichNav">雅思</view>
+  <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">电车</view>
+  <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">考研</view>
+</scroll-view>
 
-  
-  <!-- <swiper class="{{scroll_top>=150?'tab-content':'tab-content_fixed'}}" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96vh">
+
+<!-- <swiper class="{{scroll_top>=150?'tab-content':'tab-content_fixed'}}" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96vh">
     <swiper-item wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"> -->
-      <!-- <scroll-view scroll-y="true" class="scoll-h">
+<!-- <scroll-view scroll-y="true" class="scoll-h">
         <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"> -->
 
-<view class='order'> 
+<view class='order'>
   <image style='margin-left:310px;height:100%;width:10%' src='/static/boat/letorder.svg'></image>
   <view class='ordertext'>按综合</view>
 </view>
 
-          <view class="producation_display" wx:for="{{showData}}" wx:key="unique" >
-            <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
-              <image class='producation_pic' src='{{item.producation_pic_url}}' mode='scaleToFill'></image>
-              <view class='item_column_1'>
-                <view style='font-size:34rpx;'>
-                  {{item.producation_name}}
-                </view>
-                <view class='text_3'>
-                  {{item.producation_des}}
-                </view>
-                <view class='item_column_2'>
-                  <view class='item_column_3'>
-                    <view class='text_4'>
-                      ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
-                      <view class='sameschool_pic'>本校同舟</view>
-                    </view>
-                    <view class='text_5'>
-                      ￥{{ item.producation_originalPrice}}
-                    </view>
-                  </view>
-                  <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
-                  <image class='add_pic item_column_4' src='/static/boat/tongji.svg'></image>
-                  
-                </view>
-              </view>
-            </view>
+<view class="producation_display" wx:for="{{showData}}" wx:key="unique">
+  <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
+    <image class='producation_pic' src='{{item.producation_pic_url}}' mode='scaleToFill'></image>
+    <view class='item_column_1'>
+      <view style='font-size:34rpx;'>
+        {{item.producation_name}}
+      </view>
+      <view class='text_3'>
+        {{item.producation_des}}
+      </view>
+      <view class='item_column_2'>
+        <view class='item_column_3'>
+          <view class='text_4'>
+            ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
+          
           </view>
+          <view class='text_5'>
+            ￥{{ item.producation_originalPrice}}- {{3900}}
+              <view class='sameschool_pic'>本校同舟</view>
+          </view>
+        </view>
+        <view>
+          <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
+          <view  class='tongji'>
+            <image class='item_column_5' src='/static/boat/tongji.svg'></image>
+            <view class='item_column_5_text'>距离100人发船还剩1人</view>
+          </view>
+        
+        </view>
 
 
+      </view>
+    </view>
+  </view>
+</view>
 
-        <!-- </block>
+<sq></sq>
+<!-- </block>
       </scroll-view> -->
-    <!-- </swiper-item>
+<!-- </swiper-item>
   </swiper> -->
