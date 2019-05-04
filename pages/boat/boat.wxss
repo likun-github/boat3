@@ -189,7 +189,7 @@
 }
 
 .scoll-h {
-  height: 90vh;
+  height: 93vh;
   margin-top: 40rpx;
 }
 
@@ -290,3 +290,14 @@ color:white;
   align-items: flex-end;
 }
 
+
+
+/**
+去除横向滚动条
+*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

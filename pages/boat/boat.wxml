@@ -24,10 +24,10 @@
   </scroll-view>
 
 
-  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:85vh">
-    <swiper-item wx:for="{{[0,1]}}" wx:key="*this">
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh">
+    <swiper-item wx:for="{{[0,1,2,3,4,5]}}" wx:key="*this">
       <scroll-view scroll-y="true" class="scoll-h">
-        <block wx:for="{{[1,2]}}" wx:key="*this">
+        <block wx:for="{{[1,2,3,4,5,6]}}" wx:key="*this">
           <view class="item-ans">
 
             <view class="avatar">
@@ -57,6 +57,7 @@
           </view>
 
         </block>
+        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
   </swiper>
