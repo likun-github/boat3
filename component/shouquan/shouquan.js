@@ -16,22 +16,24 @@ Component({
 
   },
 ready:function(){
-  wx.hideTabBar({
-  })
+  var sq=wx.getStorageSync('sq');
+  if(sq!=1)
+  wx.hideTabBar({})
 },
   /**
    * 组件的方法列表
    */
   methods: {
     preventTouchMove: function (e) {
-
     },
     onGotUserInfo(e) {
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
       if (e.detail.errMsg){
         this.setData({
               hq:false})
-        wx.showTabBar({})
+        wx.showTabBar({});
+        wx.setStorageSync('pic', e.detail.userInfo.avatarUrl);
+        wx.setStorageSync('sq', '1')
       }
       else {
         wx.showModal({

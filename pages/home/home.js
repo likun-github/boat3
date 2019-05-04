@@ -67,6 +67,7 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     
+    sq:true
 
   },
   onslidechangeend: function (e) {
@@ -98,15 +99,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
-
+    var sq=wx.getStorageSync('sq');
+    if(sq==1)this.setData({
+      sq:false
+    })
   },
 
   /**

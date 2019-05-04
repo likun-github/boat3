@@ -126,7 +126,7 @@
   </view>
 </view>
 
-<sq></sq>
+<sq wx:if="{{sq}}"></sq>
 <!-- </block>
       </scroll-view> -->
 <!-- </swiper-item>
