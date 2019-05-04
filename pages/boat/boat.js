@@ -10,12 +10,12 @@ Page({
   data: {
     noticket: true, //没有船票显示引导购买
     ticketlist: [], //船票的数据
-
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-   
-
+    added:false,
+    add_all:false,
+    overList:true,   //是否展示购买的底层按钮view
   },
 
   /**
@@ -119,10 +119,14 @@ Page({
   // 滚动切换标签样式
   switchTab: function(e) {
     this.setData({
-      currentTab: e.detail.current
+      currentTab: e.detail.current,
+       overList: !this.data.overList
     });
     this.checkCor();
+  
   },
+
+
   // 点击标题切换当前页时改变样式
   swichNav: function(e) {
     var cur = e.target.dataset.current;
@@ -147,7 +151,32 @@ Page({
     }
   },
  
+  look_ticker:function(){
+    wx.navigateTo({
+      url:"/pages/tickets/tickets"
+    })
+  },
 
 
+  addtobuylist:function(){
+    
+    this.setData({
+      added:!this.data.added
+    })
+  },
+
+
+  team_cut:function(){
+    wx.navigateTo({
+      url: '/pages/teamcut/teamcut',
+    })
+  },
+
+  add_allTobuylist:function(){
+    this.setData({
+      add_all: !this.data.add_all,
+      added: !this.data.added
+    })
+  }
 
 })
