@@ -30,7 +30,7 @@
           <view class="item-ans">
      
             <view class="avatar">
-              <image class="img" src="{{index==1?'/static/boat/smallboat.svg':'/static/boat/bigboat.svg'}}"></image>
+              <image class="img" src="{{index==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
 
             <view class='avatar1'>
