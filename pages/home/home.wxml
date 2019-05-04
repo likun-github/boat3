@@ -2,7 +2,7 @@
   <view class='search_img_view'>
     <image src='/static/boat/search.svg' class='search_img' mode="aspectFit"></image>
   </view>
-  <input style='width:80%;display:inline-block;height:100%;font-size:12px;' placeholder-style='font-size:12px;color:#636363' placeholder='搜索'></input>
+  <input style='width:80%;display:inline-block;height:100%;' placeholder-style='font-size:12px;color:#636363' placeholder='搜索'></input>
 </view>
 
 
@@ -86,11 +86,9 @@
         <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"> -->
 
 <view class='order'>
-  <image style='margin-left:288px;height:100%;width:10%' src='/static/boat/letorder.svg' bindtap='showDialogBtn'></image>
-  <view class='ordertext' bindtap='showDialogBtn'> {{orderName_list[orderName_index]}}</view>
+  <image style='margin-left:310px;height:100%;width:10%' src='/static/boat/letorder.svg' bindtap='showDialogBtn'></image>
+  <view class='ordertext' bindtap='showDialogBtn'> {{orderName}}</view>
 </view>
-
-
 
 <view class="producation_display" wx:for="{{showData}}" wx:key="unique">
   <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
@@ -106,20 +104,20 @@
         <view class='item_column_3'>
           <view class='text_4'>
             ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
-
+          
           </view>
           <view class='text_5'>
             ￥{{ item.producation_originalPrice}}- {{3900}}
-            <view class='sameschool_pic'>本校同舟</view>
+              <view class='sameschool_pic'>本校同舟</view>
           </view>
         </view>
         <view>
           <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
-          <view class='tongji'>
+          <view  class='tongji'>
             <image class='item_column_5' src='/static/boat/tongji.svg'></image>
             <view class='item_column_5_text'>距离100人发船还剩1人</view>
           </view>
-
+        
         </view>
 
 
@@ -128,28 +126,18 @@
   </view>
 </view>
 
-
+<sq wx:if="{{sq}}"></sq>
 <!-- </block>
       </scroll-view> -->
 <!-- </swiper-item>
   </swiper> -->
 
-<!--弹窗-->
-<view class="modal-mask"  catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
-  <view class="{{choose1?'text_selected':'noselect_text'}}" bindtap='choose1'>按综合（用户满意度 高到低）
-    <image wx:if="{{choose1}}" src='/static/boat/selected.svg' class='selected'></image>
-  </view>
-  <view class="{{choose2?'text_selected':'noselect_text'}}" bindtap='choose2'>按价格（小船最低价 低到高）
-    <image wx:if="{{choose2}}" src='/static/boat/selected.svg' class='selected'></image>
-  </view>
-  <view class="{{choose3?'text_selected':'noselect_text'}}" bindtap='choose3'>按距离（距离本高校 近到远）
-    <image wx:if="{{choose3}}" src='/static/boat/selected.svg' class='selected'></image>
-  </view>
+  <!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove" >
+  <view class='select_text' bindtap='choose1'>按综合（用户满意度 高到低） <image  src='/static/boat/selected.svg' class='selected'></image></view>  
+  <view class='select_text' bindtap='choose1'>按价格（小船最低价 低到高） <image wx:if="{{choose2}}" src='/static/boat/selected.svg' class='selected'></image></view>
+  <view class='select_text' bindtap='choose1'>按距离（距离本高校 近到远） <image wx:if="{{choose3}}" src='/static/boat/selected.svg' class='selected'></image></view>
   <view style='height:1px;color:#707070;width:100%;'></view>
-  <view class='select_cancel'>
-
-    <!-- <view>取消</view> -->
-    <view bindtap="hideModal">确定</view>
-  </view>
+  <view class='select_cancel'>取消</view>
 </view>

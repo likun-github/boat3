@@ -7,11 +7,9 @@ App({
     wx.getSystemInfo({
       success(res) {
         that.globalData.height=res.windowHeight;
-        
-        
       }
     })
-
+    that.globalData.avatarUrl = wx.getStorageSync('pic');
     // 登录
     wx.login({
       success: res => {
