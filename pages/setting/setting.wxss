@@ -41,7 +41,7 @@ top: 0rpx;
   position: relative;
   width: 90%;
   left: 5%;
-  height: 50%;
+  height: 60%;
   margin-top: 30rpx;
   background: linear-gradient(to bottom right, #fe5e5e, #fe8557);
   box-shadow: -1rpx 0 30rpx -6rpx;
@@ -280,7 +280,27 @@ color: transparent;
     top: 0%;
  
 }
-
+.c{
+  font-size: 24rpx;
+  text-align: center;
+}
+.input{
+  border-radius: 30rpx;
+  background: white;
+}
+.bt{
+  width: 100rpx;
+  height:60rpx;
+  top:5rpx;
+  position:absolute;
+  left:330rpx;
+  border-radius: 60rpx;
+  background: linear-gradient(to bottom right,#FDB38F,#F7907E);
+  font-size: 24rpx;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+}
 /* 遮罩 \背景色可以再调*/
 .shade {
   position: fixed;

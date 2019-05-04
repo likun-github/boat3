@@ -9,9 +9,11 @@ Page({
     pic: '',
     teamname: '',
     time: '',
-    top:'150',
+    top:'180',
     popup: true,
     show_model: true,
+    code:'',
+    t:0,
   },
 
   /**
@@ -20,7 +22,28 @@ Page({
   onLoad: function (options) {
 
   },
-
+  scroll(e){
+       console.log(e);
+       this.setData({
+         t: e.detail.scrollTop
+       })
+    console.log('距离是'+this.data.t);
+  },
+  touchend:function(){
+    // var t=this.data.t;
+    // console.log('距离是' + this.data.t);
+    // var se=setInterval(()=>{
+    //   if(t<180){
+    //        t=t+0.1;
+        this.setData({
+          top: 180
+        })
+      // }
+    //   else {clearInterval(se);
+    //     }
+    // },100)
+   
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -53,8 +76,9 @@ Page({
     app.list = 2;
   },
   changelist3: function () {
-    
-    this.hidePopup(false);
+    this.setData({
+      popup:false
+    })
   },
   changelist4: function () {
     wx.navigateTo({
@@ -81,7 +105,17 @@ Page({
   onUnload: function () {
 
   },
+yaoqingma:function(e){
+  this.setData({
+    code:e.detail.value
+  })
+},
+getin:function(){
+  this.setData({
+    "popup": true
+  });
 
+},
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -108,14 +142,7 @@ Page({
   },
 
 
-  hidePopup(flag = true) {
-    this.setData({
-      "popup": flag
-    });
-  },
+ 
 
-  backtopages: function (options) {
-    console.log("用户提交评价后触碰页面", options)
-    
-  },
+
 })
