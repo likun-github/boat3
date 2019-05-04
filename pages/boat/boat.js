@@ -16,6 +16,7 @@ Page({
     added:false,
     add_all:false,
     overList:true,   //是否展示购买的底层按钮view
+    ticket_number:6,    //船票数量
   },
 
   /**

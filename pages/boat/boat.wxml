@@ -30,7 +30,7 @@
           <view class="item-ans">
      
             <view class="avatar">
-              <image class="img" src="{{index==1?'/static/boat/smallboat.svg':'/static/boat/bigboat.svg'}}"></image>
+              <image class="img" src="{{index==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
 
             <view class='avatar1'>
@@ -71,7 +71,7 @@
       <text class='price_des_text2'  decode="{{true}}">总额:￥3000&ensp;&ensp;优惠:￥720</text> 
     </view>
     <view class='buy_btn'>
-      <button class='buy_btn_view'>去登船({{2}})</button>
+      <button class='buy_btn_view'>去登船({{ticket_number}})</button>
     </view>
   </view>
 
