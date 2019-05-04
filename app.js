@@ -27,9 +27,5 @@ App({
     nickname: '',
     avatarUrl: '',
     height:'',
-    name:'',
-    avatarUrl:'',
-    teamname:'',
-    time:''
   }
 })
