@@ -72,7 +72,7 @@
       <text class='price_des_text2'  decode="{{true}}">总额:￥3000&ensp;&ensp;优惠:￥720</text> 
     </view>
     <view class='buy_btn'>
-      <button class='buy_btn_view'>去登船({{2}})</button>
+      <button class='buy_btn_view'>去登船({{ticket_number}})</button>
     </view>
   </view>
 
