@@ -24,56 +24,81 @@ Page({
       'https://xiaoyibang.top:8002/uploads/photo/6_57uxCYM.jpg'
     ],
     judge: [{
-        "url": "/static/toboat/boat.svg",
+      "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
       },
       {
-        "url": "/static/toboat/boat.svg",
+        "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      }, 
+      {
+      "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      }, 
+      {
+        "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      }, 
+      {
+       "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '好啊',
       },
       {
-        "url": "/static/toboat/boat.svg",
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '好啊',
       },
       {
-        "url": "/static/toboat/boat.svg",
+        "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+      },
+      {
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '好啊',
-      }, {
-        "url": "/static/toboat/boat.svg",
+      },
+      {
+        "url": "/static/sq.jpg",
+        "title": '2016-艺术-李艮基',
+        'time': '刚刚',
+        'text': '好啊',
+      },
+      {
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
       },
       {
-        "url": "/static/toboat/boat.svg",
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/toboat/boat.svg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/toboat/boat.svg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+        'text': '好啊',
       },
     ],
-
-
-
+    likethis:false,
+    likers:125,   //心仪的人数
+    
   },
 
 
@@ -240,6 +265,22 @@ Page({
       }
     }) 
 
+  },
+
+  //心仪点击后---收藏的功能吧！
+  likethisProduction:function(){
+    if (!this.data.likethis){
+      this.setData({
+        likethis: true,
+        likers: this.data.likers + 1
+      })
+    }else{
+      this.setData({
+        likethis: false,
+        likers: this.data.likers -1 
+      })
+    }
+   
   }
 
 

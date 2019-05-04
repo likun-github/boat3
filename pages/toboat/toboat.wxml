@@ -93,14 +93,14 @@
       <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
     </view>
     <view wx:if="{{chooseinformation==1}}">
-      <image src='/static/toboat/heart.svg' class='heart'></image>
+      <image bindtap='likethisProduction' src="{{likethis?'/static/toboat/hearted.svg':'/static/toboat/heart.svg'}}" class='heart'></image>
       <view class='love'>
         <text>-</text>
-        <text style='color:#59B4FE;'>125</text>
+        <text style='color:#59B4FE;'>{{likers}}</text>
         <text>人觉得心仪-</text>
       </view>
       <view class='judge1'>
-        <image src='/static/toboat/boat.svg' style='position:relative;width:60rpx;height:60rpx;'></image>
+        <image src='/static/sq.jpg' style='position:relative;width:60rpx;height:60rpx;'></image>
         <input placeholder="说点什么让好友也来和你拼" placeholder-class="input"></input>
 
       </view>

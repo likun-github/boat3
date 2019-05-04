@@ -622,7 +622,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type":5,
       "producation_originalPrice": 13000,
-      "producation_name": '托福',
+      "producation_name": '雅思初级班',
       "producation_cutdowmPrice": 1300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -630,7 +630,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '德福',
+      "producation_name": '雅思留学班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -638,7 +638,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '法语托福',
+      "producation_name": '雅思高级班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -646,7 +646,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 13000,
-      "producation_name": 'vip托福班',
+      "producation_name": '雅思VIP留学班',
       "producation_cutdowmPrice": 1300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -654,7 +654,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '必过托福班',
+      "producation_name": '雅思必过班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -662,7 +662,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '小班精品',
+      "producation_name": '雅思小班精品',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -670,7 +670,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 13000,
-      "producation_name": '1V1托福培训',
+      "producation_name": '1V1雅思培训',
       "producation_cutdowmPrice": 1300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -678,7 +678,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '精品班',
+      "producation_name": '雅思精品班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -686,7 +686,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type":5,
       "producation_originalPrice": 3000,
-      "producation_name": 'VIP班',
+      "producation_name": '雅思VIP班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -694,7 +694,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 13000,
-      "producation_name": '包过班',
+      "producation_name": '雅思包过班',
       "producation_cutdowmPrice": 1300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -702,7 +702,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '精品班',
+      "producation_name": '雅思精品班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -710,7 +710,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": 'VIP班',
+      "producation_name": '雅思VIP班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -718,7 +718,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 13000,
-      "producation_name": '包过班',
+      "producation_name": '雅思包过班',
       "producation_cutdowmPrice": 1300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -726,7 +726,7 @@ var producationData = [
       "producation_id": 1,
       "producation_type": 5,
       "producation_originalPrice": 3000,
-      "producation_name": '精品班',
+      "producation_name": '雅思精品班',
       "producation_cutdowmPrice": 300,
       "producation_des": "为您提供武汉最优质的服务",
       "producation_pic_url": "http://www.0311xc.cn/upload/jiaxiao/d/148924235671737_b.jpg",
@@ -975,14 +975,24 @@ var ticketData=[
     "order_pingzheng":'321fo12Doi23df',   //预约凭证
     "orde_telephone":"13203221323",       //预约电话
     "state":0,      //0:进行中，，1：已结束
+    "kindOfboat":0,   //0:小船 ， 1：大船
   },
   
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '3980',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
+  },
+  {
+    "producation_name": '武汉育才驾校C1普通班',
+    "finalprice": '1980',
+    "order_pingzheng": '321fo12Doi23df',   //预约凭证
+    "orde_telephone": "13203221323",       //预约电话
+    "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
@@ -990,48 +1000,47 @@ var ticketData=[
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 1,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '1980',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 1,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
-    "order_pingzheng": '321fo12Doi23df',   //预约凭证
-    "orde_telephone": "13203221323",       //预约电话
-    "state": 0,      //0:进行中，，1：已结束
-  },
-  {
-    "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '1980',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 1,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '1480',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 1,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '3980',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
   },
   {
     "producation_name": '武汉育才驾校C1普通班',
-    "finalprice": '2980',
+    "finalprice": '4910',
     "order_pingzheng": '321fo12Doi23df',   //预约凭证
     "orde_telephone": "13203221323",       //预约电话
     "state": 0,      //0:进行中，，1：已结束
+    "kindOfboat": 0,   //0:小船 ， 1：大船
   },
 ]
 // 定义数据出口

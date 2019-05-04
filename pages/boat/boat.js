@@ -123,6 +123,7 @@ Page({
       currentTab: e.detail.current,
        overList: !this.data.overList
     });
+    console.log("now:tab",this.data.currentTab)
     this.checkCor();
   
   },

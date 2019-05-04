@@ -21,43 +21,7 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    ips: [{
-        id: "1",
-        title: "驾校",
-        isSelect: true
-      },
-      {
-        id: "2",
-        title: "健身",
-        isSelect: false
-      },
-      {
-        id: "3",
-        title: "外语",
-        isSelect: false
-      },
-      {
-        id: "4",
-        title: "托福",
-        isSelect: false
-      },
-      {
-        id: "5",
-        title: "雅思",
-        isSelect: false
-      },
-      {
-        id: "6",
-        title: "电动车",
-        isSelect: false
-      },
-      {
-        id: "7",
-        title: "考研",
-        isSelect: false
-      },
 
-    ],
     content: "全部", //选项被选中后内容页面的展示
     scroll_top: 0,
     listData: [], //产品的详情
@@ -70,8 +34,14 @@ Page({
 
     orderName_list:['按综合','按价格','按距离'],
     orderName:'按综合',
+    orderName_index:0,
     showModal: false,
 
+
+    //默认的产品排序情况
+    choose1:true,
+    choose2:false,
+    choose3:false,
 
   },
   onslidechangeend: function (e) {
@@ -162,29 +132,27 @@ Page({
   /**
    * item点击事件
    */
-  onIpItemClick: function(event) {
-    var id = event.currentTarget.dataset.item.id;
-    var curIndex = 0;
-    for (var i = 0; i < this.data.ips.length; i++) {
-      if (id == this.data.ips[i].id) {
-        this.data.ips[i].isSelect = true;
-        curIndex = i;
-      } else {
-        this.data.ips[i].isSelect = false;
-      }
-    }
+  // onIpItemClick: function(event) {
+  //   var id = event.currentTarget.dataset.item.id;
+  //   var curIndex = 0;
+  //   for (var i = 0; i < this.data.ips.length; i++) {
+  //     if (id == this.data.ips[i].id) {
+  //       this.data.ips[i].isSelect = true;
+  //       curIndex = i;
+  //     } else {
+  //       this.data.ips[i].isSelect = false;
+  //     }
+  //   }
 
-    this.setData({
-      content: this.data.ips[curIndex].id, //这个是种类控制的index
-      ips: this.data.ips, //这个是类别的中文内容
-    });
+  //   this.setData({
+  //     content: this.data.ips[curIndex].id, //这个是种类控制的index
+  //     ips: this.data.ips, //这个是类别的中文内容
+  //   });
 
-    this.setData({
-      showData: this.data.listData[this.data.content - 1]
-    })
-
-
-  },
+  //   this.setData({
+  //     showData: this.data.listData[this.data.content - 1]
+  //   })
+  // },
 
   to_producation_page: function(e) {
     console.log("查看产品的详情信息-->")
@@ -212,6 +180,7 @@ Page({
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
     var cur = e.target.dataset.current;
+    console.log(cur,'tarbal')
     if (this.data.currentTaB == cur) {
       return false;
     } else {
@@ -219,6 +188,10 @@ Page({
         currentTab: cur
       })
     }
+    this.setData({
+      showData: this.data.listData[this.data.currentTab]
+    })
+   
   },
 
 
@@ -234,17 +207,25 @@ Page({
       })
     }
   },
+  
+  //下面这个function和  hideModal_function的
+  //wx与setdata的顺序是很重要的！！！！！！！！！！！！
 
   showDialogBtn: function () {
+    wx.hideTabBar({
+    });
     this.setData({
       showModal: true
     })
+
   },
   /**
    * 弹出框蒙层截断touchmove事件
    */
   preventTouchMove: function () {
   },
+
+
   /**
    * 隐藏模态对话框
    */
@@ -252,20 +233,44 @@ Page({
     this.setData({
       showModal: false
     });
+    wx.showTabBar({
+    });
+   
+
   },
-  /**
-   * 对话框取消按钮点击事件
-   */
-  onCancel: function () {
-    this.hideModal();
+  
+
+
+  choose1:function(){
+    this.setData({
+      orderName: this.data.orderName_list[0],
+      orderName_index:0,
+      choose1:true,
+      choose2: false,
+      choose3: false,
+    })
   },
-  /**
-   * 对话框确认按钮点击事件
-   */
-  onConfirm: function () {
-    this.hideModal();
-  }
 
  
+  choose2: function () {
+    this.setData({
+      orderName:this.data.orderName_list[1],
+      orderName_index: 1,
+      choose1: false,
+      choose2: true,
+      choose3: false,
+    
+    })
+  },
+
+  choose3: function () {
+    this.setData({
+      orderName: this.data.orderName_list[2],
+      orderName_index: 2,
+      choose1: false,
+      choose2: false,
+      choose3: true,
+    })
+  },
 
 })

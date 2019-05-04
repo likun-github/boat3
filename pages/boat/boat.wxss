@@ -78,7 +78,7 @@
   height: 250rpx;
   align-items: center;
   margin-bottom: 75rpx;
-  margin-top: 0rpx;
+  margin-top: 20rpx;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
 }
@@ -124,8 +124,8 @@
   line-height: 1.5em;
   margin-left: -1rpx;
   background-color: #f1f1f1;
-  border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
+  border-top-right-radius: 25rpx;
+  border-bottom-right-radius: 25rpx;
 }
 
 .expertInfo .name {
@@ -167,6 +167,18 @@
   background-color: #59b4fe;
 }
 
+.btn_checkticket_1{
+ width: 186rpx;
+  height: 70rpx;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 57rpx;
+  color: white;
+  left: 80rpx;
+  top: 23rpx;
+  background-color: #59b4fe;
+}
 .btn_cut {
   margin-left: 60rpx;
   padding-left: 21rpx;
@@ -190,7 +202,7 @@
 
 .scoll-h {
   height: 93vh;
-  margin-top: 40rpx;
+  margin-top: 50rpx;
 }
 
 .cut_img {
