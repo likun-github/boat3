@@ -16,13 +16,15 @@
 
 
 
-<view>
+<!-- <view> -->
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
     <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">进行中</view>
     <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已结束</view>
 
   </scroll-view>
-  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96vh">
+
+
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:85vh">
     <swiper-item wx:for="{{[0,1]}}" wx:key="*this">
       <scroll-view scroll-y="true" class="scoll-h">
         <block wx:for="{{[1,2]}}" wx:key="*this">
@@ -33,27 +35,45 @@
             </view>
 
             <view class='avatar1'>
-              <image class="img1" src='/static/boat/addtobuylist.svg'></image>
+              <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
             </view>
 
 
             <view class="expertInfo">
               <view class="name">武汉育才驾校C1保过班</view>
               <view class="price">最终票价
-                <text class='price_number'>{{3122}}</text>元</view>
+                <text class='price_number' decode="{{true}}" >&ensp;{{3122}}&ensp;</text>元</view>
               <view class='cut_view'>
-                <view class='cut_img_view'>
-                  <image class='cut_img' src='/static/boat/cut.svg'></image>
-                </view>
+          
 
-                <button class='btn_checkticket'>查看船票</button>
+                <button class='btn_cut' bindtap='team_cut'>砍</button>
+                <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
+
+
               </view>
 
             </view>
 
           </view>
+
         </block>
       </scroll-view>
     </swiper-item>
   </swiper>
-</view>
+
+  <view class='buy' wx:if="{{overList}}">
+    <view class='add_allTobuylist' bindtap='add_allTobuylist'> 
+      <image class="img1" src="{{add_all?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}"></image>
+    </view>
+    <view class='buy_text1'>全选</view>
+    <view class='price_des'>
+      <view class='price_des_text1'>合计:￥2280</view>
+      <text class='price_des_text2'  decode="{{true}}">总额:￥3000&ensp;&ensp;优惠:￥720</text> 
+    </view>
+    <view class='buy_btn'>
+      <button class='buy_btn_view'>去登船({{2}})</button>
+    </view>
+  </view>
+
+
+<!-- </view> -->
