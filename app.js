@@ -28,6 +28,15 @@ App({
       },
       success:(res)=>{
         common.homelist=res.data;
+        var list = [];
+        for (var i = 0; i < common.homelist.length; i++) {
+          if (common.homelist[i].type == 1) {
+            list.push(common.homelist[i]);
+
+          }
+
+        }
+        common.showData=list;
       }
     })
 

@@ -60,14 +60,16 @@ var currentorder = {
 var onecut = {
 
 }
+var showData={
+
+}
 module.exports = {
   data: data,
-  changelist: changelist,//函数：改变首页list
   homelist: homelist,//首页商品信息
+  showData:showData,//首页正在展示商品类别
   currentData: currentData,//目前选择的商品
   orderlist: orderlist,//订单信息
   currentorder: currentorder,//当前查看订单
   orderdetail: orderdetail,//订单细节
-  chooseorderstatus: chooseorderstatus,//函数：选择订单状态
   onecut: onecut,//成员砍价
 }

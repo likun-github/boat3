@@ -70,13 +70,15 @@
 
 
 <scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}" scroll-left="{{scrollLeft}}">
-  <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">驾校</view>
+  
   <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">健身</view>
-  <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">外语</view>
-  <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">托福</view>
-  <view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="swichNav">雅思</view>
-  <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">电车</view>
-  <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">考研</view>
+  <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">驾校</view>
+  <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">考研</view>
+  <view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="swichNav">外语</view>
+  <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">托福</view>
+  <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">雅思</view>
+  <view class="tab-item {{currentTab==7?'active':''}}" data-current="7" bindtap="swichNav">电车</view>
+  
 </scroll-view>
 
 
@@ -93,23 +95,23 @@
 
 
 <view class="producation_display" wx:for="{{showData}}" wx:key="unique">
-  <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
-    <image class='producation_pic' src='{{item.producation_pic_url}}' mode='scaleToFill'></image>
+  <view class='item_column' bindtap='to_producation_page' data-id="{{item.productionid}}">
+    <image class='producation_pic' src='{{url+item.logo}}' mode='scaleToFill'></image>
     <view class='item_column_1'>
       <view style='font-size:34rpx;'>
-        {{item.producation_name}}
+        {{item.name}}
       </view>
       <view class='text_3'>
-        {{item.producation_des}}
+        {{item.introduction}}
       </view>
       <view class='item_column_2'>
         <view class='item_column_3'>
           <view class='text_4'>
-            ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
+            ￥{{item.startprice}}
 
           </view>
           <view class='text_5'>
-            ￥{{ item.producation_originalPrice}}- {{3900}}
+            ￥{{ item.startprice*0.6}}- {{item.startprice*0.8}}
             <view class='sameschool_pic'>本校同舟</view>
           </view>
         </view>

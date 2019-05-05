@@ -1,6 +1,7 @@
 // pages/home/home.js
 var app = getApp();
 var listData = require('../../testdata.js');
+var common=require('../../common/index.js');
 
 
 Page({
@@ -9,26 +10,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show_flag: 'false',
-    animationData: {},
+    url:'https://xiaoyibang.top:8001/uploads/',
+    animationData: {},//动画
     imgUrls: [
       'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
       'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
+    ],//上面三张
     currentSwiper: 0,
     indicatorDots: false,
     autoplay: true,
     interval: 5000,
-    duration: 1000,
+    duration: 1000,//swiper配置
 
     content: "全部", //选项被选中后内容页面的展示
     scroll_top: 0,
-    listData: [], //产品的详情
+    listData: [], //所有产品的详情
     showData: [], //需要展示的产品信息
 
     winHeight: "", //窗口高度
-    currentTab: 0, //预设当前项的值
+    currentTab: 1, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
 
 
@@ -56,16 +57,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      //jsonData.dataList获取json.js里定义的json数据，并赋值给dataList
-      listData: listData.producationData
-    });
+    // this.setData({
+    //   //jsonData.dataList获取json.js里定义的json数据，并赋值给dataList
+    //   listData: listData.producationData
+    // });
 
-    console.log("获取的产品详情list：", this.data.listData)
+    // console.log("获取的产品详情list：", this.data.listData)
 
-    this.setData({
-      showData: this.data.listData[0]
-    })
+    // this.setData({
+    //   showData: this.data.listData[0]
+    // })
 
   },
 
@@ -73,6 +74,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+    this.setData({
+      listData:common.homelist,
+      showData:common.showData,
+    });
+    
 
   },
 
@@ -129,85 +135,45 @@ Page({
 
 
 
-  /**
-   * item点击事件
-   */
-  // onIpItemClick: function(event) {
-  //   var id = event.currentTarget.dataset.item.id;
-  //   var curIndex = 0;
-  //   for (var i = 0; i < this.data.ips.length; i++) {
-  //     if (id == this.data.ips[i].id) {
-  //       this.data.ips[i].isSelect = true;
-  //       curIndex = i;
-  //     } else {
-  //       this.data.ips[i].isSelect = false;
-  //     }
-  //   }
 
-  //   this.setData({
-  //     content: this.data.ips[curIndex].id, //这个是种类控制的index
-  //     ips: this.data.ips, //这个是类别的中文内容
-  //   });
-
-  //   this.setData({
-  //     showData: this.data.listData[this.data.content - 1]
-  //   })
-  // },
 
   to_producation_page: function(e) {
-    console.log("查看产品的详情信息-->")
-    var $data = e.currentTarget.dataset;
-    console.log("用户点击的是", $data);
-
-    wx.navigateTo({
-      url: '/pages/toboat/toboat?producation_cutdowmPrice=' + $data.bean.producation_cutdowmPrice +
-        '&producation_name=' + $data.bean.producation_name +
-        '&producation_originalPrice=' + $data.bean.producation_originalPrice +
-        '&producation_pic_url=' + $data.bean.producation_pic_url,
-    })
-  },
-
-
-  // 滚动切换标签样式
-  switchTab: function (e) {
-    this.setData({
-      currentTab: e.detail.current
-    });
-    this.checkCor();
-  },
-
-
-  // 点击标题切换当前页时改变样式
-  swichNav: function (e) {
-    var cur = e.target.dataset.current;
-    console.log(cur,'tarbal')
-    if (this.data.currentTaB == cur) {
-      return false;
-    } else {
-      this.setData({
-        currentTab: cur
-      })
+    for(var i=0;i<common.homelist.length;i++){
+      if(common.homelist[i].productionid==e.target.dataset.id){
+        common.currentData=common.homelist;
+      }
     }
-    this.setData({
-      showData: this.data.listData[this.data.currentTab]
+    wx.navigateTo({
+      url: '/pages/toboat/toboat',
     })
+    
    
   },
 
 
-  //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function () {
-    if (this.data.currentTab > 4) {
-      this.setData({
-        scrollLeft: 300
-      })
-    } else {
-      this.setData({
-        scrollLeft: 0
-      })
+  // 滚动切换标签样式
+
+
+
+  // 点击标题切换当前页时改变样式
+  swichNav: function (e) {
+    var list=[];
+    this.setData({
+      currentTab:e.target.dataset.current,
+    })
+    for(var i=0;i<common.homelist.length;i++){
+      if (common.homelist[i].type == e.target.dataset.current){
+        list.push(common.homelist[i]);
+      }
     }
-  },
+    this.setData({
+      showData:list,
+    })
   
+  },
+
+
+ 
   //下面这个function和  hideModal_function的
   //wx与setdata的顺序是很重要的！！！！！！！！！！！！
 
