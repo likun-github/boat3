@@ -31,6 +31,26 @@ Page({
       ticketData: ticketData.ticketData
     });
 
+
+
+    var temp1 = []
+    var temp2 = []
+    for(var i =0;i<this.data.ticketData.length;i++)
+    {
+      if(this.data.ticketData[i].state==0)//  订单正在进行的话
+      {
+        temp1.push(this.data.ticketData[i])
+      }
+      else
+      {
+        temp2.push(this.data.ticketData[i])
+      }
+    }
+    this.data.ticketData=[]
+    this.data.ticketData.push(temp1)
+    this.data.ticketData.push(temp2)
+
+
     console.log("获取的产品详情ticketData：", this.data.ticketData)
     if (this.data.ticketData != null) {
       this.setData({

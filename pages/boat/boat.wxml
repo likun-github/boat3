@@ -24,10 +24,12 @@
 
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh">
-  <swiper-item wx:for="{{ticketData}}" wx:key="*this">
+  <swiper-item wx:for="{{ticketData}}" wx:key="*this1">
     <scroll-view scroll-y="true" class="scoll-h">
-      <block wx:for="{{ticketData}}" wx:key="*this">
-        <view class="item-ans" wx:if="{{item.state==0&&currentTab==0}}">
+      <block wx:for="{{ticketData}}" wx:key="*this2">
+
+        <!-- 这样写好像很消耗内存去渲染，明天修改这个bug -->
+        <view class="item-ans" >
 
           <view class="avatar">
             <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
@@ -54,34 +56,8 @@
           </view>
 
         </view>
+        
 
-        <view class="item-ans" wx:if="{{item.state>=1&&currentTab==1}}">
-
-          <view class="avatar">
-            <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
-          </view>
-
-          <view class='avatar1'>
-            <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
-          </view>
-
-
-          <view class="expertInfo">
-            <view class="name">{{item.producation_name}}</view>
-            <view class="price">最终票价
-              <text class='price_number' decode="{{true}}">&ensp;{{item.finalprice}}&ensp;</text>元</view>
-            <view class='cut_view'>
-
-
-              <!-- <button class='btn_cut' bindtap='team_cut'>砍</button> -->
-              <button class='btn_checkticket_1' bindtap='look_ticker'>订单完成</button>
-
-
-            </view>
-
-          </view>
-
-        </view>
       </block>
       <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
     </scroll-view>

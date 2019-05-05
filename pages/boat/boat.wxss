@@ -179,6 +179,8 @@
   top: 23rpx;
   background-color: #59b4fe;
 }
+
+
 .btn_cut {
   margin-left: 60rpx;
   padding-left: 21rpx;
