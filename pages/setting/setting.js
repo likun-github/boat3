@@ -9,47 +9,40 @@ Page({
     pic: '',
     teamname: '',
     time: '',
-    top:'180',
+    top: '180',
     popup: true,
     show_model: true,
-    code:'',
-    t:0,
+    code: '',
+    t: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
-  scroll(e){
-       console.log(e);
-       this.setData({
-         t: e.detail.scrollTop
-       })
-    console.log('距离是'+this.data.t);
+  scroll(e) {
+    console.log(e);
+    this.setData({
+      t: e.detail.scrollTop
+    })
+    console.log('距离是' + this.data.t);
   },
-  touchend:function(){
-    // var t=this.data.t;
-    // console.log('距离是' + this.data.t);
-    // var se=setInterval(()=>{
-    //   if(t<180){
-    //        t=t+0.1;
-        this.setData({
-          top: 180
-        })
-      // }
-    //   else {clearInterval(se);
-    //     }
-    // },100)
-   
+  touchend: function() {
+
+    this.setData({
+      top: 180
+    })
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     this.setData({
-      name: app.globalData.name,
+      name: app.globalData.nickname,
       pic: app.globalData.avatarUrl,
       teamname: app.globalData.teamname,
       time: app.globalData.time
@@ -60,33 +53,33 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
-  changelist1:function(){
+  changelist1: function() {
     wx.navigateTo({
       url: '../asset/asset',
     })
-    app.list=1;
+    app.list = 1;
   },
-  changelist2: function () {
+  changelist2: function() {
     wx.navigateTo({
       url: '../asset/asset',
     })
     app.list = 2;
   },
-  changelist3: function () {
+  changelist3: function() {
     this.setData({
-      popup:false
+      popup: false
     })
   },
-  changelist4: function () {
+  changelist4: function() {
     wx.navigateTo({
       url: '../asset/asset',
     })
     app.list = 4;
   },
-  changelist5: function () {
+  changelist5: function() {
     wx.navigateTo({
       url: '../asset/asset',
     })
@@ -95,54 +88,54 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
-yaoqingma:function(e){
-  this.setData({
-    code:e.detail.value
-  })
-},
-getin:function(){
-  this.setData({
-    "popup": true
-  });
+  yaoqingma: function(e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
+  getin: function() {
+    this.setData({
+      "popup": true
+    });
 
-},
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
-  scroll:function(e){
+  scroll: function(e) {
 
- 
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
 
- 
+
 
 
 })

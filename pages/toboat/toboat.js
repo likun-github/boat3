@@ -200,19 +200,58 @@ Page({
 
 
   freebuy:function(){
-    //增加一张船票
 
-    //假装增加了
+    //是否实名认证
+    if (app.globalData.status == 0) {
+      wx.showToast({
+        title: '未认证正在跳转',
+        duration: 1000,
+        icon: 'loading',
+      })
+      setTimeout(function () {
+        wx.navigateTo({
+          url: "/pages/verify/verify",
+        }, 1000)
+      })
+    } else { //已认证的用户，跳出支付对话框，支付完成后弹出支付完成对话框。点击对话框或关闭后跳转自己的small_boat
+      var that = this;
+      switch (that.data.status) {
 
-    //跳转查看船票
-    wx.switchTab({
-      url: '/pages/boat/boat',
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
+        case 1:
+          //我要上船
+          if (that.data.steamid) {
+            that.buytogether(this.data.url + '/dajia/buytogether')
+          } else {
+            that.buyalone(this.data.url + '/dajia/buyalone');
+
+          }
+
+          break;
+        case 2:
+          //看我的船
+          wx.navigateTo({
+            url: "/pages/teamcut/teamcut?steamid=" + common.currentorder.steam_id + '&orderid=' + common.currentorder.orderid +
+              '&avatarUrl=' + app.globalData.avatarUrl + '&nickname=' + app.globalData.nickname + '&userid=' + app.globalData.userid
+          })
+          break;
+
       }
-    }) 
+    }
+
+
+    // //增加一张船票
+
+    // //假装增加了
+
+    // //跳转查看船票
+    // wx.switchTab({
+    //   url: '/pages/boat/boat',
+    //   success: function (e) {
+    //     var page = getCurrentPages().pop();
+    //     if (page == undefined || page == null) return;
+    //     page.onLoad();
+    //   }
+    // }) 
 
   },
 

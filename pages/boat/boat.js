@@ -1,6 +1,5 @@
 // pages/class/class.js
 
-var ticketData = require('../../testdata.js');
 
 Page({
 
@@ -9,7 +8,8 @@ Page({
    */
   data: {
     noticket: true, //没有船票显示引导购买
-    ticketlist: [], //船票的数据
+    ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
+    ticketlist_ed:[],     // 已结束的船票的数据（完成/取消）
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
@@ -25,53 +25,56 @@ Page({
   onLoad: function(options) {
     //每次进入此tab，刷新一次，假装从后台获取了数据
 
-    this.setData({
-      //jsonData.ticketData.js里定义的json数据，并赋值给ticketData
-      ticketData: ticketData.ticketData
-    });
+
+    // this.setData({
+    //   //jsonData.ticketData.js里定义的json数据，并赋值给ticketData
+    //   ticketData: ticketData.ticketData
+    // });
 
 
 
-    var temp1 = []
-    var temp2 = []
-    for(var i =0;i<this.data.ticketData.length;i++)
-    {
-      if(this.data.ticketData[i].state==0)//  订单正在进行的话
-      {
-        temp1.push(this.data.ticketData[i])
-      }
-      else
-      {
-        temp2.push(this.data.ticketData[i])
-      }
-    }
-    this.data.ticketData=[]
-    this.data.ticketData.push(temp1)
-    this.data.ticketData.push(temp2)
+    // var temp1 = []
+    // var temp2 = []
+    // for(var i =0;i<this.data.ticketData.length;i++)
+    // {
+    //   if(this.data.ticketData[i].state==0)//  订单正在进行的话
+    //   {
+    //     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
+    //       ticketlist_ed
+    //     temp1.push(this.data.ticketData[i])
+    //   }
+    //   else
+    //   {
+    //     temp2.push(this.data.ticketData[i])
+    //   }
+    // }
+    // this.data.ticketData=[]
+    // this.data.ticketData.push(temp1)
+    // this.data.ticketData.push(temp2)
 
 
-    console.log("获取的产品详情ticketData：", this.data.ticketData)
-    if (this.data.ticketData != null) {
-      this.setData({
-        noticket: false
-      })
-    }
-    console.log(this.data.noticket)
+    // console.log("获取的产品详情ticketData：", this.data.ticketData)
+    // if (this.data.ticketData != null) {
+    //   this.setData({
+    //     noticket: false
+    //   })
+    // }
+    // console.log(this.data.noticket)
 
-    var that = this;
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function (res) {
-        var clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        var calc = clientHeight * rpxR - 180;
-        console.log(calc)
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
+    // var that = this;
+    // //  高度自适应
+    // wx.getSystemInfo({
+    //   success: function (res) {
+    //     var clientHeight = res.windowHeight,
+    //       clientWidth = res.windowWidth,
+    //       rpxR = 750 / clientWidth;
+    //     var calc = clientHeight * rpxR - 180;
+    //     console.log(calc)
+    //     that.setData({
+    //       winHeight: calc
+    //     });
+    //   }
+    // });
   },
 
   /**

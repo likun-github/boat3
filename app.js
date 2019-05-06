@@ -10,16 +10,17 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    //that.globalData.avatarUrl = wx.getStorageSync('pic');
+
+
     this.gethomelist();
+    this.getuserinformation();
     // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
+  
   },
+
+
+
+
   gethomelist:function(){
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/home',
@@ -32,7 +33,6 @@ App({
         for (var i = 0; i < common.homelist.length; i++) {
           if (common.homelist[i].type == 1) {
             list.push(common.homelist[i]);
-
           }
 
         }
@@ -41,6 +41,29 @@ App({
     })
 
   },
+
+
+  //从缓存中提取用户信息
+  getuserinformation: function () {
+    var information = wx.getStorageSync('information')
+    if (information.status == 0) {
+      this.globalData.status = information.status;
+      this.globalData.userid = information.userid;
+      this.globalData.avatarUrl = information.avatarUrl;
+      this.globalData.nickname = information.nickname;
+    } else {
+      this.globalData.status = information.status;
+      this.globalData.userid = information.userid;
+      this.globalData.name = information.name;
+      this.globalData.avatarUrl = information.avatarUrl;
+      this.globalData.time = information.number;
+      this.globalData.teamname = information.teamname;
+      this.globalData.account = information.account;
+    }
+    console.log("用户信息", this.globalData)
+  },
+
+
   globalData: {
     name: '',
     teamname: '',
@@ -48,5 +71,10 @@ App({
     nickname: '',
     avatarUrl: '',
     height:'',
+    gender:0,
+    country:'',
+    city:'',
+    province:'',
+    language: "zh_CN",
   }
 })

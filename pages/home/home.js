@@ -1,6 +1,5 @@
 // pages/home/home.js
 var app = getApp();
-var listData = require('../../testdata.js');
 var common=require('../../common/index.js');
 
 
