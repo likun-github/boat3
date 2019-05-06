@@ -25,10 +25,10 @@ Page({
   onLoad: function(options) {
    
 
-    this.setData({
+    // this.setData({
      
-      ticketData: ticketData.ticketData
-    });
+    //   ticketData: ticketData.ticketData
+    // });
 
 
 

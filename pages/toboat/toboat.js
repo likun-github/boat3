@@ -259,6 +259,12 @@ Page({
       delta: 1,
     })
   },
+  ticket:function(){
+    wx.switchTab({
+      url: '/pages/boat/boat',
+    })
+
+  },
   gomap: function() {
     wx.navigateTo({
       url: '/pages/map/map',

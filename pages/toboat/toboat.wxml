@@ -137,11 +137,12 @@
       <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>首页</text>
     </view>
-    <view class='icon1'>
+    <button class='contact' open-type='contact'></button>
+    <view class='icon1' style=' pointer-events: none;'>
       <image src='/static/toboat/contact.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>咨询</text>
     </view>
-    <view class='icon1'>
+    <view class='icon1' bindtap='ticket'>
       <image src='/static/toboat/ticket.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>船票</text>
     </view>
