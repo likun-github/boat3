@@ -20,6 +20,8 @@ Page({
     chooseStatus: 0, //默认大船
     animationData: {}, //动画实例
     datalist: {},
+    buy:false,//是否购买
+
 
 
     judge: [{
@@ -72,6 +74,7 @@ Page({
   },
 
   onShow: function() {
+    this.checkstatus();
     console.log(common.currentData)
     var pic = [];
     pic.push(common.currentData.pic1)
@@ -96,12 +99,17 @@ Page({
 
 
   },
-  // checkstatus:function(){
-  //   for(var i=0;i<common.orderlist.length;i++){
-  //     if(common.currentData.productionid)
-  //   }
+  checkstatus:function(){
+    for(var i=0;i<common.orderlist.length;i++){
+      if(common.currentData.productionid==common.orderlist[i].production_id){
+        this.setData({
+          buy:true,
+        })
+        return 0;
+      }
+    }
 
-  // },//查看是否购买
+  },//查看是否购买
   choose: function(e) {
     this.setData({
       chooseStatus: e.currentTarget.dataset.index,
@@ -109,30 +117,38 @@ Page({
 
   },
   showModal: function() {
-    console.log("真正")
-    // 显示遮罩层
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      chooseBoat: true
-    })
-    // setTimeout(function () {
-    //   animation.translateY(0).step()
-    //   this.setData({
-    //     animationData: animation.export()
-    //   })
-    // }.bind(this), 200)
+    if(this.data.buy){
+      wx.switchTab({
+        url: '/pages/boat/boat',
+      })
+    }
+    else{
+      // 显示遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(300).step()
+      this.setData({
+        animationData: animation.export(),
+        chooseBoat: true
+      })
+      // setTimeout(function () {
+      //   animation.translateY(0).step()
+      //   this.setData({
+      //     animationData: animation.export()
+      //   })
+      // }.bind(this), 200)
 
-    animation.translateY(0).step()
-    this.setData({
-      animationData: animation.export()
-    })
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+
+    }
+   
 
   },
   hideModal: function() {

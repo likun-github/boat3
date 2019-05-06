@@ -145,7 +145,7 @@
       <text>船票</text>
     </view>
     <view class='boat' bindtap='showModal'>
-      <text>我要发船</text>
+      <text>{{buy?'看我的船':'我要发船'}}</text>
     </view>
 
   </view>
