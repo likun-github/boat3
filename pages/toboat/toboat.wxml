@@ -81,7 +81,7 @@
     <view wx:if="{{top}}" class='middletop'>
       <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
       <view class='hline'></view>
-      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论({{length}})</view>
     </view>
 
 
@@ -98,17 +98,18 @@
       </view>
       <view class='judge1'>
         <image src='/static/sq.jpg' style='position:relative;width:60rpx;height:60rpx;'></image>
-        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input"></input>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindblur="gettext"></input>
+        <view class='send' bindtap='sendmessege'>发送</view>
 
       </view>
       
-      <block wx:for="{{judge}}" wx:key="{{judge.id}}">
+      <block wx:for="{{datalist}}" wx:key="{{judge.commentid}}">
       <view class='list'>
-       <image src='{{item.url}}' style='position:relative;width:90rpx;height:90rpx;'></image>
+       <image src='{{item.user__picture}}' style='position:relative;width:90rpx;height:90rpx;'></image>
        <view class='infor'>
-       <text>{{item.title}}</text>
-       <text style=' color: rgba(60, 60, 60,0.4);'>{{item.time}}</text>
-       <text style='width:570rpx;'>{{item.text}}</text>
+       <text>2016-{{item.user__department}}-{{item.user__nickname}}</text>
+       <text style=' color: rgba(60, 60, 60,0.4);'>刚刚</text>
+       <text style='width:570rpx;'>{{item.context}}</text>
        </view>
       </view>
        

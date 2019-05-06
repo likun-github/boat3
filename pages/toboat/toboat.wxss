@@ -231,11 +231,24 @@ margin-left: 675rpx;
 
 input {
   position: relative;
-  width: 500rpx;
+  width: 450rpx;
   height: 60rpx;
   margin-left: 20rpx;
   border-radius: 30rpx;
   background-color: #f3f3f3;
+}
+.send{
+  position: relative;
+  width: 120rpx;
+  height: 60rpx;
+  margin-left: 20rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  background-color:  #f3f3f3;
+  font-size: 30rpx;
+  color: rgba(60, 60, 60, 0.8);
+  line-height: 60rpx;
+
 }
 
 .input {
