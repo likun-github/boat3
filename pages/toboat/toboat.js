@@ -1,6 +1,6 @@
 const util = require('../../utils/util.js');
 var app=getApp();
-
+var common = require('../../common/index.js');
 Page({
 
   /**
@@ -34,71 +34,15 @@ Page({
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '好啊',
-      }, 
-      {
-      "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      }, 
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      }, 
-      {
-       "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
       },
     ],
     likethis:false,
     likers:125,   //心仪的人数
     
+
+    startprice:'',
+    name:'',
+    reputation:'',
   },
 
 
@@ -110,7 +54,12 @@ Page({
    */
 
   onLoad: function(options) {
-
+    console.log(common.currentData)
+    this.setData({
+      startprice:common.currentData.startprice,
+      name:common.currentData.name,
+      reputation:common.currentData.reputation
+    })
   },
 
   onShow: function() {

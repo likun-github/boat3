@@ -25,7 +25,6 @@ Page({
   onLoad: function(options) {
     //每次进入此tab，刷新一次，假装从后台获取了数据
 
-
     this.setData({
       //jsonData.ticketData.js里定义的json数据，并赋值给ticketData
       ticketData: ticketData.ticketData

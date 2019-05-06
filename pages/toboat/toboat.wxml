@@ -13,7 +13,7 @@
         <text style='font-size:32rpx;margin-top:15%;font-weight:500; '>￥</text>
         <text style='font-size:70rpx;margin-top:10%;font-weight:500; '>2750</text>
         <view style=' display: flex;flex-direction: column;font-size:20rpx;font-weight:600;margin-top:13%;margin-left:20rpx; color:white;'>
-          <text style='text-decoration:line-through;'>￥2800</text>
+          <text style='text-decoration:line-through;'>￥{{startprice}}</text>
           <text>本校同舟99人正在拼</text>
 
         </view>
@@ -38,10 +38,10 @@
       </view>
 
       <view class='production_introduction'>
-        <text style='font-size: 35rpx;font-weight:600;'>武汉育才驾校  (普通全包班)</text>
+        <text style='font-size: 35rpx;font-weight:600;'>{{name}}</text>
         <view style='display:flex;flex-direction:row;font-size:18rpx;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
           <text>累计参团997次</text>
-          <text>好评率91.5%</text>
+          <text>好评率{{reputation}}%</text>
           <text>综合排名第1</text>
         </view>
 
