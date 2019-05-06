@@ -1,0 +1,68 @@
+<!--pages/verify/verify.wxml-->
+
+<image src='/static/boat/background.png' style='position:absolute;width:100%;height:100%;filter: blur(40rpx);'></image>
+<image src='/static/icon/Icon3.png' style='position:absolute;left:365rpx;top:120rpx;width:27rpx;height:32rpx;'></image>
+ <text style='position:absolute;left:280rpx;top:160rpx;font-size:50rpx;font-weight:100'>校园认证</text>
+ <text style='position:absolute;left:264rpx;top:240rpx;font-size:28rpx;font-weight:100;opacity:0.5'>本校同舟  共享优惠</text>
+ <text style='position:absolute;left:290rpx;top:280rpx;font-size:28rpx;font-weight:100;opacity:0.3;font-weight:600'>比团购  更优惠</text>
+ <view style='position:absolute;width:99.5%;top:340rpx;height:100rpx;background-color:white; border:1px solid {{t1}};'>
+<input class="input1" name="name"  bindinput='name' ></input>
+<text class='input11'>姓名</text>
+</view>
+<view style='position:absolute;width:99.5%;top:450rpx;height:100rpx;background-color:white; border:1px solid {{t2}};'>
+<input class="input1" name="school" disabled='true'  bindinput='school' value="{{inputValue1}}"></input>
+<text class='input11'>学校</text>
+</view>
+<view style='position:absolute;width:99.5%;top:560rpx;height:100rpx;background-color:white; border:1px solid {{t3}};'>
+
+<scroll-view scroll-y="true" class="scrollview" hidden="{{hideScroll}}" style="{{arrayHeight>340?'height:340rpx':''}}">
+  <view wx:for="{{bindSource}}"> 
+     <view id="{{item}}" bindtap="itemtap" class="itemview">{{item}}</view> 
+      </view>
+      </scroll-view>
+
+<input class="input1" name="yuanxi" value="{{inputValue2}}" bindinput='yuanxi'></input>
+<text class='input11'>院系</text>
+</view>
+<view style='position:absolute;width:99.5%;top:670rpx;height:100rpx;background-color:white;border:1px solid {{t4}};'>
+<input class="input1" name="number" type="digit" bindinput='number'></input>
+<text class='input11'>学号</text>
+</view>
+<view style='position:absolute;width:100%;top:780rpx;height:100rpx;background-color:white;'>
+<input placeholder='请输入手机号' placeholder-class="placeholderStyle" bindinput='bindPhoneInput' class='input' type="digit"/> 
+</view>
+
+<view style='position:absolute;width:100%;top:890rpx;height:100rpx;background-color:white;'>
+<input class='input' placeholder='请输入验证码' bindinput='bindCodeInput' style='width:70%;' placeholder-class="placeholderStyle" /> 
+     <button class='codeBtn' bindtap='getCode' disabled='{{btnDisabled}}'>{{btnValue}}</button>
+</view>
+
+<view class='sub' bindtap='save'>提交审核</view>
+
+<view class="showModule" wx:if="{{isShow}}" >
+
+  <!-- 这部分内容可以灵活修改，例如改成一个模态框 -->
+  <text class="text ">{{text}}</text>
+  <view class='circle' bindtap='cg'>
+  <view class='fanhui'></view>
+  </view>
+</view>
+
+
+
+
+<view class='shade' hidden='{{popup}}' bindtap='backtopages'>
+  <image src='/static/model/check.png' wx:if="{{show_model}}" bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
+</view>
+
+<view wx:if="{{showModel}}" class='container1'>
+  <view class="model">
+    <view class="modelTitle">
+      获取微信授权信息
+    </view>
+    <view class="modelBody">微信登录需要获取您的用户信息，请前往设置</view>
+    <view class="btns">
+      <button open-type="getUserInfo" class="agree" bindgetuserinfo="onGotUserInfo" lang="zh_CN">授权</button>
+    </view>
+  </view>
+</view>

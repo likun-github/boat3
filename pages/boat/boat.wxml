@@ -17,19 +17,19 @@
 
 
 <!-- <view> -->
-<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+<scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}"  wx:if="{{!noticket}}">
   <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">进行中</view>
   <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已结束</view>
 </scroll-view>
 
 
-<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh">
-  <swiper-item wx:for="{{ticketData}}" wx:key="*this1">
+<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh" wx:if="{{!noticket}}">
+  <swiper-item wx:for="{{ticketData[0]}}" wx:key="*this1">
     <scroll-view scroll-y="true" class="scoll-h">
       <block wx:for="{{ticketData}}" wx:key="*this2">
 
         <!-- 这样写好像很消耗内存去渲染，明天修改这个bug -->
-        <view class="item-ans" >
+        <view class="item-ans">
 
           <view class="avatar">
             <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
@@ -56,7 +56,45 @@
           </view>
 
         </view>
-        
+
+
+      </block>
+      <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
+    </scroll-view>
+  </swiper-item>
+  <swiper-item wx:for="{{ticketData[1]}}" wx:key="*this1">
+    <scroll-view scroll-y="true" class="scoll-h">
+      <block wx:for="{{ticketData}}" wx:key="*this2">
+
+        <!-- 这样写好像很消耗内存去渲染，明天修改这个bug -->
+        <view class="item-ans">
+
+          <view class="avatar">
+            <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
+          </view>
+
+          <view class='avatar1'>
+            <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
+          </view>
+
+
+          <view class="expertInfo">
+            <view class="name">{{item.producation_name}}</view>
+            <view class="price">最终票价
+              <text class='price_number' decode="{{true}}">&ensp;{{item.finalprice}}&ensp;</text>元</view>
+            <view class='cut_view'>
+
+
+              <button class='btn_cut' bindtap='team_cut'>砍</button>
+              <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
+
+
+            </view>
+
+          </view>
+
+        </view>
+
 
       </block>
       <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
@@ -64,7 +102,7 @@
   </swiper-item>
 </swiper>
 
-<view class='buy' wx:if="{{overList}}">
+<view class='buy' wx:if="{{overList}}" wx:if="{{!noticket}}">
   <view class='add_allTobuylist' bindtap='add_allTobuylist'>
     <image class="img1" src="{{add_all?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}"></image>
   </view>

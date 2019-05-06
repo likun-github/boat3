@@ -8,7 +8,9 @@
     "pages/test/test",
     "pages/asset/asset",
     "pages/setting/setting",
-    "pages/boat/boat"
+    "pages/boat/boat",
+    "pages/verify/verify"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

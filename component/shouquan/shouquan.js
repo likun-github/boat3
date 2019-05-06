@@ -1,5 +1,5 @@
 // component/shouquan/shouquan.js
-var app=getApp();
+var app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -12,70 +12,98 @@ Component({
    * 组件的初始数据
    */
   data: {
-    hq:true
+    hq: true
 
   },
-ready:function(){
-  var information=wx.getStorageSync('information');
-  console.log(information)
-  if(information){
-    this.setData({
-      hq:false,
-    })
-    app.globalData.nickname=information.nickname;
-    app.globalData.avatarUrl=information.avatarUrl;
-  }
-  else{
-    wx.hideTabBar({})
+  ready: function() {
+    var information = wx.getStorageSync('information');
+    console.log(information)
 
-  }
-  //if(sq!=1)
-  
-},
+    if (information) {
+      this.setData({
+        hq: false,
+      })
+    } else {
+      wx.hideTabBar({})
+    }
+  },
   /**
    * 组件的方法列表
    */
   methods: {
-    preventTouchMove: function (e) {
-    },
+    preventTouchMove: function(e) {},
+
     onGotUserInfo(e) {
-      if(e.detail.errMsg){
-        app.globalData.avatarUrl=e.detail.userInfo.avatarUrl;
-        app.globalData.nickname=e.detail.userInfo.nickName;
+      console.log(e.detail.userInfo)
+      if (e.detail.errMsg) {
+        app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
+        app.globalData.nickname = e.detail.userInfo.nickName;
+        app.globalData.gender = e.detail.userInfo.gender;
+        app.globalData.country = e.detail.userInfo.country;
+        app.globalData.province = e.detail.userInfo.province;
+        app.globalData.city = e.detail.userInfo.city;
+        app.globalData.language = e.detail.userInfo.language;
+
         wx.setStorage({
           key: 'information',
           data: {
-            'avatarUrl':app.globalData.avatarUrl,
-            'nickname':app.globalData.nickname,
+            'avatarUrl': app.globalData.avatarUrl,
+            'nickname': app.globalData.nickname,
+            'gender': e.detail.userInfo.gender,
+            'country': e.detail.userInfo.country,
+            'province': e.detail.userInfo.province,
+            'city': e.detail.userInfo.city,
+            'language': e.detail.userInfo.language,
           },
         })
+
+        var that =this
+        wx.login({
+          success: res => {
+            console.log("微信小程序用户登录：", res)
+            wx.request({
+              url: 'https://xiaoyibang.top:8001/dajia/login',
+              data: {
+                'nickname': app.globalData.nickname,
+                'gender': app.globalData.gender,
+                'code': res.code,
+                'pic': app.globalData.avatarUrl
+              },
+              success: (res) => {
+                console.log("用户信息", res.data)
+                var information = {
+                  'userid': res.data.userid,
+                  'teamname': res.data.team_name,
+                  'name': res.data.name,
+                  'number': res.data.number,
+                  'status': res.data.status,
+                  'nickname': app.globalData.nickname,
+                  'avatarUrl': app.globalData.avatarUrl,
+                  'account': res.data.account,
+                }
+                wx.setStorageSync('information', information)
+                
+              },
+            })
+          }
+        })
+
         this.setData({
-          hq:false,
+          hq: false,
         })
         wx.showTabBar({});
-      }
-      else{
+      } else {
         wx.showModal({
           title: '获取失败',
           content: '',
         })
-
       }
-      //console.log(e.detail.errMsg)
-      // app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
-      // if (e.detail.errMsg){
-      //   this.setData({
-      //         hq:false})
-      //   wx.showTabBar({});
-      //   wx.setStorageSync('pic', e.detail.userInfo.avatarUrl);
-      //   wx.setStorageSync('sq', '1')
-      // }
-      // else {
-      //   wx.showModal({
-      //     title: '获取失败',
-      //     content: '',
-      //   })
-      // }
-    }
+    },
+
+
+
+
+
+
   }
 })
