@@ -14,6 +14,7 @@ App({
 
     this.gethomelist();
     this.getuserinformation();
+    this.getorderlist();
     // 登录
   
   },
@@ -41,17 +42,31 @@ App({
     })
 
   },
+  getorderlist:function(){
+    var that=this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/orderlist',
+      data: {
+        'userid': that.globalData.userid,
+      },
+      success: (res) => {
+        if(res.data.success){
+          common.orderlist = res.data.order;
+
+        }
+       console.log(common.orderlist)
+
+      }
+    })
+
+
+  },
 
 
   //从缓存中提取用户信息
   getuserinformation: function () {
     var information = wx.getStorageSync('information')
-    if (information.status == 0) {
-      this.globalData.status = information.status;
-      this.globalData.userid = information.userid;
-      this.globalData.avatarUrl = information.avatarUrl;
-      this.globalData.nickname = information.nickname;
-    } else {
+    if (information.status == 2) {
       this.globalData.status = information.status;
       this.globalData.userid = information.userid;
       this.globalData.name = information.name;
@@ -59,8 +74,16 @@ App({
       this.globalData.time = information.number;
       this.globalData.teamname = information.teamname;
       this.globalData.account = information.account;
+
     }
-    console.log("用户信息", this.globalData)
+    else{
+      this.globalData.status = information.status;
+      this.globalData.userid = information.userid;
+      this.globalData.avatarUrl = information.avatarUrl;
+      this.globalData.nickname = information.nickname;
+     
+
+    }
   },
 
 

@@ -69,6 +69,7 @@ Component({
                   'avatarUrl': app.globalData.avatarUrl,
                   'account': res.data.account,
                 }
+                
                 wx.setStorage({
                   key: 'information',
                   data: information,
