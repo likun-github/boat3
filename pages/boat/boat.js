@@ -46,20 +46,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-<<<<<<< HEAD
+
     this.setData({
       ticketlist_ing: app.globalData.ticketlist_ing,
       ticketlist_ed: app.globalData.ticketlist_ed
     })
-=======
-   
 
-    // this.setData({
-     
-    //   ticketData: ticketData.ticketData
-    // });
-
->>>>>>> 704f6782adc8def2757a7c0d3b4582abcef7d345
 
 
   },
