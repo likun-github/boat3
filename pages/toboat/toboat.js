@@ -19,9 +19,9 @@ Page({
     animationData: {}, //动画实例
     datalist: {},
     picture_production: [
-      'https://xiaoyibang.top:8002/uploads/photo/4_2WZVla0.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/9_9eMbYEf.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/6_57uxCYM.jpg'
+      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
+      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
     ],
     judge: [{
       "url": "/static/sq.jpg",
@@ -306,6 +306,64 @@ Page({
 
   },
 
+
+buyalone: function(url) {
+    var that = this;
+    wx.request({
+      url: url,
+      data: {
+        "userid": app.globalData.userid,
+        "periodid": common.currentData.periodid,
+      },
+      success: (res) => {
+        common.currentorder.steam_id = res.data.steamid;
+        common.currentorder.orderid = res.data.orderid;
+        app.getorderlist();
+        that.hidePopup(false);
+      }
+    })
+
+
+  },
+  buytogether: function(url) {
+    console.log("运行buytogether")
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8002/dajia/buytogether',
+      data: {
+        "userid": app.globalData.userid,
+        "periodid": common.currentData.periodid,
+        "steamid": that.data.steamid,
+      },
+      success: (res) => {
+
+        if (res.data.success) {
+          common.currentorder.steam_id = res.data.steamid;
+          common.currentorder.orderid = res.data.orderid;
+          that.hidePopup(false);
+          app.getorderlist();
+
+        } else {
+          wx.showToast({ //如果全部加载完成了也弹一个框
+            title: res.data.reason,
+            icon: 'success',
+            duration: 1000
+          });
+          setTimeout(function() {
+            wx.navigateTo({
+              url: "/pages/home/home"
+
+            })
+          }, 850)
+
+        }
+
+
+      }
+    })
+
+
+  },
   //心仪点击后---收藏的功能吧！
   likethisProduction:function(){
     if (!this.data.likethis){

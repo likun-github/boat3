@@ -354,10 +354,7 @@ Page({
           'puserid':that.data.puserid,
           'userid': app.globalData.userid,
           'teamid': that.data.teamid,
-          'name': that.data.name,
-          'number': that.data.number,
-          'department': that.data.yuanxi,
-          'telephone': that.data.phone,
+          'number': that.data.number,       
         },
         success: (res) => {
 
@@ -396,7 +393,7 @@ Page({
   backtopages: function (options) {
     console.log("用户提交审核后触碰页面", options)
     wx.navigateTo({
-      url: '/pages/home/home?index=2'
+      url: '/pages/home/home'
     })
   },
 

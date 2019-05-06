@@ -52,7 +52,7 @@
 
 
 <view class='shade' hidden='{{popup}}' bindtap='backtopages'>
-  <image src='/static/model/check.png' wx:if="{{show_model}}" bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
+  <image src='/static/boat/check.png' wx:if="{{show_model}}" bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
 </view>
 
 <view wx:if="{{showModel}}" class='container1'>
