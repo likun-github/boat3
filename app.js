@@ -50,8 +50,11 @@ App({
         'userid': that.globalData.userid,
       },
       success: (res) => {
-        common.orderlist = res.data;
-        console.log(common.orderlist)
+        if(res.data.success){
+          common.orderlist = res.data.order;
+
+        }
+       console.log(common.orderlist)
 
       }
     })

@@ -96,6 +96,12 @@ Page({
 
 
   },
+  // checkstatus:function(){
+  //   for(var i=0;i<common.orderlist.length;i++){
+  //     if(common.currentData.productionid)
+  //   }
+
+  // },//查看是否购买
   choose: function(e) {
     this.setData({
       chooseStatus: e.currentTarget.dataset.index,
