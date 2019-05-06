@@ -1,6 +1,6 @@
 // pages/class/class.js
 
-
+var app=getApp();
 Page({
 
   /**
@@ -23,13 +23,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //每次进入此tab，刷新一次，假装从后台获取了数据
+   
 
-
-    // this.setData({
-    //   //jsonData.ticketData.js里定义的json数据，并赋值给ticketData
-    //   ticketData: ticketData.ticketData
-    // });
+    this.setData({
+     
+      ticketData: ticketData.ticketData
+    });
 
 
 
@@ -81,7 +80,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/orderlist',
+      data: {
+        "userid": app.globalData.userid,
+       
+      },
+      success: (res) => {
+          console.log(res.data.period)
+          this.setData({
+            ticketData: res.data.period
+          })
+      }
+    })
   },
 
   /**
