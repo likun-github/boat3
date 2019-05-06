@@ -65,16 +65,21 @@ App({
 
 
   globalData: {
+    userid:'',
+    nickname: '',
+    avatarUrl: '',//基本信息
+    gender: 0,
+
+
     name: '',
     teamname: '',
-    time: '',
-    nickname: '',
-    avatarUrl: '',
-    height:'',
-    gender:0,
+    time: '',//认证信息
+    
+    height:'',//屏幕高度
+    
     country:'',
     city:'',
     province:'',
-    language: "zh_CN",
+    language: "zh_CN",//无关信息
   }
 })

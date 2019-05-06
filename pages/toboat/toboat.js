@@ -1,5 +1,5 @@
 const util = require('../../utils/util.js');
-var app=getApp();
+var app = getApp();
 var common = require('../../common/index.js');
 Page({
 
@@ -12,37 +12,51 @@ Page({
    */
 
   data: {
+    url: 'https://xiaoyibang.top:8001/uploads/',
+    url1: 'https://xiaoyibang.top:8001/',
     top: false, //是否置顶
-    chooseinformation: 1, //默认详情
+    chooseinformation: 0, //默认详情
     chooseBoat: false, //我要上船点击
     chooseStatus: 0, //默认大船
     animationData: {}, //动画实例
     datalist: {},
-    picture_production: [
-      'https://xiaoyibang.top:8002/uploads/photo/4_2WZVla0.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/9_9eMbYEf.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/6_57uxCYM.jpg'
-    ],
+
+
     judge: [{
       "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
-      },
-      {
-        "url": "/static/sq.jpg",
-        "title": '2016-艺术-李艮基',
-        'time': '刚刚',
-        'text': '好啊',
-      },
+      "title": '2016-艺术-李艮基',
+      'time': '刚刚',
+      'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
+    },
+    {
+      "url": "/static/sq.jpg",
+      "title": '2016-艺术-李艮基',
+      'time': '刚刚',
+      'text': '好啊',
+    },
     ],
-    likethis:false,
-    likers:125,   //心仪的人数
-    
+    likethis: false,
+    likers: 125,   //心仪的人数
 
-    startprice:'',
-    name:'',
-    reputation:'',
+    pic: [],
+    startprice: '',
+    endprice: '',
+    name: '',
+    number: '',
+    reputation: '',
+    rank: 0,
+    position: '',
+    introduction: '',
+    introductionpic: '',
+    logo: '',
+
+
+
+
+
+
+
+
   },
 
 
@@ -53,26 +67,42 @@ Page({
 
    */
 
-  onLoad: function(options) {
+  onLoad: function (options) {
+
+  },
+
+  onShow: function () {
     console.log(common.currentData)
+    var pic = [];
+    pic.push(common.currentData.pic1)
+    pic.push(common.currentData.pic2)
+    pic.push(common.currentData.pic3)
+    console.log(pic)
     this.setData({
-      startprice:common.currentData.startprice,
-      name:common.currentData.name,
-      reputation:common.currentData.reputation
+      startprice: common.currentData.startprice,
+      endprice: common.currentData.startprice * 0.6,
+      name: common.currentData.name,
+      number: common.currentData.number,
+      reputation: common.currentData.reputation,
+      rank: common.currentData.rank,
+      introduction: common.currentData.introduction,
+      position: common.currentData.merchant__location,
+
+      introductionpic: this.data.url + common.currentData.introductionpic,
+      pic: pic,
+      logo: common.currentData.logo,
     })
-  },
+    console.log(this.data.introductionpic)
 
-  onShow: function() {
- 
 
   },
-  choose: function(e) {
+  choose: function (e) {
     this.setData({
       chooseStatus: e.currentTarget.dataset.index,
     })
 
   },
-  showModal: function() {
+  showModal: function () {
     console.log("真正")
     // 显示遮罩层
     var animation = wx.createAnimation({
@@ -99,7 +129,7 @@ Page({
     })
 
   },
-  hideModal: function() {
+  hideModal: function () {
     // 隐藏遮罩层
     var animation = wx.createAnimation({
       duration: 200,
@@ -111,7 +141,7 @@ Page({
     this.setData({
       animationData: animation.export(),
     })
-    setTimeout(function() {
+    setTimeout(function () {
       animation.translateY(0).step()
       this.setData({
         animationData: animation.export(),
@@ -119,43 +149,43 @@ Page({
       })
     }.bind(this), 200)
   },
-  chooseinformation: function(e) {
+  chooseinformation: function (e) {
     this.setData({
       chooseinformation: e.currentTarget.dataset.index,
     })
 
   },
 
-  scrollnew: function(e) {
-    var height = app.globalData.height*0.65+100;
+  scrollnew: function (e) {
+    var height = app.globalData.height * 0.65 + 100;
     console.log(e.detail.scrollTop)
     if (e.detail.scrollTop > height) {
-      if(!this.data.top){
+      if (!this.data.top) {
         this.setData({
           top: true,
         })
 
       }
-     
+
     } else {
-      if(this.data.top){
+      if (this.data.top) {
         this.setData({
           top: false,
         })
 
       }
-     
+
 
     }
   },
 
-  
-  home: function() {
+
+  home: function () {
     wx.navigateBack({
       delta: 1,
     })
   },
-  gomap:function(){
+  gomap: function () {
     wx.navigateTo({
       url: '/pages/map/map',
     })
@@ -185,7 +215,7 @@ Page({
     return {
       title: '快！和我拼团一起拿返现？',
       path: '/pages/toboat/toboat',
-      
+
       success: function (res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
@@ -196,10 +226,22 @@ Page({
       }
     }
   },
+  buybigboat: function () {
+    var that=this;
+    wx.request({
+      url:that.data.url1+'dajia/buybigboat' ,
+      data:{
+        'userid':app.globalData.userid,
+        'productionid':common.currentData.productionid,
+      }
+    })
+
+  },
 
 
 
-  freebuy:function(){
+  freebuy: function () {
+    console.log("免费登船")
 
     //是否实名认证
     if (app.globalData.status == 0) {
@@ -211,12 +253,12 @@ Page({
       setTimeout(function () {
         wx.navigateTo({
           url: "/pages/verify/verify",
-        }, 1000)
-      })
+        })
+
+      }, 1000)
     } else { //已认证的用户，跳出支付对话框，支付完成后弹出支付完成对话框。点击对话框或关闭后跳转自己的small_boat
       var that = this;
       switch (that.data.status) {
-
         case 1:
           //我要上船
           if (that.data.steamid) {
@@ -239,6 +281,8 @@ Page({
     }
 
 
+
+
     // //增加一张船票
 
     // //假装增加了
@@ -256,19 +300,19 @@ Page({
   },
 
   //心仪点击后---收藏的功能吧！
-  likethisProduction:function(){
-    if (!this.data.likethis){
+  likethisProduction: function () {
+    if (!this.data.likethis) {
       this.setData({
         likethis: true,
         likers: this.data.likers + 1
       })
-    }else{
+    } else {
       this.setData({
         likethis: false,
-        likers: this.data.likers -1 
+        likers: this.data.likers - 1
       })
     }
-   
+
   }
 
 

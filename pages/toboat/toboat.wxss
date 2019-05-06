@@ -148,10 +148,11 @@ margin-left:8rpx;
 }
 
 .middle2 .right {
-  position:relative;
+  position:absolute;
 width:50rpx;
 height:30rpx;
 margin-top:37rpx;
+margin-left: 675rpx;
 
 }
 
