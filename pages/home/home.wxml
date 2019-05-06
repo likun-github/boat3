@@ -95,7 +95,7 @@
 
 
 <view class="producation_display" wx:for="{{showData}}" wx:key="unique">
-  <view class='item_column' bindtap='to_producation_page' data-id="{{item.productionid}}">
+  <view class='item_column' bindtap='to_producation_page'  data-id="{{item.productionid}}">
     <image class='producation_pic' src='{{url+item.logo}}' mode='scaleToFill'></image>
     <view class='item_column_1'>
       <view style='font-size:34rpx;'>

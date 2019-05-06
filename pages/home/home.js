@@ -137,13 +137,16 @@ Page({
 
 
   to_producation_page: function(e) {
+    var id =new Array();
+    id.push(e.currentTarget.dataset.id) ;
     for(var i=0;i<common.homelist.length;i++){
-      if(common.homelist[i].productionid==e.target.dataset.id){
-        common.currentData=common.homelist;
+      if(common.homelist[i].productionid==id){
+        common.currentData=common.homelist[i];
       }
     }
+
     wx.navigateTo({
-      url: '/pages/toboat/toboat',
+      url: '/pages/toboat/toboat'
     })
     
    
