@@ -1,98 +1,65 @@
 // pages/class/class.js
-
-var app=getApp();
+var common = require("../../common/index.js")
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    noticket: true, //没有船票显示引导购买
+    ticketData: [],
+    noticket: false, //没有船票显示引导购买
     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
-    ticketlist_ed:[],     // 已结束的船票的数据（完成/取消）
+    ticketlist_ed: [], // 已结束的船票的数据（完成/取消）
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    added:false,
-    add_all:false,
-    overList:true,   //是否展示购买的底层按钮view
-    ticket_number:6,    //船票数量
+    added: false,
+    add_all: false,
+    overList: true, //是否展示购买的底层按钮view
+    ticket_number: 6, //船票数量
+
+    // items:[
+    //  {'content' :12,
+    //     'answer' :'54',
+    //     'description':'sa定位',},
+    //   {
+    //     'content': 12,
+    //     'answer': '54',
+    //     'description': 'sa定位',
+    //   },
+    //   {
+    //     'content': 12,
+    //     'answer': '54',
+    //     'description': 'sa定位',
+    //   },
+    //   {
+    //     'content': 12,
+    //     'answer': '54',
+    //     'description': 'sa定位',
+    //   },
+    //   ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-   
-
     this.setData({
-     
-      ticketData: ticketData.ticketData
-    });
+      ticketlist_ing: app.globalData.ticketlist_ing,
+      ticketlist_ed: app.globalData.ticketlist_ed
+    })
 
 
-
-    // var temp1 = []
-    // var temp2 = []
-    // for(var i =0;i<this.data.ticketData.length;i++)
-    // {
-    //   if(this.data.ticketData[i].state==0)//  订单正在进行的话
-    //   {
-    //     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
-    //       ticketlist_ed
-    //     temp1.push(this.data.ticketData[i])
-    //   }
-    //   else
-    //   {
-    //     temp2.push(this.data.ticketData[i])
-    //   }
-    // }
-    // this.data.ticketData=[]
-    // this.data.ticketData.push(temp1)
-    // this.data.ticketData.push(temp2)
-
-
-    // console.log("获取的产品详情ticketData：", this.data.ticketData)
-    // if (this.data.ticketData != null) {
-    //   this.setData({
-    //     noticket: false
-    //   })
-    // }
-    // console.log(this.data.noticket)
-
-    // var that = this;
-    // //  高度自适应
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     var clientHeight = res.windowHeight,
-    //       clientWidth = res.windowWidth,
-    //       rpxR = 750 / clientWidth;
-    //     var calc = clientHeight * rpxR - 180;
-    //     console.log(calc)
-    //     that.setData({
-    //       winHeight: calc
-    //     });
-    //   }
-    // });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    wx.request({
-      url: 'https://xiaoyibang.top:8001/dajia/orderlist',
-      data: {
-        "userid": app.globalData.userid,
-       
-      },
-      success: (res) => {
-          console.log(res.data.period)
-          this.setData({
-            ticketData: res.data.period
-          })
-      }
-    })
+    
+
   },
 
   /**
@@ -154,11 +121,11 @@ Page({
   switchTab: function(e) {
     this.setData({
       currentTab: e.detail.current,
-       overList: !this.data.overList
+      overList: !this.data.overList
     });
-    console.log("now:tab",this.data.currentTab)
+    console.log("now:tab", this.data.currentTab)
     this.checkCor();
-  
+
   },
 
 
@@ -185,29 +152,29 @@ Page({
       })
     }
   },
- 
-  look_ticker:function(){
+
+  look_ticker: function() {
     wx.navigateTo({
-      url:"/pages/tickets/tickets"
+      url: "/pages/tickets/tickets"
     })
   },
 
 
-  addtobuylist:function(){
-    
+  addtobuylist: function() {
+
     this.setData({
-      added:!this.data.added
+      added: !this.data.added
     })
   },
 
 
-  team_cut:function(){
+  team_cut: function() {
     wx.navigateTo({
       url: '/pages/teamcut/teamcut',
     })
   },
 
-  add_allTobuylist:function(){
+  add_allTobuylist: function() {
     this.setData({
       add_all: !this.data.add_all,
       added: !this.data.added

@@ -54,13 +54,42 @@ App({
           common.orderlist = res.data.order;
 
         }
-       console.log(common.orderlist)
-
+       console.log("用户的订单:",common.orderlist)
+        that.orderClassify()  
       }
     })
 
 
+
   },
+
+
+
+  orderClassify: function (){
+    var ticketData=common.orderlist
+    for (var i = 0; i <ticketData.length; i++) {
+      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
+        //  订单正在进行的话
+        //（1"预付完成"),
+        // (2"拼团完成"),
+        this.globalData.ticketlist_ing.push(ticketData[i])
+      }
+      else {
+        // (0, "订单取消"),
+        // (3, "支付完成"),
+        // (4, "订单完成"),
+        // (5, "评价完成"),
+        this.globalData.ticketlist_ed.push(ticketData[i])
+      }
+    }
+    // console.log("重新分组的船票ticketData--")
+    // console.log("ing:", this.globalData.ticketlist_ing)
+    // console.log("ed:", this.globalData.ticketlist_ed)
+  
+  
+  },
+  
+
 
 
   //从缓存中提取用户信息
@@ -104,5 +133,9 @@ App({
     city:'',
     province:'',
     language: "zh_CN",//无关信息
+
+
+    ticketlist_ing:[],
+    ticketlist_ed:[],
   }
 })
