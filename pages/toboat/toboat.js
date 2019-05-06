@@ -19,8 +19,10 @@ Page({
     chooseBoat: false, //我要上船点击
     chooseStatus: 0, //默认大船
     animationData: {}, //动画实例
-    datalist: {},
+    datalist: {},//评论列表
     buy:false,//是否购买
+    text:'',//评论
+    length:0,//评论条数
 
 
 
@@ -95,8 +97,59 @@ Page({
       pic: pic,
       logo: common.currentData.logo,
     })
-    console.log(this.data.introductionpic)
+   this.getcomment();
 
+
+  },
+  getcomment:function(){
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/firstcomment',
+      data: {
+        'productionid': common.currentData.productionid,
+      },
+      success: (res) => {
+       console.log(res.data.data)
+       if(res.data.data==100){
+         this.setData({
+           length:999,
+         })
+
+       }
+       else{
+         this.setData({
+           length:res.data.data.length,
+         })
+       }
+       this.setData({
+         datalist:res.data.data,
+       })
+
+      }
+    })
+
+  },
+  gettext:function(e){
+    console.log(e.detail)
+    this.setData({
+      text:e.detail.value,
+    })
+
+  },
+  sendmessege:function(){
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/comment',
+      data: {
+        'productionid': common.currentData.productionid,
+        'userid':app.globalData.userid,
+        'context':that.data.text,
+      },
+      success: (res) => {
+       that.getcomment();
+
+      }
+    })
 
   },
   checkstatus:function(){
@@ -205,6 +258,12 @@ Page({
     wx.navigateBack({
       delta: 1,
     })
+  },
+  ticket:function(){
+    wx.switchTab({
+      url: '/pages/boat/boat',
+    })
+
   },
   gomap: function() {
     wx.navigateTo({
