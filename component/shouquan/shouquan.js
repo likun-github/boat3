@@ -54,7 +54,8 @@ Component({
                 'nickname': app.globalData.nickname,
                 'gender': app.globalData.gender,
                 'code': res.code,
-                'pic': app.globalData.avatarUrl
+                'pic': app.globalData.avatarUrl,
+                'userid': app.globalData.userid,
               },
               success: (res) => {
                 console.log("用户信息", res.data)
