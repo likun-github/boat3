@@ -141,7 +141,7 @@ Page({
         'steamid': steamid,
       },
       success: (res) => {
-        console.log(res.data)
+        
         common.onecut = res.data.onecut;
         that.setData({
           onecut: res.data.onecut,
@@ -470,12 +470,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function (options) {
-    // var price = this.data.period.period__startprice - this.data.cutprice - this.data.period.period__cutprice
-    // price = price.toFixed(2)
-    // this.setData({
-    //   realprice: price
-    // })
-    // console.log(this.data.realprice, "realprice---")
+  
   },
 
   /**
