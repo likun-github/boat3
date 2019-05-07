@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "BOAT校园",
-  "usingComponents": {}
+  "usingComponents": {
+    "sq": "../../component/shouquan/shouquan"
+  }
 }

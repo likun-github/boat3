@@ -1,5 +1,5 @@
 const util = require('../../utils/util.js');
-var app=getApp();
+var app = getApp();
 var common = require('../../common/index.js');
 Page({
 
@@ -12,19 +12,22 @@ Page({
    */
 
   data: {
+    url: 'https://xiaoyibang.top:8001/uploads/',
+    url1: 'https://xiaoyibang.top:8001/',
     top: false, //是否置顶
-    chooseinformation: 1, //默认详情
+    chooseinformation: 0, //默认详情
     chooseBoat: false, //我要上船点击
     chooseStatus: 0, //默认大船
     animationData: {}, //动画实例
-    datalist: {},
-    picture_production: [
-      'https://xiaoyibang.top:8002/uploads/photo/4_2WZVla0.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/9_9eMbYEf.jpg',
-      'https://xiaoyibang.top:8002/uploads/photo/6_57uxCYM.jpg'
-    ],
+    datalist: {},//评论列表
+    buy:false,//是否购买
+    text:'',//评论
+    length:0,//评论条数
+
+
+
     judge: [{
-      "url": "/static/sq.jpg",
+        "url": "/static/sq.jpg",
         "title": '2016-艺术-李艮基',
         'time': '刚刚',
         'text': '太牛逼了BOAT,我的小船邀请码是 AD528  快来和我一起便宜吧',
@@ -36,13 +39,28 @@ Page({
         'text': '好啊',
       },
     ],
-    likethis:false,
-    likers:125,   //心仪的人数
-    
+    likethis: false,
+    likers: 125, //心仪的人数
 
-    startprice:'',
-    name:'',
-    reputation:'',
+    pic: [],
+    startprice: '',
+    endprice: '',
+    name: '',
+    number: '',
+    reputation: '',
+    rank: 0,
+    position: '',
+    introduction: '',
+    introductionpic: '',
+    logo: '',
+
+
+
+
+
+
+
+
   },
 
 
@@ -54,18 +72,116 @@ Page({
    */
 
   onLoad: function(options) {
-    console.log(common.currentData)
-    this.setData({
-      startprice:common.currentData.startprice,
-      name:common.currentData.name,
-      reputation:common.currentData.reputation
-    })
+
   },
 
   onShow: function() {
- 
+    this.checkstatus();
+    console.log(common.currentData)
+    var pic = [];
+    pic.push(common.currentData.pic1)
+    pic.push(common.currentData.pic2)
+    pic.push(common.currentData.pic3)
+    console.log(pic)
+    this.setData({
+      startprice: common.currentData.startprice,
+      endprice: common.currentData.startprice * 0.6,
+      name: common.currentData.name,
+      number: common.currentData.number,
+      reputation: common.currentData.reputation,
+      rank: common.currentData.rank,
+      introduction: common.currentData.introduction,
+      position: common.currentData.merchant__location,
+
+      introductionpic: this.data.url + common.currentData.introductionpic,
+      pic: pic,
+      logo: common.currentData.logo,
+    })
+   this.getcomment();
+
 
   },
+  getcomment:function(){
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/firstcomment',
+      data: {
+        'productionid': common.currentData.productionid,
+      },
+      success: (res) => {
+       console.log(res.data.data)
+       if(res.data.data==100){
+         this.setData({
+           length:999,
+         })
+
+       }
+       else{
+         this.setData({
+           length:res.data.data.length,
+         })
+       }
+       this.setData({
+         datalist:res.data.data,
+       })
+
+      }
+    })
+
+  },
+  gettext:function(e){
+    console.log(e.detail)
+    this.setData({
+      text:e.detail.value,
+    })
+
+  },
+  sendmessege:function(){
+    var that = this;
+    if(app.globalData.status==2){
+      wx.request({
+        url: 'https://xiaoyibang.top:8001/dajia/comment',
+        data: {
+          'productionid': common.currentData.productionid,
+          'userid': app.globalData.userid,
+          'context': that.data.text,
+        },
+        success: (res) => {
+          that.getcomment();
+
+        }
+      })
+
+
+    }
+    else{
+      wx.showToast({
+        title: '实名认证完成才可自由评论哦',
+        duration: 1000,
+        icon: 'loading',
+      })
+      setTimeout(function () {
+        wx.navigateTo({
+          url: "/pages/verify/verify",
+        })
+
+      }, 1000)
+
+    }
+   
+    
+  },
+  checkstatus:function(){
+    for(var i=0;i<common.orderlist.length;i++){
+      if(common.currentData.productionid==common.orderlist[i].production_id){
+        this.setData({
+          buy:true,
+        })
+        return 0;
+      }
+    }
+
+  },//查看是否购买
   choose: function(e) {
     this.setData({
       chooseStatus: e.currentTarget.dataset.index,
@@ -73,30 +189,38 @@ Page({
 
   },
   showModal: function() {
-    console.log("真正")
-    // 显示遮罩层
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      chooseBoat: true
-    })
-    // setTimeout(function () {
-    //   animation.translateY(0).step()
-    //   this.setData({
-    //     animationData: animation.export()
-    //   })
-    // }.bind(this), 200)
+    if(this.data.buy){
+      wx.switchTab({
+        url: '/pages/boat/boat',
+      })
+    }
+    else{
+      // 显示遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(300).step()
+      this.setData({
+        animationData: animation.export(),
+        chooseBoat: true
+      })
+      // setTimeout(function () {
+      //   animation.translateY(0).step()
+      //   this.setData({
+      //     animationData: animation.export()
+      //   })
+      // }.bind(this), 200)
 
-    animation.translateY(0).step()
-    this.setData({
-      animationData: animation.export()
-    })
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+
+    }
+   
 
   },
   hideModal: function() {
@@ -127,42 +251,47 @@ Page({
   },
 
   scrollnew: function(e) {
-    var height = app.globalData.height*0.65+100;
+    var height = app.globalData.height * 0.65 + 100;
     console.log(e.detail.scrollTop)
     if (e.detail.scrollTop > height) {
-      if(!this.data.top){
+      if (!this.data.top) {
         this.setData({
           top: true,
         })
 
       }
-     
+
     } else {
-      if(this.data.top){
+      if (this.data.top) {
         this.setData({
           top: false,
         })
-
       }
-     
+
 
     }
   },
 
-  
+
   home: function() {
     wx.navigateBack({
       delta: 1,
     })
   },
-  gomap:function(){
+  ticket:function(){
+    wx.switchTab({
+      url: '/pages/boat/boat',
+    })
+
+  },
+  gomap: function() {
     wx.navigateTo({
       url: '/pages/map/map',
     })
   },
 
 
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target.id)
@@ -172,10 +301,10 @@ Page({
         return {
           title: '快！和我拼团一起拿返现？',
           path: '/pages/toboat/toboat',
-          success: function (res) {
+          success: function(res) {
             // 转发成功
           },
-          fail: function (res) {
+          fail: function(res) {
             // 转发失败
           }
         }
@@ -185,21 +314,62 @@ Page({
     return {
       title: '快！和我拼团一起拿返现？',
       path: '/pages/toboat/toboat',
-      
-      success: function (res) {
+
+      success: function(res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
         console.log("转发失败:" + JSON.stringify(res));
       }
     }
   },
+  buybigboat: function() {
+    var that = this;
+    wx.request({
+      url: that.data.url1 + 'dajia/buybigboat',
+      data: {
+        'userid': app.globalData.userid,
+        'productionid': common.currentData.productionid,
+      },
+      success: (res) => {
+        console.log(res.data);
+        app.getorderlist();
+        wx.switchTab({
+          url: '/pages/boat/boat',
+        });
+
+
+      },
+    })
+
+  },
+  buysmallboat:function(){
+    var that = this;
+    wx.request({
+      url: that.data.url1 + 'dajia/buysmallboat',
+      data: {
+        'userid': app.globalData.userid,
+        'productionid': common.currentData.productionid,
+      },
+      success: (res) => {
+        console.log(res.data)
+         app.getorderlist();
+         wx.switchTab({
+           url: '/pages/boat/boat',
+         });
+     
+
+      },
+    })
+
+  },
 
 
 
-  freebuy:function(){
+  freebuy: function() {
+    console.log("免费登船")
 
     //是否实名认证
     if (app.globalData.status == 0) {
@@ -208,35 +378,22 @@ Page({
         duration: 1000,
         icon: 'loading',
       })
-      setTimeout(function () {
+      setTimeout(function() {
         wx.navigateTo({
           url: "/pages/verify/verify",
-        }, 1000)
-      })
+        })
+
+      }, 1000)
     } else { //已认证的用户，跳出支付对话框，支付完成后弹出支付完成对话框。点击对话框或关闭后跳转自己的small_boat
       var that = this;
-      switch (that.data.status) {
-
-        case 1:
-          //我要上船
-          if (that.data.steamid) {
-            that.buytogether(this.data.url + '/dajia/buytogether')
-          } else {
-            that.buyalone(this.data.url + '/dajia/buyalone');
-
-          }
-
-          break;
-        case 2:
-          //看我的船
-          wx.navigateTo({
-            url: "/pages/teamcut/teamcut?steamid=" + common.currentorder.steam_id + '&orderid=' + common.currentorder.orderid +
-              '&avatarUrl=' + app.globalData.avatarUrl + '&nickname=' + app.globalData.nickname + '&userid=' + app.globalData.userid
-          })
-          break;
-
+      if (this.data.chooseStatus == 0) {
+        this.buybigboat();
+      } else {
+        this.buysmallboat();
       }
     }
+
+
 
 
     // //增加一张船票
@@ -256,19 +413,19 @@ Page({
   },
 
   //心仪点击后---收藏的功能吧！
-  likethisProduction:function(){
-    if (!this.data.likethis){
+  likethisProduction: function() {
+    if (!this.data.likethis) {
       this.setData({
         likethis: true,
         likers: this.data.likers + 1
       })
-    }else{
+    } else {
       this.setData({
         likethis: false,
-        likers: this.data.likers -1 
+        likers: this.data.likers - 1
       })
     }
-   
+
   }
 
 

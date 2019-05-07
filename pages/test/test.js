@@ -1,88 +1,55 @@
 Page({
-
-  /**
-
-   * 页面的初始数据
-
-   * Linyufan.com
-
-   */
-
   data: {
-
-    text: "这是一条测试公告，看看效果怎么样，2019年3月23日",
-
-    marqueePace: 1, //滚动速度
-
-    marqueeDistance: 0, //初始滚动距离
-
-    marquee_margin: 30,
-
-    size: 14,
-
-    interval: 20 // 时间间隔
-
+    items: [{
+      name: 'USA',
+      value: '美国',
+      checked: false
+    }, {
+      name: 'CHN',
+      value: '美国',
+      checked: true
+    }, {
+      name: 'BRA',
+      value: '巴西',
+      checked: false
+    }, {
+      name: 'JPN',
+      value: '日本',
+      checked: false
+    }, {
+      name: 'ENG',
+      value: '英国',
+      checked: false
+    }, {
+      name: 'FRA',
+      value: '法国',
+      checked: false
+    }, ],
+    aa: 'CHN'
   },
-
-
-
-  /**
-
-   * 生命周期函数--监听页面加载
-
-   */
-
-  onLoad: function(options) {
-
-  },
-
-  onShow: function() {
-
-    var that = this;
-
-    var length = that.data.text.length * that.data.size; //文字长度
-
-    var windowWidth = wx.getSystemInfoSync().windowWidth; // 屏幕宽度
-
-    //console.log(length,windowWidth);
-
-    that.setData({
-
-      length: length,
-
-      windowWidth: windowWidth
-
-    });
-
-    that.scrolltxt(); // 第一个字消失后立即从右边出现
-
-  },
-
-
-
-  scrolltxt: function() {
-    var that = this;
-    var length = that.data.length; //滚动文字的宽度
-    var windowWidth = that.data.windowWidth; //屏幕宽度
-  
-    if (length > windowWidth) {
-      var interval = setInterval(function() {
-        var maxscrollwidth = length + that.data.marquee_margin; //滚动的最大宽度，文字宽度+间距，如果需要一行文字滚完后再显示第二行可以修改marquee_margin值等于windowWidth即可
-        var crentleft = that.data.marqueeDistance;
-        console.log(crentleft, maxscrollwidth)
-          that.setData({
-
-            marqueeDistance: crentleft + that.data.marqueePace
-          })
-      }, that.data.interval);
-
-    } else {
-      that.setData({
-        marquee_margin: "1000"
-      }); //只显示一条不滚动右边间距加大，防止重复显示
-
+  bindtap1: function(e) {
+    var items = this.data.items;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].name == this.data.aa) {
+        for (var j = 0; j < items.length; j++) {
+          // console.log("items[j].checked = ", items[j].checked);          
+          if (items[j].checked && j != i) {
+            items[j].checked = false;
+          }
+        }
+        items[i].checked = !(items[i].checked);
+        console.log("-----:", items);
+        // this.setData(this.data.items[i]); 
+      }
     }
-
+    this.setData({
+      items: items
+    });
+  },
+  radioChange: function(e) {
+    // for(var i = 0;i<this.data.items.length;i++){  
+    //   if (this.data.items[i].checked){  //     // console.log('radio发生change事件，携带value值为：', this.data.items[i].name)  //   }  // }    
+    this.data.aa = e.detail.value;
+    console.log(this.data.aa);
   }
-
 })

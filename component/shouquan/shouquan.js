@@ -12,20 +12,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    hq: true
+    hq: false,
 
   },
   ready: function() {
-    var information = wx.getStorageSync('information');
-    console.log(information)
-
-    if (information) {
-      this.setData({
-        hq: false,
-      })
-    } else {
-      wx.hideTabBar({})
+    if(app.globalData.login){
+      return ''
     }
+    else{
+      this.setData({
+        hq:true,
+      })
+      wx.hideTabBar({});
+    }
+    
+    
   },
   /**
    * 组件的方法列表
@@ -38,25 +39,12 @@ Component({
       if (e.detail.errMsg) {
         app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
         app.globalData.nickname = e.detail.userInfo.nickName;
+        //无关信息
         app.globalData.gender = e.detail.userInfo.gender;
         app.globalData.country = e.detail.userInfo.country;
         app.globalData.province = e.detail.userInfo.province;
         app.globalData.city = e.detail.userInfo.city;
         app.globalData.language = e.detail.userInfo.language;
-
-        wx.setStorage({
-          key: 'information',
-          data: {
-            'avatarUrl': app.globalData.avatarUrl,
-            'nickname': app.globalData.nickname,
-            'gender': e.detail.userInfo.gender,
-            'country': e.detail.userInfo.country,
-            'province': e.detail.userInfo.province,
-            'city': e.detail.userInfo.city,
-            'language': e.detail.userInfo.language,
-          },
-        })
-
         var that =this
         wx.login({
           success: res => {
@@ -67,7 +55,8 @@ Component({
                 'nickname': app.globalData.nickname,
                 'gender': app.globalData.gender,
                 'code': res.code,
-                'pic': app.globalData.avatarUrl
+                'pic': app.globalData.avatarUrl,
+                'userid': app.globalData.userid,
               },
               success: (res) => {
                 console.log("用户信息", res.data)
@@ -81,8 +70,11 @@ Component({
                   'avatarUrl': app.globalData.avatarUrl,
                   'account': res.data.account,
                 }
-                wx.setStorageSync('information', information)
                 
+                wx.setStorage({
+                  key: 'information',
+                  data: information,
+                })      
               },
             })
           }

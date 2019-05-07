@@ -14,6 +14,7 @@ App({
 
     this.gethomelist();
     this.getuserinformation();
+    this.getorderlist();
     // 登录
   
   },
@@ -41,17 +42,78 @@ App({
     })
 
   },
+  getorderlist:function(){
+    var that=this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/orderlist',
+      data: {
+        'userid': that.globalData.userid,
+      },
+      success: (res) => {
+        if(res.data.success){
+          common.orderlist = res.data.order;
+
+        }
+       console.log("用户的订单:",common.orderlist)
+        that.orderClassify()  
+      }
+    })
+
+
+
+  },
+
+
+
+  orderClassify: function (){
+    var ticketData=common.orderlist
+    for (var i = 0; i <ticketData.length; i++) {
+      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
+        //  订单正在进行的话
+        //（1"预付完成"),
+        // (2"拼团完成"),
+        this.globalData.ticketlist_ing.push(ticketData[i])
+
+      }
+      else {
+        // (0, "订单取消"),
+        // (3, "支付完成"),
+        // (4, "订单完成"),
+        // (5, "评价完成"),
+        this.globalData.ticketlist_ed.push(ticketData[i])
+      }
+    }
+    // console.log("重新分组的船票ticketData--")
+    // console.log("ing:", this.globalData.ticketlist_ing)
+    // console.log("ed:", this.globalData.ticketlist_ed)
+    for (var i = 0; i < this.globalData.ticketlist_ing.length; i++) {
+      this.globalData.ticketlist_ing[i].added = false
+    }
+    
+  },
+  
+
 
 
   //从缓存中提取用户信息
   getuserinformation: function () {
     var information = wx.getStorageSync('information')
-    if (information.status == 0) {
-      this.globalData.status = information.status;
-      this.globalData.userid = information.userid;
-      this.globalData.avatarUrl = information.avatarUrl;
-      this.globalData.nickname = information.nickname;
-    } else {
+
+    if (information) {
+      this.globalData.login=true;
+    //   this.setData({
+    //     hq: false,
+    //   })
+    // } else {
+    //   wx.hideTabBar({})
+    }
+    else
+    {
+      this.globalData.login=false;
+    }
+    if (information.status == 2) {
+
+      this.globalData.nickname=information.nickname;
       this.globalData.status = information.status;
       this.globalData.userid = information.userid;
       this.globalData.name = information.name;
@@ -59,22 +121,40 @@ App({
       this.globalData.time = information.number;
       this.globalData.teamname = information.teamname;
       this.globalData.account = information.account;
+
     }
-    console.log("用户信息", this.globalData)
+    else{
+      this.globalData.status = information.status;
+      this.globalData.userid = information.userid;
+      this.globalData.avatarUrl = information.avatarUrl;
+      this.globalData.nickname = information.nickname;
+     
+
+    }
   },
 
 
   globalData: {
+    login:'',//是否登陆
+    userid:'',
+    nickname: '',
+    avatarUrl: '',//基本信息
+    gender: 0,
+
+    account:'',
     name: '',
     teamname: '',
-    time: '',
-    nickname: '',
-    avatarUrl: '',
-    height:'',
-    gender:0,
+    time: '',//认证信息
+    
+    height:'',//屏幕高度
+    
     country:'',
     city:'',
     province:'',
-    language: "zh_CN",
+    language: "zh_CN",//无关信息
+
+
+    ticketlist_ing:[],
+    ticketlist_ed:[],
   }
 })

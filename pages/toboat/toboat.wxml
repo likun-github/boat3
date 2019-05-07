@@ -1,7 +1,7 @@
 <view class="container">
   <scroll-view scroll-y class='scroll' upper-threshold="1 " bindscroll="scrollnew">
     <swiper class="swiper" autoplay="true" interval="5000" duration="1000">
-      <block wx:for="{{picture_production}}" wx:for-item="item" wx:key="picture_production">
+      <block wx:for="{{pic}}" wx:for-item="item" wx:key="picture_production">
         <swiper-item>
           <image src="{{url+item}}" class="slide-image" mode="aspectFill" />
         </swiper-item>
@@ -11,9 +11,9 @@
       <image style='position:absolute;width:100%;height:100%;' src='/static/toboat/lang.svg'></image>
       <view class='content'>
         <text style='font-size:32rpx;margin-top:15%;font-weight:500; '>￥</text>
-        <text style='font-size:70rpx;margin-top:10%;font-weight:500; '>2750</text>
+        <text style='font-size:70rpx;margin-top:10%;font-weight:500; '>{{startprice}}</text>
         <view style=' display: flex;flex-direction: column;font-size:20rpx;font-weight:600;margin-top:13%;margin-left:20rpx; color:white;'>
-          <text style='text-decoration:line-through;'>￥{{startprice}}</text>
+          <text style='text-decoration:line-through;'>￥{{endprice}}</text>
           <text>本校同舟99人正在拼</text>
 
         </view>
@@ -33,16 +33,16 @@
       <view class='rank'>
         <image src='/static/toboat/rank.svg' style='position:absolute;width:100%;height:100%;'></image>
         <text style='position:absolute;font-size:12rpx;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
-        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 50rpx;'>1</text>
+        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 50rpx;'>{{rank}}</text>
 
       </view>
 
       <view class='production_introduction'>
         <text style='font-size: 35rpx;font-weight:600;'>{{name}}</text>
         <view style='display:flex;flex-direction:row;font-size:18rpx;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
-          <text>累计参团997次</text>
+          <text>累计参团{{number}}次</text>
           <text>好评率{{reputation}}%</text>
-          <text>综合排名第1</text>
+          <text>综合排名第{{rank}}</text>
         </view>
 
       </view>
@@ -60,9 +60,9 @@
 
 
     <view class='middle2' bindtap='gomap'>
-      <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> 武昌区二七长江大桥 距离武汉大学3.3km</text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'>地图</text>
+      <text style='font-size: 24rpx;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:100rpx;'> {{position}}3.3km</text>
+      <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;margin-left:625rpx;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
     <view class='line'></view>
@@ -70,27 +70,24 @@
 
     <view class='middle2'>
       <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>标签  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> 距离武大最近  2次补考机会  40次车接车送</text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> {{introduction}}</text>
     </view>
     <view class='line'></view>
     <view class='middle2'>
       <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
       <view class='hline'></view>
-      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论({{length}})</view>
     </view>
     <view wx:if="{{top}}" class='middletop'>
       <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
       <view class='hline'></view>
-      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论(2)</view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论({{length}})</view>
     </view>
 
 
 
     <view wx:if="{{chooseinformation==0}}">
-      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
-      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
-      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
-      <image src='/static/t14.png' style='position:relative;width:750rpx;height:500rpx;'></image>
+      <image src='{{introductionpic}}' style='position:relative;width:750rpx;height:1500rpx;'></image>
     </view>
     <view wx:if="{{chooseinformation==1}}">
       <image bindtap='likethisProduction' src="{{likethis?'/static/toboat/hearted.svg':'/static/toboat/heart.svg'}}" class='heart'></image>
@@ -101,17 +98,18 @@
       </view>
       <view class='judge1'>
         <image src='/static/sq.jpg' style='position:relative;width:60rpx;height:60rpx;'></image>
-        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input"></input>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindblur="gettext"></input>
+        <view class='send' bindtap='sendmessege'>发送</view>
 
       </view>
       
-      <block wx:for="{{judge}}" wx:key="{{judge.id}}">
+      <block wx:for="{{datalist}}" wx:key="{{judge.commentid}}">
       <view class='list'>
-       <image src='{{item.url}}' style='position:relative;width:90rpx;height:90rpx;'></image>
+       <image src='{{item.user__picture}}' style='position:relative;width:90rpx;height:90rpx;'></image>
        <view class='infor'>
-       <text>{{item.title}}</text>
-       <text style=' color: rgba(60, 60, 60,0.4);'>{{item.time}}</text>
-       <text style='width:570rpx;'>{{item.text}}</text>
+       <text>2016-{{item.user__department}}-{{item.user__nickname}}</text>
+       <text style=' color: rgba(60, 60, 60,0.4);'>刚刚</text>
+       <text style='width:570rpx;'>{{item.context}}</text>
        </view>
       </view>
        
@@ -139,16 +137,17 @@
       <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>首页</text>
     </view>
-    <view class='icon1'>
+    <button class='contact' open-type='contact'></button>
+    <view class='icon1' style=' pointer-events: none;'>
       <image src='/static/toboat/contact.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>咨询</text>
     </view>
-    <view class='icon1'>
+    <view class='icon1' bindtap='ticket'>
       <image src='/static/toboat/ticket.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>船票</text>
     </view>
     <view class='boat' bindtap='showModal'>
-      <text>我要发船</text>
+      <text>{{buy?'看我的船':'我要发船'}}</text>
     </view>
 
   </view>
