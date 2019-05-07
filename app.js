@@ -95,7 +95,22 @@ App({
   //从缓存中提取用户信息
   getuserinformation: function () {
     var information = wx.getStorageSync('information')
+
+    if (information) {
+      this.globalData.login=true;
+    //   this.setData({
+    //     hq: false,
+    //   })
+    // } else {
+    //   wx.hideTabBar({})
+    }
+    else
+    {
+      this.globalData.login=false;
+    }
     if (information.status == 2) {
+
+      this.globalData.nickname=information.nickname;
       this.globalData.status = information.status;
       this.globalData.userid = information.userid;
       this.globalData.name = information.name;
@@ -117,6 +132,7 @@ App({
 
 
   globalData: {
+    login:'',//是否登陆
     userid:'',
     nickname: '',
     avatarUrl: '',//基本信息

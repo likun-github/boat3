@@ -1,8 +1,9 @@
 {
   "pages": [
-    
     "pages/home/home",
     "pages/teamcut/teamcut",
+    
+    
     "pages/map/map",
     "pages/toboat/toboat",
     "pages/test/test",

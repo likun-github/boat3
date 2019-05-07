@@ -3,9 +3,11 @@ var app = getApp();
 
 
 
+
 let loadingMore = false
 let lastScollTop = 0;
 let lastRequestTime = 0;
+var common=require('../../common/index.js');
 
 
 Page({
@@ -14,11 +16,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModel: false,
-    url: "https://xiaoyibang.top:8002/uploads/",
+    hq: true,//是否登陆
+    url: "https://xiaoyibang.top:8001/uploads/",
     end: false, //判定订单是否取消或者过期
     //云端获取
-    period: {},
+    production: {},
     onecut: [], //团队成员
     twocut: [], //他人砍价
     cutprice: 0,//砍价金额
@@ -104,19 +106,57 @@ Page({
     // console.log("用户id" + app.globalData.userid)
     // console.log("购买详情：", options)
     // this.setData({
-    //   orderid: options.orderid,
+    //   productionid: options.productionid,
     //   nickname: options.nickname,
     //   avatarUrl: options.avatarUrl,
     //   steamid: options.steamid,
     //   userid: options.userid,
     // })
-    // this.checkstatus();
-    // this.getperiod(options.orderid);
-    // console.log("订单详情", common.orderlist)
+    //this.checkstatus();
+    //this.getproduction(options.productionid);
+    //this.getorderdetail(options.steamid);
+   // console.log("订单详情", common.orderlist)
 
 
 
   },
+  getproduction: function (productionid) {
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/getperiod',
+      data: {
+        'productionid': productionid,
+      },
+      success: (res) => {
+        res.data.production[0].logo = that.data.url + res.data.production[0].logo;
+
+        that.setData({
+          production: res.data.production[0],
+        })
+        console.log(that.data.production)
+      }
+    })
+  },
+  getorderdetail: function (steamid) {
+    var that = this;
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/orderdetail',
+      data: {
+        'steamid': steamid,
+      },
+      success: (res) => {
+        console.log(res.data)
+        common.onecut = res.data.onecut;
+        that.setData({
+          onecut: res.data.onecut,
+          twocut: res.data.twocut,
+        })
+        that.merge();
+
+      }
+    })
+  },
+
   //判断是否登陆
   checkstatus: function () {
     if (!app.globalData.userid) {
@@ -134,6 +174,7 @@ Page({
     }
 
   },
+  
   //判定团队成员
   checkmember: function () {
     //是否为组团成员
@@ -155,13 +196,59 @@ Page({
 
   },
   onGotUserInfo(e) {
-    console.log("正在运行login")
-    app.globalData.nickname = e.detail.userInfo.nickName
-    app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
-    app.globalData.gender = e.detail.userInfo.gender
-    this.backlogin();
+    if (e.detail.errMsg) {
+      app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
+      app.globalData.nickname = e.detail.userInfo.nickName;
+      //无关信息
+      app.globalData.gender = e.detail.userInfo.gender;
+      app.globalData.country = e.detail.userInfo.country;
+      app.globalData.province = e.detail.userInfo.province;
+      app.globalData.city = e.detail.userInfo.city;
+      app.globalData.language = e.detail.userInfo.language;
+      var that = this
+      wx.login({
+        success: res => {
+          console.log("微信小程序用户登录：", res)
+          wx.request({
+            url: 'https://xiaoyibang.top:8001/dajia/login',
+            data: {
+              'nickname': app.globalData.nickname,
+              'gender': app.globalData.gender,
+              'code': res.code,
+              'pic': app.globalData.avatarUrl,
+              'userid': app.globalData.userid,
+            },
+            success: (res) => {
+              console.log("用户信息", res.data)
+              var information = {
+                'userid': res.data.userid,
+                'teamname': res.data.team_name,
+                'name': res.data.name,
+                'number': res.data.number,
+                'status': res.data.status,
+                'nickname': app.globalData.nickname,
+                'avatarUrl': app.globalData.avatarUrl,
+                'account': res.data.account,
+              }
 
+              wx.setStorage({
+                key: 'information',
+                data: information,
+              })
+            },
+          })
+        }
+      })
 
+      this.setData({
+        hq: false,
+      })
+    } else {
+      wx.showModal({
+        title: '获取失败',
+        content: '',
+      })
+    }
   },
 
   //后台登陆
@@ -211,24 +298,7 @@ Page({
 
   },
 
-  getorderdetail: function (steamid) {
-    var that = this;
-    wx.request({
-      url: 'https://xiaoyibang.top:8002/dajia/orderdetail',
-      data: {
-        'steamid': steamid,
-      },
-      success: (res) => {
-        common.onecut = res.data.onecut;
-        that.setData({
-          onecut: res.data.onecut,
-          twocut: res.data.twocut,
-        })
-        that.merge();
-
-      }
-    })
-  },
+ 
   toDecimal2: function (x) {
     var f = parseFloat(x);
     if (isNaN(f)) {
@@ -248,64 +318,23 @@ Page({
 
   },
   //强制保留2位小数，如：2，会在2后面补上00.即2.00 
-  getperiod: function (orderid) {
-    var that = this;
-    wx.request({
-      url: 'https://xiaoyibang.top:8002/dajia/getperiod',
-      data: {
-        'orderid': orderid,
-      },
-      success: (res) => {
-        res.data[0].production__logo = that.data.url + res.data[0].production__logo;
-        console.log('期表id' + res.data[0])
+ 
 
-        that.setData({
-          period: res.data[0],
-          periodid: res.data[0].period_id,
-        })
-
-        // that.data.period.period__startprice = that.data.period.period__startprice.toFixed(2)
-
-        // period.period__startprice - cutprice
-
-
-        console.log('期表内容' + that.data)
-        if (res.data[0].status == 1) {
-          that.setData({
-            end: true,
-          });
-          that.timeapproach(res.data[0].period__endtime);
-        } else if (res.data[0].status == 0) {
-          that.setData({
-            sentence: '该订单已取消',
-            end: false,
-          })
-        } else {
-          that.setData({
-            sentence: '该订单已过期',
-            end: false,
-          })
-        }
-
-
-      }
-    })
-  },
-
-  //合并onecut和twocut生成res
+  //加titile
   merge: function () {
     var middle1 = [];
     var cutprice = 0;
+    //组团成员
     for (var i = 0; i < this.data.onecut.length; i++) {
       var middle = {};
       middle.pic = this.data.onecut[i].member__picture;
-      middle.name = this.data.onecut[i].member__name;
+      middle.name = this.data.onecut[i].member__nickname;
       middle.cutprice = this.data.onecut[i].membership__cutprice;
       cutprice = cutprice + middle.cutprice;
-
       middle.title = this.data.title[i];
       middle1.push(middle);
     }
+    //砍价成员
     var middle2 = [];
     for (var i = this.data.twocut.length - 1; i >= 0; i--) {
       var middle = {};
@@ -315,12 +344,13 @@ Page({
       cutprice = cutprice + middle.cutprice;
       middle2.push(middle);
     }
-    cutprice = this.toDecimal2(cutprice);
-    console.log(this.data.period.period__startprice)
-    console.log(this.data.period.period__cutprice)
-    var endprice = this.data.period.period__startprice - cutprice - this.data.period.period__cutprice;
-    console.log(endprice)
-    endprice = this.toDecimal2(endprice)
+    var endprice=this.data.production.startprice-cutprice;
+    // cutprice = this.toDecimal2(cutprice);
+    // console.log(this.data.period.period__startprice)
+    // console.log(this.data.period.period__cutprice)
+    // var endprice = this.data.period.period__startprice - cutprice - this.data.period.period__cutprice;
+    // console.log(endprice)
+    // endprice = this.toDecimal2(endprice)
 
     this.setData({
       onecut: middle1,
@@ -416,7 +446,7 @@ Page({
     // }
     var that = this;
     wx.request({
-      url: 'https://xiaoyibang.top:8002/dajia/cutprice',
+      url: 'https://xiaoyibang.top:8001/dajia/cutprice',
       data: {
         'steamid': that.data.steamid,
         'userid': app.globalData.userid,
@@ -465,12 +495,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function (options) {
-    var price = this.data.period.period__startprice - this.data.cutprice - this.data.period.period__cutprice
-    price = price.toFixed(2)
-    this.setData({
-      realprice: price
-    })
-    console.log(this.data.realprice, "realprice---")
+    // var price = this.data.period.period__startprice - this.data.cutprice - this.data.period.period__cutprice
+    // price = price.toFixed(2)
+    // this.setData({
+    //   realprice: price
+    // })
+    // console.log(this.data.realprice, "realprice---")
   },
 
   /**
