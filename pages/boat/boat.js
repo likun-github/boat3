@@ -170,10 +170,25 @@ Page({
   },
 
 
-  team_cut: function() {
+  team_cut: function(e) {
+    console.log(e.currentTarget.dataset.order)
+    var order=e.currentTarget.dataset.order;
     wx.navigateTo({
-      url: '/pages/teamcut/teamcut',
+      url: '/pages/teamcut/teamcut?productionid='+order.production_id+
+      '&'+'nickname='+app.globalData.nickname+
+      '&'+'avatarUrl='+app.globalData.avatarUrl+
+      '&'+'steamid='+order.steam_id+
+      '&'+'userid='+order.userid,
     })
+
+
+    // path: 'pages/teamcut/teamcut?orderid=' +
+    //   this.data.orderid +
+    //   '&' + 'nickname=' + this.data.nickname +
+    //   '&' + 'avatarUrl=' + this.data.avatarUrl +
+    //   '&' + 'steamid=' + this.data.steamid +
+    //   '&' + 'userid=' + this.data.userid,
+    
   },
 
   add_allTobuylist: function() {

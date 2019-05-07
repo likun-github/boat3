@@ -129,7 +129,7 @@
               <view class='cut_view'>
 
 
-                <button class='btn_cut' bindtap='team_cut'>砍</button>
+                <button class='btn_cut' bindtap='team_cut' data-order='{{item}}'>砍</button>
                 <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
 
 
