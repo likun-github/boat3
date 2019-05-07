@@ -16,7 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hq: true,//是否登陆
+    hq: false,//是否登陆
     url: "https://xiaoyibang.top:8001/uploads/",
     end: false, //判定订单是否取消或者过期
     //云端获取
@@ -103,21 +103,17 @@ Page({
    */
   //打算传播steamid.periodid,pic name就行
   onLoad: function (options) {
-    // console.log("用户id" + app.globalData.userid)
-    // console.log("购买详情：", options)
-    // this.setData({
-    //   productionid: options.productionid,
-    //   nickname: options.nickname,
-    //   avatarUrl: options.avatarUrl,
-    //   steamid: options.steamid,
-    //   userid: options.userid,
-    // })
-    //this.checkstatus();
-    //this.getproduction(options.productionid);
-    //this.getorderdetail(options.steamid);
-   // console.log("订单详情", common.orderlist)
-
-
+    console.log("用户id" + app.globalData.userid)
+    console.log("购买详情：", options)
+    this.setData({
+      productionid: options.productionid,
+      nickname: options.nickname,
+      avatarUrl: options.avatarUrl,
+      steamid: options.steamid,
+      userid: options.userid,
+    })
+    this.checkstatus();
+    
 
   },
   getproduction: function (productionid) {
@@ -151,7 +147,9 @@ Page({
           onecut: res.data.onecut,
           twocut: res.data.twocut,
         })
+        that.checkmember();
         that.merge();
+        
 
       }
     })
@@ -159,35 +157,52 @@ Page({
 
   //判断是否登陆
   checkstatus: function () {
-    if (!app.globalData.userid) {
-      this.setData({
-        showModel: true,
-      })
-    } else {
-      this.checkmember();
-      this.setData({
-        showModel: false,
-      })
+    if (app.globalData.login) {
+      this.getproduction(this.data.productionid);
       this.getorderdetail(this.data.steamid);
-
-
+      
     }
+    else {
+      this.setData({
+        hq: true,
+      })
+    }
+    // if (!app.globalData.userid) {
+    //   this.setData({
+    //     showModel: true,
+    //   })
+    // } else {
+    //   this.checkmember();
+    //   this.setData({
+    //     showModel: false,
+    //   })
+    //   this.getorderdetail(this.data.steamid);
+
+
+    // }
 
   },
   
   //判定团队成员
   checkmember: function () {
+    console.log('正在运行成员')
+    console.log(this.data.onecut)
+    console.log('哈哈')
     //是否为组团成员
-    if (app.globalData.userid == this.data.userid) {
-      this.setData({
-        btn_index: 0,
-      })
-      return '';
-    } else {
-      this.setData({
-        btn_index: 1,
-      });
+    for(var i=0;i<this.data.onecut.length;i++){
+      console.log(this.data.onecut[i].member__userid)
+      if (app.globalData.userid == this.data.onecut[i].member__userid){
+        
+        this.setData({
+          btn_index: 0,
+        })
+        return '';
+      }
     }
+    this.setData({
+      btn_index: 1,
+    });
+    
 
 
 
@@ -196,6 +211,7 @@ Page({
 
   },
   onGotUserInfo(e) {
+    var that=this;
     if (e.detail.errMsg) {
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
       app.globalData.nickname = e.detail.userInfo.nickName;
@@ -230,7 +246,8 @@ Page({
                 'avatarUrl': app.globalData.avatarUrl,
                 'account': res.data.account,
               }
-
+              that.getproduction(that.data.productionid);
+              that.getorderdetail(that.data.steamid);
               wx.setStorage({
                 key: 'information',
                 data: information,
@@ -251,52 +268,7 @@ Page({
     }
   },
 
-  //后台登陆
-  backlogin: function (url) {
-    var that = this;
-    wx.login({
-      success: res => {
 
-        wx.request({
-          url: 'https://xiaoyibang.top:8002/dajia/login',
-          data: {
-            'nickname': app.globalData.nickname,
-            'gender': app.globalData.gender,
-            'code': res.code,
-            'pic': app.globalData.avatarUrl
-          },
-          success: (res) => {
-            console.log("用户信息", res.data)
-            var information = {
-              'userid': res.data.userid,
-              'teamname': res.data.team_name,
-              'name': res.data.name,
-              'number': res.data.number,
-              'status': res.data.status,
-              'nickname': app.globalData.nickname,
-              'avatarUrl': app.globalData.avatarUrl,
-            }
-            wx.setStorage({
-              key: 'information',
-              data: information,
-            });
-            this.setData({
-              showModel: false,
-            })
-            that.checkmember();
-            that.getorderdetail(that.data.steamid);
-            app.globalData.userid = res.data.userid;
-            app.globalData.teamname = res.data.team_name;
-            app.globalData.name = res.data.name;
-            app.globalData.number = res.data.number;
-            app.globalData.status = res.data.status;
-          },
-        })
-      }
-    })
-
-
-  },
 
  
   toDecimal2: function (x) {
@@ -385,7 +357,8 @@ Page({
   },
   //右边按钮点击
   rightbindtap: function () {
-    if (!this.data.end) {
+    console.log(this.data.end)
+    if (this.data.end) {
       wx.showToast({
         title: '订单已超时',
         icon: 'loading',
