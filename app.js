@@ -141,7 +141,7 @@ App({
     avatarUrl: '',//基本信息
     gender: 0,
 
-
+    account:'',
     name: '',
     teamname: '',
     time: '',//认证信息
