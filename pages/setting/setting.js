@@ -9,11 +9,12 @@ Page({
     pic: '',
     teamname: '',
     time: '',
-    top: '180',
+    top: '70',
     popup: true,
     show_model: true,
     code: '',
     t: 0,
+    status:'1'
   },
 
   /**
@@ -32,7 +33,7 @@ Page({
   touchend: function() {
 
     this.setData({
-      top: 180
+      top: 80
     })
 
 
