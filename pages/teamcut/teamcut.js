@@ -149,6 +149,8 @@ Page({
         })
         that.checkmember();
         that.merge();
+        that.timeapproach(res.data.onecut[0].endtime, res.data.onecut[0].time);
+        
         
 
       }
@@ -414,16 +416,14 @@ Page({
   },
   //帮这好友砍一刀
   cutprice: function (steamid) {
-    // if (!this.data.end) {
-    //   return '';
-    // }
+
     var that = this;
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/cutprice',
       data: {
         'steamid': that.data.steamid,
         'userid': app.globalData.userid,
-        'periodid': that.data.periodid,
+        'productionid': that.data.periodid,
       },
       success: (res) => {
         console.log("状态2")
@@ -436,7 +436,9 @@ Page({
     })
 
   },
-  timeapproach: function (endtime) {
+  timeapproach: function (endtime,starttime) {
+    var time1 = Math.floor(new Date().getTime() / 1000);
+    var time2 = endtime - time1;
     this.data.setInter = setInterval(
       () => {
         var nowtime = Math.floor(new Date().getTime() / 1000);
