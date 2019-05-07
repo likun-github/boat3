@@ -14,45 +14,93 @@ Page({
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    added: false,
+    added: [], //ing船票的是否加入购物车标志
     add_all: false,
     overList: true, //是否展示购买的底层按钮view
     ticket_number: 6, //船票数量
+    buylist: [], //添加到购物车的list，打对勾
 
-    // items:[
-    //  {'content' :12,
-    //     'answer' :'54',
-    //     'description':'sa定位',},
-    //   {
-    //     'content': 12,
-    //     'answer': '54',
-    //     'description': 'sa定位',
-    //   },
-    //   {
-    //     'content': 12,
-    //     'answer': '54',
-    //     'description': 'sa定位',
-    //   },
-    //   {
-    //     'content': 12,
-    //     'answer': '54',
-    //     'description': 'sa定位',
-    //   },
-    //   ]
 
+
+    carts: [], // 购物车列表
+    hasList: false, // 列表是否有数据
+ 
+    selectAllStatus: false, // 全选状态，默认全选
+
+    really_pay:0,     //实际支付
+    total_pay: 0,     // 总价，初始为0
+    cut_pay:0,         //优惠额
   },
+
+
+  /**
+   * 当前商品选中事件
+   */
+  selectList(e) {
+    const index = e.currentTarget.dataset.index;
+    let carts = this.data.ticketlist_ing;
+    const selected = carts[index].added;
+    carts[index].added = !selected;
+    this.setData({
+      ticketlist_ing: carts
+    });
+    this.getTotalPrice();
+  },
+
+  /**
+   * 计算总价
+   */
+  getTotalPrice() {
+    let carts = this.data.ticketlist_ing; // 获取购物车列表
+    let total = 0;
+    let cut =0;
+    let pay =0;
+    for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
+      if (carts[i].added) { // 判断选中才会计算价格
+        total += carts[i].production__startprice; // 所有价格加起来
+        cut += carts[i].steam__cutprice;  
+        pay += carts[i].endprice;
+      }
+    }
+    this.setData({ // 最后赋值到data中渲染到页面
+      carts: carts,
+      total_pay: total.toFixed(2),
+      cut_pay: cut.toFixed(2),
+      really_pay:pay
+    });
+
+   
+  },
+
+  /**
+   * 购物车全选事件
+   */
+  selectAll(e) {
+    let selectAllStatus = this.data.selectAllStatus;
+    selectAllStatus = !selectAllStatus;
+    let carts = this.data.ticketlist_ing;
+
+    for (let i = 0; i < carts.length; i++) {
+      carts[i].added = selectAllStatus;
+    }
+    this.setData({
+      selectAllStatus: selectAllStatus,
+      ticketlist_ing: carts
+    });
+    this.getTotalPrice();
+  },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
     this.setData({
       ticketlist_ing: app.globalData.ticketlist_ing,
       ticketlist_ed: app.globalData.ticketlist_ed
     })
-
-
 
   },
 
@@ -60,7 +108,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
 
   },
 
@@ -98,14 +146,10 @@ Page({
   onReachBottom: function() {
 
   },
-
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  },
-
+  onShareAppMessage: function() {},
   turnTobuy: function() {
     wx.switchTab({
       url: '/pages/home/home',
@@ -117,6 +161,23 @@ Page({
     })
   },
 
+  //判断当前滚动超过一屏时，设置tab标题滚动条。
+  checkCor: function() {
+    if (this.data.currentTab > 4) {
+      this.setData({
+        scrollLeft: 300
+      })
+    } else {
+      this.setData({
+        scrollLeft: 0
+      })
+    }
+  },
+  // look_ticker: function () {
+  //   wx.navigateTo({
+  //     url: "/pages/tickets/tickets"
+  //   })
+  // },
 
 
   // 滚动切换标签样式
@@ -142,32 +203,6 @@ Page({
       })
     }
   },
-  //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function() {
-    if (this.data.currentTab > 4) {
-      this.setData({
-        scrollLeft: 300
-      })
-    } else {
-      this.setData({
-        scrollLeft: 0
-      })
-    }
-  },
-
-  look_ticker: function() {
-    wx.navigateTo({
-      url: "/pages/tickets/tickets"
-    })
-  },
-
-
-  addtobuylist: function() {
-
-    this.setData({
-      added: !this.data.added
-    })
-  },
 
 
   team_cut: function() {
@@ -176,11 +211,16 @@ Page({
     })
   },
 
-  add_allTobuylist: function() {
+  add_allTobuylist: function(e) {
+    console.log(e)
+    var temp = this.data.ticketlist_ing
+
+    for (var i = 0; i < temp.length; i++) {
+      temp[i].added = true
+    }
     this.setData({
-      add_all: !this.data.add_all,
-      added: !this.data.added
+      ticketlist_ing: temp
     })
-  }
+  },
 
 })

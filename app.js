@@ -73,6 +73,7 @@ App({
         //（1"预付完成"),
         // (2"拼团完成"),
         this.globalData.ticketlist_ing.push(ticketData[i])
+
       }
       else {
         // (0, "订单取消"),
@@ -85,8 +86,10 @@ App({
     // console.log("重新分组的船票ticketData--")
     // console.log("ing:", this.globalData.ticketlist_ing)
     // console.log("ed:", this.globalData.ticketlist_ed)
-  
-  
+    for (var i = 0; i < this.globalData.ticketlist_ing.length; i++) {
+      this.globalData.ticketlist_ing[i].added = false
+    }
+    
   },
   
 

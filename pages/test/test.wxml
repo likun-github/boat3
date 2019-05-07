@@ -1,21 +1,13 @@
-<scroll-view class="container">
-
-  <view class="scrolltxt">
-
-    <view class="marquee_box">
-
-      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
-
-        <!-- <text>{{text}}</text> -->
-
-        <!-- <text style="margin-right:{{marquee_margin}}px;"></text> -->
-
-        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>        
-
-      </view>
-
+<view class="page">
+  <view class="page__hd">
+    <text class="page__title">radio</text>
+    <text class="page__desc">单选框</text> </view>
+  <view class="page__bd">
+    <view class="section section_gap">
+      <radio-group class="radio-group"  bindchange="radioChange">
+        <radio class="radio" bindtap="bindtap1" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+          <text>{{item.value}}</text> </radio>
+      </radio-group>
     </view>
-
   </view>
-
-</scroll-view>
+</view>

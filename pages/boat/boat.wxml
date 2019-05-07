@@ -23,87 +23,6 @@
 </scroll-view>
 
 
-<!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh" wx:if="{{!noticket}}">
-  <swiper-item wx:for="{{ticketlist_ing}}" wx:key="item1">
-    <scroll-view scroll-y="true" class="scoll-h">
-      <block > -->
-
-<!-- 这样写好像很消耗内存去渲染，明天修改这个bug -->
-<!-- 
-        <view class="item-ans">
-
-          <view class="avatar">
-            <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
-          </view>
-
-          <view class='avatar1'>
-            <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
-          </view>
-
-
-          <view class="expertInfo">
-            <view class="name">{{item.production__name}}</view>
-            <view class="price">最终票价
-              <text class='price_number' decode="{{true}}">&ensp;{{item.endprice}}&ensp;</text>元</view>
-            <view class='cut_view'>
-
-
-              <button class='btn_cut' bindtap='team_cut'>砍</button>
-              <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
-
-
-            </view>
-
-          </view>
-
-        </view>
-
-
-      </block>
-      <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
-    </scroll-view>
-  </swiper-item>
-
-  <swiper-item >
-    <scroll-view scroll-y="true" class="scoll-h">
-      <block wx:for="{{ticketlist_ed}}" wx:key="item2"> -->
-
-<!-- 这样写好像很消耗内存去渲染，明天修改这个bug -->
-<!-- <view class="item-ans">
-
-          <view class="avatar">
-            <image class="img" src="{{item.kindOfboat==0?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
-          </view>
-
-          <view class='avatar1'>
-            <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
-          </view>
-
-
-          <view class="expertInfo">
-            <view class="name">{{item.producation_name}}</view>
-            <view class="price">最终票价
-              <text class='price_number' decode="{{true}}">&ensp;{{item.finalprice}}&ensp;</text>元</view>
-            <view class='cut_view'>
-
-
-              <button class='btn_cut' bindtap='team_cut'>砍</button>
-              <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
-
-
-            </view>
-
-          </view>
-
-        </view>
-
-
-      </block>
-      <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
-    </scroll-view>
-  </swiper-item>
-</swiper> -->
-
 
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96.8vh" wx:if="{{!noticket}}">
@@ -112,69 +31,47 @@
       <scroll-view scroll-y="true" class="scoll-h">
         <view wx:for="{{ticketlist_ing}}" wx:key="item1">
           <view class="item-ans">
-
             <view class="avatar">
               <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
+            
+            <view class='avatar1' >
+             <icon wx:if="{{item.added}}" type="success" color="#59b4fe" data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
+            <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
 
-            <view class='avatar1'>
-              <image class="img1" src="{{added?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}" bindtap='addtobuylist'></image>
             </view>
-
-
             <view class="expertInfo">
               <view class="name">{{item.production__name}}</view>
               <view class="price">最终票价
                 <text class='price_number' decode="{{true}}">&ensp;{{item.endprice}}&ensp;</text>元</view>
               <view class='cut_view'>
-
-
                 <button class='btn_cut' bindtap='team_cut'>砍</button>
                 <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
-
-
               </view>
-
             </view>
-
           </view>
         </view>
-  <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
-
-
-
+        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h">
         <view wx:for="{{ticketlist_ed}}" wx:key="item1">
           <view class="item-ans">
-
             <view class="avatar">
               <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
-
-
-
-
             <view class="expertInfo">
               <view class="name">{{item.production__name}}</view>
               <view class="price">最终票价
                 <text class='price_number' decode="{{true}}">&ensp;{{item.endprice}}&ensp;</text>元</view>
               <view class='cut_view'>
-
-
-
                 <button class='btn_checkticket_1' bindtap='look_ticker'>查看船票</button>
-
-
               </view>
-
             </view>
-
           </view>
         </view>
-<view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
+        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
   </block>
@@ -182,14 +79,17 @@
 
 
 
-<view class='buy' wx:if="{{currentTab==0}}" wx:if="{{!noticket}}">
-  <view class='add_allTobuylist' bindtap='add_allTobuylist'>
-    <image class="img1" src="{{add_all?'/static/boat/addtobuylist1.svg':'/static/boat/addtobuylist.svg'}}"></image>
-  </view>
+<view class='buy' wx:if="{{currentTab==0 && !noticket}}">
+<!--  -->
+           <view class='add_allTobuylist' >
+            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#59b4fe" class="total-select" bindtap="selectAll"/>
+            <icon wx:else type="circle" color="grey" class="total-select" bindtap="selectAll"/>
+          </view>
+<!--  -->
   <view class='buy_text1'>全选</view>
   <view class='price_des'>
-    <view class='price_des_text1'>合计:￥2280</view>
-    <text class='price_des_text2' decode="{{true}}">总额:￥3000&ensp;&ensp;优惠:￥720</text>
+    <view class='price_des_text1'>合计:￥{{really_pay}}</view>
+    <text class='price_des_text2' decode="{{true}}">总额:￥{{total_pay}}&ensp;&ensp;优惠:￥{{cut_pay}}</text>
   </view>
   <view class='buy_btn'>
     <button class='buy_btn_view'>去登船({{ticket_number}})</button>
