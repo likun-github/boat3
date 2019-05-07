@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/home/home",
     "pages/teamcut/teamcut",
     "pages/map/map",
@@ -9,8 +8,8 @@
     "pages/asset/asset",
     "pages/setting/setting",
     "pages/boat/boat",
-    "pages/verify/verify"
-    
+    "pages/verify/verify",
+    "pages/myteam/myteam"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -12,20 +12,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    hq: true
+    hq: false,
 
   },
   ready: function() {
-    var information = wx.getStorageSync('information');
-    console.log(information)
-
-    if (information) {
-      this.setData({
-        hq: false,
-      })
-    } else {
-      wx.hideTabBar({})
+    if(app.globalData.login){
+      return ''
     }
+    else{
+      this.setData({
+        hq:true,
+      })
+      wx.hideTabBar({});
+    }
+    
+    
   },
   /**
    * 组件的方法列表
