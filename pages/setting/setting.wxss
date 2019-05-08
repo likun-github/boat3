@@ -43,9 +43,9 @@ top: 0rpx;
   left: 5%;
   height: 60%;
   margin-top: 30rpx;
-  background: linear-gradient(to bottom right, #fe5e5e, #fe8557);
   box-shadow: -1rpx 0 30rpx -6rpx;
   overflow: hidden;
+  
 }
 
 .w {
@@ -331,4 +331,34 @@ color: transparent;
 	animation-iteration-count:1;
 	animation-direction:normal;
 }
- 
+ .w2{
+  position: absolute;
+  left: 140rpx;
+  font-size: 20rpx;
+  color: white;
+  top: 20rpx;
+  font-weight: 700;
+}
+.w21 {
+  position: absolute;
+  left: 300rpx;
+  font-size: 20rpx;
+  color: white;
+  top: 20rpx;
+  text-decoration: underline;
+}
+
+.b2 {
+  position: absolute;
+  right: 50rpx;
+  width: 100rpx;
+  height: 30rpx;
+  border-radius: 25rpx;
+  font-weight: 700;
+  text-align: center;
+  line-height: 30rpx;
+  border: 2rpx solid white;
+  color: white;
+  top: 16rpx;
+  font-size: 20rpx;
+}

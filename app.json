@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/getprize/getprize",
     "pages/teamcut/teamcut",
     "pages/map/map",
     "pages/toboat/toboat",
@@ -9,7 +10,8 @@
     "pages/setting/setting",
     "pages/boat/boat",
     "pages/verify/verify",
-    "pages/myteam/myteam"
+    "pages/myteam/myteam",
+    "pages/prizedetail/prizedetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

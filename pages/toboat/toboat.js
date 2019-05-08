@@ -138,19 +138,38 @@ Page({
   },
   sendmessege:function(){
     var that = this;
-    wx.request({
-      url: 'https://xiaoyibang.top:8001/dajia/comment',
-      data: {
-        'productionid': common.currentData.productionid,
-        'userid':app.globalData.userid,
-        'context':that.data.text,
-      },
-      success: (res) => {
-       that.getcomment();
+    if(app.globalData.status==2){
+      wx.request({
+        url: 'https://xiaoyibang.top:8001/dajia/comment',
+        data: {
+          'productionid': common.currentData.productionid,
+          'userid': app.globalData.userid,
+          'context': that.data.text,
+        },
+        success: (res) => {
+          that.getcomment();
 
-      }
-    })
+        }
+      })
 
+
+    }
+    else{
+      wx.showToast({
+        title: '实名认证完成才可自由评论哦',
+        duration: 1000,
+        icon: 'loading',
+      })
+      setTimeout(function () {
+        wx.navigateTo({
+          url: "/pages/verify/verify",
+        })
+
+      }, 1000)
+
+    }
+   
+    
   },
   checkstatus:function(){
     for(var i=0;i<common.orderlist.length;i++){

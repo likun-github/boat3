@@ -63,29 +63,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.request({
-    //   url: app.url +'/dajia/scancomment',
-    // })
-    // console.log(options)
-    // wx.request({
-    //   url: app.url + '/dajia/orderdetail',
-    //   data: {
-    //     'steamid': options.steamid,
-    //   },
-    //   success: (res) => {
-    //     // common.homelist = res.data;
-    //     console.log("团员",res.data)
-    //     this.setData({
-    //       data:res.data.onecut,
-    //       member_number: res.data.onecut.length
-    //     })
 
-    //   }
-    // })
-    this.setData({
-      data: common.onecut,
-      member_number: common.onecut.length
-    })
+   
 
 
   },
@@ -94,6 +73,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.setData({
+      data: common.onecut,
+      member_number: common.onecut.length
+    })
+    console.log(this.data.data[0].membership__time);
     //需要写在这个函数中
     //这个data不敢改了，tql
     let data = this.data.data
