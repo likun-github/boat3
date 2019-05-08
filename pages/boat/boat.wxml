@@ -45,13 +45,12 @@
               <view class="price">最终票价
                 <text class='price_number' decode="{{true}}">&ensp;{{item.endprice}}&ensp;</text>元</view>
               <view class='cut_view'>
-<<<<<<< HEAD
+
                 <button class='btn_cut' bindtap='team_cut'  data-index='{{index}}'>砍</button>
                 <button class='btn_checkticket' bindtap='look_ticker' data-index='{{index}}'  data-tickettype='ing'>查看船票</button>
-=======
-                <button class='btn_cut' bindtap='team_cut' data-order='{{item}}'>砍</button>
-                <button class='btn_checkticket' bindtap='look_ticker'>查看船票</button>
->>>>>>> cda9eaac67182bff4143324eb18e3508b20b378d
+
+
+
               </view>
             </view>
           </view>
