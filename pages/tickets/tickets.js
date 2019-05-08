@@ -41,7 +41,7 @@ Component({
         nickname: app.globalData.nickname,
         avatarUrl: app.globalData.avatarUrl,
       })
-      console.log(this.data.avatarUrl)
+    
     }
 
   }
