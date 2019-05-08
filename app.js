@@ -44,21 +44,25 @@ App({
   },
   getorderlist:function(){
     var that=this;
-    wx.request({
-      url: 'https://xiaoyibang.top:8001/dajia/orderlist',
-      data: {
-        'userid': that.globalData.userid,
-      },
-      success: (res) => {
-        if(res.data.success){
-          common.orderlist = res.data.order;
+    if(this.globalData.userid){
+      wx.request({
+        url: 'https://xiaoyibang.top:8001/dajia/orderlist',
+        data: {
+          'userid': that.globalData.userid,
+        },
+        success: (res) => {
+          if (res.data.success) {
+            common.orderlist = res.data.order;
 
+          }
+          console.log("用户的订单:", common.orderlist)
+          that.orderClassify()
         }
-       console.log("用户的订单:",common.orderlist)
-        that.orderClassify()  
-      }
-    })
+      })
 
+
+    }
+    
 
 
   },

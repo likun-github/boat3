@@ -181,17 +181,23 @@ Page({
         success: (res) => {
 
           var information = {
-            'userid': res.data.userid,
-            'teamname': res.data.team_name,
-            'name': res.data.name,
-            'number': res.data.number,
-            'status': res.data.status,
+            'userid': app.globalData.userid,
+            'teamname': app.globalData.teamname,
+            'name': that.data.name,
+            'number': that.data.number.substring(0, 4),
+            'status': 2,
             'nickname': app.globalData.nickname,
             'avatarUrl': app.globalData.avatarUrl,
             'account':res.data.account,
           }
-          wx.setStorageSync('information', information)
-          app.getuserinformation();
+          wx.setStorage({
+            key: 'information',
+            data: information,
+          })
+          app.globalData.time = that.data.number.substring(0, 4);
+          app.globalData.status=2;
+          app.globalData.account=res.data.account;
+          
           this.hidePopup(false);
         }
 
@@ -264,62 +270,7 @@ Page({
   },
 
   //后台登陆
-  backlogin: function (url) {
-    var that = this;
-    wx.login({
-      success: res => {
-
-        wx.request({
-          url: 'https://xiaoyibang.top:8001/dajia/login',
-          data: {
-            'nickname': app.globalData.nickname,
-            'gender': app.globalData.gender,
-            'code': res.code,
-            'pic': app.globalData.avatarUrl
-          },
-          success: (res) => {
-            console.log("用户信息", res.data)
-            var information = {
-              'userid': res.data.userid,
-              'teamname': res.data.team_name,
-              'name': res.data.name,
-              'number': res.data.number,
-              'status': res.data.status,
-              'nickname': app.globalData.nickname,
-              'avatarUrl': app.globalData.avatarUrl,
-            }
-            wx.setStorage({
-              key: 'information',
-              data: information,
-            });
-            this.setData({
-              showModel: false,
-            })
-            app.globalData.userid = res.data.userid;
-            app.globalData.teamname = res.data.team_name;
-            app.globalData.name = res.data.name;
-            app.globalData.number = res.data.number;
-            app.globalData.status = res.data.status;
-            if(res.data.status==1){
-              wx.showToast({ //如果全部加载完成了也弹一个框
-                title: "您已完成实名认证",
-                icon: 'success',
-                duration: 1000
-              });
-              setTimeout(function () {
-                wx.navigateTo({
-                  url: "/pages/home/home"
-
-                })
-              }, 850);
-            }
-          },
-        })
-      }
-    })
-
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

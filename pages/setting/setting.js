@@ -30,6 +30,23 @@ Page({
     })
 
   },
+  gotogetprize:function(){
+    wx.navigateTo({
+      url: '/pages/getprize/getprize',
+    })
+
+  },
+  pageLifetimes: {
+    show() {
+      console.log("正在执行生命周期")
+      this.setData({
+
+        account: app.globalData.account,
+      })
+      // 页面被展示
+    },
+
+  },
   scroll(e) {
     // console.log(e);
     // this.setData({

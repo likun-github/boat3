@@ -260,6 +260,21 @@ Page({
       success: (res) => {
         if (res.data.prize) {
           that.startGame(res.data.prize);
+          app.globalData.account = res.data.account;
+          var information = {
+            'userid': app.globalData.userid,
+            'teamname': app.globalData.teamname,
+            'name': app.data.name,
+            'number': app.globalData.time,
+            'status': 2,
+            'nickname': app.globalData.nickname,
+            'avatarUrl': app.globalData.avatarUrl,
+            'account': app.globalData.account,
+          }
+          wx.setStorage({
+            key: 'information',
+            data: information,
+          })
 
           setTimeout(function () {
             that.setData({
@@ -267,7 +282,7 @@ Page({
             })
 
           }, 7000)
-          app.globalData.account = res.data.account;
+          
 
         }
 
