@@ -56,6 +56,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if(options.puserid){
+      app.globalData.puserid=options.puserid;
+      wx.showToast({
+        title: '完成实名认证好友也可领取贝壳哦~',
+      })
+    }
     // this.setData({
     //   //jsonData.dataList获取json.js里定义的json数据，并赋值给dataList
     //   listData: listData.producationData

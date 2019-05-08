@@ -172,7 +172,7 @@ Page({
       wx.request({
         url: 'https://xiaoyibang.top:8001/dajia/verify',
         data: {
-          'puserid':that.data.puserid,
+          'puserid':app.globalData.puserid,
           'userid': app.globalData.userid,
           'teamid': that.data.teamid,
           'number': that.data.number, 
@@ -226,37 +226,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.status==1){
-      wx.showToast({ //如果全部加载完成了也弹一个框
-        title: "您已完成实名认证",
-        icon: 'success',
-        duration: 1000
-      });
-      setTimeout(function () {
-        wx.navigateTo({
-          url: "/pages/home/home"
-
-        })
-      }, 850)
-    }
-    console.log(options)
-    if(options.userid){
-      this.setData({
-        puserid:options.userid,
-      })
-    }
-    if (!app.globalData.userid) {
-      this.setData({
-        showModel: true,
-      })
-    } else {
-     
-      this.setData({
-        showModel: false,
-      })
-
-
-    }
+    
 
   },
   onGotUserInfo(e) {

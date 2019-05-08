@@ -142,6 +142,7 @@ App({
 
 
   globalData: {
+    puserid:'',//邀请人
     login:'',//是否登陆
     userid:'',
     nickname: '',
