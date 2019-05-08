@@ -9,16 +9,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showModel:'',
     puserid:'',//邀请人userid
-    could: true,
-    show_model: true,
     popup: true,
     selectPerson: true,
     firstPerson: '武汉大学',
     selectArea: false,
-    btnValue: '发送验证码', 
-    btnDisabled: true,
     teamid: 1,
     name: '',
     yuanxi: '',
@@ -134,151 +129,7 @@ Page({
     })
   },
 
-  bindPhoneInput(e) {
-    console.log(e.detail.value);
-    var val = e.detail.value;
-    this.setData({
-      phone: val
-    })
-    if (val.length === 11) {
-      let checkedNum = this.checkPhoneNum(val)
-      if (checkedNum) {
-        this.setData({
-          btnDisabled: false,
-        })
-      }
-    } else {
-      this.setData({
-        btnDisabled: true
-      })
-    }
-  },
-  createCode() {
-
-    var code;
-
-    //首先默认code为空字符串
-
-    code = '';
-
-    //设置长度，这里看需求，我这里设置了4
-
-    var codeLength = 5;
-
-    //设置随机字符
-
-    var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-    //循环codeLength 我设置的4就是循环4次
-
-    for (var i = 0; i < codeLength; i++) {
-
-      //设置随机数范围,这设置为0 ~ 36
-
-      var index = Math.floor(Math.random() * 10);
-
-      //字符串拼接 将每次随机的字符 进行拼接
-
-      code += random[index];
-
-    }
-
-    //将拼接好的字符串赋值给展示的code
-
-    this.setData({
-
-      code: code
-
-    })
-
-  },
-  checkPhoneNum: function (phone) {
-    let str = /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/
-    if (str.test(phone)) {
-      return true
-    } else {
-      wx.showToast({
-        title: '手机号不正确'
-      })
-      return false
-    }
-  },
-  bindCodeInput(e) {
-    this.setData({
-      codee: e.detail.value
-    })
-  },
-  getCode(e) {
-    this.setData({
-      btnDisabled: true
-    })
-    clearInterval(this.data.setInter)
-    console.log('获取验证码');
-    var that = this;
-    that.createCode();
-    console.log('code' + this.data.code);
-    zhenzisms.client.init('https://sms_developer.zhenzikj.com', '100932', 'd3f05b95-a1b6-4bd0-9c7d-b81c46caf112');
-    zhenzisms.client.send(function (res) {
-      if (res.data.code == 0) {
-        that.timer();
-        that.timer1();
-        that.setData({
-          time: 0,
-        })
-        return;
-      }
-      wx.showToast({
-        title: res.data.data,
-        icon: 'none',
-        duration: 2000
-      })
-    }, this.data.phone, '您的验证码为:' + this.data.code + '，有效时间为5分钟', 1, 1000, 5);
-  },
-  timer1: function () {
-    let promise = new Promise((resolve, reject) => {
-
-      this.data.setInter = setInterval(
-        () => {
-          var time = this.data.time + 1;
-          this.setData({
-            time: time
-          })
-
-          if (this.data.time >= 300) {
-            this.setData({
-              time: 301,
-            })
-            resolve(this.data.setInter)
-          }
-        }, 1000)
-    })
-  },
-  timer: function () {
-    let promise = new Promise((resolve, reject) => {
-      let setTimer = setInterval(
-        () => {
-
-          var second = this.data.second - 1;
-          this.setData({
-            second: second,
-            btnValue: second + '秒',
-            btnDisabled: true
-          })
-
-          if (this.data.second <= 0) {
-            this.setData({
-              second: 60,
-              btnValue: '获取验证码',
-              btnDisabled: false
-            })
-            resolve(setTimer)
-          }
-        }, 1000)
-    })
-    promise.then((setTimer) => {
-      clearInterval(setTimer)
-    })
-  },
+  
   //保存
   save(e) {
     var that = this;
@@ -286,8 +137,6 @@ Page({
     console.log('学校: ' + this.data.school);
     console.log('院系: ' + this.data.yuanxi);
     console.log('学号: ' + this.data.number);
-    console.log('手机号: ' + this.data.phone);
-    console.log('验证码: ' + this.data.codee);
     var m = this.data.yuanxi;
     console.log(m);
     if (this.data.adapterSource.indexOf(m) == -1) {
@@ -307,9 +156,10 @@ Page({
         t4: 'red'
       })
     }
+
     if (this.data.t1 == 'red' || this.data.t2 == 'red' || this.data.t3 == 'red' || this.data.t4 == 'red') {
       wx.showToast({
-        title: '信息有误',
+        title: '信息未填',
         icon: 'none',
       });
       this.setData({
@@ -318,43 +168,15 @@ Page({
     } else this.setData({
       could: true
     })
-    var oldcode = this.data.codee;
-    var result = 3; //通过
-    if (typeof (oldcode) == "undefined" || oldcode == '') {
-      result = 0; //无效验证码
-      wx.showToast({
-        title: '无效验证码',
-        icon: 'none'
-      })
-      return
-    }
-    if (this.data.code != oldcode) {
-      result = 1; //验证码错误
-      wx.showToast({
-        title: '验证码错误',
-        icon: 'none'
-      })
-      return
-    }
-    var expire = this.data.expire;
-    console.log("验证码有效时间" + expire);
-    if (this.data.time > expire) {
-      result = 2; //验证码过期
-      wx.showToast({
-        title: '验证码过期',
-        icon: 'none'
-      })
-      return
-    }
-    console.log(result);
-    if (result == 3 && this.data.could) {
+    if ( this.data.could) {
       wx.request({
         url: 'https://xiaoyibang.top:8001/dajia/verify',
         data: {
           'puserid':that.data.puserid,
           'userid': app.globalData.userid,
           'teamid': that.data.teamid,
-          'number': that.data.number,       
+          'number': that.data.number, 
+          'department':that.data.department,      
         },
         success: (res) => {
 
@@ -375,10 +197,6 @@ Page({
 
       })
 
-      // this.setData({
-      //   text: "恭喜你 提交验证成功",
-      //   isShow: true
-      // })
       
     }
   },
@@ -392,8 +210,8 @@ Page({
 
   backtopages: function (options) {
     console.log("用户提交审核后触碰页面", options)
-    wx.navigateTo({
-      url: '/pages/home/home'
+    wx.navigateBack({
+      delta:1,
     })
   },
 

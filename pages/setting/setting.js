@@ -11,6 +11,7 @@ Page({
     time: '',
     top: '70',
     popup: true,
+    number:'',
     
     code: '',
     t: 0,
@@ -55,6 +56,7 @@ Page({
       time: app.globalData.time,
       status:app.globalData.status,
       account:app.globalData.account,
+      number:app.globalData.time,
     })
     
 

@@ -114,10 +114,13 @@ App({
     if (information.status == 2) {
 
       this.globalData.nickname=information.nickname;
+      this.globalData.avatarUrl = information.avatarUrl;
+
+
       this.globalData.status = information.status;
       this.globalData.userid = information.userid;
       this.globalData.name = information.name;
-      this.globalData.avatarUrl = information.avatarUrl;
+      
       this.globalData.time = information.number;
       this.globalData.teamname = information.teamname;
       this.globalData.account = information.account;
@@ -145,6 +148,7 @@ App({
     name: '',
     teamname: '',
     time: '',//认证信息
+    status:'',
     
     height:'',//屏幕高度
     

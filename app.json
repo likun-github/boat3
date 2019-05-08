@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/setting/setting",
     "pages/home/home",
+    "pages/verify/verify",
+    
+    "pages/setting/setting",
+    
     "pages/getprize/getprize",
     "pages/teamcut/teamcut",
     "pages/map/map",
@@ -10,7 +13,7 @@
     "pages/asset/asset",
     
     "pages/boat/boat",
-    "pages/verify/verify",
+  
     "pages/myteam/myteam",
     "pages/prizedetail/prizedetail"
   ],

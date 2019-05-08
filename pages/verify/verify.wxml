@@ -28,32 +28,16 @@
 <text class='input11'>学号</text>
 </view>
 
-<view class='sub' bindtap='save'>提交审核</view>
+<!-- <button class='sub' bindtap='save' open-type='getPhoneNumber' >提交审核</button> -->
+<button class='sub' bindtap='save'  >提交审核</button>
 
-<view class="showModule" wx:if="{{isShow}}" >
 
-  <!-- 这部分内容可以灵活修改，例如改成一个模态框 -->
-  <text class="text ">{{text}}</text>
-  <view class='circle' bindtap='cg'>
-  <view class='fanhui'></view>
-  </view>
-</view>
+
+
 
 
 
 
 <view class='shade' hidden='{{popup}}' bindtap='backtopages'>
-  <image src='/static/boat/check.png' wx:if="{{show_model}}" bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
-</view>
-
-<view wx:if="{{showModel}}" class='container1'>
-  <view class="model">
-    <view class="modelTitle">
-      获取微信授权信息
-    </view>
-    <view class="modelBody">微信登录需要获取您的用户信息，请前往设置</view>
-    <view class="btns">
-      <button open-type="getUserInfo" class="agree" bindgetuserinfo="onGotUserInfo" lang="zh_CN">授权</button>
-    </view>
-  </view>
+  <image src='/static/boat/check.png'  bindtap='hidePopup' class="bounceInDown shade_box" hidden='{{popup}}'></image>
 </view>
