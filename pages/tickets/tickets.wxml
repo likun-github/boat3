@@ -44,6 +44,7 @@
 
 
       <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}" class='pic_inform'></image>
+      
       <!-- <form bindsubmit="formSubmit">
         <view class="input-row">
           <!-- <label>网址</label> -->

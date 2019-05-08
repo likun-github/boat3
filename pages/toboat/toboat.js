@@ -339,9 +339,9 @@ Page({
       success: (res) => {
         console.log(res.data);
         app.getorderlist();
-        wx.switchTab({
-          url: '/pages/boat/boat',
-        });
+        // wx.switchTab({
+        //   url: '/pages/boat/boat',
+        // });
 
 
       },
@@ -359,9 +359,9 @@ Page({
       success: (res) => {
         console.log(res.data)
          app.getorderlist();
-         wx.switchTab({
-           url: '/pages/boat/boat',
-         });
+        //  wx.switchTab({
+        //    url: '/pages/boat/boat',
+        //  });
      
 
       },
@@ -399,19 +399,14 @@ Page({
 
 
 
-    // //增加一张船票
-
-    // //假装增加了
-
-    // //跳转查看船票
-    // wx.switchTab({
-    //   url: '/pages/boat/boat',
-    //   success: function (e) {
-    //     var page = getCurrentPages().pop();
-    //     if (page == undefined || page == null) return;
-    //     page.onLoad();
-    //   }
-    // }) 
+    //增加一张船票
+    //跳转查看船票
+    wx.switchTab({
+      url: '/pages/boat/boat',
+      success: function (e) {
+        app.getorderlist();
+      }
+    }) 
 
   },
 

@@ -269,4 +269,25 @@ Page({
     })
   },
 
+  cancel_order:function(e){
+    // console.log(e.currentTarget.dataset.index)
+    wx.showModal({
+      title: "提示",
+      content: "确定取消该订单吗？",
+      showCancel: true,
+      cancelText: "不不不",
+      cancelColor: "#000",
+      confirmText: "确定！",
+      confirmColor: "#000",
+      success: function (res) {
+        console.log(res)
+        if(res.confirm)
+        {
+          //用户取消该订单
+          //从ing中删除，添加到ed中，ed的删除是删除订单记录！
+        }
+      }
+    })
+  },
+
 })

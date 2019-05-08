@@ -33,7 +33,7 @@
 .pay {
   position: absolute;
   border-radius: 40rpx;
-  bottom: -40rpx;
+  bottom: -54rpx;
   height: 80rpx;
   left: 25%;
   width: 50%;
