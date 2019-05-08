@@ -1,89 +1,126 @@
-<view style='background:#F5F5F5;width:100%;height:100vh;position:fixed;top:0rpx;'>
-<view style='position:reative;background:linear-gradient(to top, #5EE4FE ,#57CCFE );width:100%;height:400rpx;'>
-<image src='{{pic}}' class='cicle'></image>
-<view class='name'>
-  <text style='font-size:40rpx;font-weight: 400;color: white;'>{{name}}</text>
-  <text>认证信息：{{teamname}}{{time}}级</text>
-</view>  
-<!-- linear-gradient(to bottom right, #5EE4FE, #57ABFE) -->
-<view class='beike' bindtap='b' style='background: {{status==1?"linear-gradient(to bottom right, #fe5e5e, #fe8557)":"linear-gradient(to bottom right, #5EE4FE, #57ABFE)"}};'>
-<text style='position:absolute;right:100rpx;top:-20rpx;font-size:130rpx;font-style: oblique;font-weight:900;color:rgba(255,255,255,0.1);text-stroke: 2rpx #000;'>BOAT</text>
-<view wx:if='{{status==1}}'>
-<image src='/static/bk.svg' style='width:30rpx;height:30rpx;position:absolute;left:100rpx;top:16rpx;'></image>
-  <text class='w2'>我的贝壳：{{account}} </text>
-  <text class='w21'>用于贝壳商场抽奖>></text>
-  <view class='b2'>贝壳明细</view>
-  <text style='width:100%;text-align:center;font-size:20rpx;color:white;bottom:70rpx;position:absolute;left:0rpx;'>BOAT贝壳彩蛋：来我们工作室玩耍可以得100贝壳噢</text>
-</view>  
-<view wx:if='{{status==0}}'>
-  <text class='w'>校园认证，校友帮你大件劲赏！</text>
-  <view class='w1'>立即认证>></view>
-  <image src='/static/w.png' style='width:50%;height:40rpx;margin-top:80rpx;margin-left:25%;'></image>
-  <text style='width:100%;text-align:center;font-size:20rpx;color:white;bottom:70rpx;position:absolute;left:0rpx;'>BOAT贝壳彩蛋：来我们工作室玩耍可以得100贝壳噢</text>
-  </view>
+<view class="container">
+  <view class='top'>
+    <view class='user'>
+      <image src='{{pic}}' class='userpic'></image>
+      <view class='user_information'>
+        <text style='font-size:40rpx;color:white;'>{{name}}</text>
+        <text style='font-size:25rpx;color:white;margin-top:10rpx;'>认证状态：暂未认证</text>
+      </view>
+
+
+    </view>
+    <view class='box' wx:if="{{status==2}}" >
+    <view class='box_middle' style='background: linear-gradient(to bottom right, #FE5E5E, #FE8557);font-size:30rpx;color:white;display:flex;flex-direction:row;padding-top:7%;'>
+     <image src='/static/bk.svg' style='width:40rpx;height:40rpx;margin-left:30rpx;'></image>
+        <text style='font-weight:700;margin-left:20rpx;'>我的贝壳:10 </text>
+        <text  style='text-decoration:underline;font-weight:400;margin-left:20rpx;font-size:28rpx;color:rgba(255,255,255,0.8)'>查看贝壳明细>></text>
+        <view style='font-weight:500;text-align:center;border-radius:20rpx;margin-left:20rpx;width:150rpx;height:40rpx;border:solid 1px white;' >贝壳商城</view>
+    
+    </view>
+    
+       
+    
+    </view>
+     
+       
   
+    <view class='box' wx:if="{{status==0}}" bindtap='gotoverify'>
+      <view class='box_middle'>
+        <view class='box_list1'>
+          <text style=''>校园认证，校友帮你大件劲省！</text>
+          <text style='margin-left:50rpx;color:rgba(255,255,255,0.8);'>立即认证➡</text>
+
+
+        </view>
+        <view class='box_line'></view>
+        <view class='box_list2'>
+
+          <image src='/static/setting/icon1.svg' class='box_image' style='margin-left:110rpx;'></image>
+          <view style='position:relative;display:flex;flex-direction: column;'>
+            <text style='width:80rpx;'>开启贝壳</text>
+            <text style='width:80rpx;'>激励计划</text>
+
+          </view>
+
+          <image src='/static/setting/icon2.svg' class='box_image'></image>
+          <view style='position:relative;display:flex;flex-direction: column;'>
+            <text style='width:80rpx;'>甄选服务</text>
+            <text style='width:80rpx;'>本校同舟</text>
+
+          </view>
+          <image src='/static/setting/icon3.svg' class='box_image'></image>
+          <view style='position:relative;display:flex;flex-direction: column;'>
+            <text style='width:80rpx;'>经常活动</text>
+            <text style='width:80rpx;'>敬请期待</text>
+
+          </view>
+
+
+
+        </view>
+
+
+      </view>
+
+    </view>
+
+
+  </view>
+  <image src='/static/h.png' class='background'>
+
+
+  </image>
+  <view style='position:absolute;width:100%;height:68%;top:32%;'>
+
+    <view class='middle'>
+
+      <view class='l0' bindtap='changelist1'>
+        <image src='/static/icon/setting/1.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+        <text> 提交需求</text>
+        <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+      </view>
+      <view class='l1' bindtap='changelist2'>
+        <image src='/static/icon/setting/2.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+        <text>校园合伙人</text>
+        <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+      </view>
+      <view class='l1' bindtap='changelist3'>
+        <image src='/static/icon/setting/3.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+        <text>小船邀请码</text>
+        <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+      </view>
+      <view class='l1' bindtap='changelist4'>
+        <image src='/static/icon/setting/4.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+        <text> 常见问题Q&A</text>
+        <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+      </view>
+      <view class='l1' bindtap='changelist5'>
+        <image src='/static/icon/setting/5.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
+        <text> 加入我们&意见反馈</text>
+        <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx; width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
+      </view>
+      <view style='position:relative;width:100%;height:70%;margin-top:7%;background:white;border-radius:25rpx;'>
+        <image src='/static/ma.svg' style='position:absolute;width:200rpx;height:200rpx;left:50rpx;top:30rpx;' bindtap='show'></image>
+        <text style='position:absolute;left:200rpx;top:50rpx;color:#077ACC;font-size:32rpx;'>邀请好友完成实名认证</text>
+        <text style='position:absolute;left:240rpx;top:120rpx;font-size:24rpx;'>可获得随机贝壳奖励哦</text>
+        <button class='share' open-type='share'>分享赢取贝壳</button>
+      </view>
+    </view>
+  </view>
+
+
 </view>
-</view>
-<scroll-view scroll-y="true" upper-threshold = "100rpx" style='position:absolute;width:100%;height:110vh;top:220rpx;'scroll-top="{{top}}rpx" bindscroll="scroll" bindtouchend="touchend">
-
-<image src='/static/h.png' mode='scaleToFill' style='width:800rpx;height:120vh;margin-left:-25rpx;margin-top:50rpx;'></image>
-<view style='position:absolute;width:100%;height:auto;top:100rpx;'>
-
-  <view class='middle' style='margin-top:120rpx'>
-
-    <view class='l0' bindtap='changelist1'>
-      <image src='/static/icon/setting/1.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-      <text> 提交需求</text>
-      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-    </view>
-    <view class='l1' bindtap='changelist2'>
-      <image src='/static/icon/setting/2.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-      <text>校园合伙人</text>
-      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-    </view>
-    <view class='l1' bindtap='changelist3'>
-      <image src='/static/icon/setting/3.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-      <text>小船邀请码</text>
-      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-    </view>
-    <view class='l1' bindtap='changelist4'>
-      <image src='/static/icon/setting/4.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-      <text> 常见问题Q&A</text>
-      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-    </view>
-    <view class='l1' bindtap='changelist5'>
-      <image src='/static/icon/setting/5.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-      <text> 加入我们&意见反馈</text>
-      <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx; width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-    </view>
-    <view style='position:relative;width:100%;height:70%;margin-top:40rpx;background:white;border-radius:25rpx;overflow:hidden;margin-top:{{h2}}px;z-index:500;'>
-      <image src='/static/1.svg' style='position:absolute;width:200rpx;height:200rpx;left:50rpx;top:50rpx;' bindtap='show'></image>
-      <text style='position:absolute;left:200rpx;top:90rpx;color:#077ACC;font-size:32rpx;'>向商家出示二维码参团</text>
-      <text style='position:absolute;left:200rpx;top:160rpx;font-size:24rpx;'>也作为个人邀请好友凭证</text>
-    </view>          
-  </view>                 
-</view>
-</scroll-view>
-</view>
-<!-- 放大显示 -->
-<!-- <view wx:if="{{show}}" class='show' bindtap='fals'>
-<text style='width:100%;text-align:center;position:absolute;top:20vh'>我的二维码</text>
-<image src='/static/1.svg' style='position:absolute;width:500rpx;height:500rpx;top:40vh;left:125rpx'></image>
-</view> -->
-
-
-
 
 <!-- 弹出邀请码的框 -->
 
 <view class='shade' hidden='{{popup}}'>
-  <view   class="bounceInDown shade_box" hidden='{{popup}}'>
-  <image src='/static/boat/bought.png' style='width:100%;height:100%'></image>
-  <view style='position:absolute;width:60%;left:20%;height:100rpx;top:60vh;'>
-     <view class='input' style='position:absolute;left:0rpx;height:60rpx;top:5rpx;width:300rpx;'></view>
-     <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c'   style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;'></input>
-     <view class='bt' bindtap='getin'>登船</view>
-  </view>
+  <view class="bounceInDown shade_box" >
+    <image src='/static/boat/bought.png' style='width:100%;height:100%'></image>
+    <view style='position:absolute;width:60%;left:20%;height:100rpx;top:60vh;'>
+      <view class='input' style='position:absolute;left:0rpx;height:60rpx;top:5rpx;width:300rpx;'></view>
+      <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c' style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;'></input>
+      <view class='bt' bindtap='getin'>登船</view>
+    </view>
   </view>
 </view>
 <!-- 弹出邀请码的框 end -->

@@ -14,7 +14,7 @@ Page({
     
     code: '',
     t: 0,
-    status:'1'
+    status:0,
   },
 
   /**
@@ -23,18 +23,24 @@ Page({
   onLoad: function(options) {
 
   },
-  scroll(e) {
-    console.log(e);
-    this.setData({
-      t: e.detail.scrollTop
+  gotoverify:function(){
+    wx.navigateTo({
+      url: '/pages/verify/verify',
     })
-    console.log('距离是' + this.data.t);
+
+  },
+  scroll(e) {
+    // console.log(e);
+    // this.setData({
+    //   t: e.detail.scrollTop
+    // })
+    // console.log('距离是' + this.data.t);
   },
   touchend: function() {
 
-    this.setData({
-      top: 80
-    })
+    // this.setData({
+    //   top: 80
+    // })
 
 
   },
@@ -46,8 +52,11 @@ Page({
       name: app.globalData.nickname,
       pic: app.globalData.avatarUrl,
       teamname: app.globalData.teamname,
-      time: app.globalData.time
+      time: app.globalData.time,
+      status:app.globalData.status,
+      account:app.globalData.account,
     })
+    
 
   },
 

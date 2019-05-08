@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/setting/setting",
     "pages/home/home",
     "pages/getprize/getprize",
     "pages/teamcut/teamcut",
@@ -7,7 +8,7 @@
     "pages/toboat/toboat",
     "pages/test/test",
     "pages/asset/asset",
-    "pages/setting/setting",
+    
     "pages/boat/boat",
     "pages/verify/verify",
     "pages/myteam/myteam",
