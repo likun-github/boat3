@@ -239,12 +239,12 @@
 
 .text_3 {
   font-size: 22rpx;
-  font-family: "SF UI Text";
+ 
   color: #727272d2;
 }
 
 .text_4 {
-  color: #72727269;
+  color: #72727248;
   font-size: 28rpx;
   display: flex;
   flex-direction: row;

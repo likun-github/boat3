@@ -17,7 +17,7 @@ Page({
     added: [], //ing船票的是否加入购物车标志
     add_all: false,
     overList: true, //是否展示购买的底层按钮view
-    ticket_number: 6, //船票数量
+    ticket_number: 0, //船票数量
     buylist: [], //添加到购物车的list，打对勾
 
 
@@ -55,18 +55,22 @@ Page({
     let total = 0;
     let cut =0;
     let pay =0;
+    let num = 0;
     for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
       if (carts[i].added) { // 判断选中才会计算价格
+        //判断大船小船的优惠？？？？
         total += carts[i].production__startprice; // 所有价格加起来
         cut += carts[i].steam__cutprice;  
         pay += carts[i].endprice;
+        num += 1;
       }
     }
     this.setData({ // 最后赋值到data中渲染到页面
       carts: carts,
       total_pay: total.toFixed(2),
       cut_pay: cut.toFixed(2),
-      really_pay:pay
+      really_pay:pay,
+      ticket_number:num,
     });
 
    
@@ -173,11 +177,39 @@ Page({
       })
     }
   },
-  // look_ticker: function () {
-  //   wx.navigateTo({
-  //     url: "/pages/tickets/tickets"
-  //   })
-  // },
+  
+  look_ticker: function (e) {
+    console.log(e)
+    console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
+    if (e.currentTarget.dataset.tickettype == 'ing'){
+      var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
+      wx.navigateTo({
+        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&'
+          + 'start_price=' + temp.production__startprice + '&'
+          + 'yuyue_string=' + temp.certificate + '&'
+          + 'yuyue_telephone=' + temp.production__merchant__telephone + '&'
+          + 'payfor_string=' + '' + '&'
+
+          +'index=1'
+      })
+    }else{
+      var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
+      wx.navigateTo({
+        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&'
+          + 'start_price=' + temp.production__startprice + '&'
+          + 'payfor_string=' + temp.certificate + '&'
+          + 'yuyue_string=' + '' + '&'
+          + 'yuyue_telephone=' + '' + '&'
+
+          + 'index=2'
+      })
+
+    }
+    
+
+
+   
+  },
 
 
   // 滚动切换标签样式
@@ -206,13 +238,12 @@ Page({
 
 
   team_cut: function(e) {
-    console.log(e.currentTarget.dataset.order)
-    var order=e.currentTarget.dataset.order;
+    var order = this.data.ticketlist_ing[e.currentTarget.dataset.index]
     wx.navigateTo({
       url: '/pages/teamcut/teamcut?productionid='+order.production_id+
       '&'+'nickname='+app.globalData.nickname+
       '&'+'avatarUrl='+app.globalData.avatarUrl+
-      '&'+'steamid='+order.steam_id+
+      '&' + 'steamid=' + order.steam_id+
       '&'+'userid='+order.userid,
     })
 
