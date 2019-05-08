@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "我的",
   "usingComponents": {
     "list1": "../../component/set/list1/list1",
     "list2": "../../component/set/list2/list2",
