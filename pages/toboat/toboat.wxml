@@ -61,7 +61,7 @@
 
     <view class='middle2' bindtap='gomap'>
       <text style='font-size: 24rpx;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:100rpx;'> {{position}}3.3km</text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:100rpx;'> {{position}}{{distance}}km</text>
       <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;margin-left:625rpx;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
@@ -164,13 +164,13 @@
       <view class='worth'>
         <view style='color:#58B4FE;font-weight:800;'>
           <text style='font-size:15rpx;'>￥</text>
-          <text style='font-size:30rpx;'>{{chooseStatus==0?2980:2100}}</text>
+          <text style='font-size:30rpx;'>{{chooseStatus==0?startprice*0.8:startprice*0.6}}</text>
         </view>
 
-        <text style='color:rgba(100,100,100,0.4);;font-size:0.5em;'>原价￥3280</text>
+        <text style='color:rgba(100,100,100,0.4);;font-size:0.5em;'>原价￥{{startprice}}</text>
       </view>
       <view class='title'>
-        {{chooseStatus==0?'百人同舟 仅剩一人':'3280返700'}}
+        {{chooseStatus==0?'百人同舟 仅剩一人':startprice+'返'+startprice*0.4}}
 
       </view>
     </view>
@@ -204,3 +204,12 @@
 
 
 </view>
+
+<!-- 弹出邀请码的框 -->
+
+<view class='shade' hidden='{{popup}}' bindtap='ticket'>
+  <view   class="bounceInDown shade_box" >
+  <image src='/static/toboat/bought.png' style='width:100%;height:100%'></image>
+  </view>
+</view>
+<!-- 弹出邀请码的框 end -->
