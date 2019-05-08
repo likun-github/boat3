@@ -53,14 +53,6 @@ Page({
     introduction: '',
     introductionpic: '',
     logo: '',
-
-
-
-
-
-
-
-
   },
 
 
@@ -101,6 +93,8 @@ Page({
 
 
   },
+
+
   getcomment:function(){
     var that = this;
     wx.request({
@@ -129,6 +123,8 @@ Page({
     })
 
   },
+
+
   gettext:function(e){
     console.log(e.detail)
     this.setData({
@@ -136,6 +132,7 @@ Page({
     })
 
   },
+
   sendmessege:function(){
     var that = this;
     if(app.globalData.status==2){
@@ -171,6 +168,8 @@ Page({
    
     
   },
+
+
   checkstatus:function(){
     for(var i=0;i<common.orderlist.length;i++){
       if(common.currentData.productionid==common.orderlist[i].production_id){
@@ -181,13 +180,17 @@ Page({
       }
     }
 
-  },//查看是否购买
+  },
+  
+  //查看是否购买
   choose: function(e) {
     this.setData({
       chooseStatus: e.currentTarget.dataset.index,
     })
 
   },
+
+  
   showModal: function() {
     if(this.data.buy){
       wx.switchTab({

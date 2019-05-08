@@ -19,7 +19,7 @@
         </view>
         <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
         <text style='font-size:20rpx;margin-top:17%;font-weight:600; color:white;margin-left:9%;'>距本轮校园大船发船仅剩1人</text>
-        <image src='/static/toboat/smallboat.svg' class='smallboat'></image>
+        <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}" class='smallboat'></image>
 
 
       </view>
