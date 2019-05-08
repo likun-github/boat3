@@ -270,6 +270,19 @@
   background-color: rgba(41, 84, 92, 0.418);
   z-index: 10;
 }
+.bt{
+  width: 100rpx;
+  height:60rpx;
+  top:5rpx;
+  position:absolute;
+  left:330rpx;
+  border-radius: 60rpx;
+  background: linear-gradient(to bottom right,#FDB38F,#F7907E);
+  font-size: 24rpx;
+  color: white;
+  text-align: center;
+  line-height: 60rpx;
+}
 
 .shade_box {
   position: fixed;

@@ -36,6 +36,12 @@ Page({
     })
 
   },
+  hidepop:function(){
+    this.setData({
+      popup:true,
+    })
+
+  },
   pageLifetimes: {
     show() {
       console.log("正在执行生命周期")
