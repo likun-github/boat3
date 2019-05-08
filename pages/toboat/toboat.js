@@ -53,6 +53,10 @@ Page({
     introduction: '',
     introductionpic: '',
     logo: '',
+    distance:'',
+
+
+    popup: true,
   },
 
 
@@ -84,6 +88,8 @@ Page({
       rank: common.currentData.rank,
       introduction: common.currentData.introduction,
       position: common.currentData.merchant__location,
+      distance:common.currentData.distance,
+      
 
       introductionpic: this.data.url + common.currentData.introductionpic,
       pic: pic,
@@ -192,10 +198,20 @@ Page({
 
   
   showModal: function() {
+
     if(this.data.buy){
-      wx.switchTab({
-        url: '/pages/boat/boat',
+      wx.showToast({
+        title: '正在查看船票',
+        duration: 1000,
+        icon: 'loading',
       })
+      setTimeout(function () {
+        wx.switchTab({
+          url: '/pages/boat/boat',
+        })
+
+      }, 1000)
+     
     }
     else{
       // 显示遮罩层
@@ -277,14 +293,31 @@ Page({
 
 
   home: function() {
-    wx.navigateBack({
-      delta: 1,
+    wx.showToast({
+      title: '正在返回首页',
+      duration: 1000,
+      icon: 'loading',
     })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1,
+      })
+
+    }, 500)
+    
   },
   ticket:function(){
-    wx.switchTab({
-      url: '/pages/boat/boat',
+    wx.showToast({
+      title: '正在查看船票',
+      duration: 1000,
+      icon: 'loading',
     })
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/boat/boat',
+      })
+
+    }, 1000)
 
   },
   gomap: function() {
@@ -339,10 +372,10 @@ Page({
       success: (res) => {
         console.log(res.data);
         app.getorderlist();
-        // wx.switchTab({
-        //   url: '/pages/boat/boat',
-        // });
-
+        this.setData({
+          popup: false
+        })
+    
 
       },
     })
@@ -359,10 +392,10 @@ Page({
       success: (res) => {
         console.log(res.data)
          app.getorderlist();
-        //  wx.switchTab({
-        //    url: '/pages/boat/boat',
-        //  });
-     
+        this.setData({
+          popup: false
+        })
+        
 
       },
     })
@@ -372,7 +405,9 @@ Page({
 
 
   freebuy: function() {
+   
     console.log("免费登船")
+    var that = this;
 
     //是否实名认证
     if (app.globalData.status == 0) {
@@ -388,25 +423,45 @@ Page({
 
       }, 1000)
     } else { //已认证的用户，跳出支付对话框，支付完成后弹出支付完成对话框。点击对话框或关闭后跳转自己的small_boat
-      var that = this;
-      if (this.data.chooseStatus == 0) {
-        this.buybigboat();
-      } else {
-        this.buysmallboat();
-      }
+      wx.showModal({
+        title: that.data.chooseStatus == 0 ? '你确定要发大船吗' :'你确定要发小船吗',
+        content: '',
+        success: function (res) {
+          if (res.confirm) {
+            if (that.data.chooseStatus == 0) {
+              that.buybigboat();
+            } else {
+              that.buysmallboat();
+            }
+            
+
+            
+            
+          } else {//这里是点击了取消以后
+            console.log('用户点击取消')
+          }
+        }
+      })
+      
+      
     }
 
 
 
 
-    //增加一张船票
-    //跳转查看船票
-    wx.switchTab({
-      url: '/pages/boat/boat',
-      success: function (e) {
-        app.getorderlist();
-      }
-    }) 
+    // //增加一张船票
+
+    // //假装增加了
+
+    // //跳转查看船票
+    // wx.switchTab({
+    //   url: '/pages/boat/boat',
+    //   success: function (e) {
+    //     var page = getCurrentPages().pop();
+    //     if (page == undefined || page == null) return;
+    //     page.onLoad();
+    //   }
+    // }) 
 
   },
 

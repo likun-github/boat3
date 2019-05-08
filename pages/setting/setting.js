@@ -11,7 +11,7 @@ Page({
     time: '',
     top: '70',
     popup: true,
-    show_model: true,
+    
     code: '',
     t: 0,
     status:'1'

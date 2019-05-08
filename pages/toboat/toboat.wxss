@@ -430,3 +430,36 @@ input {
   font-size: 40rpx;
   line-height: 250%;
 }
+
+
+
+/* 遮罩 \背景色可以再调*/
+.shade {
+  position: fixed;
+  top: 0;
+	right: 0;
+	bottom: 0;
+  left: 0;
+  background-color: rgba(41, 84, 92, 0.418);
+  z-index: 10;
+}
+
+.shade_box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 11;
+  min-width: 200rpx;
+  min-height: 200rpx;
+  letter-spacing: 0;
+  word-wrap: break-word;
+	animation-name:bounceInDown;
+	animation-duration:1s;
+	animation-timing-function:linear;
+	animation-delay:0;
+	animation-iteration-count:1;
+	animation-direction:normal;
+}
