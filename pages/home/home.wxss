@@ -501,3 +501,8 @@ font-size: 27rpx;
   justify-content:space-around;
   height: 107px;
 }
+
+.swiper_item{
+  height: 100%;
+  width: 100%;
+}

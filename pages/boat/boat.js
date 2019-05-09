@@ -206,34 +206,41 @@ Page({
   },
 
   look_ticker: function (e) {
-    console.log(e)
-    console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
-    if (e.currentTarget.dataset.tickettype == 'ing') {
-      var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
-      wx.navigateTo({
-        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-          'start_price=' + temp.production__startprice + '&' +
-          'yuyue_string=' + temp.certificate + '&' +
-          'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
-          'payfor_string=' + '' + '&'
+    // console.log(e)
+    if (e.currentTarget.dataset.cancel=='nocancel'){
+      console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
+      if (e.currentTarget.dataset.tickettype == 'ing') {
+        var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
+        wx.navigateTo({
+          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+            'start_price=' + temp.production__startprice + '&' +
+            'yuyue_string=' + temp.certificate + '&' +
+            'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
+            'payfor_string=' + '' + '&'
 
-          +
-          'index=1'
+            + 'index=1'
+        })
+      } else {
+        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
+        wx.navigateTo({
+          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+            'start_price=' + temp.production__startprice + '&' +
+            'payfor_string=' + temp.certificate + '&' +
+            'yuyue_string=' + '' + '&' +
+            'yuyue_telephone=' + '' + '&'
+
+            + 'index=2'
+        })
+
+      }
+    }else{
+      wx.showModal({
+        title: '查看',
+        content: '您已经取消了该订单',
+        confirm:"了解"
       })
-    } else {
-      var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
-      wx.navigateTo({
-        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-          'start_price=' + temp.production__startprice + '&' +
-          'payfor_string=' + temp.certificate + '&' +
-          'yuyue_string=' + '' + '&' +
-          'yuyue_telephone=' + '' + '&'
-
-          +
-          'index=2'
-      })
-
     }
+   
 
 
 
@@ -297,6 +304,8 @@ Page({
       ticketlist_ing: temp
     })
   },
+
+
   deleteorder: function (id) {
     var that = this;
     wx.request({
@@ -305,6 +314,19 @@ Page({
         'orderid': id,
       },
       success: (res) => {
+        
+
+        //购物车删除该数据
+        for (var i = 0; i < that.data.ticketlist_ing.length;i++){
+          if (that.data.ticketlist_ing[i].orderid == id){
+            that.data.ticketlist_ing.splice(i)
+
+          }
+            
+        }
+        
+        that.getTotalPrice()
+        
         wx.switchTab({
           url: '/pages/home/home',
         })
