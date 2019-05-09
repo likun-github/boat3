@@ -222,6 +222,8 @@ Page({
       showModal: true
     })
 
+
+
   },
   /**
    * 弹出框蒙层截断touchmove事件
@@ -234,6 +236,11 @@ Page({
    * 隐藏模态对话框
    */
   hideModal: function () {
+
+    //排序
+    // this.data.orderName_index==012 ->  按xxx
+
+
     this.setData({
       showModal: false
     });

@@ -26,50 +26,6 @@
 <!-- 这个view是为了在产品种类选择栏置顶后做的样式fix -->
 <view class='fixed' wx:if="{{scroll_top>=150}}"></view>
 
-<!-- 
-<scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}">
-  <view class="ip_tab_comtainer_padd"></view>
-  <block wx:for="{{ips}}" wx:for-item="ip" wx:key="{{ip.id}}">
-   
-     <view class="ip_tab_item{{ip.isSelect?'active':''}}" bindtap="onIpItemClick" wx:key="{{ip.id}}" data-item="{{ip}}">
-  
-      {{ip.title}}
-    </view>
-
-
-
-  </block>
-  <view class="ip_tab_comtainer_padd"></view>
-</scroll-view>
-
-
-
-
-<view class="producation_display" wx:for="{{showData}}" wx:key="unique">
-  <view class='item_column' bindtap='to_producation_page' data-bean="{{item}}">
-    <image class='producation_pic' src='{{item.producation_pic_url}}' mode='scaleToFill'></image>
-    <view class='item_column_1'>
-      <view style='font-size:34rpx;'>
-        {{item.producation_name}}
-      </view>
-      <view class='text_3'>
-        {{item.producation_des}}
-      </view>
-      <view class='item_column_2'>
-        <view class='item_column_3'>
-          <view class='text_4'>
-            ￥{{item.producation_originalPrice- item.producation_cutdowmPrice}}
-            <view class='sameschool_pic'>本校同舟</view>
-          </view>
-          <view class='text_5'>
-            ￥{{ item.producation_originalPrice}}
-          </view>
-        </view>
-        <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
-      </view>
-    </view>
-  </view>
-</view> -->
 
 
 <scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}" scroll-left="{{scrollLeft}}">
@@ -85,10 +41,7 @@
 </scroll-view>
 
 
-<!-- <swiper class="{{scroll_top>=150?'tab-content':'tab-content_fixed'}}" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:96vh">
-    <swiper-item wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"> -->
-<!-- <scroll-view scroll-y="true" class="scoll-h">
-        <block wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"> -->
+
 
 <view class='order'>
   <image style='margin-left:288px;height:100%;width:10%' src='/static/boat/letorder.svg' bindtap='showDialogBtn'></image>
