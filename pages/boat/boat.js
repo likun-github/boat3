@@ -121,7 +121,11 @@ Page({
     var ticket2 = [];
     var ticketData = common.orderlist
     for (var i = 0; i < ticketData.length; i++) {
+      
       if (ticketData[i].status == 1 || ticketData[i].status == 2) {
+        if (ticketData[i].state == 1) {
+          ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
+        }
         //  订单正在进行的话
         //（1"预付完成"),
         // (2"拼团完成"),
