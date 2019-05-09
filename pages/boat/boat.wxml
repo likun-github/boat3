@@ -52,7 +52,7 @@
               <view class='cut_view'>
 
                 <button class='btn_cut' wx:if="{{item.state==1}}" bindtap='team_cut' data-index='{{index}}'>砍</button>
-                <button class="{{item.state==1?'btn_checkticket':'btn_checkticket_bigboat'}}" bindtap='look_ticker' data-index='{{index}}' data-tickettype='ing'>查看船票</button>
+                <button class="{{item.state==1?'btn_checkticket':'btn_checkticket_bigboat'}}"  data-cancel="{{item.status==0?'cancel':'nocancel'}}" bindtap='look_ticker' data-index='{{index}}' data-tickettype='ing'>查看船票</button>
 
 
 
@@ -71,7 +71,7 @@
               <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
             <view class="expertInfo">
-              <view class='cancel_view' bindtap='delete_order' data-index='{{index}}'>
+              <view class='cancel_view' bindtap='delete_order_from_DATABASE' data-index='{{index}}'>
                 <image src='/static/boat/cancel.svg' class='cancel'></image>
               </view>
               <view class="name">{{item.production__name}}</view>

@@ -314,23 +314,16 @@ Page({
         'orderid': id,
       },
       success: (res) => {
-        
-
         //购物车删除该数据
         for (var i = 0; i < that.data.ticketlist_ing.length;i++){
           if (that.data.ticketlist_ing[i].orderid == id){
             that.data.ticketlist_ing.splice(i)
-
           }
-            
         }
-        
-        that.getTotalPrice()
-        
+        that.getTotalPrice() 
         wx.switchTab({
           url: '/pages/home/home',
         })
-
         app.getorderlist();
       }
     })
@@ -360,6 +353,44 @@ Page({
         }
       }
     })
+  },
+
+
+
+  delete_order_from_DATABASE:function(e){
+    // console.log(e.currentTarget.dataset.index)
+    var that =this
+
+    wx.showModal({
+      title: "提示",
+      content: "从记录中删除该订单吗？（不可以回复哦~）",
+      showCancel: true,
+      cancelText: "不不不",
+      cancelColor: "#000",
+      confirmText: "确定！",
+      confirmColor: "#000",
+      success: function (res) {
+        console.log(res)
+        if (res.confirm) {
+          wx.request({
+            url: 'https://xiaoyibang.top:8001/dajia/deleteorder',
+            data: {
+              'orderid': that.data.ticketlist_ed[e.currentTarget.dataset.index].orderid,
+            },
+            success: (res) => {
+              wx.switchTab({
+                url: '/pages/home/home',
+              })
+              app.getorderlist();
+            }
+          })
+
+
+        }
+      }
+    })
+
+    
   },
 
 
