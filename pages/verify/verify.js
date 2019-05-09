@@ -35,7 +35,7 @@ Page({
     inputValue1: '武汉大学',
     inputValue2: '',
 
-    adapterSource: ['哲学学院国学院', '文学院', '外国语言文学学院', '新闻与传播学院 ', '艺术学院(艺术教育中心)', '历史学院', '经济与管理学院法学院', '马克思主义学院社会学系', '政治与公共管理学院', '教育科学研究院', '信息管理学院',
+    adapterSource: ['哲学学院国学院', '文学院', '外国语言文学学院', '新闻与传播学院 ', '艺术学院', '历史学院', '经济与管理学院法学院', '马克思主义学院社会学系', '政治与公共管理学院', '教育科学研究院', '信息管理学院',
       '数学与统计学院', '物理科学与技术学院', '化学与分子科学学院', '生命科学学院', '资源与环境科学学院', '高等研究院',
       '动力与机械学院', '电气与自动化学院', '城市设计学院', '土木建筑工程学院', '水利水电学院', '工业科学研究院',
       '电子信息学院', '计算机学院', '测绘学院', '遥感信息工程学院', ' 印刷与包装系', '网络安全学院',
@@ -197,6 +197,8 @@ Page({
           app.globalData.time = that.data.number.substring(0, 4);
           app.globalData.status=2;
           app.globalData.account=res.data.account;
+          console.log("状态码")
+          console.log(app.globalData.status)
           
           this.hidePopup(false);
         }
@@ -207,7 +209,7 @@ Page({
     }
   },
 
-  hidePopup(flag = true) {
+  hidePopup(flag ) {
     this.setData({
       "popup": flag
     });
@@ -215,7 +217,6 @@ Page({
 
 
   backtopages: function (options) {
-    console.log("用户提交审核后触碰页面", options)
     wx.navigateBack({
       delta:1,
     })

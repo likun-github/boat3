@@ -11,12 +11,11 @@ App({
       }
     })
 
-
+    wx.clearStorageSync()
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
     // 登录
-  
   },
 
 
