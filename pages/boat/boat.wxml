@@ -63,6 +63,7 @@
         <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
+    
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h">
         <view wx:for="{{ticketlist_ed}}" wx:key="item1">

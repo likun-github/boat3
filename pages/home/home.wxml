@@ -6,7 +6,7 @@
 </view>
 
 
-<swiper indicator-dots="{{indicatorDots}}"  interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
+<swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
   <block wx:for="{{imgUrls}}" wx:key="imgUrls">
     <swiper-item>
       <view class='swiper_item'>
@@ -96,42 +96,51 @@
 </view>
 
 
+<!-- <swiper class='swiper_view' bindchange='swiper_change_view' data-type='{{index}}' current="{{currentTab}}"> 
 
-<view class="producation_display" wx:for="{{showData}}" wx:key="unique">
-  <view class='item_column' bindtap='to_producation_page' data-id="{{item.productionid}}">
-    <image class='producation_pic' src='{{url+item.logo}}' mode='scaleToFill'></image>
-    <view class='item_column_1'>
-      <view style='font-size:34rpx;'>
-        {{item.name}}
-      </view>
-      <view class='text_3'>
-        {{item.introduction}}
-      </view>
-      <view class='item_column_2'>
-        <view class='item_column_3'>
-          <view class='text_4'>
-            ￥{{item.startprice}}
+  <block wx:for="{{[1,2,3,4,5,6,7]}}">
+    <swiper-item> -->
+      <view class="producation_display" wx:for="{{showData}}" wx:key="unique">
+        <view class='item_column' bindtap='to_producation_page' data-id="{{item.productionid}}">
+          <image class='producation_pic' src='{{url+item.logo}}' mode='scaleToFill'></image>
+          <view class='item_column_1'>
+            <view style='font-size:34rpx;'>
+              {{item.name}}
+            </view>
+            <view class='text_3'>
+              {{item.introduction}}
+            </view>
+            <view class='item_column_2'>
+              <view class='item_column_3'>
+                <view class='text_4'>
+                  ￥{{item.startprice}}
 
-          </view>
-          <view class='text_5'>
-            ￥{{ item.startprice*0.6}}- {{item.startprice*0.8}}
-            <view class='sameschool_pic'>本校同舟</view>
+                </view>
+                <view class='text_5'>
+                  ￥{{ item.startprice*0.6}}- {{item.startprice*0.8}}
+                  <view class='sameschool_pic'>本校同舟</view>
+                </view>
+              </view>
+              <view>
+                <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
+                <view class='tongji'>
+                  <image class='item_column_5' src='/static/boat/tongji.svg'></image>
+                  <view class='item_column_5_text'>距离100人发船还剩1人</view>
+                </view>
+
+              </view>
+
+
+            </view>
           </view>
         </view>
-        <view>
-          <image class='add_pic item_column_4' src='/static/boat/addTolist.svg'></image>
-          <view class='tongji'>
-            <image class='item_column_5' src='/static/boat/tongji.svg'></image>
-            <view class='item_column_5_text'>距离100人发船还剩1人</view>
-          </view>
-
-        </view>
-
-
       </view>
-    </view>
-  </view>
-</view>
+
+    <!-- </swiper-item>
+  </block>
+
+</swiper> -->
+
 
 
 <!-- </block>

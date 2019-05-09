@@ -61,7 +61,7 @@
 
     <view class='middle2' bindtap='gomap'>
       <text style='font-size: 24rpx;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:100rpx;'> {{position}}{{distance}}km</text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> {{position}}{{distance}}km</text>
       <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;margin-left:625rpx;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
@@ -92,13 +92,13 @@
     <view wx:if="{{chooseinformation==1}}">
       <image bindtap='likethisProduction' src="{{likethis?'/static/toboat/hearted.svg':'/static/toboat/heart.svg'}}" class='heart'></image>
       <view class='love'>
-        <text>-</text>
+        <text></text>
         <text style='color:#59B4FE;'>{{likers}}</text>
-        <text>人觉得心仪-</text>
+        <text>人觉得心仪</text>
       </view>
       <view class='judge1'>
         <image src='/static/sq.jpg' style='position:relative;width:60rpx;height:60rpx;'></image>
-        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindblur="gettext" value='{{content}}'></input>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindblur="gettext" value='{{content}}' style='font-size:18rpx;padding-left:20rpx;'></input>
         <view class='send' bindtap='sendmessege'>发送</view>
 
       </view>

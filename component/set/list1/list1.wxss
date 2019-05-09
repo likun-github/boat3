@@ -53,6 +53,8 @@ textarea {
   width: 560rpx;
   margin-left: 30rpx;
   height: 60%;
+  padding-top:25rpx;
+
 }
 
 .wordstyle {
@@ -95,7 +97,7 @@ textarea {
   height: 60rpx;
   border-radius: 40rpx;
   background: linear-gradient(to bottom, #fdb38f, #f7907e);
-  margin-left: 450rpx;
+  margin-left: 380rpx;
   margin-top:20rpx;
   text-align: center;
   line-height: 60rpx;

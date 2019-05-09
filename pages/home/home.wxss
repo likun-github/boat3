@@ -506,3 +506,9 @@ font-size: 27rpx;
   height: 100%;
   width: 100%;
 }
+
+.swiper_view{
+  height:54vh;
+
+
+}

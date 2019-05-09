@@ -42,7 +42,7 @@ Page({
       },
     ],
     likethis: false,
-    likers: 125, //心仪的人数
+    likers: 16, //心仪的人数
 
     pic: [],
     startprice: '',
@@ -70,7 +70,10 @@ Page({
    */
 
   onLoad: function(options) {
-
+    this.setData({
+      likers: this.data.likers + parseInt(Math.random() * 100 + 1)
+    })
+ 
   },
 
   onShow: function() {

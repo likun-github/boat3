@@ -7,7 +7,7 @@
   <text> 请在百字内描述你的需求</text>
 </view>
 <view class='box'>
-  <textarea placeholder='感谢您提出的宝贵需求 （若被采用有机会获激励金)' placeholder-class='wordstyle' bindblur='bind'></textarea>
+  <textarea placeholder='感谢您提出的宝贵需求 （若被采用有机会获激励金)' placeholder-class='wordstyle' bindblur='bind' style="font-size:28rpx;margin:auto;color:"></textarea>
   <view class='pic_upload'>
       <view class="gallery">
         <view class="item" wx:for="{{images}}" wx:key="">
