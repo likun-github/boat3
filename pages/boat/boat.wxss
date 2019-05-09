@@ -183,7 +183,7 @@
   border-radius: 57rpx;
   color: white;
   left: 80rpx;
-  top: 23rpx;
+  top: 22rpx;
   background-color: #59b4fe;
 }
 

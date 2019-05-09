@@ -24,12 +24,12 @@ Page({
 
     carts: [], // 购物车列表
     hasList: false, // 列表是否有数据
- 
+
     selectAllStatus: false, // 全选状态，默认全选
 
-    really_pay:0,     //实际支付
-    total_pay: 0,     // 总价，初始为0
-    cut_pay:0,         //优惠额
+    really_pay: 0, //实际支付
+    total_pay: 0, // 总价，初始为0
+    cut_pay: 0, //优惠额
   },
 
 
@@ -53,14 +53,14 @@ Page({
   getTotalPrice() {
     let carts = this.data.ticketlist_ing; // 获取购物车列表
     let total = 0;
-    let cut =0;
-    let pay =0;
+    let cut = 0;
+    let pay = 0;
     let num = 0;
     for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
       if (carts[i].added) { // 判断选中才会计算价格
         //判断大船小船的优惠？？？？
         total += carts[i].production__startprice; // 所有价格加起来
-        cut += carts[i].steam__cutprice;  
+        cut += carts[i].steam__cutprice;
         pay += carts[i].endprice;
         num += 1;
       }
@@ -69,11 +69,11 @@ Page({
       carts: carts,
       total_pay: total.toFixed(2),
       cut_pay: cut.toFixed(2),
-      really_pay:pay,
-      ticket_number:num,
+      really_pay: pay,
+      ticket_number: num,
     });
 
-   
+
   },
 
   /**
@@ -101,11 +101,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    app.getorderlist()
     this.setData({
       ticketlist_ing: app.globalData.ticketlist_ing,
       ticketlist_ed: app.globalData.ticketlist_ed
     })
-
+    console.log("4",this.data.ticketlist_ing)
+    console.log(this.data.ticketlist_ed)
   },
 
   /**
@@ -120,7 +122,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log("onshow")
+    console.log("3",this.data.ticketlist_ing)
+    // console.log(this.data.ticketlist_ed)
+    // app.getorderlist()
+    // this.setData({
+    //   ticketlist_ing: app.globalData.ticketlist_ing,
+    //   ticketlist_ed: app.globalData.ticketlist_ed
+    // })
+    // console.log("3.1", this.data.ticketlist_ing)
+    // console.log(this.data.ticketlist_ed)
   },
 
   /**
@@ -177,38 +188,54 @@ Page({
       })
     }
   },
-  
-  look_ticker: function (e) {
-    console.log(e)
-    console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
-    if (e.currentTarget.dataset.tickettype == 'ing'){
-      var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
-      wx.navigateTo({
-        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&'
-          + 'start_price=' + temp.production__startprice + '&'
-          + 'yuyue_string=' + temp.certificate + '&'
-          + 'yuyue_telephone=' + temp.production__merchant__telephone + '&'
-          + 'payfor_string=' + '' + '&'
 
-          +'index=1'
-      })
+  look_ticker: function(e) {
+
+    if (e.currentTarget.dataset.cancel == 'nocancel') {
+      // console.log(e)
+      console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
+      if (e.currentTarget.dataset.tickettype == 'ing') {
+        var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
+        wx.navigateTo({
+          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+            'start_price=' + temp.production__startprice + '&' +
+            'yuyue_string=' + temp.certificate + '&' +
+            'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
+            'payfor_string=' + '' + '&'
+
+            +
+            'index=1'
+        })
+      } else {
+        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
+        wx.navigateTo({
+          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+            'start_price=' + temp.production__startprice + '&' +
+            'payfor_string=' + temp.certificate + '&' +
+            'yuyue_string=' + '' + '&' +
+            'yuyue_telephone=' + '' + '&'
+
+            +
+            'index=2'
+        })
+
+      }
+
+
     }else{
-      var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
-      wx.navigateTo({
-        url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&'
-          + 'start_price=' + temp.production__startprice + '&'
-          + 'payfor_string=' + temp.certificate + '&'
-          + 'yuyue_string=' + '' + '&'
-          + 'yuyue_telephone=' + '' + '&'
-
-          + 'index=2'
+      wx.showModal({
+        title: "查看",
+        content: "您已经取消了该订单",
+        showCancel: false,
+        confirmText: "了解",
+        confirmColor: "#000",
       })
-
     }
     
 
 
-   
+
+
   },
 
 
@@ -240,11 +267,11 @@ Page({
   team_cut: function(e) {
     var order = this.data.ticketlist_ing[e.currentTarget.dataset.index]
     wx.navigateTo({
-      url: '/pages/teamcut/teamcut?productionid='+order.production_id+
-      '&'+'nickname='+app.globalData.nickname+
-      '&'+'avatarUrl='+app.globalData.avatarUrl+
-      '&' + 'steamid=' + order.steam_id+
-      '&'+'userid='+order.userid,
+      url: '/pages/teamcut/teamcut?productionid=' + order.production_id +
+        '&' + 'nickname=' + app.globalData.nickname +
+        '&' + 'avatarUrl=' + app.globalData.avatarUrl +
+        '&' + 'steamid=' + order.steam_id +
+        '&' + 'userid=' + order.userid,
     })
 
 
@@ -254,7 +281,7 @@ Page({
     //   '&' + 'avatarUrl=' + this.data.avatarUrl +
     //   '&' + 'steamid=' + this.data.steamid +
     //   '&' + 'userid=' + this.data.userid,
-    
+
   },
 
   add_allTobuylist: function(e) {
@@ -269,8 +296,9 @@ Page({
     })
   },
 
-  cancel_order:function(e){
+  cancel_order: function(e) {
     // console.log(e.currentTarget.dataset.index)
+    var that = this
     wx.showModal({
       title: "提示",
       content: "确定取消该订单吗？",
@@ -279,15 +307,43 @@ Page({
       cancelColor: "#000",
       confirmText: "确定！",
       confirmColor: "#000",
-      success: function (res) {
-        console.log(res)
-        if(res.confirm)
-        {
-          //用户取消该订单
-          //从ing中删除，添加到ed中，ed的删除是删除订单记录！
+      success: function(res) {
+        if (res.confirm) {
+          wx.request({
+            url: 'https://xiaoyibang.top:8001/dajia/cancel',
+            data: {
+              'orderid': that.data.ticketlist_ing[e.currentTarget.dataset.index].orderid,
+            },
+            success: (res) => {
+           
+              console.log("1",that.data.ticketlist_ing)
+              console.log(that.data.ticketlist_ed)
+              // // that.data.ticketlist_ed.push(that.data.ticketlist_ing[e.currentTarget.dataset.index])
+              // that.data.ticketlist_ing.splice(e.currentTarget.dataset.index);
+             
+              // console.log("2", that.data.ticketlist_ing)
+              // console.log(that.data.ticketlist_ed)
+              that.onLoad();
+            }
+          })
+
+          //这里是点击了确定以后
+          console.log('用户点击确定');
+
+        } else { //这里是点击了取消以后
+          console.log('用户点击取消')
         }
       }
     })
+
+
   },
+
+
+
+  delete_order: function() {
+
+  },
+
 
 })

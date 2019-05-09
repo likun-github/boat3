@@ -198,7 +198,7 @@ Page({
 
   checkstatus:function(){
     for(var i=0;i<common.orderlist.length;i++){
-      if(common.currentData.productionid==common.orderlist[i].production_id){
+      if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status!=0){
         this.setData({
           buy:true,
         })
@@ -381,6 +381,8 @@ Page({
       }
     }
   },
+
+
   buybigboat: function() {
     var that = this;
     wx.request({
@@ -411,7 +413,7 @@ Page({
       },
       success: (res) => {
         console.log(res.data)
-         app.getorderlist();
+        app.getorderlist();
         this.setData({
           popup: false
         })
@@ -436,7 +438,10 @@ Page({
         duration: 1000,
         icon: 'loading',
       })
+
       setTimeout(function() {
+        app.gethomelist();
+        app.getorderlist();
         wx.navigateTo({
           url: "/pages/verify/verify",
         })
