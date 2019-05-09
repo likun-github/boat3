@@ -187,6 +187,22 @@
   background-color: #59b4fe;
 }
 
+
+.btn_checkticket_bigboat{
+  width: 186rpx;
+  height: 70rpx;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 57rpx;
+  color: white;
+  left: 80rpx;
+  top: 22rpx;
+  background-color: #59b4fe;
+
+}
+
+
 .btn_cut {
   margin-left: 60rpx;
   padding-left: 21rpx;
