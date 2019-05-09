@@ -11,7 +11,7 @@ App({
       }
     })
 
-    wx.clearStorageSync()
+    //wx.clearStorageSync()
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
@@ -54,8 +54,8 @@ App({
             common.orderlist = res.data.order;
 
           }
-          console.log("用户的订单:", common.orderlist)
-          that.orderClassify()
+          console.log("用户的订单:", common.orderlist);
+          
         }
       })
 
@@ -68,32 +68,7 @@ App({
 
 
 
-  orderClassify: function (){
-    var ticketData=common.orderlist
-    for (var i = 0; i <ticketData.length; i++) {
-      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
-        //  订单正在进行的话
-        //（1"预付完成"),
-        // (2"拼团完成"),
-        this.globalData.ticketlist_ing.push(ticketData[i])
-
-      }
-      else {
-        // (0, "订单取消"),
-        // (3, "支付完成"),
-        // (4, "订单完成"),
-        // (5, "评价完成"),
-        this.globalData.ticketlist_ed.push(ticketData[i])
-      }
-    }
-    // console.log("重新分组的船票ticketData--")
-    // console.log("ing:", this.globalData.ticketlist_ing)
-    // console.log("ed:", this.globalData.ticketlist_ed)
-    for (var i = 0; i < this.globalData.ticketlist_ing.length; i++) {
-      this.globalData.ticketlist_ing[i].added = false
-    }
-    
-  },
+  
   
 
 
