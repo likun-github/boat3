@@ -220,17 +220,57 @@ Page({
   showModal: function() {
 
     if(this.data.buy){
-      wx.showToast({
-        title: '正在查看船票',
-        duration: 1000,
-        icon: 'loading',
-      })
-      setTimeout(function () {
-        wx.switchTab({
-          url: '/pages/boat/boat',
-        })
+      wx.showModal({
+        title: "您的船票中已含有该商品",
+        content: "是否需要查看",
 
-      }, 1000)
+        
+        success: function (res) {
+          if (res.confirm) {
+            wx.showToast({
+              title: '正在查看船票',
+              duration: 1000,
+              icon: 'loading',
+            })
+            setTimeout(function () {
+              wx.switchTab({
+                url: '/pages/boat/boat',
+              })
+
+            }, 1000)
+            
+
+
+
+
+          } else {//这里是点击了取消以后
+            var animation = wx.createAnimation({
+              duration: 200,
+              timingFunction: "linear",
+              delay: 0
+            })
+            this.animation = animation
+            animation.translateY(300).step()
+            this.setData({
+              animationData: animation.export(),
+              chooseBoat: true
+            })
+            // setTimeout(function () {
+            //   animation.translateY(0).step()
+            //   this.setData({
+            //     animationData: animation.export()
+            //   })
+            // }.bind(this), 200)
+
+            animation.translateY(0).step()
+            this.setData({
+              animationData: animation.export()
+            })
+          }
+        }
+      })
+
+      
      
     }
     else{
