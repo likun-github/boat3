@@ -6,10 +6,13 @@
 </view>
 
 
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
+<swiper indicator-dots="{{indicatorDots}}"  interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
   <block wx:for="{{imgUrls}}" wx:key="imgUrls">
     <swiper-item>
-      <image src="{{item}}" class="slide-image" bindtap='rec' />
+      <view class='swiper_item'>
+        <image src="{{item}}" class="slide-image" bindtap='rec' />
+      </view>
+
     </swiper-item>
   </block>
 </swiper>
@@ -70,7 +73,7 @@
 
 
 <scroll-view scroll-x="true" class="{{scroll_top>=150?'ip_tab_comtainer_top':'ip_tab_comtainer'}}" scroll-left="{{scrollLeft}}">
-  
+
   <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">健身</view>
   <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">驾校</view>
   <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">考研</view>
@@ -78,7 +81,7 @@
   <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">托福</view>
   <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">雅思</view>
   <view class="tab-item {{currentTab==7?'active':''}}" data-current="7" bindtap="swichNav">电车</view>
-  
+
 </scroll-view>
 
 
@@ -95,7 +98,7 @@
 
 
 <view class="producation_display" wx:for="{{showData}}" wx:key="unique">
-  <view class='item_column' bindtap='to_producation_page'  data-id="{{item.productionid}}">
+  <view class='item_column' bindtap='to_producation_page' data-id="{{item.productionid}}">
     <image class='producation_pic' src='{{url+item.logo}}' mode='scaleToFill'></image>
     <view class='item_column_1'>
       <view style='font-size:34rpx;'>
@@ -137,7 +140,7 @@
   </swiper> -->
 
 <!--弹窗-->
-<view class="modal-mask"  catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
   <view class="{{choose1?'text_selected':'noselect_text'}}" bindtap='choose1'>按综合（用户满意度 高到低）
     <image wx:if="{{choose1}}" src='/static/boat/selected.svg' class='selected'></image>
