@@ -43,7 +43,7 @@
 
 
             <view class="expertInfo">
-              <view class='cancel_view' bindtap='cancel_order' data-index='{{index}}'>
+              <view class='cancel_view' bindtap='cancel_order' data-index='{{item}}'>
                 <image src='/static/boat/cancel.svg' class='cancel'></image>
               </view>
               <view class="name">{{item.production__name}}</view>

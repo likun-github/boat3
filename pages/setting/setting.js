@@ -42,17 +42,7 @@ Page({
     })
 
   },
-  pageLifetimes: {
-    show() {
-      console.log("正在执行生命周期")
-      this.setData({
 
-        account: app.globalData.account,
-      })
-      // 页面被展示
-    },
-
-  },
   scroll(e) {
     // console.log(e);
     // this.setData({
@@ -76,7 +66,6 @@ Page({
       name: app.globalData.nickname,
       pic: app.globalData.avatarUrl,
       teamname: app.globalData.teamname,
-      time: app.globalData.time,
       status:app.globalData.status,
       account:app.globalData.account,
       number:app.globalData.time,
@@ -89,6 +78,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    console.log("正在展示")
+    this.setData({
+      status: app.globalData.status,
+      account: app.globalData.account,
+      number: app.globalData.time,
+    })
 
   },
   changelist1: function() {
