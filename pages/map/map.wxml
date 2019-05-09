@@ -4,5 +4,5 @@
 
 <view class='pro_location'>
   <image style='width:30rpx;height:30rpx' src='/static/map/dingwei.svg'></image>
-  <text>武汉大学梅园食堂</text>
+  <text>{{location}}</text>
 </view>

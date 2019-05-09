@@ -176,7 +176,7 @@ Page({
           'userid': app.globalData.userid,
           'teamid': that.data.teamid,
           'number': that.data.number, 
-          'department':that.data.department,      
+          'department':that.data.yuanxi,      
         },
         success: (res) => {
 

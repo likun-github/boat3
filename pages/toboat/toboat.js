@@ -24,6 +24,8 @@ Page({
     text:'',//评论
     length:0,//评论条数
 
+    content:'',//评论设为空
+
 
 
     judge: [{
@@ -140,6 +142,9 @@ Page({
   },
 
   sendmessege:function(){
+    this.setData({
+      content:'',
+    })
     var that = this;
     if(app.globalData.status==2){
       wx.request({
@@ -158,17 +163,32 @@ Page({
 
     }
     else{
-      wx.showToast({
-        title: '实名认证完成才可自由评论哦',
-        duration: 1000,
-        icon: 'loading',
-      })
-      setTimeout(function () {
-        wx.navigateTo({
-          url: "/pages/verify/verify",
-        })
+      wx.showModal({
+        title: '实名认证完成后才可分享自己的观点哦~',
+        content: '',
+        success: function (res) {
+          if (res.confirm) {
+            wx.showToast({
+              title: '正在跳转',
+              duration: 1000,
+              icon: 'loading',
+            })
+            setTimeout(function () {
+              wx.navigateTo({
+                url: "/pages/verify/verify",
+              })
 
-      }, 1000)
+            }, 800)
+            
+
+
+
+          } else {//这里是点击了取消以后
+            console.log('用户点击取消')
+          }
+        }
+      })
+      
 
     }
    

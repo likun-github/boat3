@@ -1,6 +1,7 @@
 // pages/pro_map/pro_map.js
 
 var app = getApp();
+var common=require('../../common/index.js');
 
 Page({
 
@@ -8,13 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    latitude: 75,
-    longitude: 115.5,
-    markers: [{
-      latitude: 75,
-      longitude: 115.5,
-
-    }],
+    latitude:'' ,
+    longitude: '',
+    markers: [],
+    location:'',
   },
 
   /**
@@ -35,6 +33,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      latitude: common.currentData.merchant__latitude,
+      longitude:common.currentData.merchant__longitude,
+      markers:[{
+        latitude:common.currentData.merchant__latitude,
+        longitude: common.currentData.merchant__longitude,
+
+      }],
+      location:common.currentData.merchant__location,
+    })
 
   },
 
