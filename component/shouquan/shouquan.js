@@ -65,6 +65,7 @@ Component({
                 app.globalData.account=res.data.account;
                 app.globalData.number=res.data.number;
                 console.log("用户信息", res.data)
+                app.getorderlist();
                 var information = {
                   'userid': res.data.userid,
                   'teamname': res.data.team_name,

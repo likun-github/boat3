@@ -221,6 +221,7 @@ Page({
 
   
   showModal: function() {
+    var that=this;
 
     if(this.data.buy){
       wx.showModal({
@@ -252,9 +253,9 @@ Page({
               timingFunction: "linear",
               delay: 0
             })
-            this.animation = animation
+            that.animation = animation
             animation.translateY(300).step()
-            this.setData({
+            that.setData({
               animationData: animation.export(),
               chooseBoat: true
             })
@@ -266,7 +267,7 @@ Page({
             // }.bind(this), 200)
 
             animation.translateY(0).step()
-            this.setData({
+            that.setData({
               animationData: animation.export()
             })
           }

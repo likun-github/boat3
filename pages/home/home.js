@@ -108,10 +108,20 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.setData({
-      listData:common.homelist,
-      showData:common.showData,
-    });
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration:2000,
+    })
+    var that=this;
+    setTimeout(function(){
+      that.setData({
+        listData: common.homelist,
+        showData: common.showData,
+      });
+
+    },2000)
+    
     
 
   },

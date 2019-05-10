@@ -14,7 +14,7 @@
           <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" bindlongpress="deleteImage" data-index="{{index}}" />
           <!-- 删除按钮 -->
           <view class="delete" bindtap="delete" data-index="{{index}}">
-            <image src='/static/pic/delete.png'>
+            <image src='/static/asset/delete.png'>
             </image>
           </view>
         </view>

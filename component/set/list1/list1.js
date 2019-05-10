@@ -1,4 +1,5 @@
 // pages/component/asset/list1/list1.js
+var app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -28,6 +29,10 @@ Component({
       })
       console.log(this.data.text)
     },
+
+
+
+
 
     choosepic: function () {
       var that = this;
@@ -65,7 +70,7 @@ Component({
     deleteImage: function (e) {
       var that = this;
       var images = that.data.images;
-      var index = e.currentTarget.dataset.index;//获取当前长按图片下标
+      var index = e.currentTarget.dataset.index; //获取当前长按图片下标
       wx.showModal({
         title: '提示',
         content: '确定要删除此图片吗？',
@@ -97,40 +102,71 @@ Component({
     },
 
 
-    uploadfile: function (url, filename) {
-      var that = this;
-      wx.uploadFile({
-        url: url,
-        filePath: filename,
-        name: 'uploadFile',
-        formData: {
-          openid: ""
-        },
-        success: function (res) {
 
+    upload: function () {
+      var that = this;
+
+      wx.uploadFile({
+        url: 'https://xiaoyibang.top:8001/dajia/need', // 仅为示例，非真实的接口地址
+        filePath: that.data.images[0],
+        name: 'file',
+        formData: {
+          "userid": app.globalData.userid,
         },
-        fail: function (res) {
+        success(res) {
+          wx.showToast({
+            title: '成功提交需求',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1,
+            })
+
+
+          }, 850)
+
 
         }
       })
+
+
+
+
     },
     need: function () {
-      if (!this.data.text) {
+      var that = this;
+      if (!that.data.text) {
         wx.showToast({
-          title: '未提交需求',
+          title: '文字或图片未提交',
           icon: 'loading',
           duration: 1000
         })
-      }
-      else {
-        wx.showToast({
-          title: '成功提交需求',
-          icon: 'success',
-          duration: 2000
+      } else {
+        wx.showModal({
+          title: '你确定提交此需求吗',
+          content: '',
+          success: function (res) {
+            if (res.confirm) {
+
+              that.upload();
+
+
+            } else { //这里是点击了取消以后
+              console.log('用户点击取消')
+            }
+          }
         })
+        //upload
+
       }
 
-      //upload
+
     }
+
+
+
+
   }
 })

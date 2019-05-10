@@ -10,8 +10,7 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-
-    //wx.clearStorageSync()
+    wx.clearStorageSync();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
