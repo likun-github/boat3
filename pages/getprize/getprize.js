@@ -264,7 +264,7 @@ Page({
           var information = {
             'userid': app.globalData.userid,
             'teamname': app.globalData.teamname,
-            'name': app.data.name,
+            'name': app.globalData.nickname,
             'number': app.globalData.time,
             'status': 2,
             'nickname': app.globalData.nickname,

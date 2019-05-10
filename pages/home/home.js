@@ -260,6 +260,17 @@ Page({
       choose2: false,
       choose3: false,
     })
+
+    console.log(this.data.showData)
+    var showlist=this.data.showData.sort(function(a,b){
+      return a.reputation<b.reputation?1:-1;
+    })
+    this.setData({
+      showData:showlist,
+    })
+    // Vehicles = Vehicles.sort(function (a, b) {
+    //   return a.Year < b.Year ? 1 : -1;
+    // });
   },
 
  
@@ -272,6 +283,14 @@ Page({
       choose3: false,
     
     })
+    console.log(this.data.showData)
+    var showlist = this.data.showData.sort(function (a, b) {
+      return a.startprice > b.startprice ? 1 : -1;
+    })
+    this.setData({
+      showData: showlist,
+    })
+    
   },
 
   choose3: function () {
@@ -281,6 +300,13 @@ Page({
       choose1: false,
       choose2: false,
       choose3: true,
+    })
+    console.log(this.data.showData)
+    var showlist = this.data.showData.sort(function (a, b) {
+      return a.distance > b.distance ? 1 : -1;
+    })
+    this.setData({
+      showData: showlist,
     })
   },
 
