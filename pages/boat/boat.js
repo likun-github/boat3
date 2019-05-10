@@ -59,10 +59,20 @@ Page({
     for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
       if (carts[i].added) { // 判断选中才会计算价格
         //判断大船小船的优惠？？？？
-        total += carts[i].production__startprice; // 所有价格加起来
-        cut += carts[i].steam__cutprice;
-        pay += carts[i].endprice;
-        num += 1;
+        if (carts[i].state==1){
+          //小船
+          total += carts[i].production__startprice; // 所有价格加起来
+          cut += carts[i].steam__cutprice;
+          pay += carts[i].endprice;
+          num += 1;
+        }else{
+          //大船
+          total += carts[i].production__startprice; // 所有价格加起来
+          cut += carts[i].production__startprice - carts[i].endprice;
+          pay += carts[i].endprice;
+          num += 1;
+        }
+        
       }
     }
     this.setData({ // 最后赋值到data中渲染到页面
