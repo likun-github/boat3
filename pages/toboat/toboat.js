@@ -81,6 +81,8 @@ Page({
     if(options.steamid){
       this.setData({
         steamid:options.steamid,
+        name:options.name,
+        department:options.department,
       });
       // wx.request({
       //   url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
