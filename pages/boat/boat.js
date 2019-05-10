@@ -8,7 +8,7 @@ Page({
    */
   data: {
     ticketData: [],
-    noticket: false, //没有船票显示引导购买
+    noticket: true, //没有船票显示引导购买
     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
     ticketlist_ed: [], // 已结束的船票的数据（完成/取消）
     winHeight: "", //窗口高度

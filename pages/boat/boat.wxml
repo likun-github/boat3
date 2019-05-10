@@ -15,7 +15,7 @@
 <!-- 正文-->
 
 
-
+<view wx:if="!{{noticket}}" style='width:100%;height:100%'>
 <!-- <view> -->
 <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}" wx:if="{{!noticket}}">
   <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">进行中</view>
@@ -108,6 +108,6 @@
     <button class='buy_btn_view'>去登船({{ticket_number}})</button>
   </view>
 </view>
-
+</view>
 
 <!-- </view> -->
