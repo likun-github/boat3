@@ -46,7 +46,7 @@
         </view>
 
       </view>
-      <button class='share' id='btn' open-type="share" >
+      <button class='share' id='btn' open-type="share">
         <image src='/static/toboat/share.svg' class='share_image'></image>
         <text style='margin-top:-26rpx'>分享</text>
       </button>
@@ -102,17 +102,17 @@
         <view class='send' bindtap='sendmessege'>发送</view>
 
       </view>
-      
+
       <block wx:for="{{datalist}}" wx:key="{{judge.commentid}}">
-      <view class='list'>
-       <image src='{{item.user__picture}}' style='position:relative;width:90rpx;height:90rpx;'></image>
-       <view class='infor'>
-       <text>2016-{{item.user__department}}-{{item.user__nickname}}</text>
-       <text style=' color: rgba(60, 60, 60,0.4);'>刚刚</text>
-       <text style='width:570rpx;'>{{item.context}}</text>
-       </view>
-      </view>
-       
+        <view class='list'>
+          <image src='{{item.user__picture}}' style='position:relative;width:90rpx;height:90rpx;'></image>
+          <view class='infor'>
+            <text>2016-{{item.user__department}}-{{item.user__nickname}}</text>
+            <text style=' color: rgba(60, 60, 60,0.4);'>刚刚</text>
+            <text style='width:570rpx;'>{{item.context}}</text>
+          </view>
+        </view>
+
       </block>
 
 
@@ -132,8 +132,8 @@
 
 
   </scroll-view>
-  <view class='bottom' >
-    <view class='icon1' bindtap='home'> 
+  <view class='bottom'>
+    <view class='icon1' bindtap='home'>
       <image src='/static/toboat/home.svg' style='position:relative;width:40%;height:40%;margin-left:45rpx;margin-top:25rpx;'> </image>
       <text>首页</text>
     </view>
@@ -185,7 +185,12 @@
         <text style='font-size:24rpx;'>并根据个人要求完成体验并最终支付</text>
       </view>
       <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
-        <text style='font-size:45rpx;margin-top:5%;font-weight:800;'>小船 </text>
+        <view style="display:flex;flex-direction:row;">
+          <text style='font-size:45rpx;font-weight:800;'>小船</text>
+          <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 2016级艺术学院李艮基)</text>
+        </view>
+
+
         <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>
 
         <text style='font-size:24rpx; margin-top:6%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
@@ -208,8 +213,8 @@
 <!-- 弹出邀请码的框 -->
 
 <view class='shade' hidden='{{popup}}' bindtap='ticket'>
-  <view   class="bounceInDown shade_box" >
-  <image src='/static/toboat/bought.png' style='width:100%;height:100%'></image>
+  <view class="bounceInDown shade_box">
+    <image src='/static/toboat/bought.png' style='width:100%;height:100%'></image>
   </view>
 </view>
 <!-- 弹出邀请码的框 end -->
