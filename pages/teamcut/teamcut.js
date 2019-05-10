@@ -41,7 +41,7 @@ Page({
     avatarUrl: '',
     steamid: '',
     openid: '',
-    periodid: '',
+
     //状态0自我，状态1帮我砍，状态2帮好友分享
     btn_index: 1, //状态
     btn_text_left: ['分享好友砍价', '砍这好友一刀', '帮Ta召唤好友'],
@@ -101,7 +101,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  //打算传播steamid.periodid,pic name就行
+  //打算传播steamid.,pic name就行
   onLoad: function (options) {
     console.log("用户id" + app.globalData.userid)
     console.log("购买详情：", options)
@@ -112,7 +112,16 @@ Page({
       steamid: options.steamid,
       userid: options.userid,
     })
+    // wx.showLoading({
+    //   title: '正在加载中',
+    //   duration:2000,
+    // })
+    var that=this;
     this.checkstatus();
+    this.getproduction(this.data.productionid);
+    setTimeout(function(){
+      that.checkmember();
+    },2000)
     
 
   },
@@ -147,7 +156,6 @@ Page({
           onecut: res.data.onecut,
           twocut: res.data.twocut,
         })
-        that.checkmember();
         that.merge();
         that.timeapproach(res.data.onecut[0].endtime, res.data.onecut[0].time);
         
@@ -160,7 +168,7 @@ Page({
   //判断是否登陆
   checkstatus: function () {
     if (app.globalData.login) {
-      this.getproduction(this.data.productionid);
+      
       this.getorderdetail(this.data.steamid);
       
     }
@@ -169,19 +177,7 @@ Page({
         hq: true,
       })
     }
-    // if (!app.globalData.userid) {
-    //   this.setData({
-    //     showModel: true,
-    //   })
-    // } else {
-    //   this.checkmember();
-    //   this.setData({
-    //     showModel: false,
-    //   })
-    //   this.getorderdetail(this.data.steamid);
 
-
-    // }
 
   },
   
@@ -200,6 +196,7 @@ Page({
         })
         return '';
       }
+    
     }
     this.setData({
       btn_index: 1,
@@ -319,12 +316,7 @@ Page({
       middle2.push(middle);
     }
     var endprice=this.data.production.startprice-cutprice;
-    // cutprice = this.toDecimal2(cutprice);
-    // console.log(this.data.period.period__startprice)
-    // console.log(this.data.period.period__cutprice)
-    // var endprice = this.data.period.period__startprice - cutprice - this.data.period.period__cutprice;
-    // console.log(endprice)
-    // endprice = this.toDecimal2(endprice)
+
 
     this.setData({
       onecut: middle1,
@@ -346,7 +338,9 @@ Page({
         '&' + 'nickname=' + this.data.nickname +
         '&' + 'avatarUrl=' + this.data.avatarUrl +
         '&' + 'steamid=' + this.data.steamid +
+        '&' + 'productionid=' + this.data.productionid +
         '&' + 'userid=' + this.data.userid,
+
       success: (res) => {
         console.log("转发成功", res);
 
@@ -378,7 +372,7 @@ Page({
     else {
 
       for (var i = 0; i < common.homelist.length; i++) {
-        if (this.data.periodid == common.homelist[i].periodid) {
+        if (this.data.productionid == common.homelist[i].productionid) {
           common.currentData = common.homelist[i];
           break;
         }
@@ -423,7 +417,7 @@ Page({
       data: {
         'steamid': that.data.steamid,
         'userid': app.globalData.userid,
-        'productionid': that.data.periodid,
+        'productionid': that.data.productionid,
       },
       success: (res) => {
         console.log("状态2")
