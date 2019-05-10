@@ -6,13 +6,12 @@
 </view> -->
 
 
-<swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
+<swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red' autoplay='{{autoplay}}'>
   <block wx:for="{{imgUrls}}" wx:key="imgUrls">
     <swiper-item>
       <view class='swiper_item'>
         <image src="{{item}}" class="slide-image" bindtap='rec' />
       </view>
-
     </swiper-item>
   </block>
 </swiper>

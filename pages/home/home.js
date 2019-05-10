@@ -75,7 +75,6 @@ Page({
 
   onslidechangeend: function (e) {
     var that = this;
-
     that.setData({
       currentSwiper: e.detail.current
     })

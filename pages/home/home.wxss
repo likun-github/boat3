@@ -292,7 +292,6 @@
   height: 150px;
   position: relative;
   margin-top: -20rpx;
-  z-index: -1;
 }
 
 .search_img {
