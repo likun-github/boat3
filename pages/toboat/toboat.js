@@ -59,6 +59,10 @@ Page({
 
 
     popup: true,
+    //别人的小船
+    steamid:'',//小船id
+    department:'',//院系
+    name:'',//姓名
   },
 
 
@@ -70,9 +74,26 @@ Page({
    */
 
   onLoad: function(options) {
+    var that=this;
     this.setData({
       likers: this.data.likers + parseInt(Math.random() * 100 + 1)
     })
+    if(options.steamid){
+      this.setData({
+        steamid:options.steamid,
+      });
+      // wx.request({
+      //   url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
+      //   data: {
+      //     'steamid': that.data.steamid,
+      //   },
+      //   success: (res) => {
+      //     if (res.)
+
+      //   }
+      // })
+      
+    }
  
   },
 
