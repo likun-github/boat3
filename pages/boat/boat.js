@@ -119,7 +119,16 @@ Page({
   onShow: function () {
     var ticket1 = [];
     var ticket2 = [];
-    var ticketData = common.orderlist
+    var ticketData = common.orderlist;
+    console.log(ticketData.length)
+    if (ticketData.length>0)
+    this.setData({
+      noticket:false
+    })
+    else this.setData({
+      noticket: true
+    })
+    
     for (var i = 0; i < ticketData.length; i++) {
       
       if (ticketData[i].status == 1 || ticketData[i].status == 2) {
