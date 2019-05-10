@@ -38,7 +38,7 @@
         "selectedIconPath": "static/tab/boat1.png",
         "iconPath": "static/tab/boat.png",
         "pagePath": "pages/boat/boat",
-        "text": "商品"
+        "text": "船票"
       },
       {
         "selectedIconPath": "static/tab/setting1.png",
