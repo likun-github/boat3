@@ -1,9 +1,9 @@
-<view class='search_view'>
+<!-- <view class='search_view'>
   <view class='search_img_view'>
     <image src='/static/boat/search.svg' class='search_img' mode="aspectFit"></image>
   </view>
   <input style='width:80%;display:inline-block;height:100%;font-size:12px;' placeholder-style='font-size:12px;color:#636363' placeholder='搜索'></input>
-</view>
+</view> -->
 
 
 <swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red'>
