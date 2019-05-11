@@ -19,12 +19,12 @@ Page({
     chooseBoat: false, //我要上船点击
     chooseStatus: 0, //默认大船
     animationData: {}, //动画实例
-    datalist: {},//评论列表
-    buy:false,//是否购买
-    text:'',//评论
-    length:0,//评论条数
+    datalist: {}, //评论列表
+    buy: false, //是否购买
+    text: '', //评论
+    length: 0, //评论条数
 
-    content:'',//评论设为空
+    content: '', //评论设为空
 
 
 
@@ -55,7 +55,7 @@ Page({
     introduction: '',
     introductionpic: '',
     logo: '',
-    distance:'',
+    distance: '',
 
 
     popup: true,
@@ -73,7 +73,7 @@ Page({
     this.setData({
       likers: this.data.likers + parseInt(Math.random() * 100 + 1)
     })
- 
+
   },
 
   onShow: function() {
@@ -93,20 +93,20 @@ Page({
       rank: common.currentData.rank,
       introduction: common.currentData.introduction,
       position: common.currentData.merchant__location,
-      distance:common.currentData.distance,
-      
+      distance: common.currentData.distance,
+
 
       introductionpic: this.data.url + common.currentData.introductionpic,
       pic: pic,
       logo: common.currentData.logo,
     })
-   this.getcomment();
+    this.getcomment();
 
 
   },
 
 
-  getcomment:function(){
+  getcomment: function() {
     var that = this;
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/firstcomment',
@@ -114,21 +114,20 @@ Page({
         'productionid': common.currentData.productionid,
       },
       success: (res) => {
-       console.log(res.data.data)
-       if(res.data.data==100){
-         this.setData({
-           length:999,
-         })
+        console.log(res.data.data)
+        if (res.data.data == 100) {
+          this.setData({
+            length: 999,
+          })
 
-       }
-       else{
-         this.setData({
-           length:res.data.data.length,
-         })
-       }
-       this.setData({
-         datalist:res.data.data,
-       })
+        } else {
+          this.setData({
+            length: res.data.data.length,
+          })
+        }
+        this.setData({
+          datalist: res.data.data,
+        })
 
       }
     })
@@ -136,20 +135,20 @@ Page({
   },
 
 
-  gettext:function(e){
+  gettext: function(e) {
     console.log(e.detail)
     this.setData({
-      text:e.detail.value,
+      text: e.detail.value,
     })
 
   },
 
-  sendmessege:function(){
+  sendmessege: function() {
     this.setData({
-      content:'',
+      content: '',
     })
     var that = this;
-    if(app.globalData.status==2){
+    if (app.globalData.status == 2) {
       wx.request({
         url: 'https://xiaoyibang.top:8001/dajia/comment',
         data: {
@@ -164,53 +163,53 @@ Page({
       })
 
 
-    }
-    else{
+    } else {
       wx.showModal({
         title: '实名认证完成后才可分享自己的观点哦~',
         content: '',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.showToast({
               title: '正在跳转',
               duration: 1000,
               icon: 'loading',
             })
-            setTimeout(function () {
+            setTimeout(function() {
               wx.navigateTo({
                 url: "/pages/verify/verify",
               })
 
             }, 800)
-            
 
 
 
-          } else {//这里是点击了取消以后
+
+          } else { //这里是点击了取消以后
             console.log('用户点击取消')
           }
         }
       })
-      
+
 
     }
-   
-    
+
+
   },
 
 
-  checkstatus:function(){
-    for(var i=0;i<common.orderlist.length;i++){
-      if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status!=0){
+  checkstatus: function() {
+    for (var i = 0; i < common.orderlist.length; i++) {
+      if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status != 0) {
         this.setData({
-          buy:true,
+          buy: true,
         })
         return 0;
       }
     }
 
   },
-  
+
+
   //查看是否购买
   choose: function(e) {
     this.setData({
@@ -219,93 +218,60 @@ Page({
 
   },
 
-  
-  showModal: function() {
-    var that=this;
 
-    if(this.data.buy){
+  showModal: function() {
+    var that = this;
+    if (this.data.buy) {
       wx.showModal({
         title: "您的船票中已含有该商品",
         content: "是否需要查看",
-
-        
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             wx.showToast({
               title: '正在查看船票',
               duration: 1000,
               icon: 'loading',
             })
-            setTimeout(function () {
-              wx.switchTab({
-                url: '/pages/boat/boat',
+            setTimeout(function() {
+
+              var temp=[];
+
+              for (var i = 0; i < common.orderlist.length; i++) {
+                if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status != 0) {
+                  temp = common.orderlist[i]
+                  
+                }
+              }
+           
+              wx.navigateTo({
+                url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+                  'start_price=' + temp.production__startprice + '&' +
+                  'yuyue_string=' + temp.certificate + '&' +
+                  'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
+                  'payfor_string=' + '' + '&'
+
+                  + 'index=1'
               })
 
+              // index: options.index,
+              // final_price: options.final_price,
+              // start_price: options.start_price,
+              // yuyue_string: options.yuyue_string,
+              // yuyue_telephone: options.yuyue_telephone,
+              // payfor_string: options.payfor_string,
+              // nickname: app.globalData.nickname,
+              // avatarUrl: app.globalData.avatarUrl,
+
             }, 1000)
-            
-
-
-
-
-          } else {//这里是点击了取消以后
-            var animation = wx.createAnimation({
-              duration: 200,
-              timingFunction: "linear",
-              delay: 0
-            })
-            that.animation = animation
-            animation.translateY(300).step()
-            that.setData({
-              animationData: animation.export(),
-              chooseBoat: true
-            })
-            // setTimeout(function () {
-            //   animation.translateY(0).step()
-            //   this.setData({
-            //     animationData: animation.export()
-            //   })
-            // }.bind(this), 200)
-
-            animation.translateY(0).step()
-            that.setData({
-              animationData: animation.export()
-            })
           }
         }
       })
-
-      
-     
     }
-    else{
-      // 显示遮罩层
-      var animation = wx.createAnimation({
-        duration: 200,
-        timingFunction: "linear",
-        delay: 0
-      })
-      this.animation = animation
-      animation.translateY(300).step()
-      this.setData({
-        animationData: animation.export(),
-        chooseBoat: true
-      })
-      // setTimeout(function () {
-      //   animation.translateY(0).step()
-      //   this.setData({
-      //     animationData: animation.export()
-      //   })
-      // }.bind(this), 200)
-
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
-      })
-
-    }
-   
 
   },
+
+
+
   hideModal: function() {
     // 隐藏遮罩层
     var animation = wx.createAnimation({
@@ -362,28 +328,34 @@ Page({
       duration: 1000,
       icon: 'loading',
     })
-    setTimeout(function () {
+    setTimeout(function() {
       wx.navigateBack({
         delta: 1,
       })
 
     }, 500)
-    
+
   },
-  ticket:function(){
-    wx.showToast({
-      title: '正在查看船票',
-      duration: 1000,
-      icon: 'loading',
-    })
-    setTimeout(function () {
-      wx.switchTab({
-        url: '/pages/boat/boat',
+
+  ticket: function() {
+    if (this.data.buy) {
+      wx.showToast({
+        title: '正在查看船票',
+        duration: 1000,
+        icon: 'loading',
       })
+      setTimeout(function() {
+        wx.switchTab({
+          url: '/pages/boat/boat',
+        })
 
-    }, 1000)
-
+      }, 1000)
+    }else{
+      // 
+    }
   },
+
+
   gomap: function() {
     wx.navigateTo({
       url: '/pages/map/map',
@@ -441,13 +413,13 @@ Page({
         this.setData({
           popup: false
         })
-    
+
 
       },
     })
 
   },
-  buysmallboat:function(){
+  buysmallboat: function() {
     var that = this;
     wx.request({
       url: that.data.url1 + 'dajia/buysmallboat',
@@ -461,7 +433,7 @@ Page({
         this.setData({
           popup: false
         })
-        
+
 
       },
     })
@@ -471,7 +443,7 @@ Page({
 
 
   freebuy: function() {
-   
+
     console.log("免费登船")
     var that = this;
 
@@ -493,26 +465,26 @@ Page({
       }, 1000)
     } else { //已认证的用户，跳出支付对话框，支付完成后弹出支付完成对话框。点击对话框或关闭后跳转自己的small_boat
       wx.showModal({
-        title: that.data.chooseStatus == 0 ? '你确定要发大船吗' :'你确定要发小船吗',
+        title: that.data.chooseStatus == 0 ? '你确定要发大船吗' : '你确定要发小船吗',
         content: '',
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             if (that.data.chooseStatus == 0) {
               that.buybigboat();
             } else {
               that.buysmallboat();
             }
-            
 
-            
-            
-          } else {//这里是点击了取消以后
+
+
+
+          } else { //这里是点击了取消以后
             console.log('用户点击取消')
           }
         }
       })
-      
-      
+
+
     }
 
 
