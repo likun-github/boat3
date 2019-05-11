@@ -49,27 +49,28 @@
 }
 
 .tab-item {
-  margin: 0 36rpx;
+  margin: 0 45rpx;
   display: inline-block;
-  font-size: 30rpx;
+  font-size: 28rpx;
+  opacity: 0.8;
 }
 
 .tab-item.active {
   color: #59b4fe;
   position: relative;
-  font-size:32rpx;
-
+  font-size: 34rpx;
+  opacity: 1;
 }
 
 .tab-item.active:after {
   content: "";
   display: block;
-  height: 8rpx;
+  height: 10rpx;
   width: 52rpx;
   background: linear-gradient(to bottom right, #5ee4fe, #59b4fe);
   position: absolute;
   bottom: 15;
-  left: 4rpx;
+  left: 7.8rpx;
   border-radius: 16rpx;
 }
 
@@ -83,6 +84,13 @@
   height: 180rpx;
   align-items: center;
   border-bottom: 1px solid #f2f2f2;
+}
+
+.line {
+  width: 100%;
+  height: 3rpx;
+  background-color: #707070;
+  opacity: 0.28;
 }
 
 .avatar {
@@ -239,7 +247,6 @@
 
 .text_3 {
   font-size: 22rpx;
- 
   color: #727272d2;
 }
 
@@ -262,11 +269,11 @@
 }
 
 .sameschool_pic {
-  height: 20rpx;
-  width: 110rpx;
-  margin-left: -18rpx;
+  height: 28rpx;
+  width: 107rpx;
+  margin-left: -1rpx;
   color: #e9dab1;
-  font-size: 13rpx;
+  font-size: 17rpx;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNi43ODgiIGhlaWdodD0iMTEuMDAxIiB2aWV3Qm94PSIwIDAgMzYuNzg4IDExLjAwMSI+DQogIDxwYXRoIGlkPSLot6/lvoRfMTY3NCIgZGF0YS1uYW1lPSLot6/lvoQgMTY3NCIgZD0iTTI2ODguMTg0LDg3NzEuOTQyLDI2ODYsODc2OS42NmwzNC43NDEtLjA0NGExLjc2MywxLjc2MywwLDAsMSwxLjk4MywxLjc3NmMuMTQ0LDIsMCw3LjkwOSwwLDcuOTA5cy0uMjg4LDEuMzA4LTMuNDExLDEuMzA4aC0yOS4zNTFzLTEuNzc4LS4yMzUtMS43NzgtMS44WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI2ODUuOTk4IC04NzY5LjYwOCkiIGZpbGw9IiM0YjJmMTkiLz4NCjwvc3ZnPg0K");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -274,7 +281,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15rpx;
+  margin-top: 10rpx;
 }
 
 .search_view {
@@ -355,14 +362,17 @@
   display: flex;
   position: relative;
   flex-direction: row;
+  margin-top: 30rpx;
 }
 
 .ordertext {
   position: relative;
-  font-size: 29rpx;
+  font-size: 28rpx;
   color: #202020;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-top: -8rpx;
+  margin-left: -5rpx;
 }
 
 .tongji {
@@ -373,7 +383,7 @@
 }
 
 .item_column_5_text {
-  font-size: 15rpx;
+  font-size: 16rpx;
   white-space: nowrap;
   margin-top: 10rpx;
   margin-left: 5rpx;
@@ -474,12 +484,12 @@ input-holder {
 .selected {
   width: 30rpx;
   height: 30rpx;
-  margin-left:100rpx;
+  margin-left: 100rpx;
   font-weight: 900;
 }
 
-.text_selected{
-font-size: 27rpx;
+.text_selected {
+  font-size: 27rpx;
   margin-left: 64rpx;
   margin-top: 44rpx;
   margin-bottom: 15rpx;
@@ -497,17 +507,15 @@ font-size: 27rpx;
   font-size: 30rpx;
   display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
   height: 107px;
 }
 
-.swiper_item{
+.swiper_item {
   height: 100%;
   width: 100%;
 }
 
-.swiper_view{
-  height:54vh;
-
-
+.swiper_view {
+  height: 54vh;
 }
