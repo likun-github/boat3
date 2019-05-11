@@ -164,9 +164,14 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideLoading()
-                  console.log()
+                  that.setData({
+                    deletecode: '',
+                  })
+                  this.setData({
+                    "popup": true
+                  });
                   wx.navigateTo({
-                    url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
+                    url: "/pages/toboat/toboat?steamid=" + that.data.code +
                       '&' + 'name=' + res.data.name +
                       '&' + 'department=' + res.data.department,
                   })
@@ -178,6 +183,9 @@ Page({
                 wx.showToast({
                   title: '无效的邀请码',
                   icon: 'none',
+                })
+                that.setData({
+                  deletecode: '',
                 })
 
               }
@@ -253,7 +261,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: 'BOAT',
+      title: '完成实名认证领取贝壳',
       path: 'pages/home/home?puserid=' + app.globalData.userid+
       '&' + 'pageid=' + 2,
       success: (res) => {

@@ -74,16 +74,19 @@ Page({
    */
 
   onLoad: function(options) {
+    console.log("正在加载options")
     var that=this;
     this.setData({
       likers: this.data.likers + parseInt(Math.random() * 100 + 1)
     })
+    console.log(options)
     if(options.steamid){
       this.setData({
         steamid:options.steamid,
         mastername:options.name,
         department:options.department,
       });
+      console.log(this.data.steamid)
       // wx.request({
       //   url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
       //   data: {
@@ -475,6 +478,7 @@ Page({
     wx.request({
       url: that.data.url1 + 'dajia/buysmallboat',
       data: {
+        'steamid':that.data.steamid,
         'userid': app.globalData.userid,
         'productionid': common.currentData.productionid,
       },
