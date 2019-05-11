@@ -13,13 +13,19 @@ Page({
     top: '70',
     popup: true,
     number: '',
-
+    imagePath: 'https://xiaoyibang.top:8001/static/ma.jpg',
     code: '',//邀请码
     t: 0,
     status: 0,
     deletecode:'',//邀请码删除
   },
-
+  previewImg: function (e) {
+    var img = this.data.imagePath;
+    console.log(img);
+    wx.previewImage({
+      urls: [img] // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

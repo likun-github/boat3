@@ -1,6 +1,6 @@
 
 <view class='background'>
-  <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%;' mode='aspectFill'></image>
+    <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%;' mode='aspectFill'></image>
 </view>
 <view class='team' >
      <view style='width:50%;height:30%;margin-left:25%;'>
@@ -37,20 +37,4 @@
    <text style='height:100%;display: flex;flex-direction:column;justify-content: center;font-size:50rpx;color:white;font-family:Monospace'>{{data[index-1].c}}</text>
    </view>
    </view>
-</view>
-
-<view class='helplist'>
-  <!-- <view class='title'>—— 已有{{21}}位朋友帮忙砍价{{3579}}元 ——</view> -->
-  <!-- <scroll-view scroll-y class="scroll" bindscrolltolower='lower'>
-    <block wx:for="{{res}}" wx:key="*this">
-      <view style=' margin-bottom: 40rpx; height: 100rpx;width: 90%;margin-left:5%;' data-index="{{index}}" bindtap='selectindex'>
-        <view class='m'>
-          <image src='{{item.pic}}' class='img'></image>
-          <text class='tn'>{{item.name}}</text>
-          <text class='te'>{{item.cutprice}}</text>
-          <text class='te1'>元</text>
-        </view>
-      </view>
-    </block>
-  </scroll-view> -->
 </view>
