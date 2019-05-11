@@ -81,7 +81,7 @@
     <view wx:if="{{top}}" class='middletop'>
       <view class='block1' style="{{chooseinformation==0?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='0'>详情</view>
       <view class='hline'></view>
-      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}}" bindtap='chooseinformation' data-index='1'>评论({{length}})</view>
+      <view class='block2' style="{{chooseinformation==1?'color: #59B4FE;font-weight:800;':'color:#8B8B8B;'}} " bindtap='chooseinformation' data-index='1'>评论({{length}})</view>
     </view>
 
 
