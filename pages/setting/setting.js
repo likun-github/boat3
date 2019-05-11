@@ -164,6 +164,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideLoading()
+                  console.log()
                   wx.navigateTo({
                     url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
                       '&' + 'name=' + res.data.name +

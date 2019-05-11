@@ -172,6 +172,7 @@ Page({
       wx.request({
         url: 'https://xiaoyibang.top:8001/dajia/verify',
         data: {
+          'name':that.data.name,
           'puserid':app.globalData.puserid,
           'userid': app.globalData.userid,
           'teamid': that.data.teamid,
