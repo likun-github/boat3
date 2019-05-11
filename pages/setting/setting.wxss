@@ -268,7 +268,7 @@
 	bottom: 0;
   left: 0;
   background-color: rgba(41, 84, 92, 0.418);
-  z-index: 10;
+  
 }
 .bt{
   width: 100rpx;
@@ -291,7 +291,7 @@
   bottom: 0;
   left: 0;
   margin: auto;
-  z-index: 11;
+  
   min-width: 200rpx;
   min-height: 200rpx;
   letter-spacing: 0;

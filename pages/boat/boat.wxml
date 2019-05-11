@@ -15,7 +15,7 @@
 <!-- 正文-->
 
 
-
+<view wx:if="!{{noticket}}" style='width:100%;height:100%'>
 <!-- <view> -->
 <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}" wx:if="{{!noticket}}">
   <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">进行中</view>
@@ -29,7 +29,7 @@
   <block>
     <swiper-item>
       <scroll-view scroll-y="true" class="scoll-h">
-        <view wx:for="{{ticketlist_ing}}" wx:key="item1">
+         <view wx:for="{{ticketlist_ing}}" wx:key="item1">
           <view class="item-ans">
             <view class="avatar">
               <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
@@ -39,8 +39,6 @@
               <icon wx:if="{{item.added}}" type="success" color="#59b4fe" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
               <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
             </view>
-
-
 
             <view class="expertInfo">
               <view class='cancel_view' bindtap='cancel_order' data-index='{{item}}'>
@@ -58,9 +56,11 @@
 
               </view>
             </view>
+
           </view>
-        </view>
-        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
+
+        </view> 
+        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
     
@@ -84,7 +84,7 @@
             </view>
           </view>
         </view>
-        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;margin-top:20rpx;font-size:27rpx;color:grey;'>-这是底线-</view>
+        <view style='height:{{overList?180:0}}rpx;width:100%;justify-content:center;flex-direction:row;display:flex;font-size:27rpx;color:grey;'>-这是底线-</view>
       </scroll-view>
     </swiper-item>
   </block>
@@ -93,12 +93,12 @@
 
 
 <view class='buy' wx:if="{{currentTab==0 && !noticket}}">
-  <!--  -->
+  
   <view class='add_allTobuylist'>
     <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#59b4fe" class="total-select" bindtap="selectAll" />
     <icon wx:else type="circle" color="grey" class="total-select" bindtap="selectAll" />
   </view>
-  <!--  -->
+  
   <view class='buy_text1'>全选</view>
   <view class='price_des'>
     <view class='price_des_text1'>合计:￥{{really_pay}}</view>
@@ -108,6 +108,6 @@
     <button class='buy_btn_view'>去登船({{ticket_number}})</button>
   </view>
 </view>
-
+</view>
 
 <!-- </view> -->

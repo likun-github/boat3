@@ -36,7 +36,6 @@ Page({
     ],
 
     //数据缓存
-    orderid: '',
     nickname: '',
     avatarUrl: '',
     steamid: '',
@@ -61,6 +60,11 @@ Page({
     size: 8, //每页8条数据
     flag_hhh: '',
     realprice: 0,  //实时的价格
+
+
+    
+    //checkstatus仅初次进入核查
+    check: true,
   },
   //下拉刷新
   lower: function () {
@@ -119,9 +123,6 @@ Page({
     var that=this;
     this.checkstatus();
     this.getproduction(this.data.productionid);
-    setTimeout(function(){
-      that.checkmember();
-    },2000)
     
 
   },
@@ -156,8 +157,17 @@ Page({
           onecut: res.data.onecut,
           twocut: res.data.twocut,
         })
+        if (this.data.check) {
+          that.checkmember();
+          that.setData({
+            check: false,
+          })
+
+        }
         that.merge();
         that.timeapproach(res.data.onecut[0].endtime, res.data.onecut[0].time);
+        
+        
         
         
 
@@ -167,7 +177,7 @@ Page({
 
   //判断是否登陆
   checkstatus: function () {
-    if (app.globalData.login) {
+    if (app.globalData.userid) {
       
       this.getorderdetail(this.data.steamid);
       
@@ -194,6 +204,7 @@ Page({
         this.setData({
           btn_index: 0,
         })
+        console.log("运行查看拼团成员")
         return '';
       }
     
@@ -333,8 +344,8 @@ Page({
   onShareAppMessage: function () {
     return {
       title: 'BOAT',
-      path: 'pages/teamcut/teamcut?orderid=' +
-        this.data.orderid +
+      path: 'pages/home/home?pageid=' +
+        1 +
         '&' + 'nickname=' + this.data.nickname +
         '&' + 'avatarUrl=' + this.data.avatarUrl +
         '&' + 'steamid=' + this.data.steamid +
@@ -382,6 +393,7 @@ Page({
           title: '拼团人数已满，是否单独发船',
           content: '',
           success: function (res) {
+            
             if (res.confirm) {
               wx.navigateTo({
                 url: "/pages/toboat/toboat",
@@ -396,8 +408,58 @@ Page({
 
       }
       else {
-        wx.navigateTo({
-          url: "/pages/toboat/toboat?steamid=" + that.data.steamid,
+        wx.request({
+          url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
+          data: {
+            'steamid': that.data.steamid,
+          },
+          success: (res) => {
+            if (res.data.success) {
+              console.log(res.data)
+              console.log("拥有该团队");
+              if (res.data.number < 5) {
+
+                var production = false;
+                for (var i = 0; i < common.homelist.length; i++) {
+                  if (res.data.productionid == common.homelist[i].productionid) {
+                    common.currentData = common.homelist[i];
+                    production = true;
+                    break;
+                  }
+                }
+                if (production) {
+                  wx.showLoading({
+                    title: '正在跳转',
+
+                  })
+                  setTimeout(function () {
+                    wx.hideLoading()
+                    wx.navigateTo({
+                      url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
+                        '&' + 'name=' + res.data.name +
+                        '&' + 'department=' + res.data.department,
+                    })
+
+                  }, 1500)
+
+                }
+                else {
+                  wx.showToast({
+                    title: '非本校人员',
+                    icon: 'none',
+                  })
+
+                }
+
+
+              }
+              
+
+
+            }
+            
+
+          }
         })
 
 
@@ -421,6 +483,11 @@ Page({
       },
       success: (res) => {
         console.log("状态2")
+        if(!res.data.success){
+          wx.showToast({
+            title: '您已砍过价',
+          })
+        }
         that.setData({
           btn_index: 2,
         })

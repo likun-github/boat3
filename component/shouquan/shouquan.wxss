@@ -12,17 +12,17 @@
   position: absolute;
   width: 90%;
   left: 5%;
-  height: 70vh;
-  top: 15vh;
+  height: 900rpx;
+  top: 200rpx;
   background: white;
   border-radius: 40rpx;
 }
 .s{
   position: absolute;
-  bottom: 18vh;
   width: 60%;
   left: 20%;
   height: 80rpx;
+  margin-top: 1000rpx;
   background: linear-gradient(to bottom right,#FD8FA9,#F77ECF);
   border-radius: 40rpx;
   color: white;

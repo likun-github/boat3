@@ -114,13 +114,17 @@
 
 <!-- 弹出邀请码的框 -->
 
-<view class='shade' hidden='{{popup}}'   >
-  <view class="bounceInDown shade_box" >
-    <image src='/static/boat/bought.png' style='width:100%;height:100%'></image>
+<view class='shade' hidden='{{popup}}'>
+  <view class="bounceInDown shade_box">
+  <image src='/static/boat/bought.png' style='width:100%;height:100%;position:absolute;'></image>
+    <view  bindtap='hidden' style='width:100%;height:100%;position:absolute;'>
+       </view>
+    <view style='width:90%;position:absolute;left:5%;top:35vh;height:400rpx'></view>
     <view style='position:absolute;width:60%;left:20%;height:100rpx;top:60vh;'>
       <view class='input' style='position:absolute;left:0rpx;height:60rpx;top:5rpx;width:300rpx;'></view>
-      <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c' style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;'></input>
+      <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c' style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;' value='{{deletecode}}' type='number'></input>
       <view class='bt' bindtap='getin'>登船</view>
+    
     </view>
   </view>
 </view>

@@ -10,7 +10,7 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    
+    wx.clearStorageSync();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
@@ -27,6 +27,7 @@ App({
         'teamid':1,
       },
       success:(res)=>{
+        console.log(common.homelist)
         common.homelist=res.data;
         var list = [];
         for (var i = 0; i < common.homelist.length; i++) {
@@ -52,6 +53,9 @@ App({
           if (res.data.success) {
             common.orderlist = res.data.order;
 
+          }
+          else{
+            common.orderlist=[];
           }
           console.log("用户的订单:", common.orderlist);
           
@@ -115,6 +119,14 @@ App({
 
 
   globalData: {
+    pageid:'',//分享通过页面跳转完成，分享先到首页，再根据pageid调整
+
+
+
+
+
+
+
     puserid:'',//邀请人
     login:'',//是否登陆
     userid:'',

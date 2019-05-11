@@ -1,6 +1,6 @@
 
 <view class='background'>
-  <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%; '></image>
+  <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%;' mode='aspectFill'></image>
 </view>
 <view class='team' >
      <view style='width:50%;height:30%;margin-left:25%;'>

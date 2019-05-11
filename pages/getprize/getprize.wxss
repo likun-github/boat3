@@ -13,6 +13,7 @@
   left: 5%;
   margin-top: 20rpx;
   background: linear-gradient(to bottom right, #fe5e5e, #fe8557);
+  overflow: hidden;
 }
 
 /* 底部滚动列表  */
