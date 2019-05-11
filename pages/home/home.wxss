@@ -363,6 +363,9 @@
   color: #202020;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-top:-8rpx;
+  margin-left:-5rpx;
+
 }
 
 .tongji {
