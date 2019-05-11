@@ -76,6 +76,25 @@ Component({
                   'avatarUrl': app.globalData.avatarUrl,
                   'account': res.data.account,
                 }
+                if(app.globalData.puserid){
+                  if (app.globalData.login) {
+                    wx.showModal({
+                      title: '实名认证',
+                      content: '完成实名认证好友也可领取贝壳哦~',
+                      success: (res) => {
+                        if (res.confirm) {
+                          wx.navigateTo({
+                            url: '/pages/verify/verify',
+                          })
+                        }
+                        else {
+                          console.log("取消")
+                        }
+                      }
+                    })
+
+                  }
+                }
                 
                 wx.setStorage({
                   key: 'information',

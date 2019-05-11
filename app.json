@@ -2,18 +2,14 @@
   "pages": [
     "pages/home/home",
     "pages/verify/verify",
-    
     "pages/setting/setting",
-    
     "pages/getprize/getprize",
     "pages/teamcut/teamcut",
     "pages/map/map",
     "pages/toboat/toboat",
     "pages/test/test",
     "pages/asset/asset",
-    
     "pages/boat/boat",
-  
     "pages/myteam/myteam",
     "pages/prizedetail/prizedetail"
   ],
@@ -47,5 +43,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

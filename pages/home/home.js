@@ -84,22 +84,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if(options.puserid){
-      app.globalData.puserid=options.puserid;
-      wx.showToast({
-        title: '完成实名认证好友也可领取贝壳哦~',
-      })
+    if(options){
+      console.log("跳转")
+      if (options.puserid) {
+        console.log("着那个")
+        app.globalData.puserid = options.puserid;
+        if(app.globalData.login){
+          wx.showModal({
+            title: '实名认证',
+            content: '完成实名认证好友也可领取贝壳哦~',
+            success: (res) => {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '/pages/verify/verify',
+                })
+              }
+              else {
+                console.log("取消")
+              }
+            }
+          })
+
+        }
+        
+
+      }
     }
-    // this.setData({
-    //   //jsonData.dataList获取json.js里定义的json数据，并赋值给dataList
-    //   listData: listData.producationData
-    // });
+    else{
+      console.log("switch")
+    }
+    // console.log(options)
+    
 
-    // console.log("获取的产品详情list：", this.data.listData)
-
-    // this.setData({
-    //   showData: this.data.listData[0]
-    // })
 
   },
 

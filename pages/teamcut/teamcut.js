@@ -178,7 +178,7 @@ Page({
 
   //判断是否登陆
   checkstatus: function () {
-    if (app.globalData.login) {
+    if (app.globalData.userid) {
       
       this.getorderdetail(this.data.steamid);
       

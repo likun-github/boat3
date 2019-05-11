@@ -1,5 +1,6 @@
 // pages/setting/setting.js
 var app = getApp();
+var common=require("../../common/index.js");
 Page({
   /**
    * 页面的初始数据
@@ -135,35 +136,70 @@ Page({
     })
   },
   getin: function () {
-    var that=this;
-    wx.request({
-      url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
-      data: {
-        'steamid': that.data.code,
-      },
-      success: (res) => {
-        if (res.data.success) {
-          console.log(res.data)
-          console.log("拥有该团队");
-          if (res.data.number < 5) {
-            wx.showLoading({
-              title: '正在跳转',
+    var that = this;
+    if(this.data.code){
+      wx.request({
+        url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
+        data: {
+          'steamid': that.data.code,
+        },
+        success: (res) => {
+          if (res.data.success) {
+            console.log(res.data)
+            console.log("拥有该团队");
+            if (res.data.number < 5) {
+              
+              var production=false;
+              for (var i = 0; i < common.homelist.length; i++) {
+                if (res.data.productionid == common.homelist[i].productionid) {
+                  common.currentData = common.homelist[i];
+                  production=true;
+                  break;
+                }
+              }
+              if(production){
+                wx.showLoading({
+                  title: '正在跳转',
 
-            })
-            setTimeout(function () {
-              wx.hideLoading()
-              wx.navigateTo({
-                url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
-                  '&' + 'name=' + res.data.name +
-                  '&' + 'department=' + res.data.department,
+                })
+                setTimeout(function () {
+                  wx.hideLoading()
+                  wx.navigateTo({
+                    url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
+                      '&' + 'name=' + res.data.name +
+                      '&' + 'department=' + res.data.department,
+                  })
+
+                }, 1500)
+
+              }
+              else{
+                wx.showToast({
+                  title: '无效的邀请码',
+                  icon: 'none',
+                })
+
+              }
+              
+
+            }
+            else {
+              wx.showToast({
+                title: '团队成员已满',
+                icon: 'none',
+              })
+              that.setData({
+                deletecode: '',
               })
 
-            }, 1500)
+            }
+
 
           }
           else {
+            console.log("bu拥有该团队");
             wx.showToast({
-              title: '团队成员已满',
+              title: '无效的邀请码',
               icon: 'none',
             })
             that.setData({
@@ -172,22 +208,18 @@ Page({
 
           }
 
-
         }
-        else {
-          console.log("bu拥有该团队");
-          wx.showToast({
-            title: '无效的邀请码',
-            icon: 'none',
-          })
-          that.setData({
-            deletecode: '',
-          })
+      })
 
-        }
-
-      }
-    })
+    }
+    else{
+      wx.showToast({
+        title: '请输入邀请码',
+        icon:'none',
+      })
+    }
+    
+    
     
 
   },

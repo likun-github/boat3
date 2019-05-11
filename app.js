@@ -27,6 +27,7 @@ App({
         'teamid':1,
       },
       success:(res)=>{
+        console.log(common.homelist)
         common.homelist=res.data;
         var list = [];
         for (var i = 0; i < common.homelist.length; i++) {
