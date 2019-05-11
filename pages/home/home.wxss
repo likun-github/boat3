@@ -383,7 +383,7 @@
 }
 
 .item_column_5_text {
-  font-size: 15rpx;
+  font-size: 16rpx;
   white-space: nowrap;
   margin-top: 10rpx;
   margin-left: 5rpx;
