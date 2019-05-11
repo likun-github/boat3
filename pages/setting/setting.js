@@ -145,8 +145,22 @@ Page({
         },
         success: (res) => {
           if (res.data.success) {
-            console.log(res.data)
-            console.log("拥有该团队");
+
+            if(res.data.userid==app.globalData.userid){
+              wx.showToast({
+                title: '不能加入自己的船',
+                icon: 'none',
+              })
+              that.setData({
+                deletecode: '',
+              })
+              that.setData({
+                "popup": true
+              });
+              return '';
+
+
+            }
             if (res.data.number < 5) {
               
               var production=false;
@@ -167,7 +181,7 @@ Page({
                   that.setData({
                     deletecode: '',
                   })
-                  this.setData({
+                  that.setData({
                     "popup": true
                   });
                   wx.navigateTo({
