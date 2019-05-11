@@ -98,7 +98,7 @@
       </view>
       <view class='judge1'>
         <image src='/static/sq.jpg' style='position:relative;width:60rpx;height:60rpx;'></image>
-        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindblur="gettext" value='{{content}}' style='font-size:18rpx;padding-left:20rpx;'></input>
+        <input placeholder="说点什么让好友也来和你拼" placeholder-class="input" maxlength="50" bindinput="gettext" value='{{content}}' style='font-size:18rpx;padding-left:20rpx;'></input>
         <view class='send' bindtap='sendmessege'>发送</view>
 
       </view>
