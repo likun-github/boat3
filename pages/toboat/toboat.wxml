@@ -10,16 +10,16 @@
     <view class='lang'>
       <image style='position:absolute;width:100%;height:100%;' src='/static/toboat/lang.svg'></image>
       <view class='content'>
-        <text style='font-size:32rpx;margin-top:15%;font-weight:500; '>￥</text>
-        <text style='font-size:70rpx;margin-top:10%;font-weight:500; '>{{startprice}}</text>
-        <view style=' display: flex;flex-direction: column;font-size:20rpx;font-weight:600;margin-top:13%;margin-left:20rpx; color:white;'>
-          <text style='text-decoration:line-through;'>￥{{endprice}}</text>
-          <text>本校同舟99人正在拼</text>
+        <text style='font-size:15px;margin-top:15%;font-weight:400;margin-left:20rpx; '>￥</text>
+        <text style='font-size:40px;margin-top:9%;font-weight:400; '>{{startprice}}</text>
+        <view style=' display: flex;flex-direction: column;font-size:10px;font-weight:700;margin-top:12%;margin-left:20rpx; color:white;'>
+          <text style='text-decoration:line-through;font-weight:700;'>￥{{endprice}}</text>
+          <text style='line-through;font-weight:700;margin-top:4%;'>本校同舟99人正在拼</text>
 
         </view>
         <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
-        <text style='font-size:20rpx;margin-top:17%;font-weight:600; color:white;margin-left:9%;'>距本轮校园大船发船仅剩1人</text>
-        <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}" class='smallboat'></image>
+        <text style='font-size:10px;margin-top:16.5%;font-weight:700; color:white;margin-left:7%;'>距本轮校园大船发船仅剩1人</text>
+        <image  mode="scaleToFill" src="/static/toboat/smallboat.svg" class='smallboat'></image>
 
 
       </view>
@@ -32,14 +32,14 @@
     <view class='middle1'>
       <view class='rank'>
         <image src='/static/toboat/rank.svg' style='position:absolute;width:100%;height:100%;'></image>
-        <text style='position:absolute;font-size:12rpx;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
-        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 50rpx;'>{{rank}}</text>
+        <text style='position:absolute;font-size:4.5px;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
+        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 20px;'>{{rank}}</text>
 
       </view>
 
       <view class='production_introduction'>
-        <text style='font-size: 35rpx;font-weight:600;'>{{name}}</text>
-        <view style='display:flex;flex-direction:row;font-size:18rpx;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
+        <text style='font-size: 14px;font-weight:700;'>{{name}}</text>
+        <view style='display:flex;flex-direction:row;font-size:9px;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
           <text>累计参团{{number}}次</text>
           <text>好评率{{reputation}}%</text>
           <text>综合排名第{{rank}}</text>
