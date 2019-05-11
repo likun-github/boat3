@@ -145,8 +145,22 @@ Page({
         },
         success: (res) => {
           if (res.data.success) {
-            console.log(res.data)
-            console.log("拥有该团队");
+
+            if(res.data.userid==app.globalData.userid){
+              wx.showToast({
+                title: '不能加入自己的船',
+                icon: 'none',
+              })
+              that.setData({
+                deletecode: '',
+              })
+              that.setData({
+                "popup": true
+              });
+              return '';
+
+
+            }
             if (res.data.number < 5) {
               
               var production=false;
@@ -164,9 +178,14 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideLoading()
-                  console.log()
+                  that.setData({
+                    deletecode: '',
+                  })
+                  that.setData({
+                    "popup": true
+                  });
                   wx.navigateTo({
-                    url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
+                    url: "/pages/toboat/toboat?steamid=" + that.data.code +
                       '&' + 'name=' + res.data.name +
                       '&' + 'department=' + res.data.department,
                   })
@@ -178,6 +197,9 @@ Page({
                 wx.showToast({
                   title: '无效的邀请码',
                   icon: 'none',
+                })
+                that.setData({
+                  deletecode: '',
                 })
 
               }
@@ -253,7 +275,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: 'BOAT',
+      title: '完成实名认证领取贝壳',
       path: 'pages/home/home?puserid=' + app.globalData.userid+
       '&' + 'pageid=' + 2,
       success: (res) => {

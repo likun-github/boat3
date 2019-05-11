@@ -397,6 +397,7 @@ Page({
               'orderid': that.data.ticketlist_ed[e.currentTarget.dataset.index].orderid,
             },
             success: (res) => {
+              
               wx.switchTab({
                 url: '/pages/home/home',
               })

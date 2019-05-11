@@ -54,6 +54,9 @@ App({
             common.orderlist = res.data.order;
 
           }
+          else{
+            common.orderlist=[];
+          }
           console.log("用户的订单:", common.orderlist);
           
         }
