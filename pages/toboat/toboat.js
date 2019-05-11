@@ -62,7 +62,7 @@ Page({
     //别人的小船
     steamid:'',//小船id
     department:'',//院系
-    name:'',//姓名
+    mastername:'',//姓名
   },
 
 
@@ -81,7 +81,7 @@ Page({
     if(options.steamid){
       this.setData({
         steamid:options.steamid,
-        name:options.name,
+        mastername:options.name,
         department:options.department,
       });
       // wx.request({

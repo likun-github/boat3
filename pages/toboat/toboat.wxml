@@ -187,7 +187,7 @@
       <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
         <view style="display:flex;flex-direction:row;">
           <text style='font-size:45rpx;font-weight:800;'>小船</text>
-          <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 {{department}}{{name}})</text>
+          <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 {{department}}{{mastername}})</text>
         </view>
 
 

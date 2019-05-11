@@ -253,7 +253,8 @@ Page({
   onShareAppMessage: function () {
     return {
       title: 'BOAT',
-      path: 'pages/home/home?puserid=' + app.globalData.userid,
+      path: 'pages/home/home?puserid=' + app.globalData.userid+
+      '&' + 'pageid=' + 2,
       success: (res) => {
         console.log("转发成功", res);
 

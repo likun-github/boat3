@@ -10,7 +10,7 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    
+    //wx.clearStorageSync();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
@@ -116,6 +116,14 @@ App({
 
 
   globalData: {
+    pageid:'',//分享通过页面跳转完成，分享先到首页，再根据pageid调整
+
+
+
+
+
+
+
     puserid:'',//邀请人
     login:'',//是否登陆
     userid:'',
