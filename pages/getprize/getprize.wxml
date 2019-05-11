@@ -1,8 +1,5 @@
-
-
-
 <view style='width:100%;height:100%; background:#A9E3F6;position:fixed'>
-  <view class='bstore' style='height: {{550/736*h}}px;top: {{10/736*h}}px;'>
+  <view class='bstore' style='height: {{600/736*h}}px;top: {{10/736*h}}px;'>
     <view style='width:250rpx;height:50rpx;position:absolute;left:220rpx;background:white;border-radius:0 0 25px 25px;top:-20rpx;text-align:center;'>
       <text style='position:relative;top:50rpx;color:white;'>贝壳商城</text>
     </view>
@@ -37,7 +34,7 @@
 
 
 
-  <view class='shuo' style='height:{{110/736*h}}px;top: {{10/736*h}}px;color:white;'>
+  <view class='shuo' style='height:{{180/736*h}}px;top: {{10/736*h}}px;color:white;'>
 
     <!-- 底部排名  -->
 

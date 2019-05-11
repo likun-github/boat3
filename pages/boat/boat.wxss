@@ -84,7 +84,6 @@
   height: 250rpx;
   align-items: center;
   margin-bottom: 75rpx;
-  margin-top: 20rpx;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
 }
@@ -221,12 +220,15 @@
 }
 
 .tab-content {
-  margin-top: 50rpx;
+  top: 50rpx;
+  position: fixed;
+  width: 750rpx;
 }
 
 .scoll-h {
   height: 93vh;
   margin-top: 50rpx;
+  
 }
 
 .cut_img {
