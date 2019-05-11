@@ -50,7 +50,7 @@ Page({
 
 
   // 滚动切换标签样式
-  swiper_change_view: function(e) {
+  swiper_change_view: function (e) {
     console.log(e.detail.current)
     this.setData({
       currentTab: e.detail.current
@@ -61,7 +61,7 @@ Page({
 
 
   //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function() {
+  checkCor: function () {
     if (this.data.currentTab > 4) {
       this.setData({
         scrollLeft: 300
@@ -73,7 +73,7 @@ Page({
     }
   },
 
-  onslidechangeend: function(e) {
+  onslidechangeend: function (e) {
     var that = this;
     that.setData({
       currentSwiper: e.detail.current
@@ -83,9 +83,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    app.globalData.pageid = options.pageid;
+  onLoad: function (options) {
+
     if (options) {
+      app.globalData.pageid = options.pageid;
       if (options.pageid == 1) { //砍价
         wx.navigateTo({
           url: '/pages/teamcut/teamcut?nickname=' + options.nickname +
@@ -96,39 +97,34 @@ Page({
         })
 
       }
-     
-      if (app.globalData.userid) {
-        if (options.pageid == 2) { //实名认证
-          app.globalData.puserid = options.puserid;
-          wx.showModal({
-            title: '实名认证',
-            content: '完成实名认证好友也可领取贝壳哦~',
-            success: (res) => {
-              if (res.confirm) {
-                wx.navigateTo({
-                  url: '/pages/verify/verify',
-                })
-              } else {
-                console.log("取消")
+      if (options.pageid == 2) {
+        app.globalData.puserid = options.puserid;
+        if (app.globalData.userid) {
+          if (app.globalData.status != 0) {
+            wx.showToast({
+              title: '您已完成实名认证',
+              icon: 'none',
+            })
+          }
+          else {
+            wx.showModal({
+              title: '实名认证',
+              content: '完成实名认证好友也可领取贝壳哦~',
+              success: (res) => {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '/pages/verify/verify',
+                  })
+                } else {
+                  console.log("取消")
+                }
               }
-            }
-          })
+            })
+          }
+
         }
 
-      } else {
-        console.log("未认证")
-
       }
-
-
-
-
-
-
-
-
-
-
     } else {
       console.log("未跳转界面")
     }
@@ -141,14 +137,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     wx.showToast({
       title: '加载中',
       icon: 'loading',
       duration: 2000,
     })
     var that = this;
-    setTimeout(function() {
+    setTimeout(function () {
       that.setData({
         listData: common.homelist,
         showData: common.showData,
@@ -163,7 +159,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
 
   },
@@ -171,40 +167,40 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
 
-  onPageScroll: function(e) {
+  onPageScroll: function (e) {
     console.log(e.scrollTop, this.data.scroll_top)
     this.setData({
       'scroll_top': e.scrollTop
@@ -215,7 +211,7 @@ Page({
 
 
 
-  to_producation_page: function(e) {
+  to_producation_page: function (e) {
     var id = new Array();
     id.push(e.currentTarget.dataset.id);
     for (var i = 0; i < common.homelist.length; i++) {
@@ -237,7 +233,7 @@ Page({
 
 
   // 点击标题切换当前页时改变样式
-  swichNav: function(e) {
+  swichNav: function (e) {
     console.log(e)
     var list = [];
     this.setData({
@@ -259,7 +255,7 @@ Page({
   //下面这个function和  hideModal_function的
   //wx与setdata的顺序是很重要的！！！！！！！！！！！！
 
-  showDialogBtn: function() {
+  showDialogBtn: function () {
     wx.hideTabBar({});
     this.setData({
       showModal: true
@@ -271,13 +267,13 @@ Page({
   /**
    * 弹出框蒙层截断touchmove事件
    */
-  preventTouchMove: function() {},
+  preventTouchMove: function () { },
 
 
   /**
    * 隐藏模态对话框
    */
-  hideModal: function() {
+  hideModal: function () {
 
     //排序
     // this.data.orderName_index==012 ->  按xxx
@@ -293,7 +289,7 @@ Page({
 
 
 
-  choose1: function() {
+  choose1: function () {
     this.setData({
       orderName: this.data.orderName_list[0],
       orderName_index: 0,
@@ -303,7 +299,7 @@ Page({
     })
 
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function(a, b) {
+    var showlist = this.data.showData.sort(function (a, b) {
       return a.reputation < b.reputation ? 1 : -1;
     })
     this.setData({
@@ -315,7 +311,7 @@ Page({
   },
 
 
-  choose2: function() {
+  choose2: function () {
     this.setData({
       orderName: this.data.orderName_list[1],
       orderName_index: 1,
@@ -325,7 +321,7 @@ Page({
 
     })
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function(a, b) {
+    var showlist = this.data.showData.sort(function (a, b) {
       return a.startprice > b.startprice ? 1 : -1;
     })
     this.setData({
@@ -334,7 +330,7 @@ Page({
 
   },
 
-  choose3: function() {
+  choose3: function () {
     this.setData({
       orderName: this.data.orderName_list[2],
       orderName_index: 2,
@@ -343,7 +339,7 @@ Page({
       choose3: true,
     })
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function(a, b) {
+    var showlist = this.data.showData.sort(function (a, b) {
       return a.distance > b.distance ? 1 : -1;
     })
     this.setData({

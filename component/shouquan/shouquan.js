@@ -16,7 +16,7 @@ Component({
 
   },
   ready: function() {
-    if(app.globalData.login){
+    if(app.globalData.userid){
       return ''
     }
     else{
@@ -76,8 +76,16 @@ Component({
                   'avatarUrl': app.globalData.avatarUrl,
                   'account': res.data.account,
                 }
-                if(app.globalData.puserid){
-                  if (app.globalData.login) {
+
+
+                if (app.globalData.pageid == 2) { //实名认证
+                  if (app.globalData.status != 0) {
+                    wx.showToast({
+                      title: '您已完成实名认证',
+                      icon: 'none',
+                    })
+                  }
+                  else {
                     wx.showModal({
                       title: '实名认证',
                       content: '完成实名认证好友也可领取贝壳哦~',
@@ -86,14 +94,13 @@ Component({
                           wx.navigateTo({
                             url: '/pages/verify/verify',
                           })
-                        }
-                        else {
+                        } else {
                           console.log("取消")
                         }
                       }
                     })
-
                   }
+
                 }
                 
                 wx.setStorage({
