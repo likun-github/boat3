@@ -11,7 +11,10 @@ Component({
     sprice: Number,//开始价格
     certify: String,//预约码
     telephone: String,//联系电话
-    index: Number//状态
+    index: Number,//状态
+    p_id: String,//产品ID
+    u_id:String,//用户ID
+    s_id:String//steamID
   },
 
 
@@ -32,11 +35,10 @@ Component({
     canvasHidden: false,
     maskHidden: true,
     imagePath: '',
-    stickets:false
+    stickets:false,
+    p_id:'',
   },
   ready:function () {
-    console.log( this.properties.pname); 
-    console.log(this.properties.index); 
     this.setData({
       index:3,
       production__name: this.properties.pname,
@@ -45,6 +47,9 @@ Component({
       yuyue_string: this.properties.certify,
       yuyue_telephone: this.properties.telephone,
       payfor_string: '',
+      p_id: this.properties.p_id,
+      u_id: this.properties.u_id,
+      s_id: this.properties.s_id,
       nickname: app.globalData.nickname,
       avatarUrl: app.globalData.avatarUrl,
     })
@@ -57,6 +62,29 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    final:function(){
+      wx.showModal({
+        title: '最终价',
+        content: '是否生成最终靠岸价格',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    },
+    cut:function(){
+      wx.navigateTo({
+        url: '/pages/teamcut/teamcut?productionid=' + this.data.p_id +
+          '&' + 'nickname=' + app.globalData.nickname +
+          '&' + 'avatarUrl=' + app.globalData.avatarUrl +
+          '&' + 'steamid=' + this.data.s_id+
+          '&' + 'userid=' + this.data.u_id,
+      })
+
+    },
     //适配不同屏幕大小的canvas
     setCanvasSize: function () {
       var size = {};

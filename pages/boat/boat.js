@@ -335,7 +335,7 @@ Page({
 
 
   team_cut: function (e) {
-    var order = this.data.ticketlist_ing[e.currentTarget.dataset.index]
+    var order = this.data.ticketlist_ing[e.currentTarget.dataset.index];
     wx.navigateTo({
       url: '/pages/teamcut/teamcut?productionid=' + order.production_id +
         '&' + 'nickname=' + app.globalData.nickname +
@@ -343,15 +343,6 @@ Page({
         '&' + 'steamid=' + order.steam_id +
         '&' + 'userid=' + order.userid,
     })
-
-
-    // path: 'pages/teamcut/teamcut?orderid=' +
-    //   this.data.orderid +
-    //   '&' + 'nickname=' + this.data.nickname +
-    //   '&' + 'avatarUrl=' + this.data.avatarUrl +
-    //   '&' + 'steamid=' + this.data.steamid +
-    //   '&' + 'userid=' + this.data.userid,
-
   },
 
   add_allTobuylist: function (e) {
