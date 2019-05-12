@@ -42,6 +42,8 @@ Component({
     u_id:'',
     s_id:'',
     o_id:'',
+
+    showview_flag:true,
   },
   ready:function () {
     this.setData({
@@ -95,7 +97,9 @@ Component({
             wx.showTabBar({
               
             })
-           
+           that.setData({
+             showview_flag: false, 
+           })
           } else {//这里是点击了取消以后
             console.log('用户点击取消')
           }
