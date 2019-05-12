@@ -1,5 +1,6 @@
 {
   "pages": [
+   
     "pages/home/home",
     "pages/verify/verify",
     "pages/setting/setting",
@@ -12,6 +13,7 @@
     "pages/boat/boat",
     "pages/myteam/myteam",
     "pages/prizedetail/prizedetail"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",

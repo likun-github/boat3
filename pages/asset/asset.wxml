@@ -1,4 +1,4 @@
-  <image src='/static/pic/new.png' style='position:reative;width:100%;height:30vh;;'></image>
+   <view style='position:reative;width:100%;height:10vh;background:#57CCFE;border-radius:0 0 50% 50%;'></view>
   <image src='/static/icon/setting/right.svg' class='rightcicle'></image>
   <image src='/static/icon/setting/left.svg' class='leftcicle'></image>
   <view class='point1'></view>
