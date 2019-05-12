@@ -298,20 +298,17 @@ Page({
         })
         console.log('this.data.temp',this.data.temp);
         
-        if (temp.state == 0 && temp.status == 2) {
+        if (temp.state == 0 && temp.status == 3) {
           this.setData({
-            index: 1
+            index: 2
           })
         }
-        else if (temp.state == 1 && temp.status == 1) {
+        else if (temp.state == 1 && temp.status == 3) {
           this.setData({
-            index: 3
-          })
-        } else {
-          this.setData({
-            index: 4
+            index: 5
           })
         }
+        
   
 
         // wx.navigateTo({
