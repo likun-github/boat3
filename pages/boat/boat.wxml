@@ -113,6 +113,6 @@
 </view>
 <view class='mask_1' wx:if="{{stickets}}">
   <view class='mask_2' style='width:100%;height:100%;'bindtap='back'></view>
-<tickets pname="{{temp.production__name}}" eprice="{{temp.endprice}}" sprice="{{ temp.production__startprice}}" certify="{{temp.certificate}}" telephone="{{temp.production__merchant__telephone}}" index="{{index}}"  invition="{{temp.steam_id}}"></tickets>
+<tickets pname="{{temp.production__name}}" eprice="{{temp.endprice}}" sprice="{{ temp.production__startprice}}" certify="{{temp.certificate}}" telephone="{{temp.production__merchant__telephone}}" index="{{index}}"  s_id="{{temp.steam_id}}" u_id="temp.userid" p_id="{{temp.production_id}}"></tickets>
 </view>
 <!-- </view> -->
