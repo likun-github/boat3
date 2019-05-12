@@ -38,7 +38,7 @@ Component({
     console.log( this.properties.pname); 
     console.log(this.properties.index); 
     this.setData({
-      index:2,
+      index:3,
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,
@@ -87,7 +87,7 @@ Component({
         success: function (res) {
           var tempFilePath = res.tempFilePath;
           console.log(tempFilePath);
-          that.setData({
+          this.setData({
             imagePath: tempFilePath,
             // canvasHidden:true
           });

@@ -5,7 +5,7 @@
 
 .content {
   position: absolute;
-  top: 14.21875vh;
+  top: 8vh;
   height: 74.68vh;
   width: 720rpx;
   left: 15rpx;
@@ -26,7 +26,7 @@
 .pay {
   position: absolute;
   border-radius: 40rpx;
-  bottom: -60rpx;
+  bottom: -40rpx;
   height: 80rpx;
   left: 25%;
   width: 50%;
@@ -65,4 +65,37 @@
   position:absolute;
   right:50rpx;
   top:50rpx;
+}
+.btn_cut {
+  position: absolute;
+  line-height: 80rpx;
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 100%;
+  color: white;
+  left: 60rpx;
+  bottom: -40rpx;
+  background:linear-gradient(to bottom right,#FDB38F,#F7907E);
+}
+.a{
+ position: absolute;
+ bottom:-100rpx;
+ width: 715rpx;
+ height:150rpx;
+ background: white;
+border-bottom:1px solid grey;
+border-left:1px solid grey;
+border-right:1px solid grey;
+}
+.image{
+
+  width:100%;
+  height:53.34%;
+  position:absolute;
+  top:0rpx;
+  left:0rpx;
+  border-radius: 20rpx 20rpx 0 0;
+  
 }

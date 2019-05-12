@@ -9,8 +9,6 @@
         <image src='{{avatarUrl}}' style='border-radius:100%;width:100rpx;height:100rpx;margin-left:80rpx;margin-top:16%;'></image>
         <view style='font-size:24rpx;width:100%;text-align:center'>{{nickname}}</view>
       </view>
-      
-
       <view style='position:absolute;left:250rpx;height:100%;width:250rpx;'>
         <view style='height:40rpx;'></view>
         <text style='position:absolute;left:30rpx;width:100rpx;font-size:24rpx;color:grey'>最终价格\n</text>
@@ -57,6 +55,24 @@
 
 
     </view>
+   
+   <view wx:if="{{index==3}}">
+    <image src='/static/teamcut/myteam.jpg' class='image'></image>
+    <view class='a'>
+      <view class='pay'>生成最终价</view>
+      <view class='btn_cut'>砍</view>
+      </view>
+      <view class='con2'>
+      <view style='height:40rpx;'></view>
+      <text style='margin-left:60rpx;font-size:30rpx;'>船长你好！\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>您可分享好友砍价 Or 等价登船\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>珍惜每一个邀请等价登船名额吧\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{invition}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>好友可在【我的】-【小船邀请码】输入邀请码或直接微信扫码参与登船</text>
+    </view>
+   </view>
+
+
   </view>
 
 
