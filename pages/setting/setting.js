@@ -262,6 +262,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    var that=this;
     wx.showLoading({
       title: '正在刷新账户',
       duration:1000,
@@ -282,7 +283,10 @@ Page({
         app.globalData.status = res.data.status;
         app.globalData.number = res.data.number;
         app.globalData.account = res.data.account;
-        app.globalData.number = res.data.number;
+        app.globalData.time = res.data.number;
+        that.setData({
+          account:res.data.account,
+        })
         console.log("用户信息", res.data)
         var information = {
           'userid': res.data.userid,

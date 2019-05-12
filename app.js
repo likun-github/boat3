@@ -133,12 +133,14 @@ App({
     nickname: '',
     avatarUrl: '',
     gender: 0,
+    
 
     account:'',
     name: '',
     teamname: '',
     time: '',
     status:'',
+    time:'',
     
     height:'',
     
