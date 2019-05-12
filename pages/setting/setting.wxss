@@ -305,13 +305,13 @@
 
 .share{
   position:absolute;
-  width: 170rpx;
+  width: 180rpx;
   height: 50rpx;
   border-radius: 40rpx;
   line-height: 50rpx;
   text-align: center;
   color: #077ACC;
-  left:365rpx;
+  left:360rpx;
   top:170rpx;
   font-size:20rpx;
   font-weight: 500;

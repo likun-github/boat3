@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        filter: url(#椭圆_38);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5ee4fe"/>
+      <stop offset="1" stop-color="#57abfe"/>
+    </linearGradient>
+    <filter id="椭圆_38" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#b6ccff"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_715" data-name="组 715" transform="translate(6784 -13516)">
+    <g id="组_665" data-name="组 665" transform="translate(-9442 2933)">
+      <g class="cls-3" transform="matrix(1, 0, 0, 1, 2658, 10583)">
+        <circle id="椭圆_38-2" data-name="椭圆 38" class="cls-1" cx="9" cy="9" r="9" transform="translate(9 7)"/>
+      </g>
+      <g id="组_643" data-name="组 643" transform="translate(20.728 1.282)">
+        <line id="直线_71" data-name="直线 71" class="cls-2" x2="2.771" y2="2.771" transform="translate(2651.731 10597.725)"/>
+        <line id="直线_72" data-name="直线 72" class="cls-2" x1="4.85" y2="4.85" transform="translate(2654.502 10595.646)"/>
+      </g>
+    </g>
+  </g>
+</svg>

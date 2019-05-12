@@ -4,7 +4,7 @@ App({
   list:1,
   onLaunch: function () {
     var that=this;
-    //获取屏幕高度
+    //��ȡ��Ļ�߶�
     wx.getSystemInfo({
       success(res) {
         that.globalData.height=res.windowHeight;
@@ -14,7 +14,7 @@ App({
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
-    // 登录
+    // ��¼
   },
 
 
@@ -57,7 +57,7 @@ App({
           else{
             common.orderlist=[];
           }
-          console.log("用户的订单:", common.orderlist);
+          console.log("订单", common.orderlist);
           
         }
       })
@@ -76,7 +76,7 @@ App({
 
 
 
-  //从缓存中提取用户信息
+  //�ӻ�������ȡ�û���Ϣ
   getuserinformation: function () {
     var information = wx.getStorageSync('information')
 
@@ -119,7 +119,7 @@ App({
 
 
   globalData: {
-    pageid:'',//分享通过页面跳转完成，分享先到首页，再根据pageid调整
+    pageid:'',
 
 
 
@@ -127,25 +127,25 @@ App({
 
 
 
-    puserid:'',//邀请人
-    login:'',//是否登陆
+    puserid:'',
+    login:'',
     userid:'',
     nickname: '',
-    avatarUrl: '',//基本信息
+    avatarUrl: '',
     gender: 0,
 
     account:'',
     name: '',
     teamname: '',
-    time: '',//认证信息
+    time: '',
     status:'',
     
-    height:'',//屏幕高度
+    height:'',
     
     country:'',
     city:'',
     province:'',
-    language: "zh_CN",//无关信息
+    language: "zh_CN",
 
 
     ticketlist_ing:[],
