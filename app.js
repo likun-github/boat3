@@ -10,7 +10,7 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    // wx.clearStorageSync();
+    wx.clearStorageSync();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
@@ -133,12 +133,14 @@ App({
     nickname: '',
     avatarUrl: '',
     gender: 0,
+    
 
     account:'',
     name: '',
     teamname: '',
     time: '',
     status:'',
+    time:'',
     
     height:'',
     
