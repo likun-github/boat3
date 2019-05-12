@@ -5,6 +5,8 @@
   <input style='width:80%;display:inline-block;height:100%;font-size:12px;' placeholder-style='font-size:12px;color:#636363' placeholder='搜索'></input>
 </view> -->
 
+<wxs module="filters" src="../../common/tool.wxs"></wxs>
+
 
 <swiper  bindanimationfinish="changeGoodsSwip" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red' autoplay='{{autoplay}}' circular="true">
   <block wx:for="{{imgUrls}}" wx:key="imgUrls">
@@ -72,7 +74,7 @@
 
                 </view>
                 <view class='text_5'>
-                  ￥{{ item.startprice*0.6}}- {{item.startprice*0.8}}
+                  ￥{{filters.toFix( item.startprice*0.6)}}- {{filters.toFix(item.startprice*0.8)}}
                   <view class='sameschool_pic'>本校同舟</view>
                 </view>
               </view>

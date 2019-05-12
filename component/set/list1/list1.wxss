@@ -1,27 +1,70 @@
-.boat {
+
+.container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+  
+}
+.top{
   position: relative;
+  width: 750rpx;
+  height: 20%;
+  background: #5EE4FE;
+}
+
+.background{
+  position: relative;
+  width: 800rpx;
+  margin-left: -25rpx;
+  height: 100%;
+  margin-top: -20%;
+}
+.boat {
+  position: absolute;
   width: 300rpx;
   height: 70rpx;
   border-radius: 40rpx;
   background: linear-gradient(to bottom, #fdb38f, #f7907e);
   margin-left: 225rpx;
-  margin-top: -50rpx;
+  margin-top: 90px;
   text-align: center;
   line-height: 70rpx;
   color: rgba(255, 255, 255, 0.8);
 }
+.rightcicle{
+  position: absolute;
+  width:200rpx;
+  height: 300rpx;
+  margin-top: -50rpx;
+  right: -40rpx;
+  
+}
+.leftcicle{
+  position: fixed;
+  width: 180rpx;
+  height: 300rpx;
+  top: 5%;
+  left: 0rpx;
+}
+
+
+
+
+
 
 .l0 {
   position: relative;
-  margin-top: 150rpx;
-  width: 95%;
+  width: 710rpx;
   height: 80rpx;
+  margin-top:15%;
   display: flex;
   flex-direction: row;
   line-height: 80rpx;
+  background-color: white;
   border-top-right-radius: 40rpx;
   border-bottom-right-radius: 40rpx;
-  box-shadow: 3rpx 3rpx 3rpx 3rpx #eee;
+  box-shadow: 5rpx 5rpx 10rpx 10rpx #eee;
 }
 
 .l0 image {
@@ -40,11 +83,13 @@
 
 .box {
   position: relative;
-  margin-top: 40rpx;
+ 
   width: 80%;
-  height: 400rpx;
+  height: 70%;
   box-shadow: 0rpx 0rpx 20rpx 20rpx #eee;
   margin-left: 75rpx;
+  margin-top: 15%;
+  background-color: white;
 }
 
 textarea {
@@ -65,69 +110,34 @@ textarea {
 
 
 
-.upload {
-  position: relative;
-  width: 200rpx;
-  height: 130rpx;
-  margin-left:auto;
-  margin-right:auto;
-  border: 1px dashed rgb(219, 201, 201);
-}
 
-.upload .vertical {
-  position: absolute;
-  width: 50rpx;
-  height: 3rpx;
-  margin-left: 75rpx;
-  margin-top: 51rpx;
-  background-color: rgba(100, 100, 100, 0.5);
-}
-
-.upload .horizontal {
-  position: absolute;
-  width: 4rpx;
-  height: 50rpx;
-  margin-left:100rpx;
-  margin-top: 25rpx;
-  background-color: rgba(100, 100, 100, 0.5);
-}
 .demand {
-  position: relative;
+  position: absolute;
   width: 220rpx;
   height: 60rpx;
   border-radius: 40rpx;
   background: linear-gradient(to bottom, #fdb38f, #f7907e);
-  margin-left: 380rpx;
-  margin-top:20rpx;
+  margin-left: 420rpx;
+  bottom: -30rpx;
+  
   text-align: center;
   line-height: 60rpx;
   color: rgba(255, 255, 255, 1);
+  
 }
 
 
-.container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
 
-.production {
-  position: absolute;
-  top: 50rpx;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  display: flex;
-  flex-direction: row;
-}
 
-.production image {
-  position: relative;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50rpx;
-  margin-left: 130rpx;
-}
+
+
+
+
+
+
+
+
+
 
 .pic_upload{
  position: relative;
@@ -493,3 +503,14 @@ margin-left:auto;
 	animation-direction:normal;
 }
  
+
+
+
+
+
+
+
+
+
+
+
