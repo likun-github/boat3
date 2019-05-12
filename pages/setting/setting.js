@@ -262,6 +262,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    setTimeout(function(){
+      wx.stopPullDownRefresh();
+      console.log("gu")
+
+    },1000)
+    
+
 
   },
   scroll: function (e) {

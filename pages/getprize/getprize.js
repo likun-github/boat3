@@ -119,7 +119,7 @@ Page({
   },
   mx: function () {
     wx.navigateTo({
-      url: '/mx/mx',
+      url: '/pages/prizedetail/prizedetail',
     })
   },
   //开始游戏
