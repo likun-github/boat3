@@ -7,22 +7,22 @@
         <text style='font-size:25rpx;color:white;margin-top:10rpx;'>认证信息：{{status==2?'武汉大学'+number+'级':'暂未认证'}}</text>
       </view>
     </view>
-    <view class='box' wx:if="{{status==2}}" bindtap='gotogetprize' >
-    <view class='box_middle' style='background: linear-gradient(to bottom right, #FE5E5E, #FE8557);font-size:30rpx;color:white;display:flex;flex-direction:row;padding-top:7%; overflow: hidden;'>
-    <text class='boat'>BOAT</text>
-     <image src='/static/bk.svg' style='width:40rpx;height:40rpx;margin-left:30rpx;'></image>
+    <view class='box' wx:if="{{status==2}}" bindtap='gotogetprize'>
+      <view class='box_middle' style='background: linear-gradient(to bottom right, #FE5E5E, #FE8557);font-size:30rpx;color:white;display:flex;flex-direction:row;padding-top:7%; overflow: hidden;'>
+        <text class='boat'>BOAT</text>
+        <image src='/static/bk.svg' style='width:40rpx;height:40rpx;margin-left:30rpx;'></image>
         <text style='font-weight:700;margin-left:20rpx;'>我的贝壳:{{account}} </text>
-        <text  style='text-decoration:underline;font-weight:700;margin-left:20rpx;font-size:28rpx;color:rgba(255,255,255,0.8);'>查看贝壳明细>></text>
-        <view style='font-weight:600;text-align:center;border-radius:30rpx;margin-left:40rpx;width:150rpx;height:40rpx;border:solid 3rpx white;margin-top:-4rpx;' >贝壳商城</view>
-    
+        <text style='text-decoration:underline;font-weight:700;margin-left:20rpx;font-size:28rpx;color:rgba(255,255,255,0.8);'>查看贝壳明细>></text>
+        <view style='font-weight:600;text-align:center;border-radius:30rpx;margin-left:40rpx;width:150rpx;height:40rpx;border:solid 3rpx white;margin-top:-4rpx;'>贝壳商城</view>
+
+      </view>
+
+
+
     </view>
-    
-       
-    
-    </view>
-     
-       
-  
+
+
+
     <view class='box' wx:if="{{status==0}}" bindtap='gotoverify'>
       <view class='box_middle'>
         <view class='box_list1'>
@@ -114,15 +114,15 @@
 
 <view class='shade' hidden='{{popup}}'>
   <view class="bounceInDown shade_box">
-  <image src='/static/boat/bought.png' style='width:100%;height:100%;position:absolute;'></image>
-    <view  bindtap='hidden' style='width:100%;height:100%;position:absolute;'>
-       </view>
+    <image src='/static/boat/bought.png' style='width:100%;height:100%;position:absolute;'></image>
+    <view bindtap='hidden' style='width:100%;height:100%;position:absolute;'>
+    </view>
     <view style='width:90%;position:absolute;left:5%;top:35vh;height:400rpx'></view>
     <view style='position:absolute;width:60%;left:20%;height:100rpx;top:60vh;'>
       <view class='input' style='position:absolute;left:0rpx;height:60rpx;top:5rpx;width:300rpx;'></view>
       <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c' style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;' value='{{deletecode}}' type='number'></input>
       <view class='bt' bindtap='getin'>登船</view>
-    
+
     </view>
   </view>
 </view>
