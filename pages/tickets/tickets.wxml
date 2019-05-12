@@ -58,7 +58,7 @@
    <view wx:if="{{index==3}}">
     
     <view class='a'>
-      <view class='pay'>生成最终价</view>
+      <view class='pay' bindtap='completeorder' >生成最终价</view>
       <view class='btn_cut'>砍</view>
       </view>
       <view class='con2'>

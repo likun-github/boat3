@@ -11,7 +11,11 @@ Component({
     sprice: Number,//开始价格
     certify: String,//预约码
     telephone: String,//联系电话
-    index: Number//状态
+    index: Number,//状态
+
+
+
+
   },
 
 
@@ -130,6 +134,35 @@ Component({
         clearTimeout(st);
       }, 2000)
 
+    },
+
+
+    completeorder:function(e){
+      console.log(e)
+      // wx.showModal({
+      //   title: '请确认完成拼团砍价',
+      //   content: '确认后无法再次砍价或邀请新成员上船',
+      //   success: function (res) {
+      //     if (res.confirm) {
+      //       wx.request({
+      //         url: 'https://xiaoyibang.top:8001/dajia/completeorder',
+      //         data: {
+      //           'orderid': that.data.order.orderid,
+      //         },
+      //         success: (res) => {
+      //         }
+      //       })
+
+      //       //这里是点击了确定以后
+      //       console.log('用户点击确定');
+      //       wx.navigateBack({
+      //         delta: 1
+      //       })
+      //     } else {//这里是点击了取消以后
+      //       console.log('用户点击取消')
+      //     }
+      //   }
+      // })
     },
 
 
