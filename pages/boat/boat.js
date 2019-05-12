@@ -35,7 +35,12 @@ Page({
     cut_pay: 0, //优惠额
   },
 
-
+show:function(e){
+    console.log("wocao"+e.detail.msg)
+    this.setData({
+      stickets:false
+    })
+},
   /**
    * 当前商品选中事件
    */
@@ -238,12 +243,16 @@ Page({
       })
     }
   },
+
+
   back:function(){
     this.setData({
       stickets:false
     })
     wx.showTabBar({});
   },
+
+
   look_ticker: function (e) {
    
     // console.log(e)
@@ -254,7 +263,7 @@ Page({
         this.setData({
           temp:temp
         })
-        wx.hideTabBar({});
+        // wx.hideTabBar({});
         this.setData({
           stickets: true
         })
@@ -288,7 +297,7 @@ Page({
         //     + 'index=1'
         // })
       } else {
-        wx.hideTabBar({});
+        // wx.hideTabBar({});
         this.setData({
           stickets: true
         })
