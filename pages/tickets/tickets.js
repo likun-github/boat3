@@ -40,7 +40,7 @@ Component({
   },
   ready:function () {
     this.setData({
-      index:3,
+      index: this.properties.index,
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,

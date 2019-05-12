@@ -258,10 +258,27 @@ Page({
         this.setData({
           stickets: true
         })
-        console.log(this.data.temp);
-        this.setData({
-          index:1
-        })
+        console.log('this.data.temp',this.data.temp);
+
+
+        if(temp.state==0 && temp.status==2){
+          this.setData({
+            index: 1
+          })
+        }
+        else if (temp.state == 1 && temp.status == 1){
+          this.setData({
+            index: 3
+          })
+        }else{
+          this.setData({
+            index: 4
+          })
+        }
+      
+
+//o-big 1-small 
+
         // wx.navigateTo({
         //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
         //     'start_price=' + temp.production__startprice + '&' +
@@ -279,10 +296,21 @@ Page({
         this.setData({
           temp: temp
         })
-        console.log(this.data.temp);
-        this.setData({
-          index: 2
-        })
+        console.log('this.data.temp',this.data.temp);
+        
+        if (temp.state == 0 && temp.status == 3) {
+          this.setData({
+            index: 2
+          })
+        }
+        else if (temp.state == 1 && temp.status == 3) {
+          this.setData({
+            index: 5
+          })
+        }
+        
+  
+
         // wx.navigateTo({
         //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
         //     'start_price=' + temp.production__startprice + '&' +
