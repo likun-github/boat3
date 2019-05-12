@@ -14,7 +14,9 @@ Component({
     index: Number,//状态
     p_id: String,//产品ID
     u_id:String,//用户ID
-    s_id:String//steamID
+    o_id:String,  
+    s_id:String,//steamID
+  
   },
 
 
@@ -23,12 +25,12 @@ Component({
    */
   data: {
     index: 1,
-    final_price: 0,
-    start_price: 0,
-    return_price: 0,
-    yuyue_string: 0,
+    // final_price: 0,
+    // start_price: 0,
+    // return_price: 0,
+
     yuyue_telephone: 0,
-    payfor_string: 0,
+
     nickname: '',
     avatarUrl: '',
     production__name:'',
@@ -39,6 +41,7 @@ Component({
     p_id:'',
     u_id:'',
     s_id:'',
+    o_id:'',
   },
   ready:function () {
     this.setData({
@@ -46,12 +49,13 @@ Component({
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,
-      yuyue_string: this.properties.certify,
-      yuyue_telephone: this.properties.telephone,
-      payfor_string: '',
+      certify: this.properties.certify,
+      telephone:this.properties.telephone,
+
       p_id: this.properties.p_id,
       u_id: this.properties.u_id,
       s_id: this.properties.s_id,
+      o_id: this.properties.o_id,
       nickname: app.globalData.nickname,
       avatarUrl: app.globalData.avatarUrl,
     })
@@ -65,18 +69,38 @@ Component({
    */
   methods: {
     final:function(){
+      var that =this
       wx.showModal({
-        title: '最终价',
-        content: '是否生成最终靠岸价格',
-        success(res) {
+        title: '请确认完成订单',
+        content: '确认后无法再次邀请好友砍价或参团',
+        success: function (res) {
           if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
+            console.log('orderid:',that.properties.o_id)
+            wx.request({
+              url: 'https://xiaoyibang.top:8001/dajia/completeorder',
+              data: {
+                'orderid': that.properties.o_id,
+              },
+              success: (res) => {
+                console.log("确认完成拼团  --这个过程")
+              }
+            })
+
+            //这里是点击了确定以后
+            console.log('用户点击确定');
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+            app.getorderlist();
+           
+          } else {//这里是点击了取消以后
             console.log('用户点击取消')
           }
         }
       })
     },
+
+
     cut:function(){
       wx.navigateTo({
         url: '/pages/teamcut/teamcut?productionid=' + this.data.p_id +
