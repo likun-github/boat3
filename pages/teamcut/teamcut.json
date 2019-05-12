@@ -2,5 +2,6 @@
   "navigationBarTitleText": "BOAT校园",
   "usingComponents": {
     "sq": "../../component/shouquan/shouquan"
-  }
+  },
+  "enablePullDownRefresh": false
 }
