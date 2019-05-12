@@ -92,6 +92,9 @@ Component({
               url: '/pages/home/home',
             })
             app.getorderlist();
+            wx.showTabBar({
+              
+            })
            
           } else {//这里是点击了取消以后
             console.log('用户点击取消')
