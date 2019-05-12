@@ -1,4 +1,4 @@
-// component/list1/list1.js
+// pages/list5/list5.js
 Page({
 
   /**

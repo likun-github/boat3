@@ -96,15 +96,15 @@ Page({
   },
   changelist1: function () {
     wx.navigateTo({
-      url: '../asset/asset',
+      url: '../list1/list1',
     })
-    app.list = 1;
+    
   },
   changelist2: function () {
     wx.navigateTo({
-      url: '../asset/asset',
+      url: '../list2/list2',
     })
-    app.list = 2;
+    
   },
   changelist3: function () {
     this.setData({
@@ -113,15 +113,15 @@ Page({
   },
   changelist4: function () {
     wx.navigateTo({
-      url: '../asset/asset',
+      url: '../list4/list4',
     })
-    app.list = 4;
+    
   },
   changelist5: function () {
     wx.navigateTo({
-      url: '../asset/asset',
+      url: '../list5/list5',
     })
-    app.list = 5;
+    
   },
   /**
    * 生命周期函数--监听页面隐藏
