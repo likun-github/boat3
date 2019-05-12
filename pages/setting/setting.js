@@ -262,9 +262,49 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showLoading({
+      title: '正在刷新账户',
+      duration:1000,
+    })
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/getinfor',
+      data: {
+        'userid': app.globalData.userid,
+      },
+      success: (res) => {
+        console.log('获取成')
+        console.log(res.data)
+        wx.showToast({
+          title: '信息更新完成',
+          icon:'none',
+        })
+        app.globalData.userid = res.data.userid;
+        app.globalData.status = res.data.status;
+        app.globalData.number = res.data.number;
+        app.globalData.account = res.data.account;
+        app.globalData.number = res.data.number;
+        console.log("用户信息", res.data)
+        var information = {
+          'userid': res.data.userid,
+          'teamname': res.data.team_name,
+          'name': res.data.name,
+          'number': res.data.number,
+          'status': res.data.status,
+          'nickname': app.globalData.nickname,
+          'avatarUrl': app.globalData.avatarUrl,
+          'account': res.data.account,
+        }
+        wx.setStorage({
+          key: 'information',
+          data: information,
+        })
+      }
+    })
     setTimeout(function(){
       wx.stopPullDownRefresh();
       console.log("gu")
+      
+      
 
     },1000)
     
