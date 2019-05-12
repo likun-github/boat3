@@ -49,10 +49,13 @@
 }
 
 .tab-item {
-  margin: 0 45rpx;
+  /* margin: 0 45rpx; */
   display: inline-block;
   font-size: 28rpx;
   opacity: 0.8;
+  width:150rpx;
+  height:100%;
+  text-align: center;   
 }
 
 .tab-item.active {
@@ -70,7 +73,7 @@
   background: linear-gradient(to bottom right, #5ee4fe, #59b4fe);
   position: absolute;
   bottom: 15;
-  left: 7.8rpx;
+  left: 50rpx;
   border-radius: 16rpx;
 }
 
