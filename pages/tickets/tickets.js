@@ -6,8 +6,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    pname:String,//产品名称
+    eprice:Number,//结束价格
+    sprice: Number,//开始价格
+    certify: String,//预约码
+    telephone: String,//联系电话
+    index: Number//状态
   },
+
 
   /**
    * 组件的初始数据
@@ -22,43 +28,35 @@ Component({
     payfor_string: 0,
     nickname: '',
     avatarUrl: '',
-
+    production__name:'',
     canvasHidden: false,
     maskHidden: true,
     imagePath: '',
-
+    stickets:false
   },
-
+  ready:function () {
+    console.log( this.properties.pname); 
+    console.log(this.properties.index); 
+    this.setData({
+      index:2,
+      production__name: this.properties.pname,
+      final_price: this.properties.eprice,
+      start_price: this.properties.sprice,
+      yuyue_string: this.properties.certify,
+      yuyue_telephone: this.properties.telephone,
+      payfor_string: '',
+      nickname: app.globalData.nickname,
+      avatarUrl: app.globalData.avatarUrl,
+    })
+    var size = this.setCanvasSize();//动态设置画布大小
+    var initUrl;
+    initUrl = '最终价：' + this.data.final_price + '￥  凭证:' + this.data.payfor_string
+    this.createQrCode(initUrl, "mycanvas", size.w, size.h);
+  },
   /**
    * 组件的方法列表
    */
   methods: {
-    onLoad(options) {
-      var that = this;
-
-      var scene = decodeURIComponent(options.scene)
-
-      console.log(options)
-      this.setData({
-        index: options.index,
-        final_price: options.final_price,
-        start_price: options.start_price,
-        yuyue_string: options.yuyue_string,
-        yuyue_telephone: options.yuyue_telephone,
-        payfor_string: options.payfor_string,
-        nickname: app.globalData.nickname,
-        avatarUrl: app.globalData.avatarUrl,
-      })
-
-      // 页面初始化 options为页面跳转所带来的参数
-      var size = this.setCanvasSize();//动态设置画布大小
-      var initUrl ;
-      initUrl = '最终价：'+options.final_price +'￥  凭证:'+ options.payfor_string
-      this.createQrCode(initUrl, "mycanvas", size.w, size.h);
-
-      
-    },
-
     //适配不同屏幕大小的canvas
     setCanvasSize: function () {
       var size = {};
@@ -79,7 +77,6 @@ Component({
       //调用插件中的draw方法，绘制二维码图片
       QR.api.draw(url, canvasId, cavW, cavH);
       setTimeout(() => { this.canvasToTempImage(); }, 1000);
-
     },
 
     //获取临时缓存照片路径，存入data中

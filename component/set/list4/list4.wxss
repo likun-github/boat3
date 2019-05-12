@@ -20,7 +20,7 @@
 .box{
   position: relative;
   width: 80%;
-  height: 60vh;
+  height: 80vh;
   margin-left: 75rpx;
   margin-top: 50rpx;
   box-shadow: 0rpx -5rpx 5rpx 5rpx #EEEEEE,

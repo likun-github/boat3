@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "我的船票",
 
-    "usingComponents": {}
+    "usingComponents": {
+      "tickets":"../tickets/tickets"
+    }
 
 }

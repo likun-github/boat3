@@ -11,7 +11,7 @@
   position: fixed;
   width:200rpx;
   height: 300rpx;
-  top: 10rpx;
+  top: -50rpx;
   right: -40rpx;
   z-index: 300;
    pointer-events: none;

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    stickets:false,
     ticketData: [],
     noticket: true, //没有船票显示引导购买
     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
@@ -20,6 +21,8 @@ Page({
     ticket_number: 0, //船票数量
     buylist: [], //添加到购物车的list，打对勾
 
+    temp:'',
+    index:'',
 
 
     carts: [], // 购物车列表
@@ -235,33 +238,60 @@ Page({
       })
     }
   },
-
+  back:function(){
+    this.setData({
+      stickets:false
+    })
+    wx.showTabBar({});
+  },
   look_ticker: function (e) {
+   
     // console.log(e)
     if (e.currentTarget.dataset.cancel=='nocancel'){
       console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
       if (e.currentTarget.dataset.tickettype == 'ing') {
         var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
-        wx.navigateTo({
-          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-            'start_price=' + temp.production__startprice + '&' +
-            'yuyue_string=' + temp.certificate + '&' +
-            'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
-            'payfor_string=' + '' + '&'
-
-            + 'index=1'
+        this.setData({
+          temp:temp
         })
+        wx.hideTabBar({});
+        this.setData({
+          stickets: true
+        })
+        console.log(this.data.temp);
+        this.setData({
+          index:1
+        })
+        // wx.navigateTo({
+        //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+        //     'start_price=' + temp.production__startprice + '&' +
+        //     'yuyue_string=' + temp.certificate + '&' +
+        //     'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
+        //     'payfor_string=' + '' + '&'
+        //     + 'index=1'
+        // })
       } else {
-        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
-        wx.navigateTo({
-          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-            'start_price=' + temp.production__startprice + '&' +
-            'payfor_string=' + temp.certificate + '&' +
-            'yuyue_string=' + '' + '&' +
-            'yuyue_telephone=' + '' + '&'
-
-            + 'index=2'
+        wx.hideTabBar({});
+        this.setData({
+          stickets: true
         })
+        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
+        this.setData({
+          temp: temp
+        })
+        console.log(this.data.temp);
+        this.setData({
+          index: 2
+        })
+        // wx.navigateTo({
+        //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+        //     'start_price=' + temp.production__startprice + '&' +
+        //     'payfor_string=' + temp.certificate + '&' +
+        //     'yuyue_string=' + '' + '&' +
+        //     'yuyue_telephone=' + '' + '&'
+
+        //     + 'index=2'
+        // })
 
       }
     }else{
