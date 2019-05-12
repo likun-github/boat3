@@ -176,27 +176,33 @@
     </view>
     <view class='middle'>
       <view class="{{chooseStatus == 0?'box':'box1'}}" bindtap='choose' data-index='0'>
-        <text style='font-size:45rpx;margin-top:5%;font-weight:800;'>大船 </text>
+        <text style='font-size:45rpx;margin-top:8%;font-weight:800;'>大船 </text>
         <text style='font-size:30rpx;font-weight:500;'>(99/100)仅差一人成船</text>
-
-        <text style='font-size:24rpx; margin-top:6%;'>懒人专享，本校同舟，全校师生为你砍价</text>
-        <text style='font-size:24rpx;'>百人大船，完成校园认证后，即可享受无预付快速成团</text>
-        <text style='font-size:24rpx;'>每满100人即可生产最终价格，用户可即时获取价格凭证</text>
-        <text style='font-size:24rpx;'>并根据个人要求完成体验并最终支付</text>
+        <view class='box_bottomtext'>
+         <text style='font-size:24rpx; margin-top:7%;'>懒人专享，本校同舟，全校师生为你砍价</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>百人大船，完成校园认证后，即可享受无预付快速成团</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>每满100人即可生产最终价格，用户可即时获取价格凭证</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>并根据个人要求完成体验并最终支付</text>
+        </view>
+       
       </view>
       <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
         <view style="display:flex;flex-direction:row;">
-          <text style='font-size:45rpx;font-weight:800;'>小船</text>
+          <text style='font-size:45rpx;font-weight:800;margin-top:8%;'>小船</text>
           <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 {{department}}  {{mastername}})</text>
+        </view>
+        <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>
+        <view class='box_bottomtext'>
+        <text style='font-size:24rpx; margin-top:7%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>当拼单人数≥2时即可享受比大船更多的实惠！</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>小船体验将更为有趣，同时开启分享砍价和等价参团</text>
+        <text style='font-size:24rpx;margin-top:0.2%;'>小船最大人数为5人，快拉最亲密的人一起登船吧！</text>
         </view>
 
 
-        <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>
+        
 
-        <text style='font-size:24rpx; margin-top:6%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
-        <text style='font-size:24rpx;'>当拼单人数≥2时即可享受比大船更多的实惠！</text>
-        <text style='font-size:24rpx;'>小船体验将更为有趣，同时开启分享砍价和等价参团</text>
-        <text style='font-size:24rpx;'>小船最大人数为5人，快拉最亲密的人一起登船吧！</text>
+        
       </view>
 
 

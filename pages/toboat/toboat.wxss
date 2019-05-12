@@ -406,6 +406,7 @@ input {
   color: white;
   display: flex;
   flex-direction: column;
+  font-weight: 400;
 }
 
 .box1 {
@@ -417,7 +418,13 @@ input {
   border-radius: 50rpx;
   margin: auto;
   background: #f2f2f2;
-  color: rgba(100, 100, 100, 0.5);
+  color: rgba(100, 100, 100, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+.box_bottomtext{
+  position: absolute;
+  bottom: 15%;
   display: flex;
   flex-direction: column;
 }
