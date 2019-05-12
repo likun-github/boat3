@@ -65,6 +65,8 @@ Component({
    */
   methods: {
     final:function(){
+      var show=false;
+      this.triggerEvent("event",show);
       wx.showModal({
         title: '最终价',
         content: '是否生成最终靠岸价格',
