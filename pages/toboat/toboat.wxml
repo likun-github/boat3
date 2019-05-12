@@ -32,14 +32,14 @@
     <view class='middle1'>
       <view class='rank'>
         <image src='/static/toboat/rank.svg' style='position:absolute;width:100%;height:100%;'></image>
-        <text style='position:absolute;font-size:4.5px;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
-        <text style='position:absolute;margin-left:35rpx;margin-top:12rpx;font-size: 20px;'>{{rank}}</text>
+        <text style='position:absolute;font-size:6px;margin-left:26rpx;margin-top:5rpx;'> 综合排名</text>
+        <text style='position:absolute;margin-left:35rpx;margin-top:20rpx;font-size: 20px;'>{{rank}}</text>
 
       </view>
 
       <view class='production_introduction'>
         <text style='font-size: 14px;font-weight:700;'>{{name}}</text>
-        <view style='display:flex;flex-direction:row;font-size:9px;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
+        <view style='display:flex;flex-direction:row;font-size:10px;color:#B1B1B1;justify-content: space-between;margin-top:15rpx;'>
           <text>累计参团{{number}}次</text>
           <text>好评率{{reputation}}%</text>
           <text>综合排名第{{rank}}</text>
@@ -48,7 +48,7 @@
       </view>
       <button class='share' id='btn' open-type="share">
         <image src='/static/toboat/share.svg' class='share_image'></image>
-        <text style='margin-top:-5rpx'>分享</text>
+        <text style='margin-top:-20rpx'>分享</text>
       </button>
 
 
@@ -60,17 +60,17 @@
 
 
     <view class='middle2' bindtap='gomap'>
-      <text style='font-size: 24rpx;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;' decode="{{true}}"> {{position}}&nbsp;&nbsp;距离武汉大学牌坊{{distance}}km</text>
-      <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:288px;'>地图</text>
+      <text style='font-size: 12px;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
+      <text style='font-size: 12px; color:#B1B1B1;margin-left:50rpx;' decode="{{true}}"> {{position}}&nbsp;&nbsp;距离武汉大学{{distance}}km</text>
+      <text style='position:absolute;font-size: 12px; color:#B1B1B1;margin-left:310px;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
     <view class='line'></view>
 
 
     <view class='middle2'>
-      <text style='font-size: 24rpx;color:#B1B1B1;margin-left:50rpx;'>标签  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> {{introduction}}</text>
+      <text style='font-size: 12px;color:#B1B1B1;margin-left:50rpx;'>标签  </text>
+      <text style='font-size: 12px; color:#B1B1B1;margin-left:50rpx;'> {{introduction}}</text>
     </view>
     <view class='line'></view>
     <view class='middle2'>
@@ -87,7 +87,7 @@
 
 
     <view wx:if="{{chooseinformation==0}}">
-      <image src='{{introductionpic}}' style='position:relative;width:750rpx;height:1500rpx;'></image>
+      <image src='{{introductionpic}}' mode='widthFix' style='position:relative;width:750rpx;'></image>
     </view>
     <view wx:if="{{chooseinformation==1}}">
       <image bindtap='likethisProduction' src="{{likethis?'/static/toboat/hearted.svg':'/static/toboat/heart.svg'}}" class='heart'></image>
