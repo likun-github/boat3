@@ -57,7 +57,6 @@ Page({
     logo: '',
     distance:'',
 
-
     popup: true,
     //别人的小船
     steamid:'',//小船id
