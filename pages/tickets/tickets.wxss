@@ -26,6 +26,19 @@
 .pay {
   position: absolute;
   border-radius: 40rpx;
+  bottom: -40rpx;
+  height: 80rpx;
+  left: 25%;
+  width: 50%;
+  background: linear-gradient(to bottom right, #fdb38f, #f7907e);
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 40rpx;
+  color: white;
+}
+.pay1 {
+  position: absolute;
+  border-radius: 40rpx;
   bottom: -60rpx;
   height: 80rpx;
   left: 25%;
@@ -36,7 +49,6 @@
   font-size: 40rpx;
   color: white;
 }
-
 .canvas-box {
   height: 150rpx;
   width: 150rpx;

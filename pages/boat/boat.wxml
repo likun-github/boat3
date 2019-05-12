@@ -51,8 +51,8 @@
                 <text class='price_number' decode="{{true}}">&ensp;{{item.endprice}}&ensp;</text>元</view>
               <view class='cut_view'>
 
-                <button class='btn_cut' wx:if="{{item.state==1}}" bindtap='team_cut' data-index='{{index}}'>砍</button>
-                <button class="{{item.state==1?'btn_checkticket':'btn_checkticket_bigboat'}}"  data-cancel="{{item.status==0?'cancel':'nocancel'}}" bindtap='look_ticker' data-index='{{index}}' data-tickettype='ing'>查看船票</button>
+                <button class='btn_cut' wx:if="{{item.state==1 &&item.status==1}}" bindtap='team_cut' data-index='{{index}}'>砍</button>
+                <button class="{{item.state==1&&item.status==1?'btn_checkticket':'btn_checkticket_bigboat'}}"  data-cancel="{{item.status==0?'cancel':'nocancel'}}" bindtap='look_ticker' data-index='{{index}}' data-tickettype='ing'>查看船票</button>
 
 
 
@@ -113,6 +113,6 @@
 </view>
 <view class='mask_1' wx:if="{{stickets}}">
   <view class='mask_2' style='width:100%;height:100%;'bindtap='back'></view>
-<tickets pname="{{temp.production__name}}" eprice="{{temp.endprice}}" sprice="{{ temp.production__startprice}}" certify="{{temp.certificate}}" telephone="{{temp.production__merchant__telephone}}" index="{{index}}"></tickets>
+<tickets pname="{{temp.production__name}}" eprice="{{temp.endprice}}" sprice="{{ temp.production__startprice}}" certify="{{temp.certificate}}" telephone="{{temp.production__merchant__telephone}}" index="{{index}}"  o_id="{{temp.orderid}}" s_id="{{temp.steam_id}}" u_id="temp.userid" p_id="{{temp.production_id}}"      ></tickets>
 </view>
 <!-- </view> -->

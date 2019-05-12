@@ -1,7 +1,8 @@
+<wxs module="filters" src="../../common/tool.wxs"></wxs>
 
   <view class='content'>
     <image src='/static/pic/T2.png' style='width:100%;height:100%;'></image>
-    <image src='/static/pic/T1.png' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx;'></image>
+    <image src='{{index<=2?"/static/pic/T1.png":"/static/teamcut/myteam1.jpg"}}' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx; border-radius:25rpx 25rpx 0 0'></image>
     <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;font-family:"z"'>百人同舟</view>
     <text style='position:absolute;left:50rpx;top:43%;color:white;font-size:40rpx;font-weight:300;'>{{production__name}}</text>
     <view class='con1'>
@@ -21,23 +22,23 @@
       <view style='position:absolute;left:500rpx;height:100%;width:200rpx;'>
         <view style='height:24rpx;'></view>
         <text style='margin-left:30rpx;font-size:24rpx;color:grey'>激励贝壳\n</text>
-        <text style='font-size:30rpx;margin-left:30rpx;font-size:50rpx;font-family:"z"'>{{return_price}}</text>
+        <text style='font-size:30rpx;margin-left:30rpx;font-size:50rpx;font-family:"z"'>{{filters.toFix(sprice)}}</text>
+          <text style='font-size:16rpx;position:absolute;left:30rpx;width:200rpx;color:grey;top:150rpx;'>每100元激励1贝壳</text>
       </view>
     </view>
 
     <view wx:if='{{index==1}}' class='con2'>
       <view style='height:40rpx;'></view>
       <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{yuyue_string}}\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{yuyue_telephone}}</text>
-      <view class='pay'>立即支付</view>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{certify}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{telephone}}</text>
+      <view class='pay1'>立即支付</view>
     </view>
-
     <view wx:if='{{index==2}}' class='con2'>
       <view style='height:40rpx;'></view>
       <text style='margin-left:60rpx;font-size:30rpx;'>支付成功\n</text>
       <view style='position:absolute;left:200rpx;top:50rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
-      <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: {{payfor_string}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: {{certify}}\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>请尽快与商家取得联系完成最终对接</text>
 
 
@@ -49,7 +50,7 @@
           <!-- <input name='url' value='' type="text" maxlength="255" placeholder="{{placeholder}}" /> -->
         <!-- </view>
         <button formType="submit" class="mybtn" type="primary">生成专属二维码</button>
-      </form> --> -->
+      </form> --> 
 
       <!-- <image src='/static/t14.png' style='width:150rpx;height:150rpx;position:absolute;right:50rpx;top:50rpx;'></image> -->
 
@@ -57,46 +58,51 @@
     </view>
    
    <view wx:if="{{index==3}}">
-    <image src='/static/teamcut/myteam.jpg' class='image'></image>
+    
     <view class='a'>
-      <view class='pay'>生成最终价</view>
-      <view class='btn_cut'>砍</view>
+      <view class='pay' bindtap='final'>生成最终价</view>
+      <view class='btn_cut' bindtap='cut'>砍</view>
       </view>
       <view class='con2'>
       <view style='height:40rpx;'></view>
       <text style='margin-left:60rpx;font-size:30rpx;'>船长你好！\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>您可分享好友砍价 Or 等价登船\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>珍惜每一个邀请等价登船名额吧\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{invition}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{s_id}}\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>好友可在【我的】-【小船邀请码】输入邀请码或直接微信扫码参与登船</text>
     </view>
    </view>
 
 
    <view wx:if="{{index==4}}">
-    <image src='/static/teamcut/myteam.jpg' class='image'></image>
+   
 
       <view  class='con2'>
       <view style='height:40rpx;'></view>
       <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{yuyue_string}}\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{yuyue_telephone}}</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{certify}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{telephone}}</text>
       <view class='pay'>立即支付</view>
     </view>
    </view>
 
    <view wx:if="{{index==5}}">
-    <image src='/static/teamcut/myteam.jpg' class='image'></image>
 
-      <view  class='con2'>
+
+        <view  class='con2'>
       <view style='height:40rpx;'></view>
-      <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{yuyue_string}}\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{yuyue_telephone}}</text>
-      <view class='pay'>立即支付</view>
-    </view>
-   </view>
+      <text style='margin-left:60rpx;font-size:30rpx;'>支付成功\n</text>
+      <view style='position:absolute;left:200rpx;top:50rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
+      <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: {{certify}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>请尽快与商家取得联系完成最终对接</text>
 
+
+      <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}" class='pic_inform'></image>
+ 
+
+    </view>
+   
+</view>
   </view>
 
 

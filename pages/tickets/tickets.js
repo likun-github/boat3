@@ -11,7 +11,12 @@ Component({
     sprice: Number,//开始价格
     certify: String,//预约码
     telephone: String,//联系电话
-    index: Number//状态
+    index: Number,//状态
+    p_id: String,//产品ID
+    u_id:String,//用户ID
+    o_id:String,  
+    s_id:String,//steamID
+  
   },
 
 
@@ -20,31 +25,37 @@ Component({
    */
   data: {
     index: 1,
-    final_price: 0,
-    start_price: 0,
-    return_price: 0,
-    yuyue_string: 0,
+    // final_price: 0,
+    // start_price: 0,
+    // return_price: 0,
+
     yuyue_telephone: 0,
-    payfor_string: 0,
+
     nickname: '',
     avatarUrl: '',
     production__name:'',
     canvasHidden: false,
     maskHidden: true,
     imagePath: '',
-    stickets:false
+    stickets:false,
+    p_id:'',
+    u_id:'',
+    s_id:'',
+    o_id:'',
   },
   ready:function () {
-    console.log( this.properties.pname); 
-    console.log(this.properties.index); 
     this.setData({
-      index:5,
+      index: this.properties.index,
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,
-      yuyue_string: this.properties.certify,
-      yuyue_telephone: this.properties.telephone,
-      payfor_string: '',
+      certify: this.properties.certify,
+      telephone:this.properties.telephone,
+
+      p_id: this.properties.p_id,
+      u_id: this.properties.u_id,
+      s_id: this.properties.s_id,
+      o_id: this.properties.o_id,
       nickname: app.globalData.nickname,
       avatarUrl: app.globalData.avatarUrl,
     })
@@ -57,6 +68,52 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    final:function(){
+      var that =this
+      wx.showModal({
+        title: '请确认完成订单',
+        content: '确认后无法再次邀请好友砍价或参团',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('orderid:',that.properties.o_id)
+            wx.request({
+              url: 'https://xiaoyibang.top:8001/dajia/completeorder',
+              data: {
+                'orderid': that.properties.o_id,
+              },
+              success: (res) => {
+                console.log("确认完成拼团  --这个过程")
+              }
+            })
+
+            //这里是点击了确定以后
+            console.log('用户点击确定');
+            wx.switchTab({
+              url: '/pages/home/home',
+            })
+            app.getorderlist();
+            wx.showTabBar({
+              
+            })
+           
+          } else {//这里是点击了取消以后
+            console.log('用户点击取消')
+          }
+        }
+      })
+    },
+
+
+    cut:function(){
+      wx.navigateTo({
+        url: '/pages/teamcut/teamcut?productionid=' + this.data.p_id +
+          '&' + 'nickname=' + app.globalData.nickname +
+          '&' + 'avatarUrl=' + app.globalData.avatarUrl +
+          '&' + 'steamid=' + this.data.s_id+
+          '&' + 'userid=' + this.data.u_id,
+      })
+
+    },
     //适配不同屏幕大小的canvas
     setCanvasSize: function () {
       var size = {};
