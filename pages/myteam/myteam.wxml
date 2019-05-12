@@ -1,40 +1,39 @@
-
 <view class='background'>
-    <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%;' mode='aspectFill'></image>
+  <image src='/static/myteam/myteam.jpg' style='width:100%;height:100%;' mode='aspectFill'></image>
 </view>
-<view class='team' >
-     <view style='width:50%;height:30%;margin-left:25%;'>
-         <image src='{{data[0].member__picture}}' style='width:180rpx;height:180rpx;margin-left:10%;margin-top:10%;border-radius:100%' bindtap='se1'></image>
-     </view>
-     <view style='width:100%;height:30%;margin-top:5%;'>
-         <image src='{{data[1].member__picture}}' style='width:180rpx;height:180rpx;margin-left:5%;margin-top:10%;border-radius:100%'bindtap='se2'wx:if="{{member_number>1}}"></image>
-         <image src='{{data[2].member__picture}}' style='width:180rpx;height:180rpx;margin-left:15%;margin-top:10%;border-radius:100%'bindtap='se3'wx:if="{{member_number>2}}"></image>
-     </view>
-     <view style='width:100%;height:30%;margin-top:5%;'>
-         <image src='{{data[3].member__picture}}' style='width:180rpx;height:180rpx;margin-left:5%;margin-top:10%;border-radius:100%'bindtap='se4'wx:if="{{member_number>3}}"></image>
-         <image src='{{data[4].member__picture}}' style='width:180rpx;height:180rpx;margin-left:15%;margin-top:10%;border-radius:100%'bindtap='se5'wx:if="{{member_number>4}}"></image>
-     </view>
+<view class='team'>
+  <view style='width:50%;height:30%;margin-left:25%;'>
+    <image src='{{data[0].member__picture}}' style='width:180rpx;height:180rpx;margin-left:10%;margin-top:10%;border-radius:100%' bindtap='se1'></image>
+  </view>
+  <view style='width:100%;height:30%;margin-top:5%;'>
+    <image src='{{data[1].member__picture}}' style='width:180rpx;height:180rpx;margin-left:5%;margin-top:10%;border-radius:100%' bindtap='se2' wx:if="{{member_number>1}}"></image>
+    <image src='{{data[2].member__picture}}' style='width:180rpx;height:180rpx;margin-left:15%;margin-top:10%;border-radius:100%' bindtap='se3' wx:if="{{member_number>2}}"></image>
+  </view>
+  <view style='width:100%;height:30%;margin-top:5%;'>
+    <image src='{{data[3].member__picture}}' style='width:180rpx;height:180rpx;margin-left:5%;margin-top:10%;border-radius:100%' bindtap='se4' wx:if="{{member_number>3}}"></image>
+    <image src='{{data[4].member__picture}}' style='width:180rpx;height:180rpx;margin-left:15%;margin-top:10%;border-radius:100%' bindtap='se5' wx:if="{{member_number>4}}"></image>
+  </view>
 </view>
 
 
 <!-- 详情 -->
 <view wx-if='{{showmodel}}' bindtap='bac' class='showmodel'>
-   <view class='bac' bindtap='bac'>
-   <image src='/static/myteam/-.svg' style='width:60%;height:60%;margin-top:20rpx;margin-left:20rpx;'></image>
-   </view>
-   <view style='position:absolute;top:0rpx;left:0rpx;width:100%;height:46%;border-radius:0 0 20rpx 20rpx;'>
-   <image src='/static/myteam/2.png' style='width:100%;height:100%;'></image>
-   </view>
-   <view style='width:180rpx;height:180rpx;margin-left:209rpx;top:-78rpx;border-radius:100%;position:absolute;border:solid 3rpx white;'>
-     <image src='{{data[index-1].member__picture}}'style='width:100%;height:100%;border-radius:100%'></image>
-   </view>
+  <view class='bac' bindtap='bac'>
+    <image src='/static/myteam/-.svg' style='width:60%;height:60%;margin-top:20rpx;margin-left:20rpx;'></image>
+  </view>
+  <view style='position:absolute;top:0rpx;left:0rpx;width:100%;height:46%;border-radius:0 0 20rpx 20rpx;'>
+    <image src='/static/myteam/2.png' style='width:100%;height:100%;'></image>
+  </view>
+  <view style='width:180rpx;height:180rpx;margin-left:209rpx;top:-78rpx;border-radius:100%;position:absolute;border:solid 3rpx white;'>
+    <image src='{{data[index-1].member__picture}}' style='width:100%;height:100%;border-radius:100%'></image>
+  </view>
 
-   <view style='width:100%;position:absolute;top:46%;height:54%;display:flex;justify-content: center;'>
-   <text style='position:absolute;top:6%;color:grey'>{{data[index-1].member__department}}</text>
-   <text style='position:absolute;margin-top:12%;top:0%;font-size:80rpx;color:#52ADB4;font-weight:200'>{{data[index-1].member__nickname}}</text>
-   <text style='position:absolute;margin-top:24%;top:15%;font-size:24rpx;color:grey'>──── {{data[index-1].membership__time}} ────</text>
-   <view class='cap'>
-   <text style='height:100%;display: flex;flex-direction:column;justify-content: center;font-size:50rpx;color:white;font-family:Monospace'>{{data[index-1].c}}</text>
-   </view>
-   </view>
+  <view style='width:100%;position:absolute;top:46%;height:54%;display:flex;justify-content: center;'>
+    <text style='position:absolute;top:6%;color:grey'>{{data[index-1].member__department}}</text>
+    <text style='position:absolute;margin-top:12%;top:0%;font-size:80rpx;color:#52ADB4;font-weight:200'>{{data[index-1].member__nickname}}</text>
+    <text style='position:absolute;margin-top:24%;top:15%;font-size:24rpx;color:grey'>──── {{data[index-1].membership__time}} ────</text>
+    <view class='cap'>
+      <text style='height:100%;display: flex;flex-direction:column;justify-content: center;font-size:50rpx;color:white;font-family:Monospace'>{{data[index-1].c}}</text>
+    </view>
+  </view>
 </view>

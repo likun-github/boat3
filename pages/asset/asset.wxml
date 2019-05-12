@@ -1,6 +1,0 @@
-  <list1 wx:if="{{list==1}}"></list1>
-  <list2 wx:if="{{list==2}}"></list2>
-  <list4 wx:if="{{list==4}}"></list4>
-  <list5 wx:if="{{list==5}}"></list5>
-
-

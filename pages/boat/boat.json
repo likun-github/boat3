@@ -3,6 +3,8 @@
 
     "usingComponents": {
       "tickets":"../tickets/tickets"
-    }
+    },
+    "enablePullDownRefresh": false
+    
 
 }

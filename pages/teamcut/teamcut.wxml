@@ -1,4 +1,3 @@
-
 <view class='container'>
   <view class='top'>
     <image src='/static/teamcut/myteam.jpg' style='position:absolute;width:100%;height:100%;' mode='top'></image>
@@ -12,7 +11,7 @@
           <view class='productionname'> {{production.name}}</view>
           <view class='introduction'>目前砍价已领先94%用户</view>
           <view class='introduction'>初始价格为{{production.startprice}}元</view>
-          <view class='price'  module="filters" src="../utils/filters.wxs" >
+          <view class='price' module="filters" src="../utils/filters.wxs">
             <text style='font-size:25rpx;margin-top:20%;'>¥</text>
             <text>{{endprice}}</text>
           </view>
@@ -83,14 +82,11 @@
 
 
 //登陆遮罩
-<view class='mask' wx:if="{{hq}}" >
-    <view class='m' style='overflow:hidden'>
+<view class='mask' wx:if="{{hq}}">
+  <view class='m' style='overflow:hidden'>
     <image src='/static/sq.jpg' style='width:100%;height:100%'></image>
-    </view>
-    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="s">
- 确定授权
-</button>
+  </view>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="s">
+    确定授权
+  </button>
 </view>
-
-
-
