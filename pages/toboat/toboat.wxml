@@ -1,3 +1,5 @@
+<wxs module="filters" src="../../common/tool.wxs"></wxs>
+
 <view class="container">
   <scroll-view scroll-y class='scroll' upper-threshold="1 " bindscroll="scrollnew">
     <swiper class="swiper" autoplay="true" interval="5000" duration="1000">
@@ -11,14 +13,14 @@
       <image style='position:absolute;width:100%;height:100%;' src='/static/toboat/lang.svg'></image>
       <view class='content'>
         <text style='font-size:15px;margin-top:15%;font-weight:400;margin-left:20rpx; '>￥</text>
-        <text style='font-size:40px;margin-top:9%;font-weight:400; '>{{startprice}}</text>
-        <view style=' display: flex;flex-direction: column;font-size:10px;font-weight:700;margin-top:12%;margin-left:20rpx; color:white;'>
-          <text style='text-decoration:line-through;font-weight:700;'>￥{{endprice}}</text>
+        <text style='font-size:40px;margin-top:9%;font-weight:400; '>{{filters.toFix(endprice)}}</text>
+        <view style=' display: flex;flex-direction: column;font-size:10px;margin-top:12%;margin-left:20rpx; color:white;'>
+          <text style='text-decoration:line-through;font-weight:700;'>￥{{startprice}}</text>
           <text style='line-through;font-weight:700;margin-top:4%;'>本校同舟99人正在拼</text>
 
         </view>
         <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
-        <text style='font-size:10px;margin-top:16.5%;font-weight:700; color:white;margin-left:7%;'>距本轮校园大船发船仅剩1人</text>
+        <text style='font-size:10px;margin-top:16.5%;font-weight:700; color:white;margin-left:5%;'>距本轮校园大船发船仅剩1人</text>
         <image  mode="scaleToFill" src="/static/toboat/smallboat.svg" class='smallboat'></image>
 
 
@@ -164,13 +166,13 @@
       <view class='worth'>
         <view style='color:#58B4FE;font-weight:800;'>
           <text style='font-size:15rpx;'>￥</text>
-          <text style='font-size:30rpx;'>{{chooseStatus==0?startprice*0.8:startprice*0.6}}</text>
+          <text style='font-size:30rpx;'>{{chooseStatus==0?filters.toFix(startprice*0.8):filters.toFix(startprice*0.6)}}</text>
         </view>
 
         <text style='color:rgba(100,100,100,0.4);;font-size:0.5em;'>原价￥{{startprice}}</text>
       </view>
       <view class='title'>
-        {{chooseStatus==0?'百人同舟 仅剩一人':startprice+'返'+startprice*0.4}}
+        {{chooseStatus==0?'百人同舟 仅剩一人':startprice+'返'+filters.toFix(startprice*0.4)}}
 
       </view>
     </view>

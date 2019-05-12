@@ -74,7 +74,7 @@
 
                 </view>
                 <view class='text_5'>
-                  ￥{{filters.toFix( item.startprice*0.6)}}- {{filters.toFix(item.startprice*0.8)}}
+                  ￥{{filters.toFix(item.startprice*0.6)}}- {{filters.toFix(item.startprice*0.8)}}
                   <view class='sameschool_pic'>本校同舟</view>
                 </view>
               </view>
