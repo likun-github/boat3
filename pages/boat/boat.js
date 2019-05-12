@@ -35,7 +35,12 @@ Page({
     cut_pay: 0, //优惠额
   },
 
-
+show:function(e){
+    console.log("wocao"+e.detail.msg)
+    this.setData({
+      stickets:false
+    })
+},
   /**
    * 当前商品选中事件
    */

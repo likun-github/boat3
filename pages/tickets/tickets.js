@@ -43,7 +43,7 @@ Component({
     s_id:'',
     o_id:'',
 
-    showview_flag:true,
+    showview_flag:1,
   },
   ready:function () {
     this.setData({
@@ -95,11 +95,13 @@ Component({
             })
             app.getorderlist();
             wx.showTabBar({
-              
             })
-           that.setData({
-             showview_flag: false, 
-           })
+
+            var myEventDetail = {
+              msg: 0,
+            } 
+            var myEventOption = {} 
+            that.triggerEvent('myevent', myEventDetail, myEventOption)
           } else {//这里是点击了取消以后
             console.log('用户点击取消')
           }

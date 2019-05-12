@@ -136,10 +136,10 @@
 .mask{
   background:white;
   border-radius:100%;
-  width:41rpx;
-  height:41rpx;
+  width:40rpx;
+  height:40rpx;
   position:absolute;
-  top:202rpx;
+  top:198rpx;
   left: 11rpx;
 }
 .cart-pro-select{
