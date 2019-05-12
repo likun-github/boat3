@@ -6,7 +6,7 @@
 </view> -->
 
 
-<swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red' autoplay='{{autoplay}}'>
+<swiper  bindanimationfinish="changeGoodsSwip" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" current="{{currentSwiper}}" class='swiper' bindchange='onslidechangeend' indicator-active-color='red' autoplay='{{autoplay}}'>
   <block wx:for="{{imgUrls}}" wx:key="imgUrls">
     <swiper-item>
       <view class='swiper_item'>

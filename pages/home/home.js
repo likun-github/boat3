@@ -50,7 +50,7 @@ Page({
 
 
   // 滚动切换标签样式
-  swiper_change_view: function (e) {
+  swiper_change_view: function(e) {
     console.log(e.detail.current)
     this.setData({
       currentTab: e.detail.current
@@ -59,9 +59,46 @@ Page({
     // this.swichNav(e)
   },
 
+  changeGoodsSwip: function(detail) {
+    if (detail.detail.source == "touch") {
+      //当页面卡死的时候，current的值会变成0       
+      if (detail.detail.current == 0) {
+        //有时候这算是正常情况，所以暂定连续出现3次就是卡了   
+        let swiperError = this.data.swiperError
+        swiperError += 1
+        this.setData({
+          swiperError: swiperError
+        })
+        
+         if (swiperError >= 3) {
+
+          //在开关被触发3次以上    
+          console.error(this.data.swiperError)
+          this.setData({
+            goodsIndex: this.
+            data.preIndex
+          });
+          //，重置current为正确索引     
+          this.setData({
+            swiperError: 0
+          })
+        }
+      } else {
+        //正常轮播时，记录正确页码索引       
+        this.setData({
+          preIndex: detail.detail.current
+        });
+        //将开关重置为0        
+        this.setData({
+          swiperError: 0
+        })
+      }
+    }
+  },
 
   //判断当前滚动超过一屏时，设置tab标题滚动条。
-  checkCor: function () {
+
+  checkCor: function() {
     if (this.data.currentTab > 4) {
       this.setData({
         scrollLeft: 300
@@ -73,7 +110,7 @@ Page({
     }
   },
 
-  onslidechangeend: function (e) {
+  onslidechangeend: function(e) {
     var that = this;
     that.setData({
       currentSwiper: e.detail.current
@@ -83,7 +120,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     if (options) {
       app.globalData.pageid = options.pageid;
@@ -105,8 +142,7 @@ Page({
               title: '您已完成实名认证',
               icon: 'none',
             })
-          }
-          else {
+          } else {
             wx.showModal({
               title: '实名认证',
               content: '完成实名认证好友也可领取贝壳哦~',
@@ -137,14 +173,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
     wx.showToast({
       title: '加载中',
       icon: 'loading',
       duration: 2000,
     })
     var that = this;
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         listData: common.homelist,
         showData: common.showData,
@@ -159,7 +195,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
 
   },
@@ -167,40 +203,40 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
 
-  onPageScroll: function (e) {
+  onPageScroll: function(e) {
     console.log(e.scrollTop, this.data.scroll_top)
     this.setData({
       'scroll_top': e.scrollTop
@@ -211,7 +247,7 @@ Page({
 
 
 
-  to_producation_page: function (e) {
+  to_producation_page: function(e) {
     var id = new Array();
     id.push(e.currentTarget.dataset.id);
     for (var i = 0; i < common.homelist.length; i++) {
@@ -233,7 +269,7 @@ Page({
 
 
   // 点击标题切换当前页时改变样式
-  swichNav: function (e) {
+  swichNav: function(e) {
     console.log(e)
     var list = [];
     this.setData({
@@ -255,7 +291,7 @@ Page({
   //下面这个function和  hideModal_function的
   //wx与setdata的顺序是很重要的！！！！！！！！！！！！
 
-  showDialogBtn: function () {
+  showDialogBtn: function() {
     wx.hideTabBar({});
     this.setData({
       showModal: true
@@ -267,13 +303,13 @@ Page({
   /**
    * 弹出框蒙层截断touchmove事件
    */
-  preventTouchMove: function () { },
+  preventTouchMove: function() {},
 
 
   /**
    * 隐藏模态对话框
    */
-  hideModal: function () {
+  hideModal: function() {
 
     //排序
     // this.data.orderName_index==012 ->  按xxx
@@ -289,7 +325,7 @@ Page({
 
 
 
-  choose1: function () {
+  choose1: function() {
     this.setData({
       orderName: this.data.orderName_list[0],
       orderName_index: 0,
@@ -299,7 +335,7 @@ Page({
     })
 
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function (a, b) {
+    var showlist = this.data.showData.sort(function(a, b) {
       return a.reputation < b.reputation ? 1 : -1;
     })
     this.setData({
@@ -311,7 +347,7 @@ Page({
   },
 
 
-  choose2: function () {
+  choose2: function() {
     this.setData({
       orderName: this.data.orderName_list[1],
       orderName_index: 1,
@@ -321,7 +357,7 @@ Page({
 
     })
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function (a, b) {
+    var showlist = this.data.showData.sort(function(a, b) {
       return a.startprice > b.startprice ? 1 : -1;
     })
     this.setData({
@@ -330,7 +366,7 @@ Page({
 
   },
 
-  choose3: function () {
+  choose3: function() {
     this.setData({
       orderName: this.data.orderName_list[2],
       orderName_index: 2,
@@ -339,7 +375,7 @@ Page({
       choose3: true,
     })
     console.log(this.data.showData)
-    var showlist = this.data.showData.sort(function (a, b) {
+    var showlist = this.data.showData.sort(function(a, b) {
       return a.distance > b.distance ? 1 : -1;
     })
     this.setData({
