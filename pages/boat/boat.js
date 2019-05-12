@@ -41,6 +41,18 @@ Page({
     let carts = this.data.ticketlist_ing;
     const selected = carts[index].added;
     carts[index].added = !selected;
+    let num = 0;
+    for (let i = 0; i < carts.length; i++) {
+      if(carts[i].added)
+      num++;
+    }
+    if (num == carts.length)
+      this.setData({
+        selectAllStatus: true
+      });
+    else this.setData({
+      selectAllStatus: false
+    });
     this.setData({
       ticketlist_ing: carts
     });

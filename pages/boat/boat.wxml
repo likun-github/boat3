@@ -32,14 +32,16 @@
          <view wx:for="{{ticketlist_ing}}" wx:key="item1">
           <view class="item-ans">
             <view class="avatar">
-              <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
-            </view>
-
+              <image  class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
+            
             <view class='avatar1'>
-              <icon wx:if="{{item.added}}" type="success" color="#59b4fe" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
-              <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
+               <view class='mask' style='background:white'>
+               <image wx:if="{{item.added}}" mode='aspectFill' src='/static/boat/d.svg' style='width:200%;height:200%;border-radius:100%;position:absolute;top:-17rpx;left:-50%;'></image>
+               </view>
+              <icon wx:if="{{item.added}}"  color="#59b4fe" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+              <icon wx:else  class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
             </view>
-
+            </view>
             <view class="expertInfo">
               <view class='cancel_view' bindtap='cancel_order' data-index='{{item}}'>
                 <image src='/static/boat/cancel.svg' class='cancel'></image>

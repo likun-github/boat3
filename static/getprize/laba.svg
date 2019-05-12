@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14.275" height="11.551" viewBox="0 0 14.275 11.551">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f5f5f5;
+      }
+    </style>
+  </defs>
+  <g id="组_715" data-name="组 715" transform="translate(7555 -14827)">
+    <g id="组_573" data-name="组 573" transform="translate(-7602 14261)">
+      <g id="喇叭" transform="translate(-31.933 386.8)">
+        <path id="路径_1670" data-name="路径 1670" class="cls-1" d="M83.038,325.086h-1.2a2.179,2.179,0,1,1,0-4.359h1.2V320h-1.2a2.906,2.906,0,1,0,0,5.812h1.2Z" transform="translate(0 -138.403)"/>
+        <path id="路径_1671" data-name="路径 1671" class="cls-1" d="M367.752,643.223v1.707l-4.359-.944v-1.707l-.726-.145v2.434l5.812,1.235v-2.434Z" transform="translate(-278.902 -455.051)"/>
+        <path id="路径_1672" data-name="路径 1672" class="cls-1" d="M278.06,181.6v.726h-.727v2.543h.727v-2.543l8.718-2.034v-.036l1.453-.363v-.69Zm9.444,7.047-9.444-1.925v.726l10.171,2.107V180.98l-.727.182Z" transform="translate(-195.022 0)"/>
+      </g>
+    </g>
+  </g>
+</svg>

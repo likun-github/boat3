@@ -57,7 +57,7 @@ App({
           else{
             common.orderlist=[];
           }
-          console.log("�û��Ķ���:", common.orderlist);
+          console.log("订单", common.orderlist);
           
         }
       })
@@ -145,7 +145,7 @@ App({
     country:'',
     city:'',
     province:'',
-    language: "zh_CN",//�޹���Ϣ
+    language: "zh_CN",
 
 
     ticketlist_ing:[],
