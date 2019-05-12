@@ -1,12 +1,13 @@
 {
   "pages": [
-   
     "pages/home/home",
+    "pages/prizedetail/prizedetail",
+    
     "pages/list5/list5",
     "pages/list4/list4",
     "pages/list2/list2",
     "pages/list1/list1",
-    "pages/prizedetail/prizedetail",
+    
     "pages/verify/verify",
     "pages/setting/setting",
     "pages/getprize/getprize",

@@ -61,9 +61,9 @@ Component({
               success: (res) => {
                 app.globalData.userid = res.data.userid;
                 app.globalData.status = res.data.status;
-                app.globalData.number = res.data.number;
+                app.globalData.time = res.data.number;
                 app.globalData.account = res.data.account;
-                app.globalData.number = res.data.number;
+                
                 console.log("用户信息", res.data)
                 app.getorderlist();
                 var information = {
