@@ -226,7 +226,7 @@
 .item_column_4 {
   position: relative;
   display: flex;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
 }
 
 .item_column_5 {
@@ -252,7 +252,7 @@
 
 .text_4 {
   color: #72727248;
-  font-size: 28rpx;
+  font-size: 24rpx;
   display: flex;
   flex-direction: row;
   width: 300rpx;
@@ -263,7 +263,7 @@
 
 .text_5 {
   color: #f89681;
-  font-size: 30rpx;
+  font-size: 32rpx;
   display: flex;
   flex-direction: row;
 }
