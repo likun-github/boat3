@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    detail:[],//time year month date status  worth
     et: [
       {
         date: '-2019-4-17-',
@@ -84,9 +85,33 @@ Page({
     this.setData({
       h: app.globalData.height
     });
+   
     this.getdetail();
   },
+  gettime:function(status,time){//根据status返回年月日
+        var time = new Date(time * 1000);
+        switch(status){
+          case 1:
+            var year = time.getFullYear();
+            return year;
+            break;
+          case 2:
+            var month = time.getMonth();
+            return month;
+            break;
+          case 3:
+            var date = time.getDate();
+            return date;
+            break;
+        }
+    
+        
+
+
+
+  },
   getdetail: function () {
+    var that=this;
     wx.login({
       success: res => {
         wx.request({
@@ -96,6 +121,55 @@ Page({
           },
           success: (res) => {
             console.log(res.data)
+
+            var gorder=res.data.gorder;
+            var end = [];
+            for(var i=0;i<gorder.length;i++){
+              if(gorder[i].id==4){
+                gorder[i].number=100;
+              }
+              else if (gorder[i].id == 7){
+                gorder[i].number = 5;
+              }
+              else{
+                gorder[i].number = 0;
+              }
+              gorder[i].status=1;//奖品
+              var neworder1={};
+              neworder1.time=gorder[i].time;
+              neworder1.status = 2;//抽奖消耗
+              neworder1.number=-30;
+              end.push(gorder[i])
+              end.push(neworder1) 
+            }
+            var invitation=res.data.invitation;
+            for(var i=0;i<invitation.length;i++){
+              invitation[i].status=3;//邀请实名认证
+              invitation[i].number=30;
+              end.push(invitation[i])
+
+            }
+            console.log(end)
+
+            
+
+            
+            //从大到小排序
+            var orderlist = end.sort(function (a, b) {
+              return a.time < b.time ? 1 : -1;
+            })
+            console.log(orderlist)
+            
+
+            for(var i=0;i<orderlist.length;i++){
+              orderlist[i].year=that.gettime(1,orderlist[i].time)
+              orderlist[i].month = that.gettime(2, orderlist[i].time)
+              orderlist[i].date = that.gettime(3, orderlist[i].time)
+            }
+            this.setData({
+              detail:orderlist,
+            })
+            
           },
         })
       }

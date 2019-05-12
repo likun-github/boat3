@@ -1,11 +1,12 @@
 {
   "pages": [
+   
     "pages/home/home",
     "pages/list5/list5",
     "pages/list4/list4",
     "pages/list2/list2",
     "pages/list1/list1",
-    
+    "pages/prizedetail/prizedetail",
     "pages/verify/verify",
     "pages/setting/setting",
     "pages/getprize/getprize",
@@ -15,15 +16,18 @@
     "pages/test/test",
     "pages/asset/asset",
     "pages/boat/boat",
-    "pages/myteam/myteam",
-    "pages/prizedetail/prizedetail"
+    "pages/myteam/myteam"
+    
     
   ],
+  
   "window": {
+    "backgroundColor":"blue",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#a9b7b7",
