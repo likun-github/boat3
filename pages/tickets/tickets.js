@@ -37,6 +37,8 @@ Component({
     imagePath: '',
     stickets:false,
     p_id:'',
+    u_id:'',
+    s_id:'',
   },
   ready:function () {
     this.setData({
