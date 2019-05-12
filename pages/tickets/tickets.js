@@ -32,18 +32,20 @@ Component({
     canvasHidden: false,
     maskHidden: true,
     imagePath: '',
-    stickets:false
+    stickets:false,
+    invition:'',
   },
   ready:function () {
     console.log( this.properties.pname); 
     console.log(this.properties.index); 
     this.setData({
-      index:5,
+      index: this.properties.index,
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,
       yuyue_string: this.properties.certify,
       yuyue_telephone: this.properties.telephone,
+      invition: this.properties.invition,
       payfor_string: '',
       nickname: app.globalData.nickname,
       avatarUrl: app.globalData.avatarUrl,

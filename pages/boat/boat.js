@@ -258,10 +258,18 @@ Page({
         this.setData({
           stickets: true
         })
-        console.log(this.data.temp);
-        this.setData({
-          index:1
-        })
+        console.log('this.data.temp',this.data.temp);
+
+
+        if(temp.state==1 && temp.status==1){
+          this.setData({
+            index: 3
+          })
+        }
+      
+
+//o-big 1-small 
+
         // wx.navigateTo({
         //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
         //     'start_price=' + temp.production__startprice + '&' +
@@ -279,7 +287,7 @@ Page({
         this.setData({
           temp: temp
         })
-        console.log(this.data.temp);
+        console.log('this.data.temp',this.data.temp);
         this.setData({
           index: 2
         })
