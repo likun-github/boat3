@@ -7,8 +7,9 @@
   position: absolute;
   top: 8vh;
   height: 74.68vh;
-  width: 720rpx;
-  left: 15rpx;
+  width:680rpx;
+left:35rpx;
+
 }
 
 .con1 {
@@ -26,7 +27,7 @@
 .pay {
   position: absolute;
   border-radius: 40rpx;
-  bottom: -40rpx;
+  bottom: -75rpx;
   height: 80rpx;
   left: 25%;
   width: 50%;
@@ -72,12 +73,12 @@
 
 
 .pic_inform{
-  width:150rpx;
-  height:150rpx;
-  position:absolute;
-  right:50rpx;
-  top:50rpx;
+  
+  position:relative;
+ 
 }
+
+
 .btn_cut {
   position: absolute;
   line-height: 80rpx;
@@ -110,4 +111,14 @@ border-right:1px solid grey;
   left:0rpx;
   border-radius: 20rpx 20rpx 0 0;
   
+}
+
+
+.img_view{
+height:150rpx;
+width:150rpx;
+position:relative;
+margin-left:70rpx;
+margin-top:-100rpx;
+
 }

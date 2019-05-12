@@ -161,6 +161,9 @@ show:function(e){
     
     for (var i = 0; i < ticketData.length; i++) {
       
+      ticketData[i].production__merchant__logo = "https:xiaoyibang.top:8001/uploads/" + ticketData[i].production__merchant__logo
+      
+
       if (ticketData[i].status == 1 || ticketData[i].status == 2) {
         if (ticketData[i].state == 1) {
           ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
