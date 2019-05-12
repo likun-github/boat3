@@ -48,7 +48,7 @@
       </view>
       <button class='share' id='btn' open-type="share">
         <image src='/static/toboat/share.svg' class='share_image'></image>
-        <text style='margin-top:-26rpx'>分享</text>
+        <text style='margin-top:-5rpx'>分享</text>
       </button>
 
 
@@ -61,8 +61,8 @@
 
     <view class='middle2' bindtap='gomap'>
       <text style='font-size: 24rpx;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
-      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;'> {{position}}{{distance}}km</text>
-      <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;margin-left:625rpx;'>地图</text>
+      <text style='font-size: 24rpx; color:#B1B1B1;margin-left:50rpx;' decode="{{true}}"> {{position}}&nbsp;&nbsp;距离武汉大学牌坊{{distance}}km</text>
+      <text style='position:absolute;font-size: 24rpx; color:#B1B1B1;margin-left:288px;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
     <view class='line'></view>

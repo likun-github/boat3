@@ -19,8 +19,8 @@ Page({
     currentSwiper: 0,
     indicatorDots: false,
     autoplay: true,
-    interval: 5000,
-    duration: 1000, //swiper配置
+    interval: 2000,
+    duration: 2000, //swiper配置
 
     content: "全部", //选项被选中后内容页面的展示
     scroll_top: 0,

@@ -366,6 +366,8 @@
   position: relative;
   flex-direction: row;
   margin-top: 30rpx;
+  margin-bottom:10rpx;
+
 }
 
 .ordertext {
