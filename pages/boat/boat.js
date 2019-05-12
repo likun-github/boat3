@@ -243,12 +243,16 @@ show:function(e){
       })
     }
   },
+
+
   back:function(){
     this.setData({
       stickets:false
     })
     wx.showTabBar({});
   },
+
+
   look_ticker: function (e) {
    
     // console.log(e)
@@ -259,7 +263,7 @@ show:function(e){
         this.setData({
           temp:temp
         })
-        wx.hideTabBar({});
+        // wx.hideTabBar({});
         this.setData({
           stickets: true
         })
@@ -293,7 +297,7 @@ show:function(e){
         //     + 'index=1'
         // })
       } else {
-        wx.hideTabBar({});
+        // wx.hideTabBar({});
         this.setData({
           stickets: true
         })
