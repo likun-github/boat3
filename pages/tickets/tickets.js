@@ -38,7 +38,7 @@ Component({
     console.log( this.properties.pname); 
     console.log(this.properties.index); 
     this.setData({
-      index:3,
+      index:5,
       production__name: this.properties.pname,
       final_price: this.properties.eprice,
       start_price: this.properties.sprice,

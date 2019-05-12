@@ -73,6 +73,30 @@
    </view>
 
 
+   <view wx:if="{{index==4}}">
+    <image src='/static/teamcut/myteam.jpg' class='image'></image>
+
+      <view  class='con2'>
+      <view style='height:40rpx;'></view>
+      <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{yuyue_string}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{yuyue_telephone}}</text>
+      <view class='pay'>立即支付</view>
+    </view>
+   </view>
+
+   <view wx:if="{{index==5}}">
+    <image src='/static/teamcut/myteam.jpg' class='image'></image>
+
+      <view  class='con2'>
+      <view style='height:40rpx;'></view>
+      <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{yuyue_string}}\n</text>
+      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{yuyue_telephone}}</text>
+      <view class='pay'>立即支付</view>
+    </view>
+   </view>
+
   </view>
 
 
