@@ -27,7 +27,7 @@
 
 
     <view wx:if='{{index==1}}' class='con2'>
-      <view style='height:40rpx;'></view>
+      <view style='height:20rpx;'></view>
       <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{certify}}\n</text>
       <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{telephone}}</text>
@@ -54,7 +54,7 @@
 
     <view wx:if="{{index==3}}">
       <view class='a'>
-        <view class='pay' bindtap='final'>生成最终价</view>
+        <view class='pay_2' bindtap='final'>生成最终价</view>
         <view class='btn_cut' bindtap='cut'>砍</view>
       </view>
       <view class='con2'>
@@ -64,9 +64,10 @@
         <text style='margin-left:60rpx;font-size:20rpx;'>珍惜每一个邀请等价登船名额吧\n</text>
         <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{s_id}}\n</text>
         <text style='margin-left:60rpx;font-size:20rpx;'>好友可在【我的】-【小船邀请码】输入邀请码或直接微信扫码参与登船</text>
+        <image  mode="scaleToFill"  src="{{serviver_wx_pic}}"class='img_view' ></image>
       </view>
 
-       <image  mode="scaleToFill"  src="{{serviver_wx_pic}}"  class='img_view' ></image>
+       
 
 
 

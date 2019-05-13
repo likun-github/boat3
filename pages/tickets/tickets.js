@@ -43,6 +43,7 @@ Component({
     u_id:'',
     s_id:'',
     o_id:'',
+    serviver_wx_pic:'',
 
     showview_flag:1,
   },
@@ -104,11 +105,11 @@ Component({
             wx.showTabBar({
             })
 
-            // var myEventDetail = {
-            //   msg: 0,
-            // } 
-            // var myEventOption = {} 
-            // that.triggerEvent('myevent', myEventDetail, myEventOption)
+            var myEventDetail = {
+              msg: 0,
+            } 
+            var myEventOption = {} 
+            that.triggerEvent('myevent', myEventDetail, myEventOption)
           } else {//这里是点击了取消以后
             console.log('用户点击取消')
           }
