@@ -66,7 +66,7 @@
         <text style='margin-left:60rpx;font-size:20rpx;'>好友可在【我的】-【小船邀请码】输入邀请码或直接微信扫码参与登船</text>
       </view>
 
-       <image  mode="scaleToFill"  src="{{serviver_wx_pic}}"class='img_view' ></image>
+       <image  mode="scaleToFill"  src="{{serviver_wx_pic}}"  class='img_view' ></image>
 
 
 
