@@ -43,6 +43,7 @@ Component({
     u_id:'',
     s_id:'',
     o_id:'',
+    serviver_wx_pic:'',
 
     showview_flag:1,
   },
