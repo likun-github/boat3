@@ -107,7 +107,7 @@
     <text class='price_des_text2' decode="{{true}}">总额:￥{{total_pay}}&ensp;&ensp;优惠:￥{{cut_pay}}</text>
   </view>
   <view class='buy_btn'>
-    <button class='buy_btn_view'>去登船({{ticket_number}})</button>
+    <button class='buy_btn_view' bindtap='payfor'>去登船({{ticket_number}})</button>
   </view>
 </view>
 </view>

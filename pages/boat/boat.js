@@ -486,5 +486,22 @@ show:function(e){
     
   },
 
+  payfor:function(e){
+    console.log(e)
+    wx.requestPayment({
+      timeStamp: '14132421',
+      nonceStr: '21c3312sa31dxc312s',
+      package: '1',
+      signType: 'MD5',
+      paySign: '1',
+      success(res) {
+        console.log(res)
+       },
+      fail(res) {
+        console.log(res)
+       }
+    })
+  }
+
 
 })
