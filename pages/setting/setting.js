@@ -50,6 +50,91 @@ Page({
     })
 
   },
+  getPhoneNumber(e) {
+    
+    var that=this;
+
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny'){
+      console.log("失败")
+
+    }
+    else{
+      console.log("登陆")
+      wx.login({
+        success:res => {
+          console.log("正在进行")
+          console.log(res.code)
+          console.log(e.detail.iv)
+          console.log()
+          wx.request({
+            url: 'https://xiaoyibang.top:8001/dajia/getphone',
+            data: {
+              'userid': app.globalData.userid,
+              'code': res.code,
+              'iv': e.detail.iv,
+              'encryptedData': e.detail.encryptedData,
+            },
+            success:res=>{
+              console.log(res.data.success)
+              
+              if(res.data.success){
+                console.log("好的")
+                app.globalData.status = 1;                
+                that.setData({
+                  status: 1,
+                })       
+                var information = {
+                  'userid': app.globalData.userid,
+                  'teamname': app.globalData.teamname,
+                  'name': app.globalData.name,
+                  'number': app.globalData.time,
+                  'status': app.globalData.status,
+                  'nickname': app.globalData.nickname,
+                  'avatarUrl': app.globalData.avatarUrl,
+                  'account': app.globalData.account,
+                }
+                wx.setStorage({
+                  key: 'information',
+                  data: information,
+                })
+
+
+
+                wx.showLoading({
+                  title: '正在跳转中',
+                  duration:800,
+                })
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '/pages/verify/verify',
+                  })
+
+                },800)
+                
+
+              }
+              else{
+              console.log("部好的")
+               wx.showToast({
+                 title: '获取信息失败',
+                 icon:'none',
+                 duration:1000,
+               })
+              }
+            }
+          })
+          console.log('1')
+          console.log(res.code)
+        },
+       
+
+      })
+
+    }
+    
+   
+    
+  },
 
   scroll(e) {
     // console.log(e);

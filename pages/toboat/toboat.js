@@ -202,10 +202,10 @@ Page({
               icon: 'loading',
             })
             setTimeout(function () {
-              wx.navigateTo({
-                url: "/pages/verify/verify",
+              wx.switchTab({
+                url: '/pages/setting/setting',
               })
-
+             
             }, 800)
             
 
@@ -512,8 +512,8 @@ Page({
       setTimeout(function() {
         app.gethomelist();
         app.getorderlist();
-        wx.navigateTo({
-          url: "/pages/verify/verify",
+        wx.switchTab({
+          url: '/pages/setting/setting',
         })
 
       }, 1000)

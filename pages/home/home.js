@@ -148,8 +148,8 @@ Page({
               content: '完成实名认证好友也可领取贝壳哦~',
               success: (res) => {
                 if (res.confirm) {
-                  wx.navigateTo({
-                    url: '/pages/verify/verify',
+                  wx.switchTab({
+                    url: '/pages/setting/setting',
                   })
                 } else {
                   console.log("取消")
