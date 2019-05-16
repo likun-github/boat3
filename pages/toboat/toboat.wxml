@@ -13,10 +13,10 @@
       <image style='position:absolute;width:100%;height:100%;' src='/static/toboat/lang.svg'></image>
       <view class='content'>
         <text style='font-size:15px;margin-top:15%;font-weight:400;margin-left:20rpx; '>￥</text>
-        <text style='font-size:40px;margin-top:9%;font-weight:400; '>{{filters.toFix(endprice)}}</text>
+        <text style='font-size:40px;margin-top:7%;font-weight:400; '>{{filters.toFix(endprice)}}</text>
         <view style=' display: flex;flex-direction: column;font-size:10px;margin-top:12%;margin-left:20rpx; color:white;'>
           <text style='text-decoration:line-through;font-weight:700;'>￥{{startprice}}</text>
-          <text style='line-through;font-weight:700;margin-top:4%;'>本校同舟99人正在拼</text>
+          <text style='line-through;font-weight:700;margin-top:4rpx;'>本校同舟99人正在拼</text>
 
         </view>
         <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
@@ -64,7 +64,7 @@
     <view class='middle2' bindtap='gomap'>
       <text style='font-size: 12px;width:50rpx;color:#B1B1B1;margin-left:50rpx;'>位置  </text>
       <text style='font-size: 12px; color:#B1B1B1;margin-left:50rpx;' decode="{{true}}"> {{position}}&nbsp;&nbsp;距离武汉大学{{distance}}km</text>
-      <text style='position:absolute;font-size: 12px; color:#B1B1B1;margin-left:310px;'>地图</text>
+      <text style='position:absolute;font-size: 12px; color:#B1B1B1;margin-left:305px;'>地图</text>
       <image src='/static/toboat/right.svg' class='right'></image>
     </view>
     <view class='line'></view>
@@ -178,7 +178,7 @@
     </view>
     <view class='middle'>
       <view class="{{chooseStatus == 0?'box':'box1'}}" bindtap='choose' data-index='0'>
-        <text style='font-size:45rpx;margin-top:8%;font-weight:800;'>大船 </text>
+        <text style='font-size:45rpx;margin-top:3%;font-weight:800;'>大船 </text>
         <text style='font-size:30rpx;font-weight:500;'>(99/100)仅差一人成船</text>
         <view class='box_bottomtext'>
          <text style='font-size:24rpx; margin-top:7%;'>懒人专享，本校同舟，全校师生为你砍价</text>
@@ -190,7 +190,7 @@
       </view>
       <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
         <view style="display:flex;flex-direction:row;">
-          <text style='font-size:45rpx;font-weight:800;margin-top:8%;'>小船</text>
+          <text style='font-size:45rpx;font-weight:800;margin-top:3%;'>小船</text>
           <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 {{department}}  {{mastername}})</text>
         </view>
         <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>

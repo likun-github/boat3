@@ -1,6 +1,4 @@
 //app.js
-const ald = require('./utils/ald-stat.js');
-var startTime = Date.now();//启动时间
 var common=require('/common/index.js');
 App({
   list:1,
@@ -12,17 +10,11 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    // wx.clearStorageSync();
+    wx.clearStorageSync();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
     // ��¼
-  },
-  onShow:function(){
-    this.aldstat.sendEvent('小程序的启动时长', {
-      time: Date.now() - startTime
-    })
-
   },
 
 

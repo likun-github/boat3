@@ -256,6 +256,13 @@ show:function(e){
   },
 
 
+  look_ticker1:function(e){
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '/pages/look_tickets/look_tickets?orderid=' + e.currentTarget.dataset.orderid + '&tickettype=' + e.currentTarget.dataset.tickettype,
+    })
+  },
+
   look_ticker: function (e) {
    
     // console.log(e)
@@ -282,7 +289,14 @@ show:function(e){
           this.setData({
             index: 3
           })
-        }else{
+        }
+        else if (temp.state == 1 && temp.status == 4) {
+          this.setData({
+            index: 4
+          })
+          console.log("index:",index)
+        }
+        else{
           this.setData({
             index: 4
           })
@@ -319,6 +333,11 @@ show:function(e){
           this.setData({
             index: 5
           })
+        } else if (temp.state == 1 && temp.status == 4) {
+          this.setData({
+            index: 4
+          })
+          console.log("index:", this.data.index)
         }
         
   

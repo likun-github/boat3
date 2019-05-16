@@ -14,7 +14,8 @@
     "pages/toboat/toboat",
     "pages/test/test",
     "pages/boat/boat",
-    "pages/myteam/myteam"
+    "pages/myteam/myteam",
+    "pages/look_tickets/look_tickets"
   ],
   "window": {
     "backgroundColor": "blue",

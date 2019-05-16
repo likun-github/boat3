@@ -1,0 +1,35 @@
+/* pages/look_tickets/look_tickets.wxss */
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.block1 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block1_boatkind {
+  position: relative;
+  width: fit-content;
+  color: #df9596;
+  border-radius: 0 16rpx 16rpx 0;
+  background: rgba(224, 224, 224, 0.658);
+  font-size: 30rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  margin-top:-460rpx;
+  font-family: "z";
+}
+
+
+.block1_production_view{
+  position: relative;
+  width: 500rpx;
+  height: 80rpx;
+  color: white;
+  font-size: 40rpx;
+  padding-left: 30rpx;
+  margin-top:310rpx;
+}

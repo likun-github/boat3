@@ -1,15 +1,12 @@
 /* tickets/tickets.wxss */
 @import "../style/stylesheet.wxss";
 
-
-
 .content {
   position: absolute;
   top: 8vh;
   height: 74.68vh;
-  width:680rpx;
-left:35rpx;
-
+  width: 680rpx;
+  left: 35rpx;
 }
 
 .con1 {
@@ -18,12 +15,14 @@ left:35rpx;
   height: 22.07%;
   width: 100%;
 }
+
 .con2 {
   position: absolute;
   bottom: 2vh;
-  height: 24.59%;
+  height:27%;
   width: 100%;
 }
+
 .pay {
   position: absolute;
   border-radius: 40rpx;
@@ -37,6 +36,7 @@ left:35rpx;
   font-size: 40rpx;
   color: white;
 }
+
 .pay1 {
   position: absolute;
   border-radius: 40rpx;
@@ -50,6 +50,7 @@ left:35rpx;
   font-size: 40rpx;
   color: white;
 }
+
 .pay_2 {
   position: absolute;
   border-radius: 40rpx;
@@ -63,6 +64,7 @@ left:35rpx;
   font-size: 40rpx;
   color: white;
 }
+
 .canvas-box {
   height: 150rpx;
   width: 150rpx;
@@ -84,13 +86,9 @@ left:35rpx;
   background-color: #f9f9f9;
 }
 
-
-.pic_inform{
-  
-  position:relative;
- 
+.pic_inform {
+  position: relative;
 }
-
 
 .btn_cut {
   position: absolute;
@@ -103,35 +101,39 @@ left:35rpx;
   color: white;
   left: 60rpx;
   bottom: -40rpx;
-  background:linear-gradient(to bottom right,#FDB38F,#F7907E);
+  background: linear-gradient(to bottom right, #fdb38f, #f7907e);
 }
-.a{
- position: absolute;
- bottom:-100rpx;
- width: 715rpx;
- height:150rpx;
- background: white;
-border-bottom:1px solid grey;
-border-left:1px solid grey;
-border-right:1px solid grey;
-}
-.image{
 
-  width:100%;
-  height:53.34%;
-  position:absolute;
-  top:0rpx;
-  left:0rpx;
+.a {
+  position: absolute;
+  bottom: -130rpx;
+  width: 677rpx;
+  height: 150rpx;
+  background: white;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.image {
+  width: 100%;
+  height: 53.34%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
   border-radius: 20rpx 20rpx 0 0;
-  
+}
+
+.img_view {
+  position: absolute;
+  height: 200rpx;
+  width: 200rpx;
+  right: 50rpx;
+  bottom: -70rpx;
 }
 
 
-.img_view{
-position: absolute;
-height:150rpx;
-width:150rpx;
-right: 50rpx;
-bottom: 10rpx;
-
+.text_mar{
+  width: 455rpx;
+  height: 30%;
 }
