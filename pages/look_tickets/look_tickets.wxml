@@ -1,7 +1,7 @@
 <wxs module="filters" src="../../common/tool.wxs"></wxs>
 
 
-<view class='content'>
+<view class='content' style='top:{{index==3?"4vh":"8vh"}}'>
   <image src='/static/pic/T2.png' style='width:100%;height:100%;'></image>
   <image src='{{index<=2?"/static/pic/T1.png":"/static/teamcut/myteam1.jpg"}}' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx; border-radius:25rpx 25rpx 0 0'></image>
   <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;font-family:"z"'>{{s_id==''?'百人同舟':'BOAT小船'}}</view>
@@ -29,10 +29,10 @@
 
 
   <view wx:if='{{index==1}}' class='con2'>
-    <view style='height:20rpx;'></view>
-    <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
-    <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{certify}}\n</text>
-    <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{telephone}}</text>
+    
+    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
+    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{certify}}\n</text>
+    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{telephone}}</text>
     <view class='pay1'>立即支付</view>
   </view>
 
@@ -40,11 +40,11 @@
 
 
   <view wx:if='{{index==2}}' class='con2'>
-    <view style='height:40rpx;'></view>
-    <text style='margin-left:60rpx;font-size:30rpx;'>支付成功\n</text>
-    <view style='position:absolute;left:200rpx;top:50rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
-    <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: {{certify}}\n</text>
-    <text style='margin-left:60rpx;font-size:20rpx;'>请尽快与商家取得联系完成最终对接</text>
+   
+    <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
+    <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
+    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{certify}}\n</text>
+    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
 
 
     <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
@@ -61,7 +61,7 @@
     </view>
     <view class='con2'>
 
-      <view style='height:40rpx;'></view>
+      <view style='height:4vh;'></view>
 
       <view class='text_mar'>
           <text style='margin-left:60rpx;font-size:30rpx;'>船长你好！\n</text>
@@ -87,11 +87,10 @@
 
 
     <view class='con2'>
-      <view style='height:40rpx;'></view>
-      <text style='margin-left:60rpx;font-size:20rpx;'>您可预约商家体验 Or 立即完成支付~\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约凭证: {{certify}}\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>预约电话：{{telephone}}</text>
-      <view class='pay'>立即支付</view>
+  <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
+    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{certify}}\n</text>
+    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{telephone}}</text>
+    <view class='pay'>立即支付</view>
     </view>
 
   </view>
@@ -100,11 +99,10 @@
 
 
     <view class='con2'>
-      <view style='height:40rpx;'></view>
-      <text style='margin-left:60rpx;font-size:30rpx;'>支付成功\n</text>
-      <view style='position:absolute;left:200rpx;top:50rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
-      <text style='margin-left:60rpx;font-size:20rpx;'>支付凭证: {{certify}}\n</text>
-      <text style='margin-left:60rpx;font-size:20rpx;'>请尽快与商家取得联系完成最终对接</text>
+     <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
+    <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
+    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{certify}}\n</text>
+    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
 
 
       <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>

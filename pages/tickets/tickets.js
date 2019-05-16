@@ -70,7 +70,7 @@ Component({
     // initUrl = '最终价：' + this.data.final_price + '￥  凭证:' + this.data.payfor_string
     // this.createQrCode(initUrl, "mycanvas", size.w, size.h);
 
-    console.log(this.properties.serviver_wx_pic)
+    console.log('index:',this.properties)
    
     
   },
