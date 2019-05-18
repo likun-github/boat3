@@ -258,7 +258,35 @@ show:function(e){
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
   onPullDownRefresh: function () {
+    var that = this;
+    app.getorderlist();
+    wx.showLoading({
+      title: '正在刷新船票',
+      duration: 1000,
+    })
+    setTimeout(function(){
+      that.classfy();
+      wx.showToast({
+        title: '刷新成功',
+        icon: 'none',
+      })
+
+    },500)
+    
+    
+    setTimeout(function () {
+      wx.stopPullDownRefresh();
+      console.log("gu")
+
+
+
+    }, 1000)
+
+
 
   },
 
