@@ -13,11 +13,11 @@
         </view>
       </view>
     </view>
-    <text style='width100%;position:absolute;font-size:{{12/736*h}}px;color:white;left:120rpx;line-height:{{8/736*h}}px;bottom:{{10/736*h}}px;'>PS: \n\n1    IPHONE-X 概率较低    每月必出一台\n
-            运动相机概率较低        每周必出一台\n
+    <text style='width:100%;position:absolute;font-size:{{12/736*h}}px;color:white;left:120rpx;line-height:{{8/736*h}}px;bottom:{{10/736*h}}px;'>PS: \n\n1    IPHONE-X 概率较低    每月必出一台\n
+            \t\t\t运动相机概率较低        每周必出一台\n
         \t 2    实物商品需去工作室自取（创意城）\n
-        \t 3    开发者共进午餐为工作简餐\n
-        \t 4    英雄皮肤为288点券皮肤\n
+        \t 3    开发者共进午餐为工作简餐,联系电话：13237120971\n
+        \t 4    英雄皮肤为288点券皮肤，可以联系客服哟~\n
         \t 5    所有实体产品均在 [我的船票] 中查询
      </text>
     <view class='beike' style=' top: {{70/736*h}}px;'>
