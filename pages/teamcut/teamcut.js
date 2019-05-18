@@ -307,11 +307,17 @@ Page({
     var middle1 = [];
     var cutprice = 0;
     //组团成员
-    for (var i = 0; i < this.data.onecut.length; i++) {
+    console.log("无敌无敌0")
+    console.log(this.data.onecut)
+
+    var onecutlist = this.data.onecut.sort(function (a, b) {
+      return a.membership__time > b.membership__time ? 1 : -1;
+    })
+    for (var i = 0; i < onecutlist.length; i++) {
       var middle = {};
-      middle.pic = this.data.onecut[i].member__picture;
-      middle.name = this.data.onecut[i].member__nickname;
-      middle.cutprice = this.data.onecut[i].membership__cutprice;
+      middle.pic = onecutlist[i].member__picture;
+      middle.name = onecutlist[i].member__nickname;
+      middle.cutprice = onecutlist[i].membership__cutprice;
       cutprice = cutprice + middle.cutprice;
       middle.title = this.data.title[i];
       middle1.push(middle);
