@@ -78,8 +78,9 @@
               <image class="img" src="{{item.state==1?'/static/boat/smallboat.png':'/static/boat/bigboat.png'}}"></image>
             </view>
             <view class="expertInfo">
-              <view class='cancel_view' bindtap='delete_order_from_DATABASE' data-index='{{index}}'>
-                <image src='/static/boat/cancel.svg' class='cancel'></image>
+              <!-- <view class='cancel_view' bindtap='delete_order_from_DATABASE' data-index='{{index}}'> -->
+              <view class='cancel_view'  >
+                <!-- <image src='/static/boat/cancel.svg' class='cancel'></image> -->
               </view>
               <view class="name">{{item.production__name}}</view>
               <view class="price">最终票价

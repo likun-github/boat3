@@ -173,7 +173,7 @@ show:function(e){
         // (2"拼团完成"),
         ticket1.push(ticketData[i]);
 
-      } else {
+      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
         // (0, "订单取消"),
         // (3, "支付完成"),
         // (4, "订单完成"),
