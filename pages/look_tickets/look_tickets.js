@@ -197,17 +197,22 @@ Page({
   
 
   payfor: function (e) {
-    console.log(this.data.carts)
+    //console.log(this.data.carts)
     // var pay = this.data.really_pay;
-
- 
+    var that = this;
+    
+    var allorderid = [];
+    allorderid.push(this.data.order_list.orderid);
+    allorderid = JSON.stringify(allorderid)
+    console.log(allorderid)
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data: {
         'userid': app.globalData.userid,
-        'bee': this.data.order_list.endprice,
-        'allorderid': this.data.order_list.orderid,
+        'bee':1 ,
+        'allorderid': allorderid,
       },
+      //this.data.order_list.endprice*100
       success: res => {
         console.log(res.data)
         wx.requestPayment({
@@ -217,8 +222,24 @@ Page({
           signType: 'MD5',
           paySign: res.data.paySign,
           success(res) {
-            console.log("支付成功")
-            console.log(res)
+            wx.showLoading({
+              title: '支付完成',
+              duration:1000,
+            })
+
+            setTimeout(function () {
+              app.getorderlist();
+              setTimeout(function () {
+               
+                wx.navigateBack({
+                  delta:1,
+                })
+
+              }, 500)
+
+
+            }, 500)
+
           },
           fail(res) {
             console.log("支付失败")
@@ -229,7 +250,8 @@ Page({
     })
     console.log(e)
 
-  },
+  }
 
+ 
 
 })
