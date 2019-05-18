@@ -7,7 +7,7 @@
   <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;font-family:"z";border-left:8rpx solid yellow;'>{{order_list.state==0?'百人同舟':'BOAT小船'}}</view>
   <text style='position:absolute;left:50rpx;top:43%;color:white;font-size:40rpx;font-weight:300;'>{{production__name}}</text>
   <view class='con1'>
-    <view style='position:absolute;left:0rpx;height:100%;width:250rpx;direction:column;'>
+    <view style='position:absolute;left:0rpx;height:100%;width:250rpx;direction:column;bottom:5rpx;'>
       <image src='{{avatarUrl}}' style='border-radius:100%;width:100rpx;height:100rpx;margin-left:70rpx;margin-top:16%;'></image>
       <view style='font-size:24rpx;width:100%;text-align:center'>{{nickname}}</view>
     </view>

@@ -174,7 +174,7 @@ show:function(e){
         ticket1.push(ticketData[i]);
 
       } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
-        // (0, "订单取消"),
+        // (0, "订单取消"),不显示
         // (3, "支付完成"),
         // (4, "订单完成"),
         ticketData[i].added = false;

@@ -26,7 +26,7 @@ Page({
 
     content:'',//评论设为空
 
-
+    order_detail:[],    //这个产品的订单详情，有就有 没有就没有
 
     judge: [{
         "url": "/static/sq.jpg",
@@ -46,7 +46,7 @@ Page({
 
     pic: [],
     startprice: '',
-    endprice: '',
+    bottomprice: '',
     name: '',
     number: '',
     reputation: '',
@@ -111,7 +111,7 @@ Page({
     console.log(pic)
     this.setData({
       startprice: common.currentData.startprice,
-      endprice: common.currentData.startprice * 0.6,
+      bottomprice: common.currentData.bottomprice,
       name: common.currentData.name,
       number: common.currentData.number,
       reputation: common.currentData.reputation,
@@ -124,6 +124,9 @@ Page({
       introductionpic: this.data.url + common.currentData.introductionpic,
       pic: pic,
       logo: common.currentData.logo,
+
+
+
     })
    this.getcomment();
 
@@ -229,6 +232,7 @@ Page({
       if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status!=0){
         this.setData({
           buy:true,
+          order_detail: common.orderlist[i],
         })
         return 0;
       }
@@ -243,6 +247,8 @@ Page({
     })
 
   },
+
+
 
   
   showModal: function() {
@@ -262,8 +268,8 @@ Page({
               icon: 'loading',
             })
             setTimeout(function () {
-              wx.switchTab({
-                url: '/pages/boat/boat',
+              wx.navigateTo({
+                url: '/pages/look_tickets/look_tickets?orderid=' + that.data.order_detail.orderid + '&tickettype=' + ' ',
               })
 
             }, 1000)
@@ -331,6 +337,7 @@ Page({
    
 
   },
+  
   hideModal: function() {
     // 隐藏遮罩层
     var animation = wx.createAnimation({
