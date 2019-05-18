@@ -174,6 +174,54 @@ show:function(e){
         ticket1.push(ticketData[i]);
 
       } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
+        // (0, "订单取消"),不显示
+        // (3, "支付完成"),
+        // (4, "订单完成"),
+        ticketData[i].added = false;
+        ticket2.push(ticketData[i]);
+
+      }
+    }
+
+
+
+    this.setData({
+      ticketlist_ing: ticket1,
+      ticketlist_ed: ticket2
+    })
+
+
+
+  },
+
+  classfy:function(){
+    var ticket1 = [];
+    var ticket2 = [];
+    var ticketData = common.orderlist;
+    console.log(ticketData.length)
+    if (ticketData.length > 0)
+      this.setData({
+        noticket: false
+      })
+    else this.setData({
+      noticket: true
+    })
+
+    for (var i = 0; i < ticketData.length; i++) {
+
+
+
+
+      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
+        if (ticketData[i].state == 1) {
+          ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
+        }
+        //  订单正在进行的话
+        //（1"预付完成"),
+        // (2"拼团完成"),
+        ticket1.push(ticketData[i]);
+
+      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
         // (0, "订单取消"),
         // (3, "支付完成"),
         // (4, "订单完成"),
@@ -183,11 +231,12 @@ show:function(e){
       }
     }
 
+
+
     this.setData({
       ticketlist_ing: ticket1,
       ticketlist_ed: ticket2
     })
-
 
 
   },
@@ -506,17 +555,20 @@ show:function(e){
   },
 
   payfor:function(e){
+    var that=this;
     console.log(this.data.carts)
     var pay=this.data.really_pay;
     var allorderid=[]
     for(var i=0;i<this.data.carts.length;i++){
       allorderid.push(this.data.carts[i].orderid);
     }
+    allorderid = JSON.stringify(allorderid)
+    console.log(allorderid)
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data:{
         'userid':app.globalData.userid,
-        'bee':pay,
+        'bee':1,
         'allorderid':allorderid,
       },
       success:res=>{
@@ -528,8 +580,17 @@ show:function(e){
           signType: 'MD5',
           paySign: res.data.paySign,
           success(res) {
-            console.log("支付成功")
-            console.log(res)
+            
+            setTimeout(function(){
+              app.getorderlist();
+              setTimeout(function(){
+                that.classfy();
+
+              },500)
+
+
+            },500)
+            
           },
           fail(res) {
             console.log("支付失败")
