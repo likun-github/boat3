@@ -71,7 +71,7 @@ Page({
           index_temp = 3
         } else if (this.data.order_list.status == 2){
           index_temp = 4
-        } else if (this.data.order_list.status == 4) {
+        } else if (this.data.order_list.status == 4 || this.data.order_list.status == 3) {
           index_temp = 5
         }
 
@@ -197,11 +197,16 @@ Page({
   
 
   payfor: function (e) {
+    console.log(this.data.carts)
+    // var pay = this.data.really_pay;
+
+ 
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data: {
         'userid': app.globalData.userid,
-        'bee': 1,
+        'bee': this.data.order_list.endprice,
+        'allorderid': this.data.order_list.orderid,
       },
       success: res => {
         console.log(res.data)
