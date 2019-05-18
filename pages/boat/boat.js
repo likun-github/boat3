@@ -161,7 +161,7 @@ show:function(e){
     
     for (var i = 0; i < ticketData.length; i++) {
       
-      ticketData[i].production__merchant__logo = "https://xiaoyibang.top:8001/uploads/" + ticketData[i].production__merchant__logo
+     
       
 
       if (ticketData[i].status == 1 || ticketData[i].status == 2) {
@@ -173,7 +173,7 @@ show:function(e){
         // (2"拼团完成"),
         ticket1.push(ticketData[i]);
 
-      } else {
+      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
         // (0, "订单取消"),
         // (3, "支付完成"),
         // (4, "订单完成"),
