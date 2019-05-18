@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    s_id:'1',
     order_list:[],
-    index:5,
+    index:1,
   },
 
   /**
