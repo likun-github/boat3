@@ -1,122 +1,119 @@
 <wxs module="filters" src="../../common/tool.wxs"></wxs>
 
 
-<view class='content' style='top:{{index==3?"4vh":"8vh"}}'>
-  <image src='/static/pic/T2.png' style='width:100%;height:100%;'></image>
-  <image src='{{index<=2?"/static/pic/T1.png":"/static/teamcut/myteam1.jpg"}}' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx; border-radius:25rpx 25rpx 0 0'></image>
-  <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;font-family:"z"'>{{s_id==''?'百人同舟':'BOAT小船'}}</view>
-  <text style='position:absolute;left:50rpx;top:43%;color:white;font-size:40rpx;font-weight:300;'>{{production__name}}</text>
-  <view class='con1'>
-    <view style='position:abso  lute;left:0rpx;height:100%;width:250rpx;direction:column;'>
-      <image src='{{avatarUrl}}' style='border-radius:100%;width:100rpx;height:100rpx;margin-left:70rpx;margin-top:16%;'></image>
-      <view style='font-size:24rpx;width:100%;text-align:center'>{{nickname}}</view>
+  <view class='content' style='top:{{index==3?"4vh":"8vh"}}'>
+    <image src='/static/pic/T2.png' style='width:100%;height:100%;'></image>
+    <image src='{{index<=2?"/static/pic/T1.png":"/static/teamcut/myteam1.jpg"}}' style='width:100%;height:53.34%;position:absolute;top:0rpx;left:0rpx; border-radius:25rpx 25rpx 0 0'></image>
+    <view style='position:absolute;top:50rpx;left:0rpx;height:auto;width:auto;color:#DF9596;border-radius:0 16rpx 16rpx 0;background:white;font-size:30rpx;padding-left:20rpx;padding-right:5rpx;font-family:"z";border-left:8rpx solid yellow;'>{{order_list.state==0?'百人同舟':'BOAT小船'}}</view>
+    <text style='position:absolute;left:50rpx;top:43%;color:white;font-size:40rpx;font-weight:300;'>{{production__name}}</text>
+    <view class='con1'>
+      <view style='position:absolute;left:0rpx;height:100%;width:250rpx;direction:column;'>
+        <image src='{{avatarUrl}}' style='border-radius:100%;width:100rpx;height:100rpx;margin-left:70rpx;margin-top:16%;'></image>
+        <view style='font-size:24rpx;width:100%;text-align:center'>{{nickname}}</view>
+      </view>
+      <view style='position:absolute;left:250rpx;height:100%;width:250rpx;'>
+        <view style='height:40rpx;'></view>
+        <text style='position:absolute;left:30rpx;width:100rpx;font-size:24rpx;color:grey'>最终价格\n</text>
+        <text style='font-size:40rpx;position:absolute;left:30rpx;width:100rpx;top:90rpx;font-family:"z";'>{{filters.toFix(order_list.endprice)}}</text>
+        <text style='font-size:30rpx;position:absolute;left:160rpx;width:100rpx;top:100rpx;'>/元</text>
+        <text style='font-size:16rpx;position:absolute;left:30rpx;width:200rpx;color:grey;top:150rpx;'>初始价格{{order_list.production__startprice}}元</text>
+      </view>
+      <view style='position:absolute;left:500rpx;height:100%;width:200rpx;'>
+        <view style='height:24rpx;'></view>
+        <text style='margin-left:30rpx;font-size:24rpx;color:grey'>激励贝壳\n</text>
+        <text style='font-size:30rpx;margin-left:30rpx;font-size:50rpx;font-family:"z"'>{{filters.toFix(order_list.production__startprice*0.01)}}</text>
+        <text style='font-size:16rpx;position:absolute;left:30rpx;width:200rpx;color:grey;top:150rpx;'>每100元激励1贝壳</text>
+      </view>
     </view>
-    <view style='position:absolute;left:250rpx;height:100%;width:250rpx;'>
-      <view style='height:40rpx;'></view>
-      <text style='position:absolute;left:30rpx;width:100rpx;font-size:24rpx;color:grey'>最终价格\n</text>
-      <text style='font-size:40rpx;position:absolute;left:30rpx;width:100rpx;top:90rpx;font-family:"z";'>{{filters.toFix(final_price)}}</text>
-      <text style='font-size:30rpx;position:absolute;left:160rpx;width:100rpx;top:100rpx;'>/元</text>
-      <text style='font-size:16rpx;position:absolute;left:30rpx;width:200rpx;color:grey;top:150rpx;'>初始价格{{start_price}}元</text>
+
+
+
+    <view wx:if='{{index==1}}' class='con2'>
+
+      <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
+      <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{order_list.certificate}}\n</text>
+      <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{order_list.production__merchant__telephone}}</text>
+       <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
+      <view class='pay1'>立即支付</view>
     </view>
-    <view style='position:absolute;left:500rpx;height:100%;width:200rpx;'>
-      <view style='height:24rpx;'></view>
-      <text style='margin-left:30rpx;font-size:24rpx;color:grey'>激励贝壳\n</text>
-      <text style='font-size:30rpx;margin-left:30rpx;font-size:50rpx;font-family:"z"'>{{filters.toFix(sprice*0.01)}}</text>
-      <text style='font-size:16rpx;position:absolute;left:30rpx;width:200rpx;color:grey;top:150rpx;'>每100元激励1贝壳</text>
+
+
+
+
+    <view wx:if='{{index==2}}' class='con2'>
+
+      <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
+      <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
+      <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{order_list.certificate}}\n</text>
+      <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
+
+
+      <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
+
     </view>
-  </view>
-
-
-
-  <view wx:if='{{index==1}}' class='con2'>
-    
-    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
-    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{certify}}\n</text>
-    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{telephone}}</text>
-    <view class='pay1'>立即支付</view>
-  </view>
 
 
 
 
-  <view wx:if='{{index==2}}' class='con2'>
-   
-    <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
-    <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
-    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{certify}}\n</text>
-    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
+    <view wx:if="{{index==3}}">
+      <view class='a1'>
+        <view class='pay_2' bindtap='final'>生成最终价</view>
+        <view class='btn_cut' bindtap='cut'>砍</view>
+      </view>
+      <view class='con2'>
 
+        <view style='height:4vh;'></view>
 
-    <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
-
-  </view>
-
-
-
-
-  <view wx:if="{{index==3}}">
-    <view class='a'>
-      <view class='pay_2' bindtap='final'>生成最终价</view>
-      <view class='btn_cut' bindtap='cut'>砍</view>
-    </view>
-    <view class='con2'>
-
-      <view style='height:4vh;'></view>
-
-      <view class='text_mar'>
+        <view class='text_mar'>
           <text style='margin-left:60rpx;font-size:30rpx;'>船长你好！\n</text>
           <text style='margin-left:60rpx;font-size:20rpx;'>您可分享好友砍价 Or 等价登船\n</text>
           <text style='margin-left:60rpx;font-size:20rpx;'>珍惜每一个邀请等价登船名额吧\n</text>
-          <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{s_id}}\n</text>
+          <text style='margin-left:60rpx;font-size:20rpx;'>小船邀请码：{{order_list.steam_id}}\n</text>
           <text style='margin-left:60rpx;font-size:20rpx;'>好友可在【我的】-【小船邀请码】\n</text>
           <text style='margin-left:60rpx;font-size:20rpx;'>输入邀请码或直接微信扫码参与登船</text>
+        </view>
+
+
+        <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view1'></image>
       </view>
-   
-      
-      <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
-    </view>
 
 
-
-
-
-  </view>
-
-
-  <view wx:if="{{index==4}}">
-
-
-    <view class='con2'>
-  <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
-    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{certify}}\n</text>
-    <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{telephone}}</text>
-    <view class='pay'>立即支付</view>
-    </view>
-
-  </view>
-
-  <view wx:if="{{index==5}}">
-
-
-    <view class='con2'>
-     <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
-    <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
-    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{certify}}\n</text>
-    <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
-
-
-      <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
 
 
 
     </view>
 
+
+    <view wx:if="{{index==4}}">
+
+
+      <view class='con2'>
+        <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:150rpx'>您可预约商家体验 Or 立即完成支付~\n</text>
+        <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:100rpx;'>预约凭证: {{order_list.certificate}}\n</text>
+        <text style='left:60rpx;font-size:20rpx;position:absolute;bottom:50rpx;'>预约电话：{{order_list.production__merchant__telephone}}</text>
+        <view class='pay'>立即支付</view>
+      </view>
+
+    </view>
+
+    <view wx:if="{{index==5}}">
+
+
+      <view class='con2'>
+        <text style='position:absolute;left:60rpx;font-size:30rpx;bottom:130rpx'>支付成功\n</text>
+        <view style='position:absolute;left:200rpx;bottom:135rpx;font-size:16rpx;width:140rpx;height:30rpx;background:linear-gradient(to bottom right,#FDB38F,#F7907E);border-radius:10rpx;text-align:center;color:white;'> 激励贝壳已到帐\n</view>
+        <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:80rpx;'>支付凭证: {{order_list.certificate}}\n</text>
+        <text style='position:absolute;left:60rpx;font-size:20rpx;bottom:30rpx;'>请尽快与商家取得联系完成最终对接</text>
+
+
+        <image mode="scaleToFill" src="{{serviver_wx_pic}}" class='img_view'></image>
+
+
+
+      </view>
+
+    </view>
   </view>
-</view>
 
 
 
-
-<!-- <view class="canvas-box">
-    <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
-  </view> -->

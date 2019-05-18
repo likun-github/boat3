@@ -11,7 +11,7 @@
 
 .con1 {
   position: absolute;
-  top: 24vh;
+  top: 41vh;
   height: 22.07%;
   width: 100%;
 }
