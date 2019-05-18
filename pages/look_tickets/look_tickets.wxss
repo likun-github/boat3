@@ -66,7 +66,7 @@ page {
   border-radius: 40rpx;
   bottom: -40rpx;
   height: 80rpx;
-  left: 25%;
+  left: 37%;
   width: 50%;
   background: linear-gradient(to bottom right, #fdb38f, #f7907e);
   text-align: center;
@@ -109,7 +109,7 @@ page {
   font-size: 20px;
   border-radius: 100%;
   color: white;
-  left: 60rpx;
+  left: 108rpx;
   bottom: -40rpx;
   background: linear-gradient(to bottom right, #fdb38f, #f7907e);
 }
