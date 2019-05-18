@@ -506,11 +506,18 @@ show:function(e){
   },
 
   payfor:function(e){
+    console.log(this.data.carts)
+    var pay=this.data.really_pay;
+    var allorderid=[]
+    for(var i=0;i<this.data.carts.length;i++){
+      allorderid.push(this.data.carts[i].orderid);
+    }
     wx.request({
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data:{
         'userid':app.globalData.userid,
-        'bee':1,
+        'bee':pay,
+        'orderid':allorderid,
       },
       success:res=>{
         console.log(res.data)
