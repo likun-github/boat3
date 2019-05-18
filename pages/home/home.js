@@ -188,7 +188,7 @@ Page({
 
     }, 2000)
 
-
+    console.log(that.data.showData,"showData")
 
   },
 
