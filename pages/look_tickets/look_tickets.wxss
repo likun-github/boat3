@@ -126,10 +126,20 @@
 
 .img_view {
   position: absolute;
-  height: 200rpx;
-  width: 200rpx;
+  height:150rpx;
+width:150rpx;
+
   right: 50rpx;
-  bottom: -70rpx;
+  bottom: 30rpx;
+}
+
+.img_view1{
+ position: absolute;
+  height:150rpx;
+width:150rpx;
+
+  right: 50rpx;
+  bottom: -25rpx;
 }
 
 

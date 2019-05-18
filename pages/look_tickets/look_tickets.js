@@ -194,5 +194,34 @@ Page({
     })
   },
 
+  
+
+  payfor: function (e) {
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/pay',
+      data: {
+        'userid': app.globalData.userid,
+        'bee': 1,
+      },
+      success: res => {
+        console.log(res.data)
+      }
+    })
+    console.log(e)
+    wx.requestPayment({
+      timeStamp: res.data.timstamp,
+      nonceStr: res.data.noncestr,
+      package: res.data.package,
+      signType: 'MD5',
+      paySign: res.data.paySign,
+      success(res) {
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+
 
 })
