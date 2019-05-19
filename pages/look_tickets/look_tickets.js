@@ -24,7 +24,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      s_id:options.orderid,
+      s_id:options.orderid
     })
     
     console.log('options:',options)
@@ -33,7 +33,8 @@ Page({
         let temp=[]
         temp = common.orderlist[i]
         this.setData({
-          order_list:temp
+          order_list:temp,
+          s_id:temp.steam_id,
         }) 
       }
     }

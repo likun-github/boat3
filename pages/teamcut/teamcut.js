@@ -242,7 +242,6 @@ Page({
               'gender': app.globalData.gender,
               'code': res.code,
               'pic': app.globalData.avatarUrl,
-              'userid': app.globalData.userid,
             },
             success: (res) => {
               console.log("用户信息", res.data)
@@ -256,6 +255,11 @@ Page({
                 'avatarUrl': app.globalData.avatarUrl,
                 'account': res.data.account,
               }
+              app.globalData.userid = res.data.userid;
+              app.globalData.status = res.data.status;
+              app.globalData.time = res.data.number;
+              app.globalData.account = res.data.account;
+              
               that.getproduction(that.data.productionid);
               that.getorderdetail(that.data.steamid);
               wx.setStorage({
