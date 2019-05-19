@@ -432,7 +432,7 @@ Page({
       if (res.target.id === "btn") {
         return {
           title: '快！和我拼团一起拿返现？',
-          path: '/pages/toboat/toboat',
+          path: '/pages/home/home',
           success: function(res) {
             // 转发成功
           },
@@ -445,7 +445,7 @@ Page({
     //右上角分享
     return {
       title: '快！和我拼团一起拿返现？',
-      path: '/pages/toboat/toboat',
+      path: '/pages/home/home',
 
       success: function(res) {
         // 转发成功

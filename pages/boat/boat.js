@@ -97,9 +97,9 @@ show:function(e){
     }
     this.setData({ // 最后赋值到data中渲染到页面
       carts: carts,
-      total_pay: total.toFixed(2),
-      cut_pay: cut.toFixed(2),
-      really_pay: pay,
+      total_pay: total.toFixed(0),
+      cut_pay: cut.toFixed(0),
+      really_pay: pay.toFixed(0),
       ticket_number: num,
     });
 
@@ -147,48 +147,16 @@ show:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var ticket1 = [];
-    var ticket2 = [];
-    var ticketData = common.orderlist;
-    console.log(ticketData.length)
-    if (ticketData.length>0)
-    this.setData({
-      noticket:false
-    })
-    else this.setData({
-      noticket: true
-    })
+    app.getorderlist();
+    wx.sho
+    var that=this;
+    wx.showNavigationBarLoading()
+    setTimeout(function(){
+      that.classfy();
+      wx.hideNavigationBarLoading()
+
+    },1000)
     
-    for (var i = 0; i < ticketData.length; i++) {
-      
-     
-      
-
-      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
-        if (ticketData[i].state == 1) {
-          ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
-        }
-        //  订单正在进行的话
-        //（1"预付完成"),
-        // (2"拼团完成"),
-        ticket1.push(ticketData[i]);
-
-      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
-        // (0, "订单取消"),不显示
-        // (3, "支付完成"),
-        // (4, "订单完成"),
-        ticketData[i].added = false;
-        ticket2.push(ticketData[i]);
-
-      }
-    }
-
-
-
-    this.setData({
-      ticketlist_ing: ticket1,
-      ticketlist_ed: ticket2
-    })
 
 
 
@@ -596,7 +564,7 @@ show:function(e){
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data:{
         'userid':app.globalData.userid,
-        'bee':1,
+        'bee':pay*100,
         'allorderid':allorderid,
       },
       success:res=>{

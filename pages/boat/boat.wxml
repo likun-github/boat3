@@ -84,7 +84,7 @@
               </view>
               <view class="name">{{item.production__name}}</view>
               <view class="price">最终票价
-                <text class='price_number' decode="{{true}}">&ensp;{{filters.toFix(item.endprice)}}&ensp;</text>元</view>
+                <text class='price_number' decode="{{true}}">&ensp;{{filters.toFix1(item.endprice)}}&ensp;</text>元</view>
               <view class='cut_view'>
                 <button class='btn_checkticket_1' bindtap='look_ticker1' data-orderid='{{item.orderid}}' data-tickettype='ed'>{{item.status==0?'已取消':'查看船票'}}</button>
               </view>

@@ -162,7 +162,7 @@
   <view class='maskLayer' wx:if="{{chooseBoat}}" bindtap='hideModal'></view>
   <view class='choose' wx:if="{{chooseBoat}}" animation='{{animationData}}'>
     <view class='top'>
-      <image src='/static/toboat/new.svg' class='logo'></image>
+      <image src='https://xiaoyibang.top:8001/static/logo.png' class='logo'></image>
       <view class='worth'>
         <view style='color:#58B4FE;font-weight:800;'>
           <text style='font-size:15rpx;'>￥</text>

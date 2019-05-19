@@ -13,6 +13,7 @@ Page({
     avatarUrl:"",
     nickname:"",
     serviver_wx_pic: '',
+    s_id:'',
   },
 
 
@@ -22,6 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      s_id:options.orderid,
+    })
     
     console.log('options:',options)
     for (var i = 0; i < common.orderlist.length;i++){
@@ -209,7 +213,7 @@ Page({
       url: 'https://xiaoyibang.top:8001/dajia/pay',
       data: {
         'userid': app.globalData.userid,
-        'bee':1 ,
+        'bee':this.data.order_list.endprice*100 ,
         'allorderid': allorderid,
       },
       //this.data.order_list.endprice*100
