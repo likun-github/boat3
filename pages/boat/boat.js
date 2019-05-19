@@ -552,50 +552,62 @@ show:function(e){
 
   payfor:function(e){
     var that=this;
-    console.log(this.data.carts)
-    var pay=this.data.really_pay;
-    var allorderid=[]
-    for(var i=0;i<this.data.carts.length;i++){
-      allorderid.push(this.data.carts[i].orderid);
-    }
-    allorderid = JSON.stringify(allorderid)
-    console.log(allorderid)
-    wx.request({
-      url: 'https://xiaoyibang.top:8001/dajia/pay',
-      data:{
-        'userid':app.globalData.userid,
-        'bee':pay*100,
-        'allorderid':allorderid,
-      },
-      success:res=>{
-        console.log(res.data)
-        wx.requestPayment({
-          timeStamp: res.data.timeStamp,
-          nonceStr: res.data.nonceStr,
-          package: res.data.package,
-          signType: 'MD5',
-          paySign: res.data.paySign,
-          success(res) {
-            
-            setTimeout(function(){
-              app.getorderlist();
-              setTimeout(function(){
-                that.classfy();
-
-              },500)
-
-
-            },500)
-            
-          },
-          fail(res) {
-            console.log("支付失败")
-            console.log(res)
-          }
-        })
+    
+    if(this.data.carts.length>0)
+    {
+      console.log(this.data.carts)
+      var pay = this.data.really_pay;
+      var allorderid = []
+      for (var i = 0; i < this.data.carts.length; i++) {
+        allorderid.push(this.data.carts[i].orderid);
       }
-    })
-    console.log(e)
+      allorderid = JSON.stringify(allorderid)
+      console.log(allorderid)
+      wx.request({
+        url: 'https://xiaoyibang.top:8001/dajia/pay',
+        data: {
+          'userid': app.globalData.userid,
+          'bee': pay * 100,
+          'allorderid': allorderid,
+        },
+        success: res => {
+          console.log(res.data)
+          wx.requestPayment({
+            timeStamp: res.data.timeStamp,
+            nonceStr: res.data.nonceStr,
+            package: res.data.package,
+            signType: 'MD5',
+            paySign: res.data.paySign,
+            success(res) {
+
+              setTimeout(function () {
+                app.getorderlist();
+                setTimeout(function () {
+                  that.classfy();
+
+                }, 500)
+
+
+              }, 500)
+
+            },
+            fail(res) {
+              console.log("支付失败")
+              console.log(res)
+            }
+          })
+        }
+      })
+      console.log(e)
+
+    }
+    else{
+      wx.showToast({
+        title: '请选中商品',
+        icon:'none'
+      })
+    }
+    
     
   }
 
