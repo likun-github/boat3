@@ -97,9 +97,9 @@ show:function(e){
     }
     this.setData({ // 最后赋值到data中渲染到页面
       carts: carts,
-      total_pay: total.toFixed(2),
-      cut_pay: cut.toFixed(2),
-      really_pay: pay,
+      total_pay: total.toFixed(0),
+      cut_pay: cut.toFixed(0),
+      really_pay: pay.toFixed(0),
       ticket_number: num,
     });
 
@@ -155,7 +155,7 @@ show:function(e){
       that.classfy();
       wx.hideNavigationBarLoading()
 
-    },800)
+    },1000)
     
 
 
