@@ -35,10 +35,10 @@ Page({
     inputValue1: '武汉大学',
     inputValue2: '',
 
-    adapterSource: ['哲学学院国学院', '文学院', '外国语言文学学院', '新闻与传播学院 ', '艺术学院', '历史学院', '经济与管理学院法学院', '马克思主义学院社会学系', '政治与公共管理学院', '教育科学研究院', '信息管理学院',
+    adapterSource: ['哲学学院','国学院', '文学院', '外国语言文学学院', '新闻与传播学院', '艺术学院', '历史学院', '经济与管理学院','法学院', '马克思主义学院社会学系', '政治与公共管理学院', '教育科学研究院', '信息管理学院',
       '数学与统计学院', '物理科学与技术学院', '化学与分子科学学院', '生命科学学院', '资源与环境科学学院', '高等研究院',
       '动力与机械学院', '电气与自动化学院', '城市设计学院', '土木建筑工程学院', '水利水电学院', '工业科学研究院',
-      '电子信息学院', '计算机学院', '测绘学院', '遥感信息工程学院', ' 印刷与包装系', '网络安全学院',
+      '电子信息学院', '计算机学院', '测绘学院', '遥感信息工程学院', '印刷与包装系', '网络安全学院',
       '医学部机关', '医学研究院', '基础医学院', '健康学院', '药学院', '第一临床学院', '第二临床学院', '口腔医学院', '医学职业技术学院',
       '弘毅学堂'
     ],
@@ -95,9 +95,28 @@ Page({
         yuanxi: x,
         t3: 'white'
       });
+      console.log(x);
+      if (x == '经管') newSource.push('经济管理学院')
+      if (x == '网安') newSource.push('网络安全学院')
+      if (x == '信管') newSource.push('信息管理学院')
+      if (x == '城设') newSource.push('城市设计学院')
+      if (x == '计院') newSource.push('计算机学院')
+      if (x == '外院') newSource.push('外语学院')
+      if (x == '电信') newSource.push('电子信息学院')
+      if (x == '生科') newSource.push('生命科学学院')
+      if (x == '法院') newSource.push('法学院')
+      if (x == '哲院') newSource.push('哲学学院')
+      if (x == '印包') newSource.push('印刷与包装系')
+      if (x == '基医') newSource.push('基础医学院')
+      if (x == '物院') newSource.push('物理科学与技术学院')
+      if (x == '政管') newSource.push('政治与公共管理学院')
+      if (x == '资环') newSource.push('资源与环境科学学院')
+      if (x == '化院') newSource.push('化学与分子科学学院')
+      if (x == '数院') newSource.push('数学与统计学院')
+      if (x == '新传') newSource.push('新闻与传播学院')
       this.data.adapterSource.forEach(function (e) {
+        console.log(e.indexOf(x))
         if (e.indexOf(x) != -1) {
-
           newSource.push(e)
         }
       })

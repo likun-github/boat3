@@ -13,13 +13,11 @@
   <text class='input11'>学校</text>
 </view>
 <view style='position:absolute;width:99.5%;top:560rpx;height:100rpx;background-color:white; border:1px solid {{t3}};'>
-
   <scroll-view scroll-y="true" class="scrollview" hidden="{{hideScroll}}" style="{{arrayHeight>340?'height:340rpx':''}}">
     <view wx:for="{{bindSource}}">
       <view id="{{item}}" bindtap="itemtap" class="itemview">{{item}}</view>
     </view>
   </scroll-view>
-
   <input class="input1" name="yuanxi" value="{{inputValue2}}" bindinput='yuanxi'></input>
   <text class='input11'>院系</text>
 </view>
