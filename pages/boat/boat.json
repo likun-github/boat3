@@ -1,7 +1,11 @@
 {
   "navigationBarTitleText": "我的船票",
-  "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#57CCFE",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "white",
   "usingComponents": {},
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "backgroundColor": "white",
+  "backgroundTextStyle": "dark"
+  
+
 }

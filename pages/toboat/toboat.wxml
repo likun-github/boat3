@@ -17,11 +17,11 @@
         <view style=' display: flex;flex-direction: column;font-size:10px;margin-top:12%;margin-left:20rpx; color:white;'>
           <text style='text-decoration:line-through;font-weight:700;'>￥{{startprice}}</text>
           <text style='line-through;font-weight:700;margin-top:4rpx;'>本校同舟99人正在拼</text>
- 
+
         </view>
         <progress percent="97" activeColor='white' backgroundColor='rgba(0,0,0,0.2)' stroke-width='8' border-radius='4'></progress>
         <text style='font-size:10px;margin-top:16.5%;font-weight:700; color:white;margin-left:5%;'>距本轮校园大船发船仅剩1人</text>
-        <image  mode="scaleToFill" src="/static/toboat/smallboat.svg" class='smallboat'></image>
+        <image mode="scaleToFill" src="/static/toboat/smallboat.svg" class='smallboat'></image>
 
 
       </view>
@@ -162,49 +162,67 @@
   <view class='maskLayer' wx:if="{{chooseBoat}}" bindtap='hideModal'></view>
   <view class='choose' wx:if="{{chooseBoat}}" animation='{{animationData}}'>
     <view class='top'>
-      <image src='https://xiaoyibang.top:8001/static/logo.png' class='logo'></image>
+      <image src='https://xiaoyibang.top:8001/static/logo.svg' class='logo'></image>
       <view class='worth'>
         <view style='color:#58B4FE;font-weight:800;'>
-          <text style='font-size:15rpx;'>￥</text>
-          <text style='font-size:30rpx;'>{{chooseStatus==0?filters.toFix(startprice*0.4+bottomprice*0.6):filters.toFix(startprice*0.3+bottomprice*0.7)}}</text>
+          <text style='font-size:20rpx;'>￥</text>
+          <text style='font-size:58rpx;'>{{chooseStatus==0?filters.toFix(startprice*0.4+bottomprice*0.6):filters.toFix(startprice*0.3+bottomprice*0.7)}}</text>
+          <!-- {{chooseStatus==0?filters.toFix(startprice*0.4+bottomprice*0.6):filters.toFix(startprice*0.3+bottomprice*0.7)}} -->
         </view>
 
-        <text style='color:rgba(100,100,100,0.4);;font-size:0.5em;'>原价￥{{startprice}}</text>
+        <text style='color:rgba(100,100,100,0.4);;font-size:30rpx;'>原价￥{{startprice}}</text>
+        <!-- 原价￥{{startprice}} -->
       </view>
       <view class='title'>
         {{chooseStatus==0?'百人同舟 仅剩一人':startprice+'返'+filters.toFix(startprice-startprice*0.3-bottomprice*0.7)}}
- <!-- ￥{{filters.toFix(item.bottomprice)}}- {{filters.toFix(item.startprice*0.3+item.bottomprice*0.7)}} -->
+        <!-- ￥{{filters.toFix(item.bottomprice)}}- {{filters.toFix(item.startprice*0.3+item.bottomprice*0.7)}} -->
       </view>
     </view>
     <view class='middle'>
       <view class="{{chooseStatus == 0?'box':'box1'}}" bindtap='choose' data-index='0'>
-        <text style='font-size:45rpx;margin-top:3%;font-weight:800;'>大船 </text>
-        <text style='font-size:30rpx;font-weight:500;'>(99/100)仅差一人成船</text>
-        <view class='box_bottomtext'>
-         <text style='font-size:24rpx; margin-top:7%;'>懒人专享，本校同舟，全校师生为你砍价</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>百人大船，完成校园认证后，即可享受无预付快速成团</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>每满100人即可生产最终价格，用户可即时获取价格凭证</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>并根据个人要求完成体验并最终支付</text>
+        <view style="display:flex;flex-direction:row;">
+          <text style='font-size:60rpx;margin-top:3%;font-weight:800;'>大船 </text>
+          <text style='font-size:23rpx;font-weight:500;margin-top:60rpx; margin-left:10rpx;'>(99/100)</text>
         </view>
-       
+        <text style='font-size:36rpx;font-weight:600;margin-top:10rpx;'>仅差一人 , 立即成团！</text>
+        <view class='box_bottomtext'>
+          <text style='font-size:24rpx; margin-top:50rpx;'>懒人专享，本校同舟，全校师生为你砍价</text>
+          <view style='font-size:24rpx;'>百人大船，完成校园认证后，即可享受无预付
+            <text style='font-size:30rpx;font-weight:800;'> 快速成团</text>
+          </view>
+
+          <text style='font-size:24rpx;'>每满100人即可生产最终价格，用户可即时获取价格凭证</text>
+          <view style='font-size:24rpx;'> 并根据个人要求
+            <text style='font-size:30rpx;font-weight:800;'>预约体验</text> 并最终支付
+          </view>
+
+
+        </view>
+
       </view>
       <view class="{{chooseStatus == 1?'box':'box1'}}" style='margin-top:5%;' bindtap='choose' data-index='1'>
         <view style="display:flex;flex-direction:row;">
-          <text style='font-size:45rpx;font-weight:800;margin-top:3%;'>小船</text>
+          <text style='font-size:60rpx;font-weight:800;margin-top:3%;'>小船</text>
           <text wx:if="{{steamid}}" style='font-size:30rpx;font-weight:500;margin-top:20rpx;'> (船长 {{department}}  {{mastername}})</text>
         </view>
-        <text style='font-size:30rpx;font-weight:500;'>拉亲密团体一起拼单砍价，享极致优惠价</text>
+        <text style='font-size:36rpx;font-weight:600;margin-top:10rpx;'>亲密小团 , 享更大优惠！</text>
         <view class='box_bottomtext'>
-        <text style='font-size:24rpx; margin-top:7%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>当拼单人数≥2时即可享受比大船更多的实惠！</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>小船体验将更为有趣，同时开启分享砍价和等价参团</text>
-        <text style='font-size:24rpx;margin-top:0.2%;'>小船最大人数为5人，快拉最亲密的人一起登船吧！</text>
+          <text style='font-size:24rpx; margin-top:7%;'>为基友闺蜜情侣一起约伴学习量身设计的拼单形式</text>
+          <view style='font-size:24rpx;margin-top:0.2%;'>当拼单人数≥2时即可享受
+            <text style='font-size:30rpx;font-weight:800;'>比大船更多的实惠！</text>
+          </view>
+
+          <text style='font-size:24rpx;margin-top:0.2%;'>小船体验将更为有趣，同时开启分享砍价和等价参团</text>
+          <view style='font-size:24rpx;margin-top:0.2%;'> 船最大人数为5人，快拉
+            <text style='font-size:30rpx;font-weight:800;'>最亲密的人！</text> 一起登船吧
+          </view>
+
         </view>
 
 
-        
 
-        
+
+
       </view>
 
 

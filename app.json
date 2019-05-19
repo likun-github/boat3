@@ -18,7 +18,7 @@
     "pages/look_tickets/look_tickets"
   ],
   "window": {
-    "backgroundColor": "blue",
+    "backgroundColor": "#57CCFE",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",

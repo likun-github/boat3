@@ -356,10 +356,11 @@ input {
 
 .top .logo {
   position: relative;
-  width: 120rpx;
-  height: 120rpx;
+  width: 140rpx;
+  height: 140rpx;
   margin-left: 50rpx;
   margin-top: -40rpx;
+  margin-right: 20rpx;
 }
 
 .top .worth {
@@ -375,7 +376,7 @@ input {
   width: 250rpx;
   height: 40rpx;
   margin-left: 20rpx;
-  margin-top: 10rpx;
+  margin-top: 21rpx;
   border-top-left-radius: 15rpx;
   border-top-right-radius: 15rpx;
   border-bottom-right-radius: 25rpx;
@@ -423,8 +424,10 @@ input {
   flex-direction: column;
 }
 .box_bottomtext{
+
+  height: 15vh;
   position: absolute;
-  bottom: 15%;
+  bottom: 2vh;
   display: flex;
   flex-direction: column;
 }
