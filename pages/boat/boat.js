@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    stickets:false,
     ticketData: [],
     noticket: true, //没有船票显示引导购买
     ticketlist_ing: [], //    进行中的船票的数据  (订、砍、拼团---总之未付款)
@@ -20,6 +21,8 @@ Page({
     ticket_number: 0, //船票数量
     buylist: [], //添加到购物车的list，打对勾
 
+    temp:'',
+    index:'',
 
 
     carts: [], // 购物车列表
@@ -32,7 +35,12 @@ Page({
     cut_pay: 0, //优惠额
   },
 
-
+show:function(e){
+    console.log("wocao"+e.detail.msg)
+    this.setData({
+      stickets:false
+    })
+},
   /**
    * 当前商品选中事件
    */
@@ -41,6 +49,18 @@ Page({
     let carts = this.data.ticketlist_ing;
     const selected = carts[index].added;
     carts[index].added = !selected;
+    let num = 0;
+    for (let i = 0; i < carts.length; i++) {
+      if(carts[i].added)
+      num++;
+    }
+    if (num == carts.length)
+      this.setData({
+        selectAllStatus: true
+      });
+    else this.setData({
+      selectAllStatus: false
+    });
     this.setData({
       ticketlist_ing: carts
     });
@@ -59,10 +79,20 @@ Page({
     for (let i = 0; i < carts.length; i++) { // 循环列表得到每个数据
       if (carts[i].added) { // 判断选中才会计算价格
         //判断大船小船的优惠？？？？
-        total += carts[i].production__startprice; // 所有价格加起来
-        cut += carts[i].steam__cutprice;
-        pay += carts[i].endprice;
-        num += 1;
+        if (carts[i].state==1){
+          //小船
+          total += carts[i].production__startprice; // 所有价格加起来
+          cut += carts[i].steam__cutprice;
+          pay += carts[i].endprice;
+          num += 1;
+        }else{
+          //大船
+          total += carts[i].production__startprice; // 所有价格加起来
+          cut += carts[i].production__startprice - carts[i].endprice;
+          pay += carts[i].endprice;
+          num += 1;
+        }
+        
       }
     }
     this.setData({ // 最后赋值到data中渲染到页面
@@ -131,6 +161,9 @@ Page({
     
     for (var i = 0; i < ticketData.length; i++) {
       
+     
+      
+
       if (ticketData[i].status == 1 || ticketData[i].status == 2) {
         if (ticketData[i].state == 1) {
           ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
@@ -140,7 +173,55 @@ Page({
         // (2"拼团完成"),
         ticket1.push(ticketData[i]);
 
-      } else {
+      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
+        // (0, "订单取消"),不显示
+        // (3, "支付完成"),
+        // (4, "订单完成"),
+        ticketData[i].added = false;
+        ticket2.push(ticketData[i]);
+
+      }
+    }
+
+
+
+    this.setData({
+      ticketlist_ing: ticket1,
+      ticketlist_ed: ticket2
+    })
+
+
+
+  },
+
+  classfy:function(){
+    var ticket1 = [];
+    var ticket2 = [];
+    var ticketData = common.orderlist;
+    console.log(ticketData.length)
+    if (ticketData.length > 0)
+      this.setData({
+        noticket: false
+      })
+    else this.setData({
+      noticket: true
+    })
+
+    for (var i = 0; i < ticketData.length; i++) {
+
+
+
+
+      if (ticketData[i].status == 1 || ticketData[i].status == 2) {
+        if (ticketData[i].state == 1) {
+          ticketData[i].endprice = ticketData[i].production__startprice - ticketData[i].steam__cutprice;
+        }
+        //  订单正在进行的话
+        //（1"预付完成"),
+        // (2"拼团完成"),
+        ticket1.push(ticketData[i]);
+
+      } else if (ticketData[i].status == 3 || ticketData[i].status == 4) {
         // (0, "订单取消"),
         // (3, "支付完成"),
         // (4, "订单完成"),
@@ -150,11 +231,12 @@ Page({
       }
     }
 
+
+
     this.setData({
       ticketlist_ing: ticket1,
       ticketlist_ed: ticket2
     })
-
 
 
   },
@@ -176,7 +258,35 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
   onPullDownRefresh: function () {
+    var that = this;
+    app.getorderlist();
+    wx.showLoading({
+      title: '正在刷新船票',
+      duration: 1000,
+    })
+    setTimeout(function(){
+      that.classfy();
+      wx.showToast({
+        title: '刷新成功',
+        icon: 'none',
+      })
+
+    },500)
+    
+    
+    setTimeout(function () {
+      wx.stopPullDownRefresh();
+      console.log("gu")
+
+
+
+    }, 1000)
+
+
 
   },
 
@@ -214,32 +324,110 @@ Page({
     }
   },
 
+
+  back:function(){
+    this.setData({
+      stickets:false
+    })
+    wx.showTabBar({});
+  },
+
+
+  look_ticker1:function(e){
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '/pages/look_tickets/look_tickets?orderid=' + e.currentTarget.dataset.orderid + '&tickettype=' + e.currentTarget.dataset.tickettype,
+    })
+  },
+
   look_ticker: function (e) {
+   
     // console.log(e)
     if (e.currentTarget.dataset.cancel=='nocancel'){
       console.log('用户查看船票', e.currentTarget.dataset.index, e.currentTarget.dataset.tickettype)
       if (e.currentTarget.dataset.tickettype == 'ing') {
         var temp = this.data.ticketlist_ing[e.currentTarget.dataset.index]
-        wx.navigateTo({
-          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-            'start_price=' + temp.production__startprice + '&' +
-            'yuyue_string=' + temp.certificate + '&' +
-            'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
-            'payfor_string=' + '' + '&'
-
-            + 'index=1'
+        this.setData({
+          temp:temp
         })
+        // wx.hideTabBar({});
+        this.setData({
+          stickets: true
+        })
+        console.log('this.data.temp',this.data.temp);
+
+
+        if(temp.state==0 && temp.status==2){
+          this.setData({
+            index: 1
+          })
+        }
+        else if (temp.state == 1 && temp.status == 1){
+          this.setData({
+            index: 3
+          })
+        }
+        else if (temp.state == 1 && temp.status == 4) {
+          this.setData({
+            index: 4
+          })
+          console.log("index:",index)
+        }
+        else{
+          this.setData({
+            index: 4
+          })
+        }
+      
+
+//o-big 1-small 
+
+        // wx.navigateTo({
+        //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+        //     'start_price=' + temp.production__startprice + '&' +
+        //     'yuyue_string=' + temp.certificate + '&' +
+        //     'yuyue_telephone=' + temp.production__merchant__telephone + '&' +
+        //     'payfor_string=' + '' + '&'
+        //     + 'index=1'
+        // })
       } else {
-        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
-        wx.navigateTo({
-          url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
-            'start_price=' + temp.production__startprice + '&' +
-            'payfor_string=' + temp.certificate + '&' +
-            'yuyue_string=' + '' + '&' +
-            'yuyue_telephone=' + '' + '&'
-
-            + 'index=2'
+        // wx.hideTabBar({});
+        this.setData({
+          stickets: true
         })
+        var temp = this.data.ticketlist_ed[e.currentTarget.dataset.index]
+        this.setData({
+          temp: temp
+        })
+        console.log('this.data.temp',this.data.temp);
+        
+        if (temp.state == 0 && temp.status == 3) {
+          this.setData({
+            index: 2
+          })
+        }
+        else if (temp.state == 1 && temp.status == 3) {
+          this.setData({
+            index: 5
+          })
+        } else if (temp.state == 1 && temp.status == 4) {
+          this.setData({
+            index: 4
+          })
+          console.log("index:", this.data.index)
+        }
+        
+  
+
+        // wx.navigateTo({
+        //   url: "/pages/tickets/tickets?final_price=" + temp.endprice + '&' +
+        //     'start_price=' + temp.production__startprice + '&' +
+        //     'payfor_string=' + temp.certificate + '&' +
+        //     'yuyue_string=' + '' + '&' +
+        //     'yuyue_telephone=' + '' + '&'
+
+        //     + 'index=2'
+        // })
 
       }
     }else{
@@ -283,7 +471,7 @@ Page({
 
 
   team_cut: function (e) {
-    var order = this.data.ticketlist_ing[e.currentTarget.dataset.index]
+    var order = this.data.ticketlist_ing[e.currentTarget.dataset.index];
     wx.navigateTo({
       url: '/pages/teamcut/teamcut?productionid=' + order.production_id +
         '&' + 'nickname=' + app.globalData.nickname +
@@ -291,15 +479,6 @@ Page({
         '&' + 'steamid=' + order.steam_id +
         '&' + 'userid=' + order.userid,
     })
-
-
-    // path: 'pages/teamcut/teamcut?orderid=' +
-    //   this.data.orderid +
-    //   '&' + 'nickname=' + this.data.nickname +
-    //   '&' + 'avatarUrl=' + this.data.avatarUrl +
-    //   '&' + 'steamid=' + this.data.steamid +
-    //   '&' + 'userid=' + this.data.userid,
-
   },
 
   add_allTobuylist: function (e) {
@@ -387,6 +566,7 @@ Page({
               'orderid': that.data.ticketlist_ed[e.currentTarget.dataset.index].orderid,
             },
             success: (res) => {
+              
               wx.switchTab({
                 url: '/pages/home/home',
               })
@@ -401,6 +581,55 @@ Page({
 
     
   },
+
+  payfor:function(e){
+    var that=this;
+    console.log(this.data.carts)
+    var pay=this.data.really_pay;
+    var allorderid=[]
+    for(var i=0;i<this.data.carts.length;i++){
+      allorderid.push(this.data.carts[i].orderid);
+    }
+    allorderid = JSON.stringify(allorderid)
+    console.log(allorderid)
+    wx.request({
+      url: 'https://xiaoyibang.top:8001/dajia/pay',
+      data:{
+        'userid':app.globalData.userid,
+        'bee':1,
+        'allorderid':allorderid,
+      },
+      success:res=>{
+        console.log(res.data)
+        wx.requestPayment({
+          timeStamp: res.data.timeStamp,
+          nonceStr: res.data.nonceStr,
+          package: res.data.package,
+          signType: 'MD5',
+          paySign: res.data.paySign,
+          success(res) {
+            
+            setTimeout(function(){
+              app.getorderlist();
+              setTimeout(function(){
+                that.classfy();
+
+              },500)
+
+
+            },500)
+            
+          },
+          fail(res) {
+            console.log("支付失败")
+            console.log(res)
+          }
+        })
+      }
+    })
+    console.log(e)
+    
+  }
 
 
 })

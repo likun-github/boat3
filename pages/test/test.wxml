@@ -1,110 +1,56 @@
 <view class="container">
   <view class='top'>
-    <view class='user'>
-      <image src='/static/sq.jpg' class='userpic'></image>
-      <view class='user_information'>
-        <text style='font-size:40rpx;color:white;'>刘荣杰</text>
-        <text style='font-size:25rpx;color:white;margin-top:10rpx;'>认证状态：暂未认证</text>
-      </view>
-
-
-    </view>
-    <view class='box'>
-      <view class='box_middle'>
-        <view class='box_list1'>
-          <text style=''>校园认证，校友帮你大件劲省！</text>
-          <text style='margin-left:50rpx;color:rgba(255,255,255,0.8);'>立即认证➡</text>
-
-
-        </view>
-        <view class='box_line'></view>
-        <view class='box_list2'>
-
-          <image src='/static/setting/icon1.svg' class='box_image' style='margin-left:110rpx;'></image>
-          <view style='position:relative;display:flex;flex-direction: column;'>
-            <text style='width:80rpx;'>开启贝壳</text>
-            <text style='width:80rpx;'>激励计划</text>
-
-          </view>
-
-          <image src='/static/setting/icon2.svg' class='box_image'></image>
-          <view style='position:relative;display:flex;flex-direction: column;'>
-            <text style='width:80rpx;'>甄选服务</text>
-            <text style='width:80rpx;'>本校同舟</text>
-
-          </view>
-          <image src='/static/setting/icon3.svg' class='box_image'></image>
-          <view style='position:relative;display:flex;flex-direction: column;'>
-            <text style='width:80rpx;'>经常活动</text>
-            <text style='width:80rpx;'>敬请期待</text>
-
-          </view>
-
-
-
-        </view>
-
-
-      </view>
-
-    </view>
-
-
   </view>
   <image src='/static/h.png' class='background'>
-  
-  
+
+
   </image>
-  <view style='position:absolute;width:100%;height:70%;top:30%;'>
+  <view class='boat'>
+    <text style='font-weight:600;font-size:40rpx;'>提交需求</text>
 
-      <view class='middle' >
+  </view>
+  <image src='/static/asset/right.svg' class='rightcicle'></image>
+  <image src='/static/asset/left.svg' class='leftcicle'></image>
+  <view style='position:absolute;margin-top:25%;width:100%;height:75%;'>
+    <view class='l0'>
+      <image src='/static/icon/setting/1.svg' style='  margin-left: 90rpx;'></image>
+      <text> 请在百字内描述你的需求</text>
+    </view>
+    <view class='box'>
+      <textarea placeholder='感谢您提出的宝贵需求 （若被采用有机会获激励金)' placeholder-class='wordstyle' bindblur='bind' style="font-size:28rpx;margin:auto;color:"></textarea>
+      <view class='pic_upload'>
+        <view class="gallery">
+          <view class="item" wx:for="{{images}}" wx:key="">
+            <image src="{{item}}" data-src="{{item}}" bindtap="previewImage" mode="aspectFill" bindlongpress="deleteImage" data-index="{{index}}" />
+            <!-- 删除按钮 -->
+            <view class="delete" bindtap="delete" data-index="{{index}}">
+              <image src='/static/asset/delete.png'>
+              </image>
+            </view>
+          </view>
+          <view class="item" bindtap="choosepic" wx:if="{{show_num<3}}">
+            <view class='icon_cam'>
+              <image mode='aspectFill' src='/static/pic/camera.png'></image>
+            </view>
+            <view class='addIcon'>
+              <view class='addIcon_text'>添加/拍摄</view>
+            </view>
+          </view>
+        </view>
+      </view>
 
-        <view class='l0' bindtap='changelist1'>
-          <image src='/static/icon/setting/1.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-          <text> 提交需求</text>
-          <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-        </view>
-        <view class='l1' bindtap='changelist2'>
-          <image src='/static/icon/setting/2.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-          <text>校园合伙人</text>
-          <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-        </view>
-        <view class='l1' bindtap='changelist3'>
-          <image src='/static/icon/setting/3.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-          <text>小船邀请码</text>
-          <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-        </view>
-        <view class='l1' bindtap='changelist4'>
-          <image src='/static/icon/setting/4.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-          <text> 常见问题Q&A</text>
-          <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx;width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-        </view>
-        <view class='l1' bindtap='changelist5'>
-          <image src='/static/icon/setting/5.svg' style='  margin-left: 50rpx;margin-right: 50rpx;'></image>
-          <text> 加入我们&意见反馈</text>
-          <image src='/static/icon/setting/icon2.svg' style=' position:absolute;left:620rpx; width: 30rpx; height: 30rpx;margin-top: 20rpx;'></image>
-        </view>
-        <view style='position:relative;width:100%;height:70%;margin-top:40rpx;background:white;border-radius:25rpx;overflow:hidden;margin-top:{{h2}}px;z-index:500;'>
-          <image src='/static/1.svg' style='position:absolute;width:200rpx;height:200rpx;left:50rpx;top:50rpx;' bindtap='show'></image>
-          <text style='position:absolute;left:200rpx;top:90rpx;color:#077ACC;font-size:32rpx;'>向商家出示二维码参团</text>
-          <text style='position:absolute;left:200rpx;top:160rpx;font-size:24rpx;'>也作为个人邀请好友凭证</text>
-        </view>
+
+
+      <view class='demand' bindtap='need'>
+        <text style='font-weight:100;font-size:37rpx;'>提交需求</text>
       </view>
     </view>
 
-
-</view>
-
-<!-- 弹出邀请码的框 -->
-
-<view class='shade' hidden='{{popup}}'>
-  <view class="bounceInDown shade_box" hidden='{{popup}}'>
-    <image src='/static/boat/bought.png' style='width:100%;height:100%'></image>
-    <view style='position:absolute;width:60%;left:20%;height:100rpx;top:60vh;'>
-      <view class='input' style='position:absolute;left:0rpx;height:60rpx;top:5rpx;width:300rpx;'></view>
-      <input bindinput='yaoqingma' placeholder='请输入BOAT小船邀请码' placeholder-style='color:grey' placeholder-class='c' style='position:absolute;width:280rpx;height:60rpx;left:20rpx;top:5rpx;font-size:20rpx;'></input>
-      <view class='bt' bindtap='getin'>登船</view>
-    </view>
   </view>
+
+
+
+
+
+
 </view>
-<!-- 弹出邀请码的框 end -->

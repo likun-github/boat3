@@ -1,4 +1,7 @@
 
+
+<wxs module="filters" src="../../common/tool.wxs"></wxs>
+
 <view class='container'>
   <view class='top'>
     <image src='/static/teamcut/myteam.jpg' style='position:absolute;width:100%;height:100%;' mode='top'></image>
@@ -12,9 +15,9 @@
           <view class='productionname'> {{production.name}}</view>
           <view class='introduction'>目前砍价已领先94%用户</view>
           <view class='introduction'>初始价格为{{production.startprice}}元</view>
-          <view class='price'  module="filters" src="../utils/filters.wxs" >
+          <view class='price' module="filters" src="../utils/filters.wxs">
             <text style='font-size:25rpx;margin-top:20%;'>¥</text>
-            <text>{{endprice}}</text>
+            <text>{{filters.toFix(endprice)}}</text>
           </view>
         </view>
       </view>
@@ -45,7 +48,7 @@
       <view class='box1'>:</view>
       <view class='box' style='background-color: #2690DF;color:white;'>{{second}}</view>
     </view>
-    <view class='sumcutprice'>-已有{{number}}位朋友帮忙砍价{{cutprice}}元-</view>
+    <view class='sumcutprice'>-已有{{number}}位朋友帮忙砍价{{filters.toFix(cutprice)}}元-</view>
     <scroll-view scroll-y class="scroll">
 
       <view wx:for="{{onecut}}" wx:key="onecut.name">
@@ -65,7 +68,7 @@
           <view class='name'>{{item.name}}</view>
           <view class='rank'>水手</view>
           <view class='cutprice'>
-            <text style='color:#2690DF;'>{{item.cutprice}}</text>
+            <text style='color:#2690DF;'>{{filters.toFix1(item.cutprice)}}</text>
             <text>元</text>
           </view>
         </view>
@@ -83,14 +86,11 @@
 
 
 //登陆遮罩
-<view class='mask' wx:if="{{hq}}" >
-    <view class='m' style='overflow:hidden'>
+<view class='mask' wx:if="{{hq}}">
+  <view class='m' style='overflow:hidden'>
     <image src='/static/sq.jpg' style='width:100%;height:100%'></image>
-    </view>
-    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="s">
- 确定授权
-</button>
+  </view>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="s">
+    确定授权
+  </button>
 </view>
-
-
-

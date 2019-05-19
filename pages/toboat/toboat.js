@@ -26,7 +26,7 @@ Page({
 
     content:'',//评论设为空
 
-
+    order_detail:[],    //这个产品的订单详情，有就有 没有就没有
 
     judge: [{
         "url": "/static/sq.jpg",
@@ -46,7 +46,7 @@ Page({
 
     pic: [],
     startprice: '',
-    endprice: '',
+    bottomprice: '',
     name: '',
     number: '',
     reputation: '',
@@ -57,12 +57,11 @@ Page({
     logo: '',
     distance:'',
 
-
     popup: true,
     //别人的小船
     steamid:'',//小船id
     department:'',//院系
-    name:'',//姓名
+    mastername:'',//姓名
   },
 
 
@@ -74,16 +73,19 @@ Page({
    */
 
   onLoad: function(options) {
+    console.log("正在加载options")
     var that=this;
     this.setData({
       likers: this.data.likers + parseInt(Math.random() * 100 + 1)
     })
+    console.log(options)
     if(options.steamid){
       this.setData({
         steamid:options.steamid,
-        name:options.name,
+        mastername:options.name,
         department:options.department,
       });
+      console.log(this.data.steamid)
       // wx.request({
       //   url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
       //   data: {
@@ -109,7 +111,7 @@ Page({
     console.log(pic)
     this.setData({
       startprice: common.currentData.startprice,
-      endprice: common.currentData.startprice * 0.6,
+      bottomprice: common.currentData.bottomprice,
       name: common.currentData.name,
       number: common.currentData.number,
       reputation: common.currentData.reputation,
@@ -122,6 +124,9 @@ Page({
       introductionpic: this.data.url + common.currentData.introductionpic,
       pic: pic,
       logo: common.currentData.logo,
+
+
+
     })
    this.getcomment();
 
@@ -200,10 +205,10 @@ Page({
               icon: 'loading',
             })
             setTimeout(function () {
-              wx.navigateTo({
-                url: "/pages/verify/verify",
+              wx.switchTab({
+                url: '/pages/setting/setting',
               })
-
+             
             }, 800)
             
 
@@ -227,6 +232,7 @@ Page({
       if (common.currentData.productionid == common.orderlist[i].production_id && common.orderlist[i].status!=0){
         this.setData({
           buy:true,
+          order_detail: common.orderlist[i],
         })
         return 0;
       }
@@ -241,6 +247,8 @@ Page({
     })
 
   },
+
+
 
   
   showModal: function() {
@@ -260,8 +268,8 @@ Page({
               icon: 'loading',
             })
             setTimeout(function () {
-              wx.switchTab({
-                url: '/pages/boat/boat',
+              wx.navigateTo({
+                url: '/pages/look_tickets/look_tickets?orderid=' + that.data.order_detail.orderid + '&tickettype=' + ' ',
               })
 
             }, 1000)
@@ -329,6 +337,7 @@ Page({
    
 
   },
+  
   hideModal: function() {
     // 隐藏遮罩层
     var animation = wx.createAnimation({
@@ -475,6 +484,7 @@ Page({
     wx.request({
       url: that.data.url1 + 'dajia/buysmallboat',
       data: {
+        'steamid':that.data.steamid,
         'userid': app.globalData.userid,
         'productionid': common.currentData.productionid,
       },
@@ -509,8 +519,8 @@ Page({
       setTimeout(function() {
         app.gethomelist();
         app.getorderlist();
-        wx.navigateTo({
-          url: "/pages/verify/verify",
+        wx.switchTab({
+          url: '/pages/setting/setting',
         })
 
       }, 1000)

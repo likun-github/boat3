@@ -7,7 +7,7 @@ var app = getApp();
 let loadingMore = false
 let lastScollTop = 0;
 let lastRequestTime = 0;
-var common=require('../../common/index.js');
+var common = require('../../common/index.js');
 
 
 Page({
@@ -36,7 +36,6 @@ Page({
     ],
 
     //数据缓存
-    orderid: '',
     nickname: '',
     avatarUrl: '',
     steamid: '',
@@ -63,7 +62,7 @@ Page({
     realprice: 0,  //实时的价格
 
 
-    
+
     //checkstatus仅初次进入核查
     check: true,
   },
@@ -121,10 +120,10 @@ Page({
     //   title: '正在加载中',
     //   duration:2000,
     // })
-    var that=this;
+    var that = this;
     this.checkstatus();
     this.getproduction(this.data.productionid);
-    
+
 
   },
   getproduction: function (productionid) {
@@ -152,7 +151,7 @@ Page({
         'steamid': steamid,
       },
       success: (res) => {
-        
+
         common.onecut = res.data.onecut;
         that.setData({
           onecut: res.data.onecut,
@@ -167,10 +166,10 @@ Page({
         }
         that.merge();
         that.timeapproach(res.data.onecut[0].endtime, res.data.onecut[0].time);
-        
-        
-        
-        
+
+
+
+
 
       }
     })
@@ -178,10 +177,10 @@ Page({
 
   //判断是否登陆
   checkstatus: function () {
-    if (app.globalData.login) {
-      
+    if (app.globalData.userid) {
+
       this.getorderdetail(this.data.steamid);
-      
+
     }
     else {
       this.setData({
@@ -191,29 +190,29 @@ Page({
 
 
   },
-  
+
   //判定团队成员
   checkmember: function () {
     console.log('正在运行成员')
     console.log(this.data.onecut)
     console.log('哈哈')
     //是否为组团成员
-    for(var i=0;i<this.data.onecut.length;i++){
+    for (var i = 0; i < this.data.onecut.length; i++) {
       console.log(this.data.onecut[i].member__userid)
-      if (app.globalData.userid == this.data.onecut[i].member__userid){
-        
+      if (app.globalData.userid == this.data.onecut[i].member__userid) {
+
         this.setData({
           btn_index: 0,
         })
         console.log("运行查看拼团成员")
         return '';
       }
-    
+
     }
     this.setData({
       btn_index: 1,
     });
-    
+
 
 
 
@@ -222,7 +221,7 @@ Page({
 
   },
   onGotUserInfo(e) {
-    var that=this;
+    var that = this;
     if (e.detail.errMsg) {
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
       app.globalData.nickname = e.detail.userInfo.nickName;
@@ -281,7 +280,7 @@ Page({
 
 
 
- 
+
   toDecimal2: function (x) {
     var f = parseFloat(x);
     if (isNaN(f)) {
@@ -301,18 +300,24 @@ Page({
 
   },
   //强制保留2位小数，如：2，会在2后面补上00.即2.00 
- 
+
 
   //加titile
   merge: function () {
     var middle1 = [];
     var cutprice = 0;
     //组团成员
-    for (var i = 0; i < this.data.onecut.length; i++) {
+    console.log("无敌无敌0")
+    console.log(this.data.onecut)
+
+    var onecutlist = this.data.onecut.sort(function (a, b) {
+      return a.membership__time > b.membership__time ? 1 : -1;
+    })
+    for (var i = 0; i < onecutlist.length; i++) {
       var middle = {};
-      middle.pic = this.data.onecut[i].member__picture;
-      middle.name = this.data.onecut[i].member__nickname;
-      middle.cutprice = this.data.onecut[i].membership__cutprice;
+      middle.pic = onecutlist[i].member__picture;
+      middle.name = onecutlist[i].member__nickname;
+      middle.cutprice = onecutlist[i].membership__cutprice;
       cutprice = cutprice + middle.cutprice;
       middle.title = this.data.title[i];
       middle1.push(middle);
@@ -327,16 +332,33 @@ Page({
       cutprice = cutprice + middle.cutprice;
       middle2.push(middle);
     }
-    var endprice=this.data.production.startprice-cutprice;
-
-
-    this.setData({
+    var that = this;
+    console.log(this.data.production)
+    console.log("cutprice")
+    console.log(cutprice)
+    console.log("this.da")
+    console.log(this.data.production.startprice)
+    that.setData({
       onecut: middle1,
       twocut: middle2,
       cutprice: cutprice,
-      endprice: endprice,
-      number: this.data.onecut.length + this.data.twocut.length,
+      number: that.data.onecut.length + that.data.twocut.length,
     })
+
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000,
+    })
+
+    setTimeout(function () {
+      var endprice = that.data.production.startprice - cutprice;
+      that.setData({
+        endprice: endprice,
+
+      })
+
+    }, 1000)
+
 
   },
   /**
@@ -345,8 +367,8 @@ Page({
   onShareAppMessage: function () {
     return {
       title: 'BOAT',
-      path: 'pages/teamcut/teamcut?orderid=' +
-        this.data.orderid +
+      path: 'pages/home/home?pageid=' +
+        1 +
         '&' + 'nickname=' + this.data.nickname +
         '&' + 'avatarUrl=' + this.data.avatarUrl +
         '&' + 'steamid=' + this.data.steamid +
@@ -394,7 +416,7 @@ Page({
           title: '拼团人数已满，是否单独发船',
           content: '',
           success: function (res) {
-            
+
             if (res.confirm) {
               wx.navigateTo({
                 url: "/pages/toboat/toboat",
@@ -409,8 +431,58 @@ Page({
 
       }
       else {
-        wx.navigateTo({
-          url: "/pages/toboat/toboat?steamid=" + that.data.steamid,
+        wx.request({
+          url: 'https://xiaoyibang.top:8001/dajia/findboatmaster',
+          data: {
+            'steamid': that.data.steamid,
+          },
+          success: (res) => {
+            if (res.data.success) {
+              console.log(res.data)
+              console.log("拥有该团队");
+              if (res.data.number < 5) {
+
+                var production = false;
+                for (var i = 0; i < common.homelist.length; i++) {
+                  if (res.data.productionid == common.homelist[i].productionid) {
+                    common.currentData = common.homelist[i];
+                    production = true;
+                    break;
+                  }
+                }
+                if (production) {
+                  wx.showLoading({
+                    title: '正在跳转',
+
+                  })
+                  setTimeout(function () {
+                    wx.hideLoading()
+                    wx.navigateTo({
+                      url: "/pages/toboat/toboat?steamid=" + that.data.steamid +
+                        '&' + 'name=' + res.data.name +
+                        '&' + 'department=' + res.data.department,
+                    })
+
+                  }, 1500)
+
+                }
+                else {
+                  wx.showToast({
+                    title: '非本校人员',
+                    icon: 'none',
+                  })
+
+                }
+
+
+              }
+
+
+
+            }
+
+
+          }
         })
 
 
@@ -434,7 +506,7 @@ Page({
       },
       success: (res) => {
         console.log("状态2")
-        if(!res.data.success){
+        if (!res.data.success) {
           wx.showToast({
             title: '您已砍过价',
           })
@@ -448,7 +520,7 @@ Page({
     })
 
   },
-  timeapproach: function (endtime,starttime) {
+  timeapproach: function (endtime, starttime) {
     var time1 = Math.floor(new Date().getTime() / 1000);
     var time2 = endtime - time1;
     this.data.setInter = setInterval(
@@ -482,7 +554,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function (options) {
-  
+
   },
 
   /**

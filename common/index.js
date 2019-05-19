@@ -3,30 +3,7 @@ var data = {
   steamid: '',
   topheight: 50,
 }
-//选择订单类型函数
-function chooseorderstatus(provider) {
-  data.orderstatus = provider;
-  switch (provider) {
-    case '1':
-      data.ordertitle = '待拼团订单';
-      break;
-    case '2':
-      data.ordertitle = '待支付确认';
-      break;
-    case '3':
-      data.ordertitle = '待完成体验';
-      break;
-    case '4':
-      data.ordertitle = '待进行评价';
-      break;
-    case '5':
-      data.ordertitle = '订单完成';
-      break;
-    case '0':
-      data.ordertitle = '全部订单';
-      break;
-  }
-}
+
 //首页商品信息
 var homelist = {
 

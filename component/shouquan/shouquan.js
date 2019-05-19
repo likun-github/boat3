@@ -15,24 +15,24 @@ Component({
     hq: false,
 
   },
-  ready: function() {
-    if(app.globalData.login){
+  ready: function () {
+    if (app.globalData.userid) {
       return ''
     }
-    else{
+    else {
       this.setData({
-        hq:true,
+        hq: true,
       })
       wx.hideTabBar({});
     }
-    
-    
+
+
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    preventTouchMove: function(e) {},
+    preventTouchMove: function (e) { },
 
     onGotUserInfo(e) {
       console.log(e.detail.userInfo)
@@ -45,7 +45,7 @@ Component({
         app.globalData.province = e.detail.userInfo.province;
         app.globalData.city = e.detail.userInfo.city;
         app.globalData.language = e.detail.userInfo.language;
-        var that =this
+        var that = this
         wx.login({
           success: res => {
             console.log("微信小程序用户登录：", res)
@@ -59,11 +59,11 @@ Component({
                 'userid': app.globalData.userid,
               },
               success: (res) => {
-                app.globalData.userid=res.data.userid;
-                app.globalData.status=res.data.status;
-                app.globalData.number=res.data.number;
-                app.globalData.account=res.data.account;
-                app.globalData.number=res.data.number;
+                app.globalData.userid = res.data.userid;
+                app.globalData.status = res.data.status;
+                app.globalData.time = res.data.number;
+                app.globalData.account = res.data.account;
+                
                 console.log("用户信息", res.data)
                 app.getorderlist();
                 var information = {
@@ -76,11 +76,38 @@ Component({
                   'avatarUrl': app.globalData.avatarUrl,
                   'account': res.data.account,
                 }
-                
+
+
+                if (app.globalData.pageid == 2) { //实名认证
+                  if (app.globalData.status != 0) {
+                    wx.showToast({
+                      title: '您已完成实名认证',
+                      icon: 'none',
+                    })
+                  }
+                  else {
+                    wx.showModal({
+                      title: '实名认证',
+                      content: '完成实名认证好友也可领取贝壳哦~',
+                      success: (res) => {
+                        if (res.confirm) {
+                          wx.switchTab({
+                            url: '/pages/setting/setting',
+                          })
+                         
+                        } else {
+                          console.log("取消")
+                        }
+                      }
+                    })
+                  }
+
+                }
+
                 wx.setStorage({
                   key: 'information',
                   data: information,
-                })      
+                })
               },
             })
           }

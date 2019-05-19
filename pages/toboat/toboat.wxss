@@ -32,6 +32,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  bottom: -5%;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
@@ -40,7 +41,7 @@ progress {
   position: absolute;
   width: 45%;
   margin-left: 55%;
-  margin-top: 14%;
+  margin-top: 13%;
 }
 
 .smallboat {
@@ -48,7 +49,7 @@ progress {
   width: 80rpx;
   height: 60rpx;
   right: 10rpx;
-  margin-top: 60rpx;
+  margin-top: 50rpx;
 }
 
 .middle1 {
@@ -68,6 +69,7 @@ progress {
   margin-right: 30rpx;
   color: white;
   font-weight: 700;
+  margin-top: 10rpx;
 }
 
 .production_introduction{
@@ -85,7 +87,7 @@ height:113rpx;
 margin-left:70rpx;
 display:flex;
 flex-direction:column;
-font-size:0.5em;
+font-size:11px;
 color:#B1B1B1;
 text-align:center;
 border:none;
@@ -404,6 +406,7 @@ input {
   color: white;
   display: flex;
   flex-direction: column;
+  font-weight: 400;
 }
 
 .box1 {
@@ -415,7 +418,13 @@ input {
   border-radius: 50rpx;
   margin: auto;
   background: #f2f2f2;
-  color: rgba(100, 100, 100, 0.5);
+  color: rgba(100, 100, 100, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+.box_bottomtext{
+  position: absolute;
+  bottom: 15%;
   display: flex;
   flex-direction: column;
 }

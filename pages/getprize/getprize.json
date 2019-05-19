@@ -1,4 +1,7 @@
 {
+  "navigationBarBackgroundColor": "#A9E3F6",
+  "navigationBarTextStyle": "white",
   "navigationBarTitleText": "贝壳抽奖",
-  "usingComponents": {}
+  "usingComponents": {},
+  "enablePullDownRefresh": false
 }

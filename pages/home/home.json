@@ -2,5 +2,7 @@
   "navigationBarTitleText": "首页",
   "usingComponents": {
     "sq":"../../component/shouquan/shouquan"
-  }
+    
+  },
+  "enablePullDownRefresh": false
 }

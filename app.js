@@ -1,10 +1,12 @@
 //app.js
+const ald = require('./utils/ald-stat.js');
+var startTime = Date.now();//启动时间
 var common=require('/common/index.js');
 App({
   list:1,
   onLaunch: function () {
     var that=this;
-    //获取屏幕高度
+    //��ȡ��Ļ�߶�
     wx.getSystemInfo({
       success(res) {
         that.globalData.height=res.windowHeight;
@@ -14,7 +16,13 @@ App({
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
-    // 登录
+    // ��¼
+  },
+  onShow:function(){
+    this.aldstat.sendEvent('小程序的启动时长', {
+      time: Date.now() - startTime
+    })
+
   },
 
 
@@ -27,6 +35,7 @@ App({
         'teamid':1,
       },
       success:(res)=>{
+        console.log(common.homelist)
         common.homelist=res.data;
         var list = [];
         for (var i = 0; i < common.homelist.length; i++) {
@@ -53,7 +62,10 @@ App({
             common.orderlist = res.data.order;
 
           }
-          console.log("用户的订单:", common.orderlist);
+          else{
+            common.orderlist=[];
+          }
+          console.log("订单", common.orderlist);
           
         }
       })
@@ -72,7 +84,7 @@ App({
 
 
 
-  //从缓存中提取用户信息
+  //�ӻ�������ȡ�û���Ϣ
   getuserinformation: function () {
     var information = wx.getStorageSync('information')
 
@@ -115,25 +127,35 @@ App({
 
 
   globalData: {
-    puserid:'',//邀请人
-    login:'',//是否登陆
+    pageid:'',
+
+
+
+
+
+
+
+    puserid:'',
+    login:'',
     userid:'',
     nickname: '',
-    avatarUrl: '',//基本信息
+    avatarUrl: '',
     gender: 0,
+    
 
     account:'',
     name: '',
     teamname: '',
-    time: '',//认证信息
+    time: '',
     status:'',
+    time:'',
     
-    height:'',//屏幕高度
+    height:'',
     
     country:'',
     city:'',
     province:'',
-    language: "zh_CN",//无关信息
+    language: "zh_CN",
 
 
     ticketlist_ing:[],

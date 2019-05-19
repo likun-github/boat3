@@ -32,7 +32,8 @@ Page({
 
         nickName: "刘**",
 
-        reward: "IPHONEX"
+        reward: "IPHONEX",
+        vertify:'2016级遥感信息工程学院'
 
       },
 
@@ -40,7 +41,8 @@ Page({
 
         nickName: "李**",
 
-        reward: "IPHONEX"
+        reward: "IPHONEX",
+        vertify: '2016级遥感信息工程学院'
 
       },
 
@@ -48,7 +50,8 @@ Page({
 
         nickName: "龙**",
 
-        reward: "IPHONEX"
+        reward: "IPHONEX",
+        vertify: '2016级遥感信息工程学院'
 
       },
 
@@ -56,7 +59,8 @@ Page({
 
         nickName: "基**",
 
-        reward: "IPHONEX"
+        reward: "IPHONEX",
+        vertify: '2016级遥感信息工程学院'
 
       },
 
@@ -64,7 +68,8 @@ Page({
 
         nickName: "于**",
 
-        reward: "5贝壳"
+        reward: "5贝壳",
+        vertify: '2016级遥感信息工程学院'
 
       },
 
@@ -81,58 +86,6 @@ Page({
     console.log(this.data.h)
   },
   onLoad: function () {
-    var _this = this;
-    //圆点设置
-    var leftCircle = 7.5;
-    var topCircle = 7.5;
-    var circleList = [];
-    for (var i = 0; i < 24; i++) {
-      if (i == 0) {
-        topCircle = 15;
-        leftCircle = 15;
-      } else if (i < 6) {
-        topCircle = 7.5;
-        leftCircle = leftCircle + 102.5;
-      } else if (i == 6) {
-        topCircle = 15
-        leftCircle = 620;
-      } else if (i < 12) {
-        topCircle = topCircle + 94;
-        leftCircle = 620;
-      } else if (i == 12) {
-        topCircle = 565;
-        leftCircle = 620;
-      } else if (i < 18) {
-        topCircle = 570;
-        leftCircle = leftCircle - 102.5;
-      } else if (i == 18) {
-        topCircle = 565;
-        leftCircle = 15;
-      } else if (i < 24) {
-        topCircle = topCircle - 94;
-        leftCircle = 7.5;
-      } else {
-        return
-      }
-      circleList.push({ topCircle: topCircle, leftCircle: leftCircle });
-    }
-    this.setData({
-      circleList: circleList
-    })
-    //圆点闪烁
-    setInterval(function () {
-      if (_this.data.colorCircleFirst == '#FFDF2F') {
-        _this.setData({
-          colorCircleFirst: '#FE4D32',
-          colorCircleSecond: '#FFDF2F',
-        })
-      } else {
-        _this.setData({
-          colorCircleFirst: '#FFDF2F',
-          colorCircleSecond: '#FE4D32',
-        })
-      }
-    }, 500)
     //奖品item设置
     var awardList = [];
     //间距,怎么顺眼怎么设置吧.
@@ -166,7 +119,7 @@ Page({
   },
   mx: function () {
     wx.navigateTo({
-      url: '/mx/mx',
+      url: '/pages/prizedetail/prizedetail',
     })
   },
   //开始游戏

@@ -84,7 +84,6 @@
   height: 250rpx;
   align-items: center;
   margin-bottom: 75rpx;
-  margin-top: 20rpx;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
 }
@@ -98,16 +97,16 @@
 .avatar .img {
   width: 100%;
   height: 100%;
-  border-top-left-radius: 50rpx;
-  border-bottom-left-radius: 50rpx;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
 }
 
 .avatar1 {
-  width: 100rpx;
-  height: 100rpx;
+  width: 400rpx;
+  height: 300rpx;
+  top: 0rpx;
   position: absolute;
- 
-  margin-top: 58px;
+
 }
 
 .che {
@@ -134,21 +133,38 @@
   border-bottom-right-radius: 25rpx;
   height: 250rpx;
 }
-
+.mask{
+  background:white;
+  border-radius:100%;
+  width:40rpx;
+  height:40rpx;
+  position:absolute;
+  top:198rpx;
+  left: 11rpx;
+}
+.cart-pro-select{
+  color:white;
+  width: 400rpx;
+  height:50rpx;
+  padding-top: 200rpx;
+  padding-left: 10rpx;
+  position: absolute;
+  top: 0rpx;
+}
 .expertInfo .name {
   font-size: 16px;
   color: #000;
-  margin-bottom: 6px;
+  margin-bottom: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
 }
 
 .price {
   font-size: 12px;
   color: #b0b0b0;
-  margin-bottom: 6px;
+  margin-top: 6rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,8 +177,9 @@
 }
 
 .btn_checkticket {
-  width: 186rpx;
+  width: 200rpx;
   height: 70rpx;
+  line-height: 70rpx;
   justify-content: center;
   text-align: center;
   font-size: 14px;
@@ -171,25 +188,31 @@
   left: -6rpx;
   top: 23rpx;
   /* background-color:linear-gradient(to right, rgba(0, 204, 255, 0.507) , rgba(0, 68, 255, 0.74)); */
-  background-color: #59b4fe;
+  
+  background:linear-gradient(to bottom right,#5EE4FE,#57ABFE);
 }
 
 .btn_checkticket_1 {
-  width: 186rpx;
+  box-shadow: 0rpx 10rpx 50rpx 10rpx rgba(85, 85, 85, 0.10);
+  
+  width: 200rpx;
   height: 70rpx;
   justify-content: center;
   text-align: center;
   font-size: 14px;
   border-radius: 57rpx;
   color: white;
+  line-height: 70rpx;
   left: 80rpx;
   top: 22rpx;
-  background-color: #59b4fe;
+background:linear-gradient(to bottom right,#5EE4FE,#57ABFE);
 }
 
 
 .btn_checkticket_bigboat{
-  width: 186rpx;
+  box-shadow: 0rpx 10rpx 50rpx 10rpx rgba(85, 85, 85, 0.10);
+  line-height: 70rpx;
+  width: 200rpx;
   height: 70rpx;
   justify-content: center;
   text-align: center;
@@ -198,12 +221,13 @@
   color: white;
   left: 80rpx;
   top: 22rpx;
-  background-color: #59b4fe;
+  background:linear-gradient(to bottom right,#5EE4FE,#57ABFE);
 
 }
 
 
 .btn_cut {
+  line-height: 70rpx;
   margin-left: 60rpx;
   padding-left: 21rpx;
   align-items: center;
@@ -217,16 +241,19 @@
   left: 50rpx;
   top: 23rpx;
   /* background-color:linear-gradient(to right, rgba(0, 204, 255, 0.507) , rgba(0, 68, 255, 0.74)); */
-  background-color: #fdb38f;
+  background:linear-gradient(to bottom right,#FDB38F,#F7907E);
 }
 
 .tab-content {
-  margin-top: 50rpx;
+  top: 50rpx;
+  position: fixed;
+  width: 750rpx;
 }
 
 .scoll-h {
   height: 93vh;
   margin-top: 50rpx;
+  
 }
 
 .cut_img {
@@ -238,6 +265,7 @@
 
 .cut_view {
   position: relative;
+  margin-top: 8rpx;
   display: flex;
   flex-direction: row;
 }
@@ -336,13 +364,24 @@
   width: 100%;
   height: 100%;
 }
+.mask_1 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 
+  z-index: 1000;
+}
+.mask_2{
+  background: rgba(0, 0, 0, 0.8);
+  filter: blur(100rpx);
+
+}
 .cancel_view{
   width: 50rpx;
   height: 50rpx;
   position: relative;
   display: flex;
-  margin-top:5rpx;
-  margin-left:387rpx;
+  margin-top:8rpx;
+  margin-left:390rpx;
 
 }

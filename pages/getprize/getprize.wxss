@@ -13,6 +13,7 @@
   left: 5%;
   margin-top: 20rpx;
   background: linear-gradient(to bottom right, #fe5e5e, #fe8557);
+  overflow: hidden;
 }
 
 /* 底部滚动列表  */
@@ -39,26 +40,30 @@
 
 .content-item {
   height: 50rpx;
-  border-bottom: 1px solid #ede1d4;
+  
   width: 95%;
 }
 
-.name {
-  font-size: 26rpx;
+.img{
+  width: 60rpx;
+  height: 30rpx;
+  margin-left: 0rpx;
+  margin-right: 10rpx;
   float: left;
-  line-height: 50rpx;
+}
+.name {
+  font-size: 20rpx;
+  float: left;
+  line-height: 30rpx;
   color: white;
-  margin-left: 20rpx;
-  width: 40%;
-  height: 100%;
-  overflow: hidden;
 }
 
 .wawa {
-  font-size: 26rpx;
+  font-size: 20rpx;
   float: right;
-  line-height: 50rpx;
+  line-height: 30rpx;
   color: white;
+  margin-right: 60rpx;
 }
 
 .container-out {
