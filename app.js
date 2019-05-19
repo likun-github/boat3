@@ -12,11 +12,11 @@ App({
         that.globalData.height=res.windowHeight;
       }
     })
-    wx.clearStorageSync();
+    wx.clearStorage();
     this.gethomelist();
     this.getuserinformation();
     this.getorderlist();
-    // ��¼
+   
   },
   onShow:function(){
     this.aldstat.sendEvent('小程序的启动时长', {
