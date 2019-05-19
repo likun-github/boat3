@@ -509,7 +509,7 @@ Page({
     var that = this;
 
     //是否实名认证
-    if (app.globalData.status == 0) {
+    if (app.globalData.status == 0 || app.globalData.status ==1) {
       wx.showToast({
         title: '未认证正在跳转',
         duration: 1000,
